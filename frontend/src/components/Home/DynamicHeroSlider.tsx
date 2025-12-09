@@ -108,7 +108,8 @@ const DynamicHeroSlider = forwardRef<HTMLDivElement, DynamicHeroSliderProps>(
             )}
           </div>
           
-          {sliderData.settings.show_pagination && slides.length > 1 && (
+          {/* Simple pagination dots only - no navigation arrows */}
+          {slides.length > 1 && (
             <div className="mh-ui-news-indicators">
               {slides.map((_, i) => (
                 <button
@@ -119,25 +120,6 @@ const DynamicHeroSlider = forwardRef<HTMLDivElement, DynamicHeroSliderProps>(
                 />
               ))}
             </div>
-          )}
-
-          {sliderData.settings.show_navigation && slides.length > 1 && (
-            <>
-              <button
-                className="mh-ui-news-nav mh-ui-news-prev"
-                onClick={() => setIndex((prev) => (prev - 1 + slides.length) % slides.length)}
-                aria-label="Previous slide"
-              >
-                ‹
-              </button>
-              <button
-                className="mh-ui-news-nav mh-ui-news-next"
-                onClick={() => setIndex((prev) => (prev + 1) % slides.length)}
-                aria-label="Next slide"
-              >
-                ›
-              </button>
-            </>
           )}
         </div>
       </div>

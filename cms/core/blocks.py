@@ -655,14 +655,6 @@ class CardGridBlock(blocks.StructBlock):
 class SlideItemBlock(blocks.StructBlock):
     """Individual slide for news/blog sliders."""
     title = blocks.CharBlock(max_length=200)
-    description = blocks.TextBlock(
-        required=False,
-        help_text="Brief description for the slide"
-    )
-    image = ImageChooserBlock(
-        required=False,
-        help_text="Slide image"
-    )
     link = HrefBlock(required=False)
     date = blocks.DateBlock(
         required=False,

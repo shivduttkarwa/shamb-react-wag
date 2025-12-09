@@ -218,50 +218,19 @@ class NewsSlider(models.Model):
         help_text="Slider title"
     )
     
-    subtitle = models.CharField(
-        max_length=300,
-        blank=True,
-        help_text="Optional subtitle"
-    )
-    
     slides = StreamField([
         ('news_slide', NewsSlideBlock()),
     ], blank=True, help_text="Add news slides")
     
-    autoplay = models.BooleanField(
-        default=True,
-        help_text="Auto-play slides"
-    )
-    
     autoplay_delay = models.IntegerField(
-        default=5000,
+        default=4200,
         help_text="Auto-play delay in milliseconds"
-    )
-    
-    show_navigation = models.BooleanField(
-        default=True,
-        help_text="Show navigation arrows"
-    )
-    
-    show_pagination = models.BooleanField(
-        default=True,
-        help_text="Show pagination dots"
     )
 
     panels = [
-        MultiFieldPanel([
-            FieldPanel('title'),
-            FieldPanel('subtitle'),
-        ], heading="Slider Content"),
-        
+        FieldPanel('title'),
         FieldPanel('slides'),
-        
-        MultiFieldPanel([
-            FieldPanel('autoplay'),
-            FieldPanel('autoplay_delay'),
-            FieldPanel('show_navigation'),
-            FieldPanel('show_pagination'),
-        ], heading="Slider Settings"),
+        FieldPanel('autoplay_delay'),
     ]
 
     def __str__(self):
@@ -276,18 +245,12 @@ class NewsSlider(models.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'subtitle': self.subtitle,
             'slides': [
                 {
                     'id': i,
                     'title': slide.value.get('title', ''),
-                    'description': slide.value.get('description', ''),
                     'excerpt': slide.value.get('excerpt', ''),
                     'author': slide.value.get('author', ''),
-                    'image': {
-                        'url': slide.value.get('image').file.url if slide.value.get('image') else None,
-                        'alt': slide.value.get('image').title if slide.value.get('image') else '',
-                    } if slide.value.get('image') else None,
                     'link': {
                         'url': slide.value.get('link').url() if slide.value.get('link') and slide.value.get('link').is_url() else '#',
                         'is_external': slide.value.get('link').get('external_link') is not None if slide.value.get('link') else False,
@@ -298,10 +261,10 @@ class NewsSlider(models.Model):
                 } for i, slide in enumerate(self.slides)
             ],
             'settings': {
-                'autoplay': self.autoplay,
+                'autoplay': True,
                 'autoplay_delay': self.autoplay_delay,
-                'show_navigation': self.show_navigation,
-                'show_pagination': self.show_pagination,
+                'show_navigation': False,
+                'show_pagination': True,
             }
         }
 
@@ -314,50 +277,19 @@ class BlogSlider(models.Model):
         help_text="Slider title"
     )
     
-    subtitle = models.CharField(
-        max_length=300,
-        blank=True,
-        help_text="Optional subtitle"
-    )
-    
     slides = StreamField([
         ('blog_slide', BlogSlideBlock()),
     ], blank=True, help_text="Add blog slides")
     
-    autoplay = models.BooleanField(
-        default=True,
-        help_text="Auto-play slides"
-    )
-    
     autoplay_delay = models.IntegerField(
-        default=5000,
+        default=4200,
         help_text="Auto-play delay in milliseconds"
-    )
-    
-    show_navigation = models.BooleanField(
-        default=True,
-        help_text="Show navigation arrows"
-    )
-    
-    show_pagination = models.BooleanField(
-        default=True,
-        help_text="Show pagination dots"
     )
 
     panels = [
-        MultiFieldPanel([
-            FieldPanel('title'),
-            FieldPanel('subtitle'),
-        ], heading="Slider Content"),
-        
+        FieldPanel('title'),
         FieldPanel('slides'),
-        
-        MultiFieldPanel([
-            FieldPanel('autoplay'),
-            FieldPanel('autoplay_delay'),
-            FieldPanel('show_navigation'),
-            FieldPanel('show_pagination'),
-        ], heading="Slider Settings"),
+        FieldPanel('autoplay_delay'),
     ]
 
     def __str__(self):
@@ -372,19 +304,13 @@ class BlogSlider(models.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'subtitle': self.subtitle,
             'slides': [
                 {
                     'id': i,
                     'title': slide.value.get('title', ''),
-                    'description': slide.value.get('description', ''),
                     'excerpt': slide.value.get('excerpt', ''),
                     'tags': slide.value.get('tags', ''),
                     'read_time': slide.value.get('read_time', 0),
-                    'image': {
-                        'url': slide.value.get('image').file.url if slide.value.get('image') else None,
-                        'alt': slide.value.get('image').title if slide.value.get('image') else '',
-                    } if slide.value.get('image') else None,
                     'link': {
                         'url': slide.value.get('link').url() if slide.value.get('link') and slide.value.get('link').is_url() else '#',
                         'is_external': slide.value.get('link').get('external_link') is not None if slide.value.get('link') else False,
@@ -395,9 +321,9 @@ class BlogSlider(models.Model):
                 } for i, slide in enumerate(self.slides)
             ],
             'settings': {
-                'autoplay': self.autoplay,
+                'autoplay': True,
                 'autoplay_delay': self.autoplay_delay,
-                'show_navigation': self.show_navigation,
-                'show_pagination': self.show_pagination,
+                'show_navigation': False,
+                'show_pagination': True,
             }
         }

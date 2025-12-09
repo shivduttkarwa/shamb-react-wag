@@ -42,6 +42,8 @@ class HomePage(Page):
                 'hero_text_static': hero.hero_text_static,
                 'changing_text_words': changing_words,
                 'description': hero.description,
+
+                
                 'hero_image': {
                     'url': hero.hero_image_url,
                     'alt': hero.hero_image.title if hero.hero_image else '',
@@ -59,6 +61,10 @@ class HomePage(Page):
                 } if hero.secondary_cta_text else None,
                 'show_blog_slider': hero.show_blog_slider,
                 'slider_title': hero.slider_title,
+                'slider_type': hero.slider_type,
+                'active_slider': hero.active_slider.get_api_representation() if hero.active_slider else None,
+                'news_slider': hero.news_slider.get_api_representation() if hero.news_slider else None,
+                'blog_slider': hero.blog_slider.get_api_representation() if hero.blog_slider else None,
             }
         except Exception as e:
             # Return fallback data if there's an error
@@ -73,6 +79,10 @@ class HomePage(Page):
                 },
                 'show_blog_slider': True,
                 'slider_title': 'Latest News',
+                'slider_type': 'none',
+                'active_slider': None,
+                'news_slider': None,
+                'blog_slider': None,
             }
 
     def get_context(self, request, *args, **kwargs):
