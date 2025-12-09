@@ -1,19 +1,16 @@
 import { memo, useEffect, useRef } from "react";
 import gsap from "gsap";
 import GlassRainButton from "../UI/GlassRainButton";
-import HomeHeroSlider from "../Home/HomeHeroSlider";
+import DynamicHeroSlider from "../Home/DynamicHeroSlider";
+import { useMainHero } from "../../hooks/useMainHero";
 import "./ModernHero.css";
-
-const publicUrl = import.meta.env.BASE_URL || "/";
-const heroVideo = publicUrl.endsWith("/")
-  ? `${publicUrl}images/home_hero.mp4`
-  : `${publicUrl}/images/home_hero.mp4`;
 
 interface ModernHeroProps {
   animate?: boolean;
 }
 
 const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
+  const { heroData, loading, error } = useMainHero();
   const curtainRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
@@ -25,7 +22,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!animate) return;
+    if (!animate || loading || !heroData) return;
 
     const curtain = curtainRef.current;
     const heroVideo = heroVideoRef.current;
@@ -72,7 +69,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       return spans;
     }
 
-    const SCATTER_TEXT = "CREATE";
+    const SCATTER_TEXT = heroData?.title || "CREATE";
 
     const scatterSpans = createCharSpans(
       scatterWordEl,
@@ -80,9 +77,10 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       "mh-scatter-letter"
     );
 
-    const changingWords = window.innerWidth < 576 
-  ? ["SCULPTED", "WARM", "BALANCED", "ICONIC"] // Mobile: keep current words
-  : ["ELEGANT", "STUNNING", "PREMIUM", "CLASSIC"]; // Desktop: shorter by ~20%
+    const changingWords = heroData?.changing_text_words || 
+      (window.innerWidth < 576 
+        ? ["SCULPTED", "WARM", "BALANCED", "ICONIC"] // Mobile: keep current words
+        : ["ELEGANT", "STUNNING", "PREMIUM", "CLASSIC"]); // Desktop: shorter by ~20%
 
     function animateSubtitleWord(index: number) {
       if (!subtitleDynamicEl) return;
@@ -415,7 +413,27 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         },
         "postAssemble+=" + SUBTITLE_DELAY_AFTER_ASSEMBLY
       );
-  }, [animate]);
+  }, [animate, heroData, loading]);
+
+  if (loading) {
+    return (
+      <div className="mh-hero" ref={heroRef}>
+        <div className="mh-hero-loading">Loading hero...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    console.warn('ModernHero error:', error);
+  }
+
+  if (!heroData) {
+    return (
+      <div className="mh-hero" ref={heroRef}>
+        <div className="mh-hero-loading">No hero data available</div>
+      </div>
+    );
+  }
 
   return (
     <div className="mh-hero" ref={heroRef}>
@@ -426,19 +444,31 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         <h1 className="mh-scatter-word" ref={scatterWordRef}></h1>
 
         <div className="mh-subtitle" ref={subtitleRef}>
-          <span className="mh-subtitle-static">Something </span>
+          <span className="mh-subtitle-static">{heroData?.hero_text_static || "Something"} </span>
           <span className="mh-subtitle-dynamic" ref={subtitleDynamicRef}></span>
         </div>
 
         <div className="mh-ui-cta" ref={ctaRef}>
-          <GlassRainButton href="/projects">Start a Project</GlassRainButton>
+          <GlassRainButton href={heroData?.primary_cta?.link || "/projects"}>
+            {heroData?.primary_cta?.text || "Start a Project"}
+          </GlassRainButton>
         </div>
 
-        <HomeHeroSlider ref={newsRef} />
+        <DynamicHeroSlider 
+          ref={newsRef}
+          sliderData={heroData?.active_slider || null}
+          sliderType={heroData?.slider_type || 'none'}
+        />
       </div>
 
       <div className="mh-hero-video" ref={heroVideoRef}>
-        <video ref={videoElRef} src={heroVideo} muted loop playsInline />
+        <video 
+          ref={videoElRef} 
+          src={heroData?.hero_video?.url || '/images/home_hero.mp4'} 
+          muted 
+          loop 
+          playsInline 
+        />
         <div className="mh-image-overlay"></div>
       </div>
     </div>

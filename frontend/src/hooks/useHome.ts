@@ -158,12 +158,8 @@ export const useHome = (): UseHomeReturn => {
         if (data) {
           setWagtailData(data);
           
-          // Set body blocks
-          if (Array.isArray(data.body_content_data)) {
-            setBodyBlocks(data.body_content_data);
-          } else {
-            setBodyBlocks([]);
-          }
+          // Set body blocks (empty for now since we're not fetching body_content_data)
+          setBodyBlocks([]);
           
           // Transform Wagtail data to HeroSection component format
           const API_BASE = import.meta.env.VITE_API_URL?.replace('/api/v2', '') || 'http://127.0.0.1:8000';

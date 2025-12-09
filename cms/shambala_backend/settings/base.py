@@ -41,6 +41,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*']) # Allows all hosts for 
 INSTALLED_APPS = [
     "home",
     "search",
+    "core",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

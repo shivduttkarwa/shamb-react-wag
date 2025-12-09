@@ -260,16 +260,16 @@ export type BodyBlock = HorizontalSliderBlock | ResidentialProjectsBlock | Comme
 export interface WagtailHomePage {
   id: number;
   title: string;
-  body_content_data: BodyBlock[];
-  hero_section_data: HeroSectionData;
+  body_content_data?: BodyBlock[];
+  hero_section_data: any; // Using any for now to match our MainHero structure
   // Legacy fields for backward compatibility
-  main_title: string[];
-  typed_texts_list: string[];
-  description: string;
-  cta_text: string;
-  cta_link: string;
-  background_image: WagtailImage;
-  service_boxes_list: WagtailServiceBox[];
+  main_title?: string[];
+  typed_texts_list?: string[];
+  description?: string;
+  cta_text?: string;
+  cta_link?: string;
+  background_image?: WagtailImage;
+  service_boxes_list?: WagtailServiceBox[];
   intro?: string;
   hero?: WagtailImage;
 }
@@ -343,7 +343,7 @@ export const fetchHomePage = async (): Promise<WagtailHomePage | null> => {
     const response = await api.get<WagtailApiResponse<WagtailHomePage>>('/pages/', {
       params: {
         type: 'home.HomePage',
-        fields: 'title,hero_section_data,body_content_data',
+        fields: 'title,hero_section_data',
         limit: 1,
       },
     });

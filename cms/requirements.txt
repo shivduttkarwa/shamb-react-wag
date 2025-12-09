@@ -1,2 +1,16 @@
 Django>=5.2,<5.3
 wagtail>=7.2,<7.3
+
+# Database
+psycopg2-binary>=2.9.0
+
+# API and CORS for headless setup
+djangorestframework>=3.14.0
+django-cors-headers>=4.0.0
+
+# Environment variables
+django-environ>=0.10.0
+
+# Additional useful packages
+django-filter>=23.0
+Pillow>=10.0.0
