@@ -1,0 +1,60 @@
+/* Container */
+.gst-section {
+  /* make it easy to drop anywhere */
+  width: 100%;
+  padding: 4rem 1.5rem;
+  background: transparent;
+  color: inherit;
+}
+
+.gst-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Title styling */
+.gst-title {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  text-transform: uppercase;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -3px;
+  color: #090909;
+  margin: 0 0 1rem;
+}
+
+/* Each letter wrapper */
+.gst-letter {
+  display: inline-block;
+  overflow: hidden; /* mask for vertical reveal */
+}
+
+/* Inner letter that actually moves */
+.gst-letter-inner {
+  display: inline-block;
+  transform-origin: center;
+}
+
+/* Special center letter (animated first) */
+.gst-letter-inner--center {
+  /* you can give it a tint or weight if you want, optional: */
+  /* font-weight: 700; */
+}
+
+/* Space between words */
+.gst-space {
+  display: inline-block;
+  width: 0.45em; /* controls word gap */
+}
+
+/* Optional description text */
+.gst-description {
+  margin-top: 1.5rem;
+  max-width: 520px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}

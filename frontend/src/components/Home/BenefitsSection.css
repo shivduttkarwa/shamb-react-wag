@@ -1,0 +1,374 @@
+/* BENEFITS SECTION - UPDATED DESIGN */
+
+/* TITLE INSIDE SECTION - STICKY BUT SLIDES UP */
+.benefits-inside-title {
+  text-align: center;
+  padding: 60px 0 40px;
+  background: #f8f8f8;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Desktop: Keep Benefits title on single line */
+.benefits-inside-title .tilt-text-heading {
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+}
+
+/* Mobile: Force Benefits title to wrap to 2 lines */
+@media (max-width: 768px) {
+  .benefits-inside-title .tilt-text-heading {
+    white-space: normal !important;
+    max-width: 250px !important;
+    line-height: 1.1 !important;
+  }
+}
+/* Benefits section title styles now handled by TiltTextGsap component */
+
+/* Benefits icon styling */
+.benefits-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.benefits-icon svg {
+  width: 56px;
+  height: 56px;
+  stroke: currentColor;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.benefits-card:hover .benefits-icon svg {
+  transform: scale(1.15);
+  opacity: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* MAIN SECTION */
+section[data-block-type="blockBenefits"] {
+  /* Reset to normal scroll behavior */
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+/* Base Layout */
+.benefits-overflow-clip {
+  overflow-x: clip;
+}
+
+.benefits-px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.benefits-relative {
+  position: relative;
+}
+
+.benefits-isolate {
+  isolation: isolate;
+}
+
+.benefits-size-full {
+  width: 100%;
+  height: 100%;
+}
+
+/* Background */
+.benefits-bg-base-stone-20 {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Desktop Grid */
+.benefits-hidden {
+  display: none;
+}
+
+.benefits-desktop-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-height: 100vh;
+}
+
+/* Cards */
+.benefits-w-full {
+  width: 100%;
+}
+
+.benefits-card {
+  margin-top: -1px;
+  position: sticky;
+  top: 200px;
+  display: flex;
+  aspect-ratio: 1.4;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  border-top: 3px solid #e0e0e0;
+  border-bottom: 3px solid #e0e0e0;
+  border-left: 2px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  z-index: 1;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.benefits-card:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove doubled borders between adjacent cards horizontally */
+.benefits-w-full:not(:last-child) .benefits-card {
+  border-right: 1px solid #e0e0e0;
+}
+
+/* Last column gets full right border */
+.benefits-w-full:last-child .benefits-card {
+  border-right: 2px solid #e0e0e0;
+}
+
+.benefits-card:first-child {
+  margin-top: 0;
+}
+
+.benefits-card-mobile {
+  margin-top: -1px;
+  position: sticky;
+  top: 200px;
+  display: flex;
+  aspect-ratio: 1.4;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  border-top: 3px solid #e0e0e0;
+  border-bottom: 3px solid #e0e0e0;
+  border-left: 2px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  z-index: 1;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.benefits-card-mobile:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.benefits-card-mobile:first-child {
+  margin-top: 0;
+}
+
+.benefits-spacer {
+  margin-top: -1px;
+  pointer-events: none;
+  aspect-ratio: 1;
+  background: #f8f8f8;
+}
+
+.benefits-spacer:first-child {
+  margin-top: 0;
+}
+
+.benefits-block {
+  display: block;
+}
+
+.benefits-description {
+  white-space: pre-line;
+  text-wrap: balance;
+  font-size: 1.125rem;
+  color: #374151;
+  line-height: 1.75;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.benefits-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.benefits-grid {
+  display: grid;
+}
+
+.benefits-grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.benefits-col-start-2 {
+  grid-column-start: 2;
+}
+
+/* CTA */
+.benefits-cta-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: #f8f8f8;
+}
+
+.benefits-lg-col-start-2 {
+  /* Will be applied at lg breakpoint */
+}
+
+.benefits-cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  border-left: none;
+  border-right: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #141414;
+  overflow: hidden;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+}
+
+/* sliding light background */
+.benefits-cta-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: #e5e7eb;
+  transition: transform 0.8s ease-out;
+  z-index: -1;
+}
+
+/* arrow bubble – visible from the start */
+.benefits-cta-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  font-size: 1.1rem;
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* hover effects */
+.benefits-cta-button:hover::before {
+  transform: scaleX(1);
+}
+
+.benefits-cta-button:hover .benefits-cta-icon {
+  transform: translateX(6px);
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .benefits-lg-hidden {
+    display: none !important;
+  }
+
+  .benefits-lg-grid {
+    display: grid !important;
+  }
+
+  .benefits-lg-block {
+    display: block !important;
+  }
+
+  .benefits-lg-col-start-2 {
+    grid-column-start: 2;
+  }
+
+  .benefits-card {
+    aspect-ratio: 1;
+    padding: 4rem;
+    gap: 2rem;
+  }
+
+  .benefits-title {
+    font-size: 1.5rem;
+  }
+
+  .benefits-spacer {
+    display: block !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .benefits-spacer {
+    display: none;
+  }
+
+  .benefits-header {
+    padding: 40px 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .benefits-section-title {
+    font-size: 48px;
+  }
+
+  /* Stack mobile cards one by one */
+  .benefits-grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-col-start-2 {
+    grid-column-start: 1;
+  }
+
+  .benefits-card-mobile {
+    margin: 0 0 2rem 0;
+    position: relative;
+    top: auto;
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+
+  /* Reduce font size and weight in Benefits boxes on mobile */
+  .benefits-card-mobile .benefits-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+}

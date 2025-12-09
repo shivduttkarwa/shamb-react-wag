@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Somerstone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Hero Card Section */
+    .hero-card-section {
+      padding: 60px 24px 80px;
+      background: #f8f8f8;
+    }
+    .hero-card-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media(min-width:900px) {
+      .hero-card-inner { grid-template-columns: 1fr 1fr; }
+    }
+    .hero-text { padding-top: 20px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #1a1a1a;
+      border-radius: 50%;
+    }
+    .badge-text {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .hero-text h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    .hero-text p {
+      font-size: 17px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 480px;
+    }
+    .hero-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    }
+    .hero-card img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+    }
+    .hero-card-overlay {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(10px);
+      padding: 24px;
+      border-radius: 12px;
+      color: #fff;
+    }
+    .hero-card-overlay p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .hero-card-overlay span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    /* Parallax Image Section */
+    .parallax-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+    .parallax-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .parallax-spacer {
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Our Process Section */
+    .process-section {
+      background: #fff;
+      padding: 100px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .process-title {
+      font-size: clamp(48px, 8vw, 90px);
+      font-weight: 400;
+      padding: 0 40px;
+      margin-bottom: 60px;
+    }
+
+    /* Process Step */
+    .process-step {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      position: relative;
+      border-top: 1px solid #e0e0e0;
+    }
+    .process-step:last-of-type {
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .process-step.reverse { direction: rtl; }
+    .process-step.reverse > * { direction: ltr; }
+
+    .step-image-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #e5e5e5;
+      min-height: 70vh;
+    }
+    .step-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: inset(100% 0 0 0);
+      will-change: clip-path;
+    }
+    .step-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .step-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 80px;
+      position: relative;
+    }
+    .step-number {
+      position: absolute;
+      top: 40px;
+      right: 80px;
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      color: #d5d5d5;
+      line-height: 1;
+    }
+    .process-step.reverse .step-number {
+      right: auto;
+      left: 80px;
+    }
+    .step-title {
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 400;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .step-subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 28px;
+    }
+    .step-desc {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+    .outcome-box {
+      background: #f5f5f5;
+      border-radius: 6px;
+      padding: 20px 24px;
+      max-width: 520px;
+      border-left: 3px solid #e0e0e0;
+    }
+    .outcome-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+    .outcome-text {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      background: #fff;
+      padding: 120px 24px;
+    }
+    .testimonials-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+    .testimonials-header h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 400;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    .testimonials-header p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      background: #fff;
+    }
+    .btn-outline:hover {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    .testimonials-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
+    }
+    @media(max-width:900px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    .test-main {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 48px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .test-quote {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-family: 'Playfair Display', serif;
+      font-size: 200px;
+      color: rgba(255,255,255,0.08);
+      line-height: 0.8;
+      pointer-events: none;
+    }
+    .test-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .test-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: #d4a853;
+      transform: rotate(45deg);
+    }
+    .test-badge-text {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .test-main h3 {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      line-height: 1.35;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .test-main > p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+    .test-images {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .test-images img {
+      width: 140px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .test-side {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .test-card {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 32px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+    }
+    .test-card .test-quote {
+      font-size: 120px;
+      top: 10px;
+      right: 20px;
+    }
+    .test-card h4 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .test-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Mobile */
+    @media(max-width:900px) {
+      .process-step {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .process-step.reverse { direction: ltr; }
+      .step-image-wrap { min-height: 40vh; }
+      .step-content { padding: 50px 24px; }
+      .step-number {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        margin-bottom: 20px;
+        font-size: 56px;
+      }
+      .process-step.reverse .step-number {
+        left: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Card Section -->
+  <section class="hero-card-section">
+    <div class="hero-card-inner">
+      <div class="hero-text">
+        <div class="badge">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Our Services</span>
+        </div>
+        <h1 class="serif">We turn uncertainty into financial freedom.</h1>
+        <p>We don't believe in cheesy get-rich-quick schemes or gambling on the market. We invest in disciplined strategy, careful planning, and ongoing support to deliver an end-to-end service designed to deliver you real returns.</p>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=600&fit=crop" alt="Property">
+        <div class="hero-card-overlay">
+          <p>"We've purchased our first investment property and feel so much more confident about our financial future. We honestly couldn't have done it without them."</p>
+          <span>Emily & James, VIC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Image -->
+  <section class="parallax-section">
+    <img class="parallax-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop" alt="City">
+  </section>
+
+  <!-- Our Process -->
+  <section class="process-section">
+    <h2 class="process-title serif">Our Process</h2>
+
+    <!-- Step 01 -->
+    <div class="process-step" data-step="1">
+      <div class="step-image-wrap">
+        <div class="step-image-container">
+          <img class="step-image" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=1000&fit=crop" alt="Writing notes">
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-number serif">01</div>
+        <h3 class="step-title serif">We understand your needs.</h3>
+        <div class="step-subtitle">BUILDING STRATEGY AROUND YOUR PERSONAL GOALS</div>
+        <p class="step-desc">Before we make any recommendations, we take the time to understand your current financial position and where you'd like to be in the years ahead. Together, we map out your goals, priorities, and comfort levels so every step forward is grounded in your reality.</p>
+        <div class="outcome-box">
+          <div class="outcome-label">OUTCOME</div>
+          <p class="outcome-text">A clear foundation that ensures every decision is aligned with your goals and long-term vision.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 02 -->
+    <div class="process-step reverse" data-step="2">
+      <div class="step-image-wrap">
+        <div class="step-image-container">
+          <img class="step-image" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=1000&fit=crop" alt="Calculator">
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-number serif">02</div>
+        <h3 class="step-title serif">We plan a strategy.</h3>
+        <div class="step-subtitle">TURNING YOUR AMBITIONS INTO A ROADMAP</div>
+        <p class="step-desc">With your goals in mind, we create a tailored investment strategy designed to fit your circumstances. Every recommendation is based on clarity and long-term thinking, so we make choices that directly benefit your unique situation.</p>
+        <div class="outcome-box">
+          <div class="outcome-label">OUTCOME</div>
+          <p class="outcome-text">A structured, personalised plan that aligns property opportunities with your financial objectives.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 03 -->
+    <div class="process-step" data-step="3">
+      <div class="step-image-wrap">
+        <div class="step-image-container">
+          <img class="step-image" src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&h=1000&fit=crop" alt="Presentation">
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-number serif">03</div>
+        <h3 class="step-title serif">We present a solution.</h3>
+        <div class="step-subtitle">TAILORING AN APPROACH TO MATCH YOUR NEEDS</div>
+        <p class="step-desc">With your strategy in place, we present the property and finance opportunities that bring it to life. Every recommendation is chosen to align with your circumstances and aspirations, ensuring the path forward feels clear and achievable.</p>
+        <div class="outcome-box">
+          <div class="outcome-label">OUTCOME</div>
+          <p class="outcome-text">A customised solution designed for long-term success, not one-size-fits-all advice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 04 -->
+    <div class="process-step reverse" data-step="4">
+      <div class="step-image-wrap">
+        <div class="step-image-container">
+          <img class="step-image" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=1000&fit=crop" alt="Houses">
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-number serif">04</div>
+        <h3 class="step-title serif">We source properties.</h3>
+        <div class="step-subtitle">FINDING THE RIGHT INVESTMENTS FOR YOU</div>
+        <p class="step-desc">Our team searches the market to identify properties that align with your identified plan. We focus on quality builds, strong locations, and long-term growth potential—ensuring every option supports your financial future.</p>
+        <div class="outcome-box">
+          <div class="outcome-label">OUTCOME</div>
+          <p class="outcome-text">Carefully selected properties that match your strategy and give you confidence in every purchase.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 05 -->
+    <div class="process-step" data-step="5">
+      <div class="step-image-wrap">
+        <div class="step-image-container">
+          <img class="step-image" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1000&fit=crop" alt="Review">
+        </div>
+      </div>
+      <div class="step-content">
+        <div class="step-number serif">05</div>
+        <h3 class="step-title serif">We manage and review.</h3>
+        <div class="step-subtitle">SUPPORT THAT CONTINUES BEYOND THE PURCHASE</div>
+        <p class="step-desc">Securing a property is just the beginning. We stay by your side with ongoing support—from tenant management to regular six-month strategy reviews—so your investments stay aligned with your goals and adapt as life and markets change.</p>
+        <div class="outcome-box">
+          <div class="outcome-label">OUTCOME</div>
+          <p class="outcome-text">Long-term guidance that keeps your portfolio performing and your goals on track.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="testimonials-header">
+      <h2 class="serif">Real people, lasting outcomes.</h2>
+      <p>With our support, clients have secured properties, grown portfolios, and moved closer to the financial freedom they once thought was out of reach.</p>
+      <a href="#" class="btn-outline">↗ START YOUR JOURNEY</a>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="test-main">
+        <span class="test-quote serif">"</span>
+        <div class="test-badge">
+          <div class="test-badge-dot"></div>
+          <span class="test-badge-text">JESS & MATTHEW, SA</span>
+        </div>
+        <h3 class="serif">What stood out most was how much they genuinely cared - it never felt like a transaction, more like a partnership.</h3>
+        <p>As a couple new to investing, we had a lot of questions and probably overthought everything, but they were patient and took the time to make sure we felt comfortable. Now that we've settled on our first property, we feel like we've finally taken that big step we've been putting off for years.</p>
+        <div class="test-images">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&h=150&fit=crop" alt="Property 1">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&h=150&fit=crop" alt="Property 2">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&h=150&fit=crop" alt="Property 3">
+        </div>
+      </div>
+      <div class="test-side">
+        <div class="test-card">
+          <span class="test-quote serif">"</span>
+          <div class="test-badge">
+            <div class="test-badge-dot"></div>
+            <span class="test-badge-text">KATE & RYAN, WA</span>
+          </div>
+          <h4 class="serif">Matt was great to work with, always professional but also down to earth.</h4>
+          <p>He made the process simple and we're really happy with the property we secured. We've recommended Matt to friends already and will continue to do so.</p>
+        </div>
+        <div class="test-card">
+          <span class="test-quote serif">"</span>
+          <div class="test-badge">
+            <div class="test-badge-dot"></div>
+            <span class="test-badge-text">NICOLE & TOM, NSW</span>
+          </div>
+          <h4 class="serif">Couldn't be happier!</h4>
+          <p>Georgia made the whole experience smooth from start to finish. She kept us updated and made sure we felt comfortable the whole way through.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hide fixed image when process section comes
+    ScrollTrigger.create({
+      trigger: '.process-section',
+      start: 'top bottom',
+      end: 'top top',
+      onEnter: () => gsap.to('.parallax-img', { opacity: 1 }),
+      onLeave: () => gsap.to('.parallax-img', { opacity: 0, duration: 0 }),
+      onEnterBack: () => gsap.to('.parallax-img', { opacity: 1 }),
+      onLeaveBack: () => gsap.to('.parallax-img', { opacity: 1 })
+    });
+
+    // Process steps animation
+    document.querySelectorAll('.process-step').forEach((step, i) => {
+      const imgContainer = step.querySelector('.step-image-container');
+      const num = step.querySelector('.step-number');
+      const title = step.querySelector('.step-title');
+      const subtitle = step.querySelector('.step-subtitle');
+      const desc = step.querySelector('.step-desc');
+      const outcome = step.querySelector('.outcome-box');
+
+      // Image slide down reveal using clip-path
+      gsap.to(imgContainer, {
+        clipPath: 'inset(0% 0 0 0)',
+        ease: 'power3.out',
+        duration: 1.2,
+        scrollTrigger: {
+          trigger: step,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Content animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: step,
+          start: 'top 60%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      tl.fromTo(num, 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+      )
+      .fromTo(title, 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+        '-=0.4'
+      )
+      .fromTo(subtitle, 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        '-=0.3'
+      )
+      .fromTo(desc, 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        '-=0.2'
+      )
+      .fromTo(outcome, 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        '-=0.2'
+      );
+    });
+
+    // Testimonials fade in
+    gsap.fromTo('.testimonials-header', 
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.testimonials-section',
+          start: 'top 70%'
+        }
+      }
+    );
+
+    gsap.fromTo('.test-main', 
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.testimonials-grid',
+          start: 'top 70%'
+        }
+      }
+    );
+
+    gsap.fromTo('.test-card', 
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.testimonials-grid',
+          start: 'top 60%'
+        }
+      }
+    );
+  </script>
+</body>
+</html>

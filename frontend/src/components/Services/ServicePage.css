@@ -1,0 +1,292 @@
+/* ===========================================
+   BASE + VARIABLES
+=========================================== */
+.ser-services-page * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.ser-services-page {
+  --ser-color-off-white: #f7f7f2;
+  --ser-color-white: #ffffff;
+  --ser-color-black: #333333;
+
+  --ser-color-gold: #d9b57d;
+  --ser-color-gold-light: #e3d5bf;
+  --ser-color-border-soft: #f8f7f3;
+  --ser-color-tertiary-brown: #8a8275;
+
+  --ser-color-green: #47614d;
+  --ser-color-yellow-soft: #fcf8d8;
+
+  background: var(--ser-color-off-white);
+  color: var(--ser-color-black);
+  font-family: "Nunito", sans-serif;
+}
+
+/* Serif font class */
+.ser-serif {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* ===========================================
+   HERO SECTION
+=========================================== */
+
+.ser-page-hero-wrapper {
+  width: 100%;
+  background: #000;
+}
+
+.ser-page-hero-section {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("/images/bg.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+.ser-page-hero-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: clamp(2rem, 4vw, 3rem);
+}
+
+@media (max-width: 900px) {
+  .ser-page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .ser-page-hero-section {
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height for mobile */
+    padding: 0;
+  }
+  
+  .ser-page-hero-grid {
+    grid-template-columns: 1fr; /* Stack layout like About page */
+    gap: 2.5rem; /* Same gap as About page */
+    padding: 1rem;
+    align-items: center;
+  }
+  
+  /* Reorder on mobile - text first, then image */
+  .ser-page-hero-text-container {
+    order: 1; /* Text comes first on mobile */
+  }
+  
+  .ser-page-hero-image-container {
+    order: 2; /* Image comes second on mobile */
+    width: 100%;
+    max-height: 40vh;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-top: -290px; /* Push image up by 290px (240px + 50px more) */
+  }
+  
+  .ser-page-hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.ser-page-hero-image-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ser-page-hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ser-page-hero-text-container {
+  color: #fff;
+}
+
+.ser-page-hero-velocity .mm-heading,
+.ser-page-hero-text-container h1 {
+  font-family: "Dream Avenue", cursive;
+  font-size: clamp(70px, 8vw, 90px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ===========================================
+   SECTION HEADING
+=========================================== */
+
+.ser-section-heading {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.ser-section-heading p {
+  color: var(--ser-color-tertiary-brown);
+  max-width: 600px;
+  margin: 12px auto 0;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* ===========================================
+   TESTIMONIALS SECTION
+=========================================== */
+
+.ser-testimonials-section {
+  background: #e8e8e8;
+  padding: 120px 24px;
+}
+
+.ser-testimonials-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.ser-testimonials-header h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  color: var(--ser-color-black);
+  margin-bottom: 20px;
+}
+
+.ser-testimonials-header p {
+  font-size: 18px;
+  color: var(--ser-color-tertiary-brown);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+
+.ser-btn-outline {
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: 1px solid var(--ser-color-black);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ser-color-black);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.ser-btn-outline:hover {
+  background: var(--ser-color-black);
+  color: var(--ser-color-off-white);
+}
+
+/* Grid */
+.ser-features-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .ser-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TESTIMONIAL CARDS */
+.ser-card {
+  background: var(--ser-color-white);
+  border: 1px solid var(--ser-color-border-soft);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.ser-card:hover {
+  background: var(--ser-color-yellow-soft);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.ser-yellow-card {
+  background: var(--ser-color-yellow-soft);
+}
+
+.ser-text-4xl {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.ser-mb-8 {
+  margin-bottom: 2rem;
+  font-size: calc(1rem * 1.2); /* Increase font size by 20% */
+}
+
+.ser-testimonial-author {
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Plus Icon */
+.ser-card-plus-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--ser-color-black);
+  color: var(--ser-color-gold);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===========================================
+   BUTTONS / ACTIONS
+=========================================== */
+
+.ser-btn-action {
+  background: var(--ser-color-green);
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  border-radius: 100px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.ser-btn-action:hover {
+  background: #384c3f;
+}
+
+/* ===========================================
+   INTERACTIVE CARD TILT
+=========================================== */
+
+.ser-interactive-card {
+  will-change: transform;
+}

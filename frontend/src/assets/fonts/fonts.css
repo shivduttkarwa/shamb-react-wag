@@ -1,0 +1,17 @@
+/* Local Custom Fonts - Imported as assets for proper Vite processing */
+
+@font-face {
+  font-family: "Dream Avenue";
+  src: url("/fonts/Dream-Avenue.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Modern Avenue";
+  src: url("/fonts/Modern Avenue Demo.otf") format("opentype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}

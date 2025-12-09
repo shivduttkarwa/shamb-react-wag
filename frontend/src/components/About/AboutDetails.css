@@ -1,0 +1,477 @@
+/* -------- About Page Base Styles -------- */
+.about-page * {
+  box-sizing: border-box;
+}
+
+.about-page {
+  /* Services page inspired color scheme */
+  --color-off-white: #f7f7f2;
+  --color-white: #ffffff;
+  --color-black: #333333;
+  --color-gold: #d9b57d;
+  --color-gold-light: #e3d5bf;
+  --color-border-soft: #f8f7f3;
+  --color-tertiary-brown: #8a8275;
+  --color-green: #47614d;
+  --color-yellow-soft: #fcf8d8;
+  
+  font-family: "Nunito", sans-serif;
+  background: var(--color-off-white);
+  color: var(--color-black);
+  min-height: 100vh;
+}
+
+/* -------- About Hero & Card Styles -------- */
+.about-hero-section {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 1.5rem;
+  border: none;
+  position: relative;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.about-hero-section::before {
+  content: none;
+}
+
+.about-hero-section:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.about-card {
+  background: var(--color-white);
+  border-radius: 1.5rem;
+  border: 1px solid var(--color-border-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  color: var(--color-black);
+}
+
+.enhanced-card {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-gold-card {
+  background: var(--color-yellow-soft);
+  border-color: rgba(217, 181, 125, 0.3);
+}
+
+.about-card:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+  border-color: var(--color-gold);
+  transform: translateY(-5px);
+}
+
+.about-btn-primary-enhanced {
+  background: var(--color-green);
+  color: var(--color-white);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.about-btn-secondary-enhanced {
+  background: transparent;
+  color: var(--color-green);
+  border: 2px solid var(--color-green);
+  border-radius: 50px;
+  padding: 0.875rem 2rem;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.about-btn-action-enhanced {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 0;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.about-btn-primary-enhanced:hover {
+  background: #384c3f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-btn-secondary-enhanced:hover {
+  background: var(--color-green);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-btn-action-enhanced:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.about-link-arrow {
+  color: var(--color-black);
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.about-link-arrow:hover {
+  color: var(--color-green);
+}
+
+
+
+/* -------- About Rule of Thirds Layout -------- */
+.about-rule-of-thirds-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50-50 layout */
+  gap: 4rem;
+  align-items: center;
+  min-height: 70vh; /* Slightly reduce section height */
+}
+
+@media (max-width: 1024px) {
+  .about-rule-of-thirds-grid {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-rule-of-thirds-grid {
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+    gap: 2.5rem;
+  }
+
+  .about-hero-text-container,
+  .about-card {
+    text-align: center;
+  }
+
+  .about-card .flex {
+    justify-content: center;
+  }
+}
+
+/* -------- About Custom Cursor -------- */
+.about-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent, #5b7c4f);
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  backdrop-filter: blur(5px);
+}
+
+.about-cursor-grow {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(91, 124, 79, 0.2);
+  border-color: var(--accent, #5b7c4f);
+}
+
+.about-page main {
+  padding-bottom: 4rem;
+  padding-top: 100px; /* Add space for fixed header */
+}
+
+.about-journey-heading {
+  text-align: center;
+  margin: 60px auto 40px;
+}
+
+.about-journey-heading h2 {
+  font-family: "nunito", cursive;
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text, #2c2c2c);
+}
+
+/* -------- About ASCII Glitch Text Customization -------- */
+.about-page .ascii-glitch-text {
+  font-family: "Lucida Console", "Monaco", monospace !important;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.7 !important; /* Fixed line-height matching parent */
+  font-weight: normal !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer;
+  font-style: normal !important;
+  vertical-align: baseline;
+  overflow: hidden; /* Prevent height variations */
+}
+
+.about-page .ascii-glitch-text:hover {
+  text-decoration: none;
+}
+
+/* -------- About Custom Classes for Inline Styles -------- */
+.aboutdetail-grid {
+  font-family: "Nunito", sans-serif;
+}
+
+.aboutdetail-hero-title {
+  font-family: "Nunito", sans-serif;
+  color: var(--text, #2c2c2c);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.aboutdetail-hero-description {
+  color: rgba(44, 44, 44, 0.75);
+  font-family: "Nunito", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.aboutdetail-card-title {
+  font-family: "Nunito", sans-serif;
+  color: #0f0f0f;
+  letter-spacing: 0.05em;
+}
+
+.aboutdetail-card-icon {
+  background: var(--text, #2c2c2c);
+  color: var(--cream, #faf8f3);
+}
+
+.aboutdetail-luxury-title {
+  font-family: "Nunito", sans-serif;
+  color: var(--text, #2c2c2c);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.aboutdetail-discover-btn {
+  background: var(--text, #2c2c2c);
+  color: var(--cream, #faf8f3);
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border-radius: 0;
+}
+
+.aboutdetail-contact-link {
+  color: var(--text, #2c2c2c);
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* -------- Reduced Hero Image -------- */
+.reduced-hero-image {
+  width: 85%; /* Reduce from 100% to 85% */
+  height: 500px; /* Increased height from 400px to 500px */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reduced-hero-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .reduced-hero-image {
+    width: 100%;
+    height: 350px; /* Increased mobile height from 300px to 350px */
+  }
+}
+
+/* -------- Enhanced Design Classes -------- */
+
+/* Color utility classes */
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-green-primary {
+  color: var(--color-green);
+}
+
+.text-brown-tertiary {
+  color: var(--color-tertiary-brown);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+/* Card enhancements */
+.card-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.experience-number {
+  background: linear-gradient(135deg, var(--color-gold) 0%, #c7a164 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 0.9;
+}
+
+.stats-grid {
+  background: rgba(71, 97, 77, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.philosophy-points {
+  background: rgba(71, 97, 77, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Services preview section */
+.services-preview-section {
+  background: var(--color-border-soft);
+  padding: 100px 0;
+  margin-top: 80px;
+}
+
+.service-card {
+  background: var(--color-white);
+  border-radius: 1.2rem;
+  padding: 2.5rem;
+  border: 1px solid var(--color-border-soft);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  text-align: center;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-card:hover {
+  background: var(--color-yellow-soft);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(217, 181, 125, 0.1);
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.service-link:hover {
+  color: var(--color-black) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .enhanced-card {
+    min-height: auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .services-preview-section {
+    padding: 80px 0;
+  }
+}
+
+/* Large screens - increase container width by 20% */
+@media (min-width: 1600px) {
+  .about-page main {
+    max-width: 1800px; /* Increased from default 1440px by ~25% */
+    margin: 0 auto;
+  }
+  
+  .about-rule-of-thirds-grid {
+    max-width: 1680px; /* Increased container width */
+    margin: 0 auto;
+  }
+  
+  .max-w-7xl {
+    max-width: 1680px !important; /* Increase services section width */
+  }
+  
+  .services-preview-section .max-w-7xl {
+    max-width: 1680px;
+  }
+}
+
+@media (max-width: 768px) {
+  .enhanced-card {
+    padding: 1.5rem;
+  }
+  
+  .experience-number {
+    text-align: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .service-card {
+    min-height: 300px;
+    padding: 2rem;
+  }
+}

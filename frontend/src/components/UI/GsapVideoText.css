@@ -1,0 +1,118 @@
+.gsap-video-wrapper {
+  height: 250vh;
+  position: relative;
+}
+
+.gsap-video-content {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--light-bg);
+  font-family: "Dream Avenue", cursive;
+}
+
+.gsap-text-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1800px;
+  padding: 4rem 4rem 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.gsap-text-left,
+.gsap-text-right {
+  font-size: clamp(
+    3.2rem,
+    8vw,
+    11.2rem
+  ); /* Reduced by 20% from 4rem, 10vw, 14rem */
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--text);
+  font-family: "Dream Avenue", cursive;
+}
+
+.gsap-video-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 12.5vw;
+  border-radius: 0px;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.gsap-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gsap-text-container {
+    padding: 2rem 2rem 0;
+  }
+
+  .gsap-text-left,
+  .gsap-text-right {
+    font-size: clamp(
+      3rem,
+      8vw,
+      10rem
+    ); /* Tablet size - larger than base for this breakpoint */
+  }
+
+  .gsap-video-container {
+    width: 55vw;
+    height: 30.9375vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .gsap-text-container {
+    padding: 1.5rem 1rem 0;
+    margin-top: 60px;
+  }
+  .gsap-text-left,
+  .gsap-text-right {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+  }
+
+  .gsap-video-container {
+    width: 65vw;
+    height: 36.5625vw;
+    top: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gsap-text-container {
+    padding: 1.5rem 1rem 0;
+    margin-top: 70px;
+  }
+  .gsap-text-left,
+  .gsap-text-right {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+
+  .gsap-video-container {
+    width: 75vw;
+    height: 42.1875vw;
+    top: 42%;
+  }
+}

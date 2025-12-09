@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root {
+  /* Neutrals */
+  --color-off-white: #f7f7f2;
+  --color-white: #ffffff;
+  --color-black: #333333;
+  --color-transparent-white: #fff0; /* transparent */
+
+  /* Golds / Browns */
+  --color-gold: #d9b57d;
+  --color-gold-light: #cbc0ad;
+  --color-border-soft: #f8f7f3;
+  --color-tertiary-brown: #867f78;
+
+  /* Greens */
+  --color-green: #47614d; /* brand--green */
+  --color-green-soft: #cef5ca; /* system success background */
+  --color-success-text: #114e0b;
+
+  /* Yellows */
+  --color-yellow-soft: #fcf8d8; /* system warning background */
+}

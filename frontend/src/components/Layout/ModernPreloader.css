@@ -1,0 +1,337 @@
+/* Modern Preloader Styles */
+.modern-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #faf8f3 0%,
+    #f5f3ed 25%,
+    #faf8f3 50%,
+    #f0ede5 75%,
+    #faf8f3 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animated Particles */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, #5b7c4f, #7ba05f);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(91, 124, 79, 0.4);
+}
+
+/* Main Content */
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+/* Logo Animation */
+.preloader-logo {
+  margin-bottom: 3rem;
+}
+
+.logo-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+}
+
+.logo-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.outer-circle {
+  width: 100px;
+  height: 100px;
+  border-image: linear-gradient(135deg, #5b7c4f, #7ba05f, #5b7c4f) 1;
+  border-style: solid;
+}
+
+.inner-circle {
+  width: 70px;
+  height: 70px;
+  top: 15px;
+  left: 15px;
+  border-image: linear-gradient(135deg, #7ba05f, #9bc56f, #7ba05f) 1;
+  border-style: solid;
+  opacity: 0.7;
+}
+
+.logo-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #5b7c4f, #7ba05f);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(91, 124, 79, 0.3);
+}
+
+.logo-text {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* Brand Typography */
+.brand-name {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: #2c2c2c;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(44, 44, 44, 0.1);
+}
+
+.brand-tagline {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 300;
+  color: #6b6f78;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-top: 3rem;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.progress-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(91, 124, 79, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5b7c4f, #7ba05f);
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(91, 124, 79, 0.4);
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: progressShimmer 1.5s infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-percentage {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #5b7c4f;
+  min-width: 40px;
+  text-align: right;
+}
+
+.loading-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.85rem;
+  color: #6b6f78;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+/* Decorative Elements */
+.decorative-lines {
+  position: absolute;
+  left: 10%;
+  top: 0;
+  width: 80%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decorative-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(91, 124, 79, 0.2),
+    transparent
+  );
+  transform-origin: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .preloader-content {
+    padding: 1.5rem;
+    max-width: 320px;
+  }
+
+  .logo-container {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+
+  .outer-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .inner-circle {
+    width: 56px;
+    height: 56px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .logo-center {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .progress-section {
+    margin-top: 2rem;
+  }
+
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .preloader-bg {
+    background: #ffffff;
+  }
+
+  .brand-name {
+    color: #000000;
+  }
+
+  .progress-track {
+    background: #e0e0e0;
+  }
+
+  .progress-fill {
+    background: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .logo-circle,
+  .progress-fill::after {
+    animation: none;
+  }
+
+  .preloader-bg {
+    animation: none;
+    background: #faf8f3;
+  }
+
+  .loading-text {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Performance optimizations */
+.modern-preloader * {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.logo-container,
+.progress-fill,
+.particle {
+  will-change: transform;
+}
+
+.preloader-bg {
+  will-change: background-position;
+}

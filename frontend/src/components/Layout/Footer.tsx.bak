@@ -1,0 +1,315 @@
+import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Footer.css";
+import { SiteSettings } from "../../services/api";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface FooterProps {
+  settings: SiteSettings | null;
+}
+
+const Footer: React.FC<FooterProps> = ({ settings }) => {
+  const publicUrl = import.meta.env.BASE_URL;
+  const footerRef = useRef<HTMLElement>(null);
+  const brandTextRef = useRef<HTMLHeadingElement>(null);
+  const topSectionRef = useRef<HTMLDivElement>(null);
+
+  // Footer animations
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Animate top section elements - only if in viewport
+      const topSection = topSectionRef.current;
+      if (topSection) {
+        const brandBox = topSection.querySelector(".footer-brand-box");
+        const linksSection = topSection.querySelector(".footer-links-section");
+        const contactSection = topSection.querySelector(
+          ".footer-contact-section"
+        );
+        const followSection = topSection.querySelector(
+          ".footer-follow-us-section"
+        );
+
+        // Ensure elements are visible by default, animate only when scrolling into view
+        gsap.set([brandBox, linksSection, contactSection, followSection], {
+          opacity: 1,
+          y: 0,
+        });
+
+        gsap.from([brandBox, linksSection, contactSection, followSection], {
+          y: 60,
+          opacity: 0,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: topSection,
+            start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        });
+
+        // Animate individual links within sections
+        const allLinks = topSection.querySelectorAll(
+          ".footer-link, .social-link, .footer-contact-item"
+        );
+
+        gsap.set(allLinks, { opacity: 1, x: 0 });
+
+        gsap.from(allLinks, {
+          x: -20,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.05,
+          ease: "power2.out",
+          delay: 0.4,
+          scrollTrigger: {
+            trigger: topSection,
+            start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        });
+      }
+
+      // Large brand text animation
+      const letters = brandTextRef.current?.querySelectorAll(".footer-letter");
+      if (letters && letters.length > 0) {
+        gsap.set(letters, { yPercent: 0 });
+
+        gsap.from(letters, {
+          yPercent: 100,
+          duration: 0.6,
+          stagger: 0.06,
+          ease: "back.out(2.7)",
+          scrollTrigger: {
+            trigger: brandTextRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+          onComplete: () => {
+            // Color flash animation after text animation completes
+            const colors = [
+              "#ff6b6b", // Coral Red (S)
+              "#4ecdc4", // Turquoise (H)
+              "#ffe66d", // Sunny Yellow (A)
+              "#a8e6cf", // Mint Green (M)
+              "#ff8b94", // Pink (B)
+              "#c7ceea", // Lavender (A)
+              "#ffdac1", // Peach (L)
+              "#b5ead7", // Seafoam (A)
+            ];
+
+            letters.forEach((letter, index) => {
+              gsap.to(letter, {
+                color: colors[index],
+                duration: 0.2,
+                delay: index * 0.2,
+                yoyo: true,
+                repeat: 1,
+                ease: "power2.inOut",
+                onComplete: () => {
+                  // Clear inline styles so CSS hover effects can work
+                  gsap.set(letter, { clearProps: "color" });
+                },
+              });
+            });
+          },
+        });
+      }
+    }, footerRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+  return (
+    <footer className="footer" ref={footerRef}>
+      <div className="footer-container">
+        {/* Main Footer Content */}
+        <div className="footer-top-section" ref={topSectionRef}>
+          {/* Brand Box */}
+          <div className="footer-brand-box">
+            <div className="footer-brand-circle">
+              <div className="footer-brand-inner">
+                <h2 className="footer-brand-title">FORMA</h2>
+                <p className="footer-brand-subtitle">HOMES</p>
+              </div>
+            </div>
+            <p className="footer-brand-description">
+              Creating architectural masterpieces that blend vision with
+              craftsmanship, transforming dreams into extraordinary living
+              spaces across Australia.
+            </p>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="footer-links-section">
+            <h3 className="footer-section-title">Explore</h3>
+            <div className="footer-links">
+              <Link to="/house-designs" className="footer-link">
+                <span className="link-arrow">→</span>
+                Portfolio
+              </Link>
+              <Link to="/projects" className="footer-link">
+                <span className="link-arrow">→</span>
+                Projects
+              </Link>
+              <Link to="/about" className="footer-link">
+                <span className="link-arrow">→</span>
+                About
+              </Link>
+              <a href="/blog" className="footer-link">
+                <span className="link-arrow">→</span>
+                Blog
+              </a>
+              <a href={`${publicUrl}/contact`} className="footer-link">
+                <span className="link-arrow">→</span>
+                Inquire
+              </a>
+            </div>
+          </div>
+
+          {/* Contact Section */}
+          <div className="footer-contact-section">
+            <h3 className="footer-section-title">Get in Touch</h3>
+            <div className="footer-contact-info">
+              <div className="contact-item">
+                <div className="contact-label">Visit Us</div>
+                {settings?.contact?.address ? (
+                  <div
+                    className="footer-contact-item"
+                    dangerouslySetInnerHTML={{
+                      __html: settings.contact.address.replace(/\n/g, "<br/>"),
+                    }}
+                  />
+                ) : (
+                  <div className="footer-contact-item">
+                    123 Garden Street
+                    <br />
+                    Melbourne, VIC 3000
+                  </div>
+                )}
+              </div>
+
+              <div className="contact-item">
+                <div className="contact-label">Call Us</div>
+                <a
+                  href={`tel:${settings?.contact?.phone || "+61312345678"}`}
+                  className="footer-contact-item"
+                >
+                  {settings?.contact?.phone || "+61 3 1234 5678"}
+                </a>
+              </div>
+
+              <div className="contact-item">
+                <div className="contact-label">Email Us</div>
+                <a
+                  href={`mailto:${
+                    settings?.contact?.email || "info@FORMAhomes.com"
+                  }`}
+                  className="footer-contact-item"
+                >
+                  {settings?.contact?.email?.toUpperCase() ||
+                    "INFO@FORMAHOMES.COM"}
+                </a>
+              </div>
+            </div>
+
+            <div className="footer-legal">
+              <a
+                href={`${publicUrl}/privacy`}
+                className="footer-link legal-link"
+              >
+                Privacy Policy
+              </a>
+              <span className="footer-copyright">
+                © 2025 FORMA. All rights reserved.
+              </span>
+              <p className="footer-developer-credit-inline">
+                Designed and developed by Shivdutt Karwa
+              </p>
+            </div>
+          </div>
+
+          {/* Follow Us Section */}
+          <div className="footer-follow-us-section">
+            <h3 className="footer-section-title">Follow Us</h3>
+            <div className="footer-follow-links">
+              <a
+                href={settings?.social?.instagram || "https://instagram.com"}
+                className="follow-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href={settings?.social?.facebook || "https://facebook.com"}
+                className="follow-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
+              <a
+                href={settings?.social?.linkedin || "https://linkedin.com"}
+                className="follow-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={settings?.social?.youtube || "https://youtube.com"}
+                className="follow-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Large Brand Name at Bottom */}
+        <div className="footer-brand-large">
+          <h1 className="footer-brand-text" ref={brandTextRef}>
+            <div className="footer-mask">
+              <span className="footer-letter">S</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">H</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">A</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">M</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">B</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">A</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">L</span>
+            </div>
+            <div className="footer-mask">
+              <span className="footer-letter">A</span>
+            </div>
+          </h1>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -1,0 +1,53 @@
+/* FullWidthImage styles (scoped via CSS modules) - all classes prefixed with `fwi-` to avoid conflicts */
+
+.fwi-wrapper {
+  width: 100%;
+}
+
+.fwi-hero-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* increased to full viewport height as requested */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
+.fwi-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.fwi-hero-image > :not(.fwi-hero-video):not(.scroll-down-btn) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Dark overlay layer applied on top of image to increase contrast for text */
+.fwi-hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* darken hero area */
+  z-index: 1;
+}
+
+/* Removed popup/exclusions styles: these were used by the previous CTA/popup implementation and are intentionally removed to reduce bundle size and CSS clutter. */
+
+@media (max-width: 700px) {
+  .fwi-wrapper {
+    margin-top: -40px;
+  }
+  /* Keep 100vh on mobile as requested */
+  .fwi-hero-image {
+    height: 91vh;
+  }
+}

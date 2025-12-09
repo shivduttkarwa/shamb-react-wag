@@ -1,0 +1,93 @@
+<svg width="420" height="140" viewBox="0 0 420 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top border -->
+  <line
+    x1="5"
+    y1="5"
+    x2="415"
+    y2="5"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+
+  <!-- Bottom border -->
+  <line
+    x1="5"
+    y1="135"
+    x2="415"
+    y2="135"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+
+  <!-- Left border with 2 cuts (3 segments) -->
+  <!-- Top segment -->
+  <line
+    x1="5"
+    y1="5"
+    x2="5"
+    y2="40"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+  <!-- Middle segment -->
+  <line
+    x1="5"
+    y1="60"
+    x2="5"
+    y2="95"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+  <!-- Bottom segment -->
+  <line
+    x1="5"
+    y1="115"
+    x2="5"
+    y2="135"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+
+  <!-- Right border with 2 cuts (3 segments) -->
+  <!-- Top segment -->
+  <line
+    x1="415"
+    y1="5"
+    x2="415"
+    y2="40"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+  <!-- Middle segment -->
+  <line
+    x1="415"
+    y1="60"
+    x2="415"
+    y2="95"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+  <!-- Bottom segment -->
+  <line
+    x1="415"
+    y1="115"
+    x2="415"
+    y2="135"
+    stroke="#111111"
+    stroke-width="1.4"
+  />
+
+  <!-- FORMA Wordmark -->
+  <text
+    x="50%"
+    y="50%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="46"
+    letter-spacing="10"
+    fill="#111111"
+  >
+    FORMA
+  </text>
+</svg>

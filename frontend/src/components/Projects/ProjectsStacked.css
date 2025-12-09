@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Dream+Avenue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+
+.projects-stacked {
+  width: 100%;
+  height: 200vh;
+  position: relative;
+  background: linear-gradient(135deg, #f8f6f1 0%, #e8e4d9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.projects-stacked__container {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.projects-stacked__content {
+  padding-right: 40px;
+}
+
+.projects-stacked__title {
+  font-family: "Dream Avenue", serif;
+  font-size: 4.5rem;
+  font-weight: normal;
+  line-height: 1.1;
+  color: var(--text, #2c2c2c);
+  margin: 0 0 2rem 0;
+  letter-spacing: normal;
+}
+
+.projects-stacked__accent {
+  color: var(--accent, #5b7c4f);
+  position: relative;
+}
+
+.projects-stacked__accent::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent, #5b7c4f);
+  border-radius: 2px;
+}
+
+.projects-stacked__description {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+  font-weight: 400;
+}
+
+.projects-stacked__images {
+  position: relative;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-stacked__image {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.projects-stacked__image:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.projects-stacked__image--1 {
+  width: 280px;
+  height: 380px;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.projects-stacked__image--2 {
+  width: 320px;
+  height: 420px;
+  top: 40px;
+  right: 0;
+  z-index: 3;
+}
+
+.projects-stacked__image--3 {
+  width: 260px;
+  height: 340px;
+  bottom: 0;
+  left: 60px;
+  z-index: 2;
+}
+
+.projects-stacked__image--4 {
+  width: 300px;
+  height: 400px;
+  bottom: 20px;
+  right: 40px;
+  z-index: 1;
+}
+
+.projects-stacked__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.projects-stacked__image:hover img {
+  transform: scale(1.1);
+}
+
+.projects-stacked__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  padding: 40px 20px 20px;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-stacked__container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .projects-stacked__content {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .projects-stacked__title {
+    font-size: 3.5rem;
+  }
+
+  .projects-stacked__images {
+    height: 500px;
+  }
+
+  .projects-stacked__image--1 {
+    width: 240px;
+    height: 320px;
+  }
+
+  .projects-stacked__image--2 {
+    width: 280px;
+    height: 360px;
+  }
+
+  .projects-stacked__image--3 {
+    width: 220px;
+    height: 280px;
+  }
+
+  .projects-stacked__image--4 {
+    width: 260px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-stacked {
+    height: 180vh;
+  }
+
+  .projects-stacked__container {
+    gap: 40px;
+  }
+
+  .projects-stacked__title {
+    font-size: 2.8rem;
+  }
+
+  .projects-stacked__description {
+    font-size: 1.1rem;
+  }
+
+  .projects-stacked__images {
+    height: 400px;
+  }
+
+  .projects-stacked__image--1 {
+    width: 200px;
+    height: 260px;
+  }
+
+  .projects-stacked__image--2 {
+    width: 240px;
+    height: 300px;
+  }
+
+  .projects-stacked__image--3 {
+    width: 180px;
+    height: 230px;
+  }
+
+  .projects-stacked__image--4 {
+    width: 220px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-stacked {
+    height: 160vh;
+  }
+
+  .projects-stacked__title {
+    font-size: 2.2rem;
+  }
+
+  .projects-stacked__images {
+    height: 350px;
+  }
+
+  .projects-stacked__image--1 {
+    width: 160px;
+    height: 210px;
+  }
+
+  .projects-stacked__image--2 {
+    width: 200px;
+    height: 250px;
+  }
+
+  .projects-stacked__image--3 {
+    width: 140px;
+    height: 180px;
+  }
+
+  .projects-stacked__image--4 {
+    width: 180px;
+    height: 230px;
+  }
+}

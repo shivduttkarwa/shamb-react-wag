@@ -1,0 +1,187 @@
+/* Process Section */
+.forma-process-section {
+  background: #fff;
+  padding: 100px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.forma-process-title {
+  font-size: clamp(48px, 8vw, 90px);
+  font-weight: 280;
+  padding: 0 40px;
+  margin: 0 auto 60px;
+  font-family: "Dream Avenue", cursive;
+  text-transform: uppercase;
+  text-align: center;
+  word-spacing: 12px;
+}
+
+.forma-process-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Process Step */
+.forma-process-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+  position: relative;
+  border-top: 1px solid #c4c4c4;
+}
+
+.forma-process-step:last-of-type {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.forma-process-step.forma-process-reverse { 
+  direction: rtl; 
+}
+
+.forma-process-step.forma-process-reverse > * { 
+  direction: ltr; 
+}
+
+.forma-process-step-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #e5e5e5;
+  min-height: 70vh;
+  border-right: 1px solid #c4c4c4;
+}
+
+.forma-process-step.forma-process-reverse .forma-process-step-image-wrap {
+  border-right: none;
+  border-left: 1px solid #c4c4c4;
+}
+
+.forma-process-step-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+
+.forma-process-step-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.forma-process-step-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 80px 60px;
+  position: relative;
+}
+
+.forma-process-step-number {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+  font-size: 86.4px;
+  color: #d5d5d5;
+  line-height: 1;
+  font-family: "Dream Avenue", cursive;
+}
+
+.forma-process-step.forma-process-reverse .forma-process-step-number {
+  right: auto;
+  left: 80px;
+  top: 20px;
+}
+
+.forma-process-step-title {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  font-family: "Dream Avenue", cursive;
+  text-transform: uppercase;
+}
+.forma-title-char {
+  display: inline-block;
+}
+
+.forma-title-space {
+  display: inline-block;
+  width: 0.35em;
+}
+
+.forma-process-step-subtitle {
+  font-size: 13.2px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 28px;
+}
+
+.forma-process-step-desc {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.forma-process-outcome-box {
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 20px 24px;
+  max-width: 520px;
+  border-left: 3px solid #e0e0e0;
+}
+
+.forma-process-outcome-label {
+  font-size: 13.2px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.forma-process-outcome-text {
+  font-size: 16.8px;
+  color: #555;
+  line-height: 1.65;
+}
+
+/* Mobile */
+@media(max-width:900px) {
+  .forma-process-step {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .forma-process-step.forma-process-reverse { 
+    direction: ltr; 
+  }
+  
+  .forma-process-step-image-wrap { 
+    min-height: 40vh; 
+  }
+
+  .forma-process-step-content { 
+    padding: 50px 24px; 
+  }
+  
+  .forma-process-step-number {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    margin-bottom: 20px;
+    font-size: 68px;
+  }
+  
+  .forma-process-step.forma-process-reverse .forma-process-step-number {
+    left: auto;
+  }
+}

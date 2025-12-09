@@ -1,0 +1,97 @@
+.hero-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.hero-loader-curtain {
+  position: absolute;
+  inset: 0;
+  background: #1e1c1c;
+  z-index: 10;
+  will-change: transform;
+}
+
+.hero-loader-text-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero-loader-text-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-loader-backdrop {
+  position: absolute;
+  inset: -12% -8%;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.08) 40%,
+      rgba(0, 0, 0, 0.32) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.38),
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.38)
+    );
+  filter: blur(14px);
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-loader-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5.6rem;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  margin: 0;
+  will-change: transform, opacity;
+}
+
+.hero-loader-text-1 {
+  top: calc(50% - 80px);
+}
+
+.hero-loader-text-2 {
+  top: calc(50% + 20px);
+}
+
+/* Important: per-letter wave */
+.hero-loader-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 575.98px) {
+  .hero-loader-text {
+    font-size: 2.88rem; /* Increased by 20% from 2.4rem */
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .hero-loader-text {
+    font-size: 3.6rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-loader-text {
+    font-size: 6.72rem; /* Increased by 20% from 5.6rem */
+  }
+}

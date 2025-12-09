@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic Neue:wght@100;300;400;700;900&display=swap");
+
+/* Local fonts - using absolute paths from public folder */
+@font-face {
+  font-family: "nunito";
+  src: url("/fonts/Dream-Avenue.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Modern Avenue";
+  src: url("/fonts/Modern Avenue Demo.otf") format("opentype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Scoped to this component only */
+#animated-hero-section * {
+  box-sizing: border-box;
+}
+
+#animated-hero-section.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* HERO SECTION CONTAINER */
+#animated-hero-section.hero-section {
+  height: 390vh; /* matches animation duration */
+  position: relative;
+  background: #ffffff;
+}
+
+#animated-hero-section .hero-sticky {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Background overlay layer on hero-sticky to improve contrast for text */
+#animated-hero-section .hero-sticky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--hero-overlay-alpha, 0));
+  z-index: 9; /* below hero text (10), above video (5) */
+  pointer-events: none;
+}
+
+/* Previously attempted background toggle removed (now handled by overscale). */
+
+/* HERO TEXT CONTAINER */
+#animated-hero-section .hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  white-space: nowrap;
+  font-family: "nunito", serif;
+}
+
+/* TEXT LINES EXACTLY LIKE SCREENSHOT */
+#animated-hero-section .text-line {
+  font-size: clamp(4rem, 11vw, 16rem);
+  font-weight: 900;
+  line-height: 0.85;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  color: #ffffff; /* set to white for better contrast against background */
+  margin-bottom: 0.1em;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Ensure per-character spans are inline-block so we can animate Y/blur per char */
+#animated-hero-section .text-line span {
+  display: inline-block;
+  white-space: pre;
+  will-change: transform, opacity, filter;
+}
+
+/* Overlay text that animates with gallery items */
+#animated-hero-section .hero-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    calc(-50% - 410px),
+    calc(-50% - 40px)
+  ); /* pushed left 260px total (200px + 60px), up 40px */
+  z-index: 30;
+  text-align: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+  max-width: 90vw;
+}
+
+/* Company description at the top-right of hero (shows when not expanded) */
+#animated-hero-section .hero-description {
+  position: absolute;
+  top: 140px; /* pushed further down below the header */
+  right: 48px;
+  z-index: 25;
+  max-width: 300px;
+  text-align: left;
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+#animated-hero-section .hero-description-inner {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  line-height: 1.35;
+}
+
+/* Hide on small screens */
+@media (max-width: 768px) {
+  #animated-hero-section .hero-description {
+    display: none;
+  }
+}
+
+#animated-hero-section .overlay-line {
+  display: block;
+  font-family: "nunito", serif;
+  font-size: clamp(4.2rem, 9vw, 7.4rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 0.9;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7),
+    2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.6);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+}
+
+#animated-hero-section .overlay-line:first-child {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+#animated-hero-section .overlay-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+/* CTA styles */
+#animated-hero-section .hero-cta {
+  position: absolute;
+  right: 100px;
+  top: calc(50% + 150px);
+  transform: translateY(-50%);
+  display: inline-flex;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform-origin: center;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 180ms ease, background 180ms ease;
+  z-index: 40;
+}
+
+#animated-hero-section .hero-cta:focus,
+#animated-hero-section .hero-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.6);
+  outline: none;
+}
+
+/* CTA responsive */
+@media (max-width: 768px) {
+  #animated-hero-section .hero-cta {
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+    bottom: 8vh;
+    top: auto;
+  }
+}
+
+#animated-hero-section .line-1 {
+  text-align: left;
+}
+
+#animated-hero-section .line-2 {
+  text-align: center;
+}
+
+#animated-hero-section .line-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* VIDEO IN THE EXACT POSITION */
+#animated-hero-section .video-space {
+  width: 300px;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 5;
+  /* Smooth transform animations */
+  will-change: transform;
+  transform-origin: center center; /* ensure scaling is centered */
+}
+
+#animated-hero-section .video-space video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensure smooth video rendering */
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* GALLERY VISIBLE FROM TOP CENTER */
+#animated-hero-section .gallery {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 40px;
+  z-index: 20;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+/* Prevent flash while JS initializes */
+#animated-hero-section.no-js .gallery,
+#animated-hero-section.no-js .gallery-item {
+  visibility: hidden;
+}
+
+#animated-hero-section .gallery-item {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  transition: box-shadow 300ms ease;
+  will-change: transform, opacity;
+}
+
+#animated-hero-section .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) saturate(0%);
+  -webkit-filter: grayscale(100%) saturate(0%);
+  transition: filter 350ms cubic-bezier(0.2, 0.9, 0.2, 1), transform 300ms ease;
+  will-change: filter, transform;
+}
+
+/* HOVER & FOCUS STATES */
+#animated-hero-section .gallery-item:focus,
+#animated-hero-section .gallery-item:hover {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+/* Remove
+  grayscale
+  on
+  hover
+  for
+  the
+  nested
+  image */
+#animated-hero-section .gallery-item:focus img,
+#animated-hero-section .gallery-item:hover img {
+  filter: grayscale(0%) saturate(100%);
+  -webkit-filter: grayscale(0%) saturate(100%);
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+  #animated-hero-section .gallery-item img,
+  #animated-hero-section .gallery-item:focus img,
+  #animated-hero-section .gallery-item:hover img {
+    transition: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #animated-hero-section .text-line {
+    font-size: clamp(3rem, 10vw, 8rem);
+  }
+
+  #animated-hero-section .video-space {
+    width: 250px;
+    height: 150px;
+  }
+
+  #animated-hero-section .line-3 {
+    gap: 1rem;
+  }
+
+  #animated-hero-section .gallery-item {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* Hide gallery items after the 3rd on mobile */
+  #animated-hero-section .gallery-item:nth-child(n + 4) {
+    display: none;
+  }
+
+  #animated-hero-section .gallery {
+    gap: 24px;
+  }
+
+  /* Make overlay font smaller on narrow screens */
+  #animated-hero-section .overlay-line {
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    white-space: normal;
+  }
+
+  #animated-hero-section.hero-section {
+    height: 300vh;
+  }
+}

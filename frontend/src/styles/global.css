@@ -1,0 +1,21 @@
+:root {
+  --accent: #5b7c4f;
+  --text: #2c2c2c;
+  --light-bg: #f5f3ee;
+  --cream: #faf8f3;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--cream);
+  font-family: "Nunito", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}

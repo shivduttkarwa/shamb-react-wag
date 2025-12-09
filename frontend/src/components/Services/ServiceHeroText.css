@@ -1,0 +1,115 @@
+.mm-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mm-heading {
+  --u-scale: 0;
+  font-size: clamp(70px, 8vw, 90px) !important; /* Match ServicePage.css and override */
+  font-weight: 300;
+  letter-spacing: 0.05em; /* Reduced letter spacing */
+  text-transform: uppercase;
+  position: relative;
+  display: block;
+  overflow: visible;
+  text-align: center;
+  line-height: 1.0; /* Minimal line height */
+  width: 100%;
+  font-family: "nunito", cursive; /* Match the font family */
+  transform: translateY(-50px); /* Push first line up by 50px (40px + 10px more) */
+}
+
+.mm-heading span.char {
+  display: inline-block;
+}
+
+.mm-heading .line-container {
+  display: block;
+  margin-bottom: 0.02em; /* Almost no gap between lines */
+  white-space: nowrap; /* Prevent words from breaking into multiple lines */
+}
+
+.mm-heading .line-container:last-child {
+  margin-top: -90px; /* Push second line up by 90px (70px + 20px more) */
+}
+
+.mm-heading .line-container span.char {
+  margin-right: 0.02em; /* Very small gap between characters */
+}
+
+.mm-heading span.is-space {
+  width: 0.45em;
+}
+
+/* Second line with changing text - positioned below first line */
+.mm-second-line {
+  position: absolute;
+  top: calc(50% + 25px); /* Increase gap between lines (was -5px) */
+  left: 50%;
+  transform: translateX(-50%) translateY(-50px); /* Also move up by 50px to maintain spacing */
+  font-size: clamp(70px, 8vw, 90px) !important; /* Match first line font size exactly */
+  font-weight: 200; /* Reduced font weight */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 2;
+  font-family: "nunito", cursive; /* Match the font family */
+}
+
+/* Style the ChangingText component to match our design */
+.mm-second-line .changing-text {
+  font-size: clamp(70px, 8vw, 90px) !important;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "nunito", cursive;
+  white-space: nowrap;
+}
+
+.mm-second-line .changing-text span {
+  font-size: clamp(70px, 8vw, 90px) !important;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "nunito", cursive;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .mm-section {
+    min-height: 100vh;
+    min-height: 100dvh; /* Use dynamic viewport height for mobile */
+    padding: 0;
+  }
+  
+  .mm-heading {
+    font-size: clamp(50px, 10vw, 70px) !important; /* Smaller on mobile */
+    transform: translateY(-30px); /* Less offset on mobile */
+    line-height: 1.1;
+    padding: 0 1rem;
+  }
+  
+  .mm-second-line {
+    top: calc(50% - 25px); /* Adjusted for mobile */
+    transform: translateX(-50%) translateY(-30px);
+    font-size: clamp(50px, 10vw, 70px) !important; /* Match first line */
+    padding: 0 1rem;
+  }
+  
+  /* Style the ChangingText component for mobile */
+  .mm-second-line .changing-text {
+    font-size: clamp(50px, 10vw, 70px) !important;
+  }
+  
+  .mm-second-line .changing-text span {
+    font-size: clamp(50px, 10vw, 70px) !important;
+  }
+}

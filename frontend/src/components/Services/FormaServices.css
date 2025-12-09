@@ -1,0 +1,290 @@
+.forma-services {
+  font-family: "Nunito", sans-serif;
+  background: #ffffff;
+  color: #111111;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Heading */
+.forma-services .fs-heading {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.forma-services .fs-heading-title {
+  margin: 0 0 0.5rem;
+  font-family: "Dream Avenue", cursive;
+  color: #312929;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+  line-height: 0.95;
+  text-align: center;
+}
+
+.forma-services .fs-heading-subtitle {
+  margin: 0 auto;
+  max-width: 680px;
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+}
+
+/* Section + inner layout */
+.forma-services .fs-section {
+  position: relative;
+  width: 100%;
+}
+
+.forma-services .fs-inner {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.forma-services .fs-layout {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+/* Left column (text) */
+.forma-services .fs-left {
+  position: relative;
+  z-index: 5;
+  width: 50%;
+  height: 100%;
+  padding: 7rem 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  background: transparent;
+  transition: none; /* disable any CSS transitions to avoid conflicts */
+  will-change: opacity, background-color; /* optimize for frequent changes */
+}
+
+.forma-services .fs-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 1rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.forma-services .fs-title {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  max-width: 18ch;
+  font-weight: 200;
+  font-family: "Dream Avenue", cursive;
+  margin-top: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.forma-services .fs-meta {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.forma-services .fs-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #111;
+}
+
+.forma-services .fs-description {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 34rem;
+  font-family: "Nunito", sans-serif;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+}
+
+/* Prevent HoverText (or similar) from causing layout shifts */
+.forma-services .fs-description > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  transition: font-weight 0.3s ease;
+  letter-spacing: 0.01em;
+}
+
+.forma-services .fs-description > *:hover {
+  transform: scale(1.001);
+}
+
+@media (min-width: 1440px) {
+  .forma-services .fs-description {
+    font-size: 1.125rem;
+  }
+}
+
+.forma-services .fs-cta {
+  margin-top: 2.5rem;
+}
+
+.forma-services .fs-counter {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777;
+  margin-top: 1.5rem;
+}
+
+.forma-services .fs-counter span {
+  color: #111;
+}
+
+/* Right placeholder for layout */
+.forma-services .fs-right-placeholder {
+  width: 50%;
+  height: 100%;
+}
+
+/* Image wrapper */
+.forma-services .fs-image-cover {
+  position: absolute;
+  top: 0;
+  left: 0; /* JS overrides to left: 50%, width: 50% on desktop */
+  width: 100%; /* safe default */
+  height: 100%;
+  z-index: 3;
+  overflow: hidden;
+  will-change: width, left; /* optimize for smooth resizing */
+  transition: none; /* disable any CSS transitions to avoid conflicts */
+}
+
+.forma-services .fs-image-cover-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Images */
+.forma-services .fs-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateY(0%);
+  will-change: transform, opacity;
+}
+
+.forma-services .fs-image-current {
+  z-index: 1;
+}
+
+.forma-services .fs-image-next {
+  z-index: 2;
+}
+
+/* Image counter */
+.forma-services .fs-image-counter {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 2.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+}
+
+.forma-services .fs-image-counter span {
+  font-weight: 200;
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+  .forma-services .fs-inner {
+    height: 90vh;
+    overflow: hidden;
+    padding-top: 28vh;
+  }
+
+  .forma-services .fs-image-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* full bleed image on top for mobile */
+    height: 28vh;
+    transform: none !important;
+  }
+
+  .forma-services .fs-layout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .forma-services .fs-right-placeholder {
+    display: none;
+  }
+
+  .forma-services .fs-left {
+    width: 100%;
+    padding: 1.84rem 1.5rem 2.2rem;
+    opacity: 1 !important;
+    transform: none !important;
+    background: #ffffff;
+  }
+
+  .forma-services .fs-title {
+    font-size: 2.4rem;
+  }
+
+  .forma-services .fs-image-counter {
+    padding: 1.25rem;
+    opacity: 1;
+  }
+}
+
+/* Large screens: adjust left padding */
+@media (min-width: 1440px) {
+  .forma-services .fs-left {
+    padding-left: 8.33%;
+  }
+}
+
+/* Extra Large Screens - increase description & subtitle size */
+@media (min-width: 1560px) {
+  .forma-services .fs-description {
+    font-size: 21.6px !important;
+  }
+
+  .forma-services .fs-heading-subtitle {
+    font-size: calc(18px * 1.2) !important;
+  }
+}
+
+/* Optional canvas (if you ever use it) */
+.forma-services .fs-reel-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

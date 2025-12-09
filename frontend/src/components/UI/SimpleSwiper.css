@@ -1,0 +1,132 @@
+/* Simple Swiper Styles */
+.simple-swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: visible;
+  position: relative;
+}
+
+.simple-swiper-wrapper .simple-swiper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.simple-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center center;
+}
+
+/* Custom transition for smooth sliding */
+.simple-swiper .swiper-slide {
+  transition: transform 0.8s ease-in-out;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* Force all slides to have consistent dimensions */
+.simple-swiper .swiper-wrapper {
+  height: 100%;
+  align-items: stretch;
+}
+
+/* Remove default Swiper navigation */
+.simple-swiper .swiper-button-next,
+.simple-swiper .swiper-button-prev {
+  display: none !important;
+}
+
+/* Custom Swiper Pagination Styling */
+.simple-swiper .swiper-pagination {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  z-index: 1000 !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.simple-swiper .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  opacity: 1 !important;
+  margin: 0 6px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.simple-swiper .swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 255, 255, 1) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.simple-swiper .swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.7) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Ensure smooth transitions */
+.simple-swiper .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Minimal pagination counter - Glassmorphic */
+.swiper-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.swiper-counter:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}

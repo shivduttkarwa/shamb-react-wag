@@ -1,0 +1,191 @@
+.gg-gallery-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.gg-minimal-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.gg-section-before {
+  background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+}
+
+.gg-section-after {
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.gg-gallery-wrapper {
+  position: relative;
+  min-height: 220vh;
+  z-index: 1;
+}
+
+.gg-gallery-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.gg-gallery-grid {
+  position: absolute;
+  top: calc(80% + -2px);
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 60px 40px;
+  width: 99%;
+  max-width: 1400px;
+  transition: opacity 0.4s ease;
+}
+
+.gg-gallery-item {
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+  height: 200px;
+}
+
+.gg-gallery-item:hover {
+  filter: brightness(1.03);
+}
+
+.gg-expanded-view {
+  display: none;
+}
+
+.gg-gallery-controls {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  z-index: 51;
+}
+
+.gg-gallery-controls.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.gg-control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 15px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.gg-control-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.gg-image-info {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  z-index: 51;
+}
+
+.gg-image-info.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.gg-image-info h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.gg-image-info p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.gg-progress-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  z-index: 51;
+}
+
+.gg-progress-indicator.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.gg-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.gg-progress-dot.active {
+  background: #fff;
+  width: 30px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .gg-gallery-grid {
+    top: calc(70% - 60px) !important;
+    width: 116% !important;
+  }
+  .gg-gallery-item {
+    height: 200px !important;
+  }
+  .gg-gallery-wrapper {
+    min-height: 400vh !important;
+  }
+  .gg-gallery-controls {
+    bottom: 80px;
+  }
+  .gg-progress-indicator {
+    bottom: 60px;
+  }
+}

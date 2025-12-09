@@ -1,0 +1,491 @@
+/* BLOG SECTION - NEW CLASSIC DESIGN */
+
+.blog-section-wrapper {
+  /* Main wrapper for the new blog section */
+  background: #f8f8f8;
+}
+
+/* SCROLL VELOCITY TITLE */
+.blog-header {
+  text-align: center;
+  margin-bottom: 40px;
+  overflow: visible;
+  padding: 40px 0 60px 0;
+}
+
+.blog-title-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.blog-title-line {
+  height: 2px;
+  width: 1px;
+  position: relative;
+  background: transparent;
+}
+
+.blog-title-line::before {
+  content: "";
+  position: absolute;
+  left: calc(-50vw + 50% - 40px);
+  width: calc(100vw + 80px);
+  height: 2px;
+  background: var(--accent);
+  top: 0;
+}
+
+.blog-parallax {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  flex: 1;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.blog-scroller {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  font-family: "Dream Avenue", cursive;
+  font-size: clamp(3.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.blog-scroller span.blog-scroll-title {
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+/* FIRST SCREEN - 90VH HEIGHT WITH FEATURED BLOG */
+.blog-featured-section {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+}
+
+.blog-featured-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.blog-featured-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.blog-featured-image img {
+  width: 100%;
+  height: 85%; /* Reduced by 15% from 100% */
+  object-fit: cover;
+}
+
+/* Blog featured swiper styles */
+.blog-featured-swiper {
+  width: 100%;
+  height: 85%; /* Match the single image height */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Featured blog swiper pagination - same as hero blog slider */
+.blog-section-wrapper .blog-featured-section .blog-featured-swiper .swiper-pagination {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 240px !important; /* Same width as hero slider */
+  z-index: 1000 !important;
+  display: flex !important;
+  gap: 0.4rem !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0.5rem auto 0 !important;
+  padding: 0 !important;
+}
+
+.blog-section-wrapper .blog-featured-section .blog-featured-swiper .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 !important; /* No individual margin - use gap instead */
+  transition: all 0.3s ease !important;
+  opacity: 1 !important;
+}
+
+.blog-section-wrapper .blog-featured-section .blog-featured-swiper .swiper-pagination-bullet-active {
+  background: #f7d046 !important;
+}
+
+/* Desktop only - reduce height by additional 10% */
+@media (min-width: 1024px) {
+  .blog-featured-image img {
+    height: 75%; /* Further reduced by 10% for desktop (85% - 10% = 75%) */
+  }
+
+  .blog-featured-swiper {
+    height: 75%; /* Match the desktop single image height */
+  }
+}
+
+.blog-featured-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 80px;
+  background: #f8f8f8;
+}
+
+.blog-featured-title {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.blog-featured-description {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+  max-width: 500px;
+  /* Prevent layout shift during hover animation */
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+}
+
+/* Prevent HoverText component from causing layout shifts */
+.blog-featured-description > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  transition: font-weight 0.3s ease;
+  letter-spacing: 0.01em;
+  transform: none !important;
+}
+
+.blog-featured-description > *:hover {
+  transform: none !important;
+}
+
+.blog-featured-cta {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--accent);
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid var(--accent);
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.blog-featured-cta:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+/* Featured blog button - ensure it matches default GlassButton width and center it */
+.blog-featured-content .home-benefits-cta {
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+  align-self: center !important;
+  margin: 0 auto !important;
+}
+
+.blog-featured-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* SECOND SCREEN - 2 BLOGS LAYOUT */
+.blog-posts-section {
+  min-height: 100vh;
+  padding: 80px 40px;
+  background: #f8f8f8;
+}
+
+.blog-posts-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.blog-post-card {
+  background: #f8f8f8;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.blog-post-title {
+  font-family: "nunito", cursive;
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.blog-post-image {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.blog-post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+  transition: none;
+}
+
+.blog-post-description {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
+  /* Prevent layout shift during hover animation */
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+}
+
+/* Prevent HoverText component from causing layout shifts */
+.blog-post-description > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  /* transition: font-weight 0.3s ease;  Removed hover animation */
+  letter-spacing: 0.01em;
+}
+
+/* Hover animations removed */
+
+.blog-read-more-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: transparent;
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.blog-read-more-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* TEXT REVEAL ANIMATION SETUP */
+.blog-section-wrapper .home-blog-heading {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.blog-section-wrapper .home-blog-heading:not(.tilt-text-heading) span {
+  display: inline-block;
+  transform: translateY(130%);
+  opacity: 0;
+}
+
+/* IMAGE REVEAL ANIMATION SETUP */
+.blog-section-wrapper .home-blog-reveal-img {
+  overflow: hidden;
+}
+
+/* Featured blog image - clip-path reveal */
+.blog-section-wrapper .blog-featured-section .home-blog-reveal-img img,
+.blog-section-wrapper .blog-featured-section .home-blog-reveal-img .blog-featured-swiper {
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Grid posts images - clip-path reveal for BlogVideoCard */
+.blog-section-wrapper .blog-posts-section .home-blog-reveal-img .blog-video-card {
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+  .blog-featured-content {
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .blog-posts-container {
+    gap: 60px;
+  }
+
+  .blog-featured-content {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-header {
+    padding: 30px 0;
+  }
+
+  .blog-title-container {
+    gap: 20px;
+  }
+
+  .blog-title-line::before {
+    left: calc(-50vw + 50%);
+    width: 100vw;
+  }
+
+  .blog-scroller {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .blog-featured-section {
+    height: auto;
+    min-height: 80vh;
+  }
+
+  .blog-featured-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .blog-featured-image {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  .blog-featured-content {
+    padding: 40px 30px;
+  }
+
+  .blog-featured-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-weight: 600;
+    margin-bottom: calc(1.5rem + 60px);
+    text-align: center;
+  }
+
+  .blog-featured-description {
+    font-size: 18px;
+    margin-bottom: 2rem;
+    margin-top: 20px;
+  }
+
+  .blog-posts-section {
+    padding: 60px 30px;
+  }
+
+  .blog-posts-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .blog-post-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-header {
+    padding: 20px 0;
+  }
+
+  .blog-featured-section {
+    min-height: 70vh;
+  }
+
+  .blog-featured-image {
+    height: 60vh;
+    min-height: 250px;
+  }
+
+  .blog-featured-content {
+    padding: 30px 20px;
+  }
+
+  .blog-posts-section {
+    padding: 50px 20px;
+  }
+
+  .blog-post-image {
+    height: 250px;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-post-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-post-description {
+    margin-bottom: 1.5rem;
+    margin-top: 20px;
+  }
+}

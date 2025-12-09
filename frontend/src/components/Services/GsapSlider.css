@@ -1,0 +1,236 @@
+.gs-forma-services {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: #ffffff;
+  color: #111111;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.gs-forma-services .gs-fs-heading {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.gs-forma-services .gs-fs-heading-title {
+  font-size: clamp(2.5rem, 4vw, 3.6rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  font-family: "Dream Avenue", cursive;
+  text-transform: uppercase;
+}
+
+.gs-forma-services .gs-fs-heading-subtitle {
+  margin: 0 auto;
+  max-width: 680px;
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+}
+
+.gs-forma-services .gs-fs-section {
+  position: relative;
+  width: 100%;
+}
+
+.gs-forma-services .gs-fs-inner {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gs-forma-services .gs-fs-layout {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.gs-forma-services .gs-fs-left {
+  position: relative;
+  z-index: 5;
+  width: 50%;
+  height: 100%;
+  padding: 7rem 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(40px);
+  background: transparent;
+}
+
+.gs-forma-services .gs-fs-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 1rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.gs-forma-services .gs-fs-title {
+  font-size: 3.8rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+  max-width: 18ch;
+  font-weight: 400;
+  font-family: "Dream Avenue", cursive;
+}
+
+.gs-forma-services .gs-fs-meta {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gs-forma-services .gs-fs-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #111;
+}
+
+.gs-forma-services .gs-fs-description {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 34rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.gs-forma-services .gs-fs-cta {
+  margin-top: 2.5rem;
+}
+
+.gs-forma-services .gs-fs-counter {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777;
+  margin-top: 1.5rem;
+}
+
+.gs-forma-services .gs-fs-counter span {
+  color: #111;
+}
+
+.gs-forma-services .gs-fs-right-placeholder {
+  width: 50%;
+  height: 100%;
+}
+
+.gs-forma-services .gs-fs-image-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.gs-forma-services .gs-fs-image-cover-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gs-forma-services .gs-fs-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateY(0%);
+  will-change: transform, opacity;
+}
+
+.gs-forma-services .gs-fs-image-current {
+  z-index: 1;
+}
+
+.gs-forma-services .gs-fs-image-next {
+  z-index: 2;
+}
+
+.gs-forma-services .gs-fs-image-counter {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 2.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+}
+
+.gs-forma-services .gs-fs-image-counter span {
+  font-weight: 500;
+}
+
+@media (max-width: 1023px) {
+  .gs-forma-services .gs-fs-inner {
+    height: 90vh;
+    overflow: hidden;
+    padding-top: 40vh;
+  }
+
+  .gs-forma-services .gs-fs-layout {
+    flex-direction: column;
+  }
+
+  .gs-forma-services .gs-fs-left,
+  .gs-forma-services .gs-fs-right-placeholder {
+    width: 100%;
+  }
+
+  .gs-forma-services .gs-fs-left {
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .gs-forma-services .gs-fs-title {
+    font-size: 2.8rem;
+  }
+
+  .gs-forma-services .gs-fs-description {
+    max-width: 100%;
+  }
+
+  .gs-forma-services .gs-fs-image-cover {
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 40vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .gs-forma-services .gs-fs-title {
+    font-size: 2.4rem;
+  }
+
+  .gs-forma-services .gs-fs-inner {
+    height: auto;
+    padding-top: 0;
+  }
+
+  .gs-forma-services .gs-fs-image-cover {
+    position: relative;
+    height: 40vh;
+  }
+
+  .gs-forma-services .gs-fs-left {
+    padding: 2.5rem 1.25rem;
+    gap: 1.5rem;
+  }
+}

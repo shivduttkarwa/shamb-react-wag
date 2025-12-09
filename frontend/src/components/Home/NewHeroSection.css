@@ -1,0 +1,401 @@
+.hero-section {
+  --hero-v-align: end;
+  --hero-top-pad: min(14vh, 180px);
+  --hero-bottom-pad: clamp(24px, 4vh, 64px);
+  --hero-left-pad: clamp(16px, 4vw, 64px);
+  --hero-right-pad: clamp(16px, 4vw, 64px);
+  --header-safe: 72px;
+
+  /* Use website theme colors */
+  --color-accent: var(--accent, #5b7c4f);
+  --color-accent-2: #4a6b3e;
+  --color-bg: var(--cream, #faf8f3);
+  --color-text: var(--text, #2c2c2c);
+  --color-light-bg: var(--light-bg, #f5f3ee);
+
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  /* Ensure the section establishes a new stacking context */
+  z-index: 1;
+}
+
+/* Hero text styles matching ServiceHeroText */
+.hero-text h1 {
+  --u-scale: 0;
+  font-size: clamp(70px, 8vw, 90px) !important;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  display: block;
+  overflow: visible;
+  text-align: center;
+  line-height: 1.0;
+  width: 100%;
+  font-family: "nunito", cursive;
+  transform: translateY(-50px);
+  color: #fff;
+  margin: 0;
+}
+
+.hero-text h1 span.char {
+  display: inline-block;
+}
+
+.hero-text h1 .line-container {
+  display: block;
+  margin-bottom: 0.02em;
+  white-space: nowrap;
+}
+
+.hero-text h1 .line-container span.char {
+  margin-right: 0.12em; /* Increased spacing between characters */
+}
+
+/* Second line with changing text - positioned below first line */
+.hero-second-line {
+  position: absolute;
+  top: calc(50% + 130px); /* Pushed down by additional 20px (was 110px) */
+  left: calc(50% - 160px); /* Pushed left by 160px */
+  transform: translateX(-50%) translateY(-50%); /* Match Services page transform */
+  font-size: clamp(70px, 8vw, 90px) !important;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 2;
+  font-family: "nunito", cursive;
+}
+
+.hero-second-line span {
+  font-size: clamp(70px, 8vw, 90px) !important;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "nunito", cursive;
+  display: inline-block;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: clamp(50px, 10vw, 70px) !important;
+    transform: translateY(-30px);
+    line-height: 1.1;
+    padding: 0 1rem;
+  }
+  
+  .hero-text h1 .line-container span.char {
+    margin-right: 0.08em; /* Adjusted spacing for mobile */
+  }
+  
+  .hero-second-line {
+    top: calc(50% + 30px); /* Pushed up by additional 10px (was 40px) */
+    left: calc(50% + 10px); /* Pushed right by 90px (was -80px, so +90px = -80px + 90px = +10px) */
+    transform: translateX(-50%) translateY(-30%);
+    font-size: clamp(50px, 10vw, 70px) !important;
+    padding: 0 1rem;
+  }
+  
+  .hero-second-line span {
+    font-size: clamp(50px, 10vw, 70px) !important;
+  }
+}
+
+/* Large screens 1600px and above - increase font size by 30% */
+@media (min-width: 1600px) {
+  .hero-text h1 {
+    font-size: clamp(91px, 10.4vw, 117px) !important; /* 70px * 1.3 = 91px, 90px * 1.3 = 117px */
+  }
+  
+  .hero-text h1 .line-container span.char {
+    margin-right: 0.156em; /* 0.12em * 1.3 for proportional spacing */
+  }
+  
+  .hero-second-line {
+    font-size: clamp(91px, 10.4vw, 117px) !important; /* 70px * 1.3 = 91px, 90px * 1.3 = 117px */
+  }
+  
+  .hero-second-line span {
+    font-size: clamp(91px, 10.4vw, 117px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    --hero-v-align: center;
+    --hero-top-pad: 20vh;
+    --hero-bottom-pad: 8vh;
+    --hero-left-pad: 20px;
+    --hero-right-pad: 20px;
+    height: 100vh;
+    min-height: 600px;
+  }
+}
+
+.video-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  /* Ensure video is behind poster initially */
+  z-index: 1;
+  border: none;
+}
+
+.vimeo-iframe {
+  /* Optimized Vimeo iframe for better performance and full coverage */
+  width: 100vw;
+  height: 100vh;
+  /* Use transform3d for better performance */
+  transform: translate3d(-50%, -50%, 0) scale(1.02);
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+
+  /* Ensure minimum coverage on all aspect ratios */
+  min-width: 100%;
+  min-height: 100%;
+
+  /* Disable pointer events for background video */
+  pointer-events: none;
+
+  /* Ensure video is behind poster initially */
+  z-index: 1;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-aspect-ratio: 16/9) {
+  .vimeo-iframe {
+    width: 177.78vh; /* 16:9 aspect ratio width for tall screens */
+    height: 100vh;
+  }
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .vimeo-iframe {
+    width: 100vw;
+    height: 56.25vw; /* 16:9 aspect ratio height for wide screens */
+  }
+}
+
+.image-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateZ(0);
+  /* Ensure background stays in background */
+  z-index: 1;
+}
+
+.video-poster {
+  /* When used as video poster, ensure very slow transition */
+  transition: opacity 2s ease-in-out;
+  z-index: 2; /* Above video initially */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  /* Overlay should be above video but below content */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--hero-left-pad);
+  padding-right: var(--hero-right-pad);
+  padding-top: calc(var(--hero-top-pad) + var(--header-safe));
+  padding-bottom: var(--hero-bottom-pad);
+  /* Ensure content is always visible */
+  pointer-events: auto;
+  /* Debug: Add temporary background to check positioning */
+  /* background: rgba(255, 0, 0, 0.1); */
+}
+
+.hero-text {
+  position: absolute;
+  top: 20vh;
+  left: var(--hero-left-pad);
+  right: var(--hero-right-pad);
+  z-index: 11;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 6vw, 6rem);
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #f2f4f8;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  font-family: "nunito", cursive;
+  margin: 0;
+  caret-color: transparent;
+  cursor: default;
+  user-select: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text h1 .mask {
+  overflow: hidden;
+  display: block;
+}
+
+.hero-text h1 .line {
+  display: block;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Hero CTA */
+.hero-cta {
+  position: absolute;
+  bottom: calc(var(--hero-bottom-pad) + 40px);
+  left: var(--hero-left-pad);
+  z-index: 20;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Override GlassButton styles for hero section visibility */
+.hero-cta .home-benefits-cta {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-cta .home-benefits-cta-icon {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.hero-cta .home-benefits-cta:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Remove any cursor/caret pseudo-elements */
+.hero-text h1::after,
+.hero-text h1::before {
+  display: none !important;
+}
+
+/* Hero text animation specific styles */
+.hero-text-line-1 {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #f2f4f8;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6);
+  font-family: "nunito", cursive;
+  margin: 0;
+  caret-color: transparent;
+  cursor: default;
+  user-select: none;
+  will-change: transform, opacity;
+}
+.hero-text-line-2 {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #f2f4f8;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6);
+  font-family: "nunito", cursive;
+  margin: 0;
+  caret-color: transparent;
+  cursor: default;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* Mobile styles for tablets and small laptops */
+@media (max-width: 1024px) {
+  .hero-section {
+    --hero-left-pad: 32px;
+    --hero-right-pad: 32px;
+  }
+}
+
+/* Mobile styles for phones */
+@media (max-width: 768px) {
+  .hero-section {
+    --hero-v-align: start;
+    --hero-top-pad: 25vh;
+    --hero-bottom-pad: 8vh;
+    --hero-left-pad: 20px;
+    --hero-right-pad: 20px;
+    height: 100vh;
+    min-height: 650px;
+  }
+
+  .hero-content {
+    padding-left: var(--hero-left-pad);
+    padding-right: var(--hero-right-pad);
+    padding-top: var(--hero-top-pad);
+    padding-bottom: var(--hero-bottom-pad);
+    justify-content: flex-start;
+  }
+
+  .hero-text {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    align-content: start;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.86rem, 11.7vw, 3.25rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    margin-top: -30px;
+  }
+
+  .hero-cta {
+    bottom: 25vh;
+    left: var(--hero-left-pad);
+  }
+
+  .hero-cta .glass-rain-btn {
+    width: 300px;
+    padding: 1.32rem 1.8rem;
+    font-size: 0.864rem;
+    letter-spacing: 0.168em;
+    gap: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .hero-cta .glass-rain-btn-icon {
+    width: 2.76rem;
+    height: 2.76rem;
+    font-size: 1.008rem;
+  }
+}

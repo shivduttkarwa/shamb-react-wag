@@ -1,0 +1,549 @@
+/* MODERN ANIMATED FOOTER */
+.forma-footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.forma-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.forma-footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Main Footer Content Grid */
+.forma-footer-top-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+/* Brand Box */
+.forma-footer-brand-box {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.forma-footer-brand-circle {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.forma-footer-brand-circle::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%
+  );
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.forma-footer-brand-inner {
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.forma-footer-brand-title {
+  font-family: "Dream Avenue", serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.forma-footer-brand-subtitle {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  margin: 2px 0 0 0;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.forma-footer-brand-description {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  max-width: 280px;
+}
+
+/* Section Titles */
+.forma-footer-section-title {
+  font-family: "Dream Avenue", serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 30px 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.forma-footer-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+}
+
+/* Connect Section - Social Links */
+.forma-footer-social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.forma-social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 0;
+  position: relative;
+}
+
+.forma-social-link:hover {
+  color: #ffffff;
+  transform: translateX(8px);
+}
+
+.forma-social-instagram:hover {
+  color: #e4405f;
+}
+
+.forma-social-facebook:hover {
+  color: #1877f2;
+}
+
+.forma-social-linkedin:hover {
+  color: #0077b5;
+}
+
+.forma-social-youtube:hover {
+  color: #ff0000;
+}
+
+/* Navigation Links */
+.forma-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.forma-footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.forma-footer-link:hover {
+  color: #ffffff;
+}
+
+.forma-link-arrow {
+  font-size: 14px;
+  transition: opacity 0.3s ease;
+  opacity: 0.6;
+}
+
+.forma-footer-link:hover .forma-link-arrow {
+  opacity: 1;
+}
+
+/* Contact Section */
+.forma-footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.forma-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forma-contact-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.forma-footer-contact-item {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+.forma-footer-contact-item:hover {
+  color: #ffffff;
+}
+/* Legal Section */
+.forma-footer-legal {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.forma-legal-link {
+  font-size: 19px;
+  opacity: 0.7;
+}
+
+.forma-footer-copyright {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.forma-footer-developer-credit-inline {
+  font-family: "Dancing Script", cursive;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 8px 0 0 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Follow Us Section */
+.forma-footer-follow-us-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.forma-footer-follow-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.forma-follow-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  padding: 8px 0;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.forma-follow-link:hover {
+  color: #ffffff;
+}
+
+.forma-link-window {
+  display: inline-block;
+  height: 1.2em;
+  overflow: hidden;
+}
+
+.forma-link-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.588s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.forma-link-text {
+  white-space: nowrap;
+  font-size: 16.8px;
+  letter-spacing: 0.16em;
+  text-transform: none;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: "Nunito", sans-serif;
+}
+
+.forma-footer-link:hover .forma-link-track,
+.forma-follow-link:hover .forma-link-track,
+.forma-footer-contact-item:hover .forma-link-track {
+  transform: translateY(-50%);
+}
+
+/* Large Brand Name at Bottom */
+.forma-footer-brand-large {
+  width: 100vw;
+  text-align: center;
+  margin-top: 60px;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.forma-footer-brand-text {
+  font-family: "Dream Avenue", sans-serif;
+  font-size: 17.2rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.08);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  user-select: none;
+  white-space: nowrap;
+  transform: translateX(40px);
+}
+
+.forma-footer-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  height: 1em;
+}
+
+.forma-footer-letter {
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(0%);
+}
+
+.forma-footer-letter:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Different paint colors for each letter on hover */
+.forma-footer-mask:nth-child(1) .forma-footer-letter:hover {
+  color: #ff6b6b; /* Coral Red */
+}
+
+.forma-footer-mask:nth-child(2) .forma-footer-letter:hover {
+  color: #4ecdc4; /* Turquoise */
+}
+
+.forma-footer-mask:nth-child(3) .forma-footer-letter:hover {
+  color: #ffe66d; /* Sunny Yellow */
+}
+
+.forma-footer-mask:nth-child(4) .forma-footer-letter:hover {
+  color: #a8e6cf; /* Mint Green */
+}
+
+.forma-footer-mask:nth-child(5) .forma-footer-letter:hover {
+  color: #ff8b94; /* Pink */
+}
+
+.forma-footer-mask:nth-child(6) .forma-footer-letter:hover {
+  color: #c7ceea; /* Lavender */
+}
+
+.forma-footer-mask:nth-child(7) .forma-footer-letter:hover {
+  color: #ffdac1; /* Peach */
+}
+
+.forma-footer-mask:nth-child(8) .forma-footer-letter:hover {
+  color: #b5ead7; /* Seafoam */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .forma-footer-top-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .forma-footer-brand-box {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .forma-footer-container {
+    padding: 60px 20px 20px;
+  }
+
+  .forma-footer-top-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .forma-footer-brand-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .forma-footer-brand-title {
+    font-size: 16px;
+  }
+
+  .forma-footer-brand-subtitle {
+    font-size: 9px;
+  }
+
+  .forma-footer-brand-description {
+    font-size: 28px;
+    max-width: 100%;
+  }
+
+  .forma-footer-section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .forma-footer-social-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .forma-footer-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .forma-footer-contact-info {
+    gap: 20px;
+  }
+
+  .forma-footer-brand-text {
+    font-size: 10.4rem;
+    transform: translateX(10px);
+    letter-spacing: 0.24em;
+  }
+}
+
+@media (max-width: 480px) {
+  .forma-footer-container {
+    padding: 40px 16px 20px;
+  }
+
+  .forma-footer-top-section {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .forma-footer-brand-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .forma-footer-brand-title {
+    font-size: 14px;
+  }
+
+  .forma-footer-brand-subtitle {
+    font-size: 8px;
+  }
+
+  .forma-footer-brand-description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .forma-footer-section-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .forma-social-link,
+  .forma-footer-link,
+  .forma-footer-contact-item {
+    font-size: 14px;
+  }
+
+  .forma-footer-brand-text {
+    font-size: 5.85rem;
+    transform: translateX(10px);
+    letter-spacing: 0.24em;
+  }
+}
+
+/* Extra Large Screens - Increase footer FORMA text size by 20% */
+@media (min-width: 1560px) {
+  .forma-footer-brand-text {
+    font-size: calc(17.2rem * 1.2) !important; /* 20.64rem - 20% larger */
+  }
+}
+
+/* Very Large Screens (1600px+) - Increase container width by 20% */
+@media (min-width: 1600px) {
+  .forma-footer-container {
+    max-width: calc(1400px * 1.2) !important; /* 1680px - 20% larger */
+  }
+}

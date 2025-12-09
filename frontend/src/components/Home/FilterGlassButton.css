@@ -1,0 +1,114 @@
+.filter-benefits-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  border-left: none;
+  border-right: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #141414;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  background: rgba(20, 20, 20, 0.02);
+  transition: color 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+
+  /* Reset any inherited styles */
+  all: unset;
+  box-sizing: border-box;
+
+  /* Reapply our specific styles */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  border-left: none;
+  border-right: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #141414;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+  background: rgba(20, 20, 20, 0.02);
+  transition: color 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+/* slide-in glass color overlay */
+.filter-benefits-cta-bg {
+  position: absolute;
+  inset: 0;
+  background: #9bc56f; /* light green */
+  opacity: 0.15; /* subtle */
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.filter-benefits-cta-label {
+  position: relative;
+  z-index: 1;
+}
+
+.filter-benefits-cta:hover {
+  background: #9bc56f20; /* light tint */
+  color: #000;
+}
+
+/* slide animation */
+.filter-benefits-cta:hover .filter-benefits-cta-bg {
+  transform: scaleX(1);
+}
+
+/* Active state for filters */
+.filter-benefits-cta.active .filter-benefits-cta-bg {
+  transform: scaleX(1);
+  background: #9bc56f;
+  opacity: 1;
+}
+
+.filter-benefits-cta.active {
+  color: #ffffff;
+  background: rgba(91, 124, 79, 0.1);
+}
+
+/* Button variant styling */
+button.filter-benefits-cta {
+  appearance: none;
+  outline: none;
+}
+
+button.filter-benefits-cta:focus {
+  outline: 2px solid #5b7c4f;
+  outline-offset: 2px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+  .filter-benefits-cta {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-benefits-cta {
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+}

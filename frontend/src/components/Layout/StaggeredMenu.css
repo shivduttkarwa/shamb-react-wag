@@ -1,0 +1,624 @@
+/* Staggered Menu Styles */
+.staggered-menu-wrapper {
+  position: relative;
+  z-index: 998;
+}
+
+/* Clean header wrapper styles */
+
+.fixed-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 995;
+}
+
+.staggered-menu-wrapper[data-position="left"] .sm-prelayers,
+.staggered-menu-wrapper[data-position="left"] .staggered-menu-panel {
+  left: 0;
+  right: auto;
+}
+
+.staggered-menu-wrapper[data-position="right"] .sm-prelayers,
+.staggered-menu-wrapper[data-position="right"] .staggered-menu-panel {
+  right: 0;
+  left: auto;
+}
+
+/* Pre-layers (background stagger effect) */
+.sm-prelayers {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sm-prelayer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header */
+.staggered-menu-header {
+  position: relative;
+  z-index: 997;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  transition: transform 0.3s ease, background 0.3s ease;
+  transform: translateY(0);
+}
+
+.staggered-menu-header.header-hidden {
+  transform: translateY(-100%);
+}
+
+.sm-logo {
+  display: flex;
+  align-items: center;
+}
+
+.sm-logo-text {
+  /* Primary: Cenzyl (if available), fallbacks: Cinzel, Dream Avenue */
+  font-family: "Cenzyl", "Cinzel", "Dream Avenue", cursive;
+  font-size: 1.04rem; /* reduced from 1.3rem by approx 20% */
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.sm-logo-image {
+  height: 40px; /* 20% smaller */
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+/* Use footer-like brand-circle inside the header but scaled down */
+/* No additional header brand circle styles (logo text used by default) */
+
+/* Toggle Button */
+.sm-toggle {
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: inherit; /* Use same font as FORMA logo */
+  font-size: 1.5rem; /* Reduced menu button size */
+  font-weight: 200; /* Thinner font weight */
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.8) !important; /* Slightly darker/transparent white */
+  letter-spacing: -0.04em; /* Match FORMA logo spacing */
+  text-transform: uppercase;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mobile: reduce header height by 20% */
+@media (max-width: 768px) {
+  .staggered-menu-header {
+    padding: 0.408rem 0.4rem; /* 32% smaller than desktop padding with mobile side spacing */
+  }
+  .sm-logo-text {
+    font-size: 0.96rem; /* 20% increase from 0.8rem */
+  }
+  .sm-toggle {
+    font-size: 1.545rem; /* 3% larger than desktop (1.5rem * 1.03) */
+  }
+  .sm-logo-image {
+    height: 48px; /* 20% larger than 40px */
+  }
+}
+
+.sm-toggle:focus,
+.sm-toggle:focus-visible,
+.sm-toggle:active {
+  outline: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.sm-toggle-textWrap {
+  overflow: hidden;
+  height: 1.2em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.sm-toggle-textInner {
+  display: flex;
+  flex-direction: column;
+}
+
+.sm-toggle-line {
+  display: block;
+  height: 1.2em;
+  line-height: 1.2;
+}
+
+/* Icon (Plus/X) */
+.sm-icon {
+  display: none;
+}
+
+.sm-icon-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform-origin: center;
+}
+
+.sm-icon-line-v {
+  transform: rotate(90deg);
+}
+
+/* Panel */
+.staggered-menu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: -100vw;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/images/bg.png");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-color: #1e1e22;
+  z-index: 995;
+  overflow-y: auto;
+  overflow-x: visible;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.staggered-menu-panel.active {
+  right: 0;
+}
+
+.staggered-menu-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 34, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Panel Content Layout */
+.sm-panel-content {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.sm-panel-inner {
+  flex: 1;
+  padding: 6rem 3rem 4rem;
+  position: relative;
+  min-height: 100%;
+}
+
+/* Right Side Container */
+.sm-panel-right {
+  flex: 0 0 500px;
+  padding: 6rem 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Panel List */
+.sm-panel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove all focus indicators globally for menu */
+.staggered-menu-panel * {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.staggered-menu-panel *:focus,
+.staggered-menu-panel *:focus-visible,
+.staggered-menu-panel *:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.sm-panel-itemWrap {
+  position: relative;
+  margin: 0.25rem 0;
+  transition: transform 0.3s ease;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.sm-panel-itemWrap:first-child {
+  margin-top: 0;
+}
+
+.sm-panel-itemWrap:last-child {
+  margin-bottom: 0;
+}
+
+.sm-panel-list[data-numbering] a.sm-panel-item::after {
+  content: "0" attr(data-index);
+  position: relative;
+  margin-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.7;
+  color: rgba(250, 248, 243, 0.6);
+}
+
+.sm-panel-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 0 0 auto;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: "Dream Avenue", cursive;
+  line-height: 1.2;
+  outline: none;
+}
+
+.sm-panel-item:hover {
+  color: var(--sm-accent, #5b7c4f);
+}
+
+.sm-panel-item:focus,
+.sm-panel-item:focus-visible,
+.sm-panel-item:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sm-panel-itemLabel {
+  display: inline-block;
+}
+
+/* Submenu Styles */
+.sm-panel-item-with-submenu {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.sm-panel-list[data-numbering] .sm-panel-item-with-submenu::after {
+  content: "";
+  display: none;
+}
+
+.sm-panel-item-button {
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Dream Avenue", cursive;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 0 0 auto;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 500;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: relative;
+  line-height: 1.2;
+  outline: none;
+}
+
+.sm-panel-item-button:hover {
+  color: var(--sm-accent, #5b7c4f);
+}
+
+.sm-panel-item-button:focus,
+.sm-panel-item-button:focus-visible,
+.sm-panel-item-button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sm-panel-item-button:hover .sm-submenu-arrow {
+  color: var(--sm-accent, #5b7c4f);
+}
+
+.sm-submenu-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  font-size: 5.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+  transform-origin: center;
+  line-height: 1;
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+
+.sm-submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0 0.75rem 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  will-change: height, opacity, transform;
+  position: absolute;
+  top: 0;
+  left: 30%;
+  min-width: 250px;
+  background: transparent;
+  z-index: 10;
+}
+
+.sm-submenu-item {
+  margin: 0;
+}
+
+.sm-submenu-link {
+  display: inline-block;
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.25rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.sm-submenu-link::before {
+  content: "";
+  display: none;
+}
+
+.sm-submenu-link:hover {
+  color: var(--sm-accent, #5b7c4f);
+  padding-left: 0;
+}
+
+/* Contact Section */
+.sm-contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sm-contact-title {
+  font-family: "Dream Avenue", cursive;
+  font-size: 4.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.sm-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sm-contact-item {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+
+.sm-contact-item:hover {
+  color: var(--sm-accent, #5b7c4f);
+}
+
+/* Social Section */
+.sm-social-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sm-social-title {
+  font-family: "Dream Avenue", cursive;
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.sm-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sm-social-link {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+
+.sm-social-link:hover {
+  color: var(--sm-accent, #5b7c4f);
+}
+
+/* Legacy Socials (kept for backward compatibility) */
+.sm-socials {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  right: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sm-socials-title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.sm-socials-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sm-socials-item {
+  margin: 0;
+}
+
+.sm-socials-link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.sm-socials-link:hover {
+  color: var(--sm-accent, #5227ff);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .staggered-menu-panel {
+    width: 100vw;
+    max-width: 100%;
+    right: -100vw;
+  }
+
+  .staggered-menu-panel.active {
+    right: 0;
+  }
+
+  .sm-panel-content {
+    flex-direction: column;
+  }
+
+  .sm-panel-inner {
+    padding: 5rem 2rem 2rem;
+    display: flex;
+    align-items: top;
+  }
+
+  .sm-panel-right {
+    display: none;
+  }
+
+  .sm-panel-list {
+    gap: 0.5rem;
+    margin-top: 4rem;
+  }
+
+  .sm-contact-title,
+  .sm-social-title {
+    font-size: 1.5rem;
+  }
+
+  .sm-contact-item,
+  .sm-social-link {
+    font-size: 1.1rem;
+  }
+
+  .sm-panel-item {
+    font-size: 3.5rem;
+  }
+
+  .sm-panel-item-with-submenu {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .sm-panel-item-button {
+    min-width: auto;
+    width: auto;
+  }
+
+  .sm-submenu-arrow {
+    width: 24px;
+    height: 24px;
+    font-size: 3.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .sm-submenu {
+    position: static;
+    margin: 0 0 1rem 0;
+    padding: 0 0 0 2rem;
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    min-width: auto;
+  }
+
+  .sm-submenu-link {
+    font-size: 1.9rem;
+  }
+}

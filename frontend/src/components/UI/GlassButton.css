@@ -1,0 +1,105 @@
+.home-benefits-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  border-left: none;
+  border-right: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #141414;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  background: rgba(20, 20, 20, 0.02);
+  transition: color 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+
+  /* Reset any inherited styles */
+  all: unset;
+  box-sizing: border-box;
+
+  /* Reapply our specific styles */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  border-left: none;
+  border-right: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #141414;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+  background: rgba(20, 20, 20, 0.02);
+  transition: color 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+/* slide-in glass color overlay */
+.home-benefits-cta-bg {
+  position: absolute;
+  inset: 0;
+  background: #9bc56f; /* light green */
+  opacity: 0.15; /* subtle */
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-benefits-cta-label {
+  position: relative;
+  z-index: 1;
+}
+
+.home-benefits-cta-icon {
+  position: relative;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  font-size: 1.1rem;
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-benefits-cta:hover {
+  background: #9bc56f20; /* light tint */
+  color: #000;
+}
+
+/* slide animation */
+.home-benefits-cta:hover .home-benefits-cta-bg {
+  transform: scaleX(1);
+}
+
+.home-benefits-cta:hover .home-benefits-cta-icon {
+  transform: translateX(9.8px);
+}
+
+/* Button variant styling */
+button.home-benefits-cta {
+  appearance: none;
+  outline: none;
+}
+
+button.home-benefits-cta:focus {
+  outline: 2px solid #5b7c4f;
+  outline-offset: 2px;
+}

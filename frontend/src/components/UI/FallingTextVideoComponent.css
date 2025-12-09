@@ -1,0 +1,323 @@
+/* FALLING TEXT VIDEO COMPONENT */
+:root {
+  --light-bg: #f5f5f2;
+  --text: #141414;
+}
+
+.ftv-video-wrapper {
+  height: 250vh;
+  position: relative;
+}
+
+.ftv-video-content {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--light-bg);
+  padding-bottom: 15vh;
+}
+
+.ftv-text-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1800px;
+  padding: 4rem 4rem 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.ftv-text-left,
+.ftv-text-right {
+  font-family: "Dream Avenue", serif;
+  font-size: clamp(4rem, 8vw, 14rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.ftv-video-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 12.5vw;
+  border-radius: 0px;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.ftv-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ftv-bottom-text {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.ftv-bottom-left,
+.ftv-bottom-right {
+  width: 35%;
+  pointer-events: auto;
+}
+
+/* Scroll Down Indicator */
+.ftv-scroll-down-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  pointer-events: none;
+  z-index: 6;
+  position: relative;
+  transform: translateY(60px); /* Move down by 30px */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.ftv-scroll-arrow {
+  position: relative;
+  width: 40px;
+  height: 70px;
+  border: 3px solid rgba(20, 20, 20, 0.7);
+  border-radius: 25px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: default;
+  overflow: hidden;
+}
+
+.ftv-scroll-arrow::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 50%;
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+.ftv-scroll-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid rgba(20, 20, 20, 0.6);
+  animation: chevronPulse 2s ease-in-out infinite;
+}
+
+.ftv-scroll-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: rgba(20, 20, 20, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-top: 4px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Modern Scroll Animations */
+@keyframes scrollDot {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(35px);
+  }
+}
+
+@keyframes chevronPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+.ftv-falling-text-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ftv-falling-text-inner {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1.4rem, 3.36vw, 4.8rem);
+  padding-bottom: 0.5rem;
+}
+
+.ftv-falling-char {
+  display: inline-block;
+  white-space: pre;
+  user-select: none;
+  color: var(--text);
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ftv-text-container {
+    padding: 2rem 2rem 0;
+  }
+
+  .ftv-text-left,
+  .ftv-text-right {
+    font-size: clamp(3rem, 10vw, 10rem);
+  }
+
+  .ftv-video-container {
+    width: 55vw;
+    height: 30.9375vw;
+  }
+
+  .ftv-bottom-text {
+    padding: 0 2rem 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ftv-text-container {
+    padding: 1.5rem 1rem 0;
+    margin-top: 60px;
+  }
+
+  .ftv-text-left,
+  .ftv-text-right {
+    font-size: clamp(2.5rem, 12vw, 6rem);
+  }
+
+  .ftv-video-container {
+    width: 65vw;
+    height: 36.5625vw;
+    top: 45%;
+  }
+
+  .ftv-bottom-text {
+    padding: 0 1.5rem 2rem;
+  }
+
+  .ftv-falling-text-container {
+    min-height: 100px;
+  }
+
+  .ftv-falling-text-inner {
+    font-size: clamp(1.12rem, 3.92vw, 2.24rem);
+  }
+
+  .ftv-scroll-arrow {
+    width: 35px;
+    height: 60px;
+  }
+
+  .ftv-scroll-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ftv-text-container {
+    padding: 1.5rem 1rem 0;
+    margin-top: 70px;
+  }
+
+  .ftv-text-left,
+  .ftv-text-right {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+
+  .ftv-video-container {
+    width: 75vw;
+    height: 42.1875vw;
+    top: 42%;
+  }
+
+  .ftv-bottom-text {
+    padding: 0 1rem 1.5rem;
+    bottom: calc(15vh + 40px);
+  }
+
+  .ftv-falling-text-container {
+    min-height: 90px;
+  }
+
+  .ftv-falling-text-inner {
+    font-size: clamp(1.008rem, 3.36vw, 1.68rem);
+  }
+
+  .ftv-scroll-arrow {
+    width: 30px;
+    height: 65px;
+  }
+
+  .ftv-scroll-text {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}

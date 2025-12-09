@@ -1,0 +1,405 @@
+/* Services Section Styles */
+.home-page-projects-section {
+  background: #fafafa;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+.home-page-projects-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  overflow-x: clip;
+}
+
+.home-page-projects-layout {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Left side - Cards in Masonry Layout */
+.home-page-projects-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px; /* Reduced gap */
+  grid-auto-rows: 10px;
+}
+
+.home-page-projects-card {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  border: 1px solid #e0e0e0;
+}
+
+/* Staggered masonry layout */
+.home-page-projects-card:nth-child(1) {
+  grid-row: 6 / span 22;
+  grid-column: 1;
+}
+
+.home-page-projects-card:nth-child(2) {
+  grid-row: 1 / span 22;
+  grid-column: 2;
+}
+
+.home-page-projects-card:nth-child(3) {
+  grid-row: 28 / span 22;
+  grid-column: 1;
+}
+
+.home-page-projects-card:nth-child(4) {
+  grid-row: 23 / span 22;
+  grid-column: 2;
+}
+
+.home-page-projects-card:nth-child(5) {
+  grid-row: 50 / span 22;
+  grid-column: 1;
+}
+
+.home-page-projects-card:nth-child(6) {
+  grid-row: 45 / span 22;
+  grid-column: 2;
+}
+
+.home-page-projects-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.home-page-projects-card-image {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.home-page-projects-card:hover .home-page-projects-card-image {
+  transform: scale(1.05);
+}
+
+.home-page-projects-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 20px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-page-projects-title {
+  color: #1a1a1a;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+  font-family: "Nunito", sans-serif;
+  display: inline-block;
+}
+
+.home-page-projects-description {
+  color: #666;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  font-family: "Nunito", sans-serif;
+  display: block;
+  /* Prevent layout shift during hover animation */
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+}
+
+/* Prevent HoverText component from causing layout shifts */
+.home-page-projects-description > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  /* transition: font-weight 0.3s ease;  Removed hover animation */
+  letter-spacing: 0.01em;
+}
+
+/* Hover animations removed */
+
+/* Old home-page-projects-cta styles removed - now using GlassButton */
+
+/* Right side - Sticky Content */
+.home-page-projects-content {
+  position: sticky;
+  top: calc(30vh - 150px);
+  padding: 40px;
+  max-height: 70vh; /* Prevent content from going off-screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start; /* Ensures it sticks properly within the grid container */
+}
+
+.title-decorator {
+  width: 60px;
+  height: 2px;
+  background: #1a1a1a;
+  margin-bottom: 24px;
+}
+
+.home-page-projects-title {
+  font-family: "Dream Avenue", cursive !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.2 !important;
+  white-space: normal !important;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.home-page-projects-description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  font-family: "Nunito", sans-serif;
+}
+
+/* Glass Button Customization for Services Section */
+.home-page-projects-content .home-benefits-cta {
+  height: 70px !important;
+  min-height: 70px !important;
+  width: 220px !important;
+  max-width: 220px !important;
+  padding: 20px 20px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+  visibility: visible !important;
+  display: inline-flex !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: rgba(20, 20, 20, 0.02) !important;
+  border-top: 1px solid rgba(20, 20, 20, 0.12) !important;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12) !important;
+  box-sizing: border-box !important;
+}
+
+.home-page-projects-content .home-benefits-cta .home-benefits-cta-label {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.home-page-projects-content .home-benefits-cta .home-benefits-cta-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  min-width: 2.5rem !important;
+  min-height: 2.5rem !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+/* Glass Button Styling for Service Cards */
+.home-page-projects-overlay .home-benefits-cta {
+  height: auto !important;
+  min-height: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 8px 16px !important;
+  margin: 0 !important;
+  align-self: flex-start !important;
+  font-size: 10px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  gap: 0.5rem !important;
+}
+
+.home-page-projects-overlay .home-benefits-cta .home-benefits-cta-icon {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  min-height: 1.5rem !important;
+  font-size: 0.8rem !important;
+}
+
+/* Text animation masks */
+.home-page-projects-title .mask {
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+.home-page-projects-title .line {
+  display: inline-block;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #1a1a1a;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+.cta-button:hover {
+  background: #333;
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .home-page-projects-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .home-page-projects-cards {
+    gap: 12px;
+  }
+
+  .home-page-projects-content {
+    position: relative;
+    top: 0;
+    order: -1;
+  }
+
+  .home-page-projects-title {
+    font-size: clamp(2.5rem, 7vw, 3.4rem);
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page-projects-container {
+    padding: 60px 15px;
+  }
+
+  .home-page-projects-cards {
+    display: block; /* Switch from grid to block for mobile */
+    gap: 0;
+  }
+
+  .home-page-projects-card {
+    margin-bottom: 20px;
+    position: relative;
+    grid-row: auto;
+    grid-column: auto;
+    height: 500px; /* Fixed height for consistency */
+  }
+
+  .home-page-projects-card:nth-child(1),
+  .home-page-projects-card:nth-child(2),
+  .home-page-projects-card:nth-child(3),
+  .home-page-projects-card:nth-child(4),
+  .home-page-projects-card:nth-child(5),
+  .home-page-projects-card:nth-child(6) {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .home-page-projects-card-image {
+    height: 55%; /* Reduce image height to give more space for content */
+  }
+
+  .home-page-projects-overlay {
+    height: 45%; /* Increase overlay height for content */
+    padding: 15px;
+  }
+
+  .home-page-projects-title {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .home-page-projects-description {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .home-page-projects-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+  }
+
+  .home-page-projects-description {
+    font-size: 18px;
+  }
+
+  .home-page-projects-content {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page-projects-container {
+    padding: 40px 15px;
+  }
+
+  .home-page-projects-cards {
+    margin: 0 -5px; /* Negative margin to allow cards to be slightly wider */
+  }
+
+  .home-page-projects-card {
+    margin: 0 5px 15px 5px; /* Adjust margins */
+    height: 460px; /* Increased height for better content visibility */
+  }
+
+  .home-page-projects-title {
+    font-size: 20px;
+  }
+
+  .home-page-projects-description {
+    font-size: 15px;
+  }
+
+  .home-page-projects-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .home-page-projects-content .tilt-text-heading {
+    margin-bottom: 20px !important;
+  }
+
+  .home-page-projects-description {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .home-page-projects-content {
+    padding: 20px 0;
+  }
+
+  .title-decorator {
+    width: 40px;
+    margin-bottom: 16px;
+  }
+}

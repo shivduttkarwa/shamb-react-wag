@@ -1,0 +1,148 @@
+/* ========== GLASS RAIN BUTTON ========== */
+
+.glass-rain-btn {
+  all: unset;
+  box-sizing: border-box;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.925rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  text-transform: uppercase;
+  font-size: 0.96rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #ffffff;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+}
+
+.glass-rain-btn-bg {
+  position: absolute;
+  inset: 0;
+  background: #9bc56f;
+  opacity: 0.15;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-rain-btn-label {
+  position: relative;
+  z-index: 2;
+}
+
+.glass-rain-btn-icon {
+  position: relative;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  color: #ffffff;
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-rain-btn:hover {
+  background: rgba(155, 197, 111, 0.2);
+  border-color: rgba(155, 197, 111, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.glass-rain-btn:hover .glass-rain-btn-bg {
+  transform: scaleX(1);
+}
+
+.glass-rain-btn:hover .glass-rain-btn-icon {
+  transform: translateX(19.8px);
+}
+
+button.glass-rain-btn {
+  appearance: none;
+  outline: none;
+}
+
+button.glass-rain-btn:focus {
+  outline: 2px solid #5b7c4f;
+  outline-offset: 2px;
+}
+
+/* ========== RAIN LAYER INSIDE BUTTON ========== */
+
+.btn-rain-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1; /* between bg (0) and label/icon (2) */
+  pointer-events: none;
+}
+
+.btn-rain-drops,
+.btn-rain-shadows {
+  position: absolute;
+  inset: 0;
+}
+
+.btn-rain-drop,
+.btn-rain-shadow {
+  position: absolute;
+  border-radius: 999px;
+  top: -20%; /* keep above button before animation */
+  opacity: 0; /* hide before animation */
+}
+
+.btn-rain-drop {
+  background: linear-gradient(
+    to bottom,
+    rgba(128, 128, 128, 0.76),
+    rgba(128, 128, 128, 0.2)
+  );
+  filter: blur(0.3px);
+}
+
+.btn-rain-shadow {
+  margin-left: 1px;
+  margin-top: 1px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Slide using TOP from -20% to 120% */
+@keyframes btn-streaking {
+  0% {
+    opacity: 0;
+    top: -20%;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 120%;
+  }
+}

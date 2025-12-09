@@ -1,0 +1,281 @@
+/* ModernHero styles extracted from component */
+.mh-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #171717;
+}
+
+.mh-curtain {
+  position: absolute;
+  inset: 0;
+  background-color: #47614d;
+  z-index: 40;
+  transform: translateX(-100%);
+}
+
+.mh-text-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  overflow: visible; /* avoid clipping scatter letters (Firefox positioning) */
+  pointer-events: none;
+}
+
+.mh-text-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mh-text-backdrop {
+  position: absolute;
+  inset: -12% -8%;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.08) 40%,
+      rgba(0, 0, 0, 0.32) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.38),
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.38)
+    );
+  filter: blur(14px);
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mh-scatter-word {
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 12.8rem; /* reduced 20% */
+  font-weight: 100; /* Reduced to 100 (lightest weight) */
+  text-align: center;
+  font-family: "nunito", cursive; /* Changed to nunito font */
+}
+
+.mh-scatter-letter {
+  display: inline-block;
+  position: relative;
+  color: #ffffff;
+}
+
+.mh-subtitle {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-85%);
+  color: #ffffff;
+  font-size: 2.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.mh-subtitle-static {
+  white-space: nowrap;
+}
+
+.mh-subtitle-dynamic span {
+  display: inline-block;
+}
+
+.mh-hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  transform: scale(0);
+  transform-origin: left bottom;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.mh-hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mh-image-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.mh-ui-cta {
+  position: absolute;
+  z-index: 60;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.mh-ui-cta .glass-rain-btn {
+  all: unset;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  text-transform: uppercase;
+  font-size: 0.96rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: #ffffff;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  box-sizing: border-box;
+}
+
+.mh-ui-cta .glass-rain-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.mh-ui-news {
+  position: absolute;
+  z-index: 60;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.mh-ui-news-card {
+  min-width: 220px;
+  max-width: 260px;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e5e7eb;
+}
+
+.mh-ui-news-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 0.35rem;
+}
+
+.mh-ui-news-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.mh-ui-news-meta {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 575.98px) {
+  .mh-scatter-word {
+    font-size: 2.72rem; /* 20% smaller */
+    letter-spacing: 2.4px;
+    white-space: nowrap;
+  }
+
+  .mh-subtitle {
+    font-size: 1.292rem; /* 20% smaller */
+    letter-spacing: 0.12em;
+    top: calc(50% - 10px);
+    left: calc(50% - 5px);
+    white-space: nowrap;
+  }
+
+  .mh-ui-menu {
+    font-size: 1.55rem;
+    letter-spacing: 0.18em;
+    color: #ffffff;
+  }
+
+  .mh-ui-news-card {
+    min-width: 190px;
+    max-width: 210px;
+  }
+
+  .mh-ui-news {
+    display: none;
+  }
+
+  .mh-ui-cta .glass-rain-btn {
+    padding: 1.125rem 1.75rem;
+    font-size: 0.86rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .mh-scatter-word {
+    font-size: 3.6rem; /* reduced 20% */
+  }
+
+  .mh-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    top: 63%;
+  }
+
+  .mh-ui-menu {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1439.98px) {
+  .mh-scatter-word {
+    font-size: 8rem; /* reduced 20% */
+  }
+
+  .mh-subtitle {
+    font-size: 1.98rem;
+    letter-spacing: 0.22em;
+    top: calc(50% - 60px);
+    left: calc(50% - 30px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .mh-scatter-word {
+    font-size: 5.6rem; /* reduced 20% */
+  }
+
+  .mh-subtitle {
+    font-size: 2.2rem;
+    letter-spacing: 0.26em;
+    top: calc(57% - 70px);
+    left: calc(50% - 30px);
+  }
+}
+
+/* Large screens 1600px and above - increase font size by 20% */
+@media (min-width: 1600px) {
+  .mh-scatter-word {
+    font-size: 6.72rem; /* 5.6rem * 1.2 = 6.72rem (20% increase) */
+  }
+
+  .mh-subtitle {
+    font-size: 2.64rem; /* 2.2rem * 1.2 = 2.64rem (20% increase) */
+    letter-spacing: 0.312em; /* 0.26em * 1.2 = 0.312em (20% increase) */
+  }
+}

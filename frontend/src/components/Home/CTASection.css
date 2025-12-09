@@ -1,0 +1,397 @@
+/* PREMIUM ELEGANT CTA SECTION */
+.cta-section {
+  background: linear-gradient(135deg, #c4d4bf 0%, #d4e3cf 50%, #c4d4bf 100%);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorative pattern */
+.cta-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Gradient orbs for depth */
+.cta-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+.cta-gradient-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(181, 196, 176, 0.6) 0%,
+    transparent 70%
+  );
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.cta-gradient-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(157, 181, 147, 0.6) 0%,
+    transparent 70%
+  );
+  bottom: -150px;
+  right: -100px;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+}
+
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+  max-width: 850px;
+}
+
+/* Title with word animation wrappers */
+.cta-title {
+  font-family: "Dream Avenue", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+}
+
+.cta-word-wrapper {
+  display: inline-block;
+  overflow: visible;
+  vertical-align: bottom;
+}
+
+.cta-word {
+  display: inline-block;
+}
+
+.cta-title em {
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+}
+
+.cta-title em::after {
+  content: "";
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.3;
+}
+
+.cta-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 650px;
+}
+
+.cta-description {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  opacity: 0.9;
+}
+
+/* Form */
+.cta-form {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.cta-form-focused {
+  transform: translateY(-4px);
+}
+
+.cta-input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.cta-email-input {
+  width: 100%;
+  padding: 20px 28px;
+  border: none;
+  background: rgba(181, 196, 176, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #2c3e50;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  outline: none;
+  font-family: "Nunito", sans-serif;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cta-email-input::placeholder {
+  color: rgba(74, 90, 74, 0.7);
+  opacity: 1;
+}
+
+.cta-email-input:focus {
+  background: rgba(168, 184, 163, 0.85);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.cta-email-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Animated input line */
+.cta-input-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2c3e50 0%, rgba(44, 62, 80, 0.5) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-email-input:focus ~ .cta-input-line {
+  transform: scaleX(1);
+}
+
+/* Submit button */
+.cta-submit-button {
+  padding: 20px 40px;
+  border: none;
+  background: #2c3e50;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Nunito", sans-serif;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.2);
+}
+
+.cta-submit-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-submit-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.cta-submit-button:hover {
+  background: #1a252f;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(44, 62, 80, 0.3);
+}
+
+.cta-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cta-submit-text,
+.cta-submit-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-submit-icon {
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-submit-button:hover .cta-submit-icon {
+  transform: translateX(5px);
+}
+
+/* Success message */
+.cta-success-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #2c3e50;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 18px 28px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.cta-success-icon {
+  flex-shrink: 0;
+  color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 100px 0;
+  }
+
+  .cta-container {
+    padding: 0 24px;
+  }
+
+  .cta-content {
+    gap: 40px;
+  }
+
+  .cta-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-family: "Dream Avenue", cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .cta-form-wrapper {
+    gap: 32px;
+  }
+
+  .cta-description {
+    font-size: 1.05rem;
+  }
+
+  .cta-form {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cta-email-input,
+  .cta-submit-button {
+    padding: 18px 24px;
+  }
+
+  .cta-submit-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-gradient-orb-1,
+  .cta-gradient-orb-2 {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cta-section {
+    padding: 80px 0;
+  }
+
+  .cta-container {
+    padding: 0 20px;
+  }
+
+  .cta-content {
+    gap: 36px;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .cta-form-wrapper {
+    gap: 28px;
+  }
+
+  .cta-email-input,
+  .cta-submit-button {
+    padding: 16px 20px;
+    font-size: 0.85rem;
+  }
+
+  .cta-success-message {
+    font-size: 0.95rem;
+    padding: 16px 20px;
+  }
+}

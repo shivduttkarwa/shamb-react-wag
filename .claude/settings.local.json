@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:\\Program Files\\PostgreSQL\\17\\bin\\psql.exe\" -U postgres -c \"CREATE USER shivdutt WITH PASSWORD ''2630'';\")",
+      "Bash(mkdir:*)",
+      "Bash(python:*)"
+    ],
+    "deny": []
+  }
+}

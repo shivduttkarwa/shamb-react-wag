@@ -1,0 +1,30 @@
+/* ASCII Glitch Text Animation - EXACT MATCH TO ORIGINAL design.html */
+.ascii-glitch-text {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Active ascii anim on link - EXACT MATCH */
+.ascii-glitch-text.ascii-glitch-active {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Disable text selection during ASCII animation - EXACT MATCH */
+.ascii-glitch-text.ascii-glitch-active::selection {
+  background: transparent;
+}
+
+/* hover state for links with ASCII animation - EXACT MATCH */
+.ascii-glitch-text.ascii-glitch-active:hover {
+  position: relative;
+  cursor: pointer;
+}
+
+/* For links */
+.ascii-glitch-text:focus,
+.ascii-glitch-text:hover {
+  text-decoration: none;
+}

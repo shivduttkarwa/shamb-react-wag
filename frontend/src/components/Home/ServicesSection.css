@@ -1,0 +1,478 @@
+/* HSS Services Section Styles */
+.hss-services-section {
+  background: #fafafa;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* Increase TiltTextGsap font size by 30% on 1600px+ screens */
+@media (min-width: 1600px) {
+  .hss-services-content .tilt-text-heading {
+    font-size: clamp(2.6rem, 5.2vw, 4.16rem) !important;
+  }
+}
+
+.hss-services-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  overflow-x: clip;
+}
+
+.hss-services-layout {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Left side - Cards in Masonry Layout */
+.hss-services-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px; /* Reduced gap */
+  grid-auto-rows: 10px;
+}
+
+.hss-service-card {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  border: 1px solid #e0e0e0;
+}
+
+/* Staggered masonry layout */
+.hss-service-card:nth-child(1) {
+  grid-row: 6 / span 22;
+  grid-column: 1;
+}
+
+.hss-service-card:nth-child(2) {
+  grid-row: 1 / span 22;
+  grid-column: 2;
+}
+
+.hss-service-card:nth-child(3) {
+  grid-row: 28 / span 22;
+  grid-column: 1;
+}
+
+.hss-service-card:nth-child(4) {
+  grid-row: 23 / span 22;
+  grid-column: 2;
+}
+
+.hss-service-card:nth-child(5) {
+  grid-row: 50 / span 22;
+  grid-column: 1;
+}
+
+.hss-service-card:nth-child(6) {
+  grid-row: 45 / span 22;
+  grid-column: 2;
+}
+
+.hss-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hss-service-card-image {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.hss-service-card:hover .hss-service-card-image {
+  transform: scale(1.05);
+}
+
+.hss-service-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 20px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hss-service-title {
+  color: #1a1a1a;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+  font-family: "Nunito", sans-serif;
+  display: inline-block;
+}
+
+.hss-service-description {
+  color: #666;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  font-family: "Nunito", sans-serif;
+  display: block;
+  /* Prevent layout shift during hover animation */
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+}
+
+/* Prevent HoverText component from causing layout shifts */
+.hss-service-title > *,
+.hss-service-description > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  /* transition: font-weight 0.3s ease;  Removed hover animation */
+  letter-spacing: 0.01em;
+  transform: none !important; /* Prevent any transform on hover */
+}
+
+.hss-service-title > *:hover,
+.hss-service-description > *:hover {
+  transform: none !important; /* Explicitly prevent transform on hover */
+}
+
+/* Old service-cta styles removed - now using GlassButton */
+
+/* Right side - Sticky Content */
+.hss-services-content {
+  position: sticky;
+  top: calc(30vh - 100px);
+  padding: 40px;
+  max-height: 70vh; /* Prevent content from going off-screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start; /* Ensures it sticks properly within the grid container */
+}
+
+.hss-title-decorator {
+  width: 60px;
+  height: 2px;
+  background: #1a1a1a;
+  margin-bottom: 24px;
+}
+
+.hss-services-title {
+  font-family: "Dream Avenue", cursive !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.2 !important;
+  white-space: normal !important;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.hss-services-description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 60px;
+  line-height: 1.8;
+  font-family: "Nunito", sans-serif;
+  /* Prevent layout shift during hover animation */
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+}
+
+/* Prevent HoverText component from causing layout shifts */
+.hss-services-description > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  /* transition: font-weight 0.3s ease;  Removed hover animation */
+  letter-spacing: 0.01em;
+}
+
+/* Hover animations removed */
+
+/* Glass Button Customization for HSS Services Section */
+.hss-services-content .home-benefits-cta {
+  height: 70px !important;
+  min-height: 70px !important;
+  width: 220px !important;
+  max-width: 220px !important;
+  padding: 12px 20px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+  visibility: visible !important;
+  display: inline-flex !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: rgba(20, 20, 20, 0.02) !important;
+  border-top: 1px solid rgba(20, 20, 20, 0.12) !important;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12) !important;
+  box-sizing: border-box !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.14em !important;
+}
+
+.hss-services-content .home-benefits-cta .home-benefits-cta-label {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.hss-services-content .home-benefits-cta .home-benefits-cta-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  min-width: 2.5rem !important;
+  min-height: 2.5rem !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+/* Glass Button Styling for HSS Service Cards */
+.hss-service-overlay .home-benefits-cta {
+  height: auto !important;
+  min-height: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 8px 16px !important;
+  margin: 0 !important;
+  align-self: flex-start !important;
+  font-size: 10px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  gap: 0.5rem !important;
+}
+
+.hss-service-overlay .home-benefits-cta .home-benefits-cta-icon {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  min-height: 1.5rem !important;
+  font-size: 0.8rem !important;
+}
+
+/* Text animation masks */
+.hss-services-title .mask {
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+.hss-services-title .line {
+  display: inline-block;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #1a1a1a;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+.cta-button:hover {
+  background: #333;
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hss-services-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .hss-services-cards {
+    gap: 12px;
+  }
+
+  .hss-services-content {
+    position: relative;
+    top: 0;
+    order: -1;
+  }
+
+  .hss-services-title {
+    font-size: clamp(2.5rem, 7vw, 3.4rem);
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 768px) {
+  .hss-services-container {
+    padding: 60px 15px;
+  }
+
+  .hss-services-cards {
+    display: block; /* Switch from grid to block for mobile */
+    gap: 0;
+  }
+
+  .hss-service-card {
+    margin-bottom: 20px;
+    position: relative;
+    grid-row: auto;
+    grid-column: auto;
+    height: 500px; /* Fixed height for consistency */
+  }
+
+  .hss-service-card:nth-child(1),
+  .hss-service-card:nth-child(2),
+  .hss-service-card:nth-child(3),
+  .hss-service-card:nth-child(4),
+  .hss-service-card:nth-child(5),
+  .hss-service-card:nth-child(6) {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .hss-service-card-image {
+    height: 55%; /* Reduce image height to give more space for content */
+  }
+
+  .hss-service-overlay {
+    height: 45%; /* Increase overlay height for content */
+    padding: 15px;
+  }
+
+  .hss-service-title {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .hss-service-description {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .hss-services-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+  }
+
+  .hss-services-description {
+    font-size: 18px;
+  }
+
+  .hss-services-content {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hss-services-container {
+    padding: 40px 15px;
+  }
+
+  .hss-services-cards {
+    margin: 0 -5px; /* Negative margin to allow cards to be slightly wider */
+  }
+
+  .hss-service-card {
+    margin: 0 5px 15px 5px; /* Adjust margins */
+    height: 460px; /* Increased height for better content visibility */
+  }
+
+  .hss-service-title {
+    font-size: 20px;
+  }
+
+  .hss-service-description {
+    font-size: 15px;
+  }
+
+  .hss-services-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .hss-services-content .tilt-text-heading {
+    margin-bottom: 20px !important;
+  }
+
+  .hss-services-description {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .hss-services-content {
+    padding: 20px 0;
+  }
+
+  .hss-title-decorator {
+    width: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+/* Extra Large Screens - Increase overall container width by 20% */
+@media (min-width: 1560px) {
+  .hss-services-container {
+    max-width: 1680px; /* 1400px * 1.2 */
+  }
+  
+  .hss-services-layout {
+    max-width: 120%; /* 100% * 1.2 */
+  }
+  
+  /* Increase right side content font sizes by 20% */
+  .hss-services-description {
+    font-size: 21.6px; /* 18px * 1.2 */
+  }
+  
+  /* Increase all section descriptions by 20% (except cards) */
+  .services-description,
+  .section-description,
+  .essence-description,
+  .blog-featured-description,
+  .blog-post-description,
+  .home-page-projects-description,
+  .featured-properties-description,
+  .vision-description,
+  .cta-description {
+    font-size: 21.6px !important;
+    font-family: "Nunito", sans-serif !important;
+  }
+  
+  .hss-services-title {
+    font-size: 3.84rem !important; /* 3.2rem * 1.2 - 20% larger */
+  }
+  
+  /* Universal GlassButton size for homepage (except service cards) */
+  .home-benefits-cta:not(.hss-service-card .home-benefits-cta) {
+    padding: 1.25rem 1.75rem !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.16em !important;
+    gap: 0.75rem !important;
+  }
+}

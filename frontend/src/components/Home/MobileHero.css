@@ -1,0 +1,236 @@
+/* Mobile hero styles; gallery removed */
+
+/* - Visible state - */
+/* No special visible class required - animation handles transition to visible */
+
+/* MOBILE HERO STYLES - COMPLETELY SEGREGATED */
+/* This will ONLY affect mobile hero, not desktop */
+
+.mobile-hero-section {
+  width: 100%;
+  height: 10vh;
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+  /* Default overlay offsets: moved left 30px and up 50px from original values */
+  --overlay-left: 90px;
+  --overlay-up: 135px;
+}
+
+/* Quick example: tweak overlay position by setting variables on the section
+   Example: add to home page or global CSS
+     .mobile-hero-section { --overlay-left: 120px; --overlay-up: 160px; }
+*/
+
+/* Utility classes for quick CSS-only control (apply to `.mobile-hero-section`) */
+/*
+  Simple 4-variable controls for overlay position (CSS-only):
+  - --overlay-left: distance (px) to move LEFT (positive values move left)
+  - --overlay-right: distance (px) to move RIGHT (positive values move right)
+  - --overlay-up: distance (px) to move UP (positive values move up)
+  - --overlay-down: distance (px) to move DOWN (positive values move down)
+
+  Final computed offsets are:
+  - X = (right) - (left)
+  - Y = (down) - (up)
+
+  Usage:
+    .mobile-hero-section { --overlay-left: 120px; }   - moves overlay 120px left
+    .mobile-hero-section { --overlay-up: 80px; }      - moves overlay 80px up
+
+  Quick example class (optional): apply to `.mobile-hero-section` in markup:
+    .mobile-hero-section.overlay-left-120-up-80 { --overlay-left: 120px; --overlay-up: 80px; }
+*/
+.mobile-hero-section.overlay-left-60-up-85 {
+  --overlay-left: 60px;
+  --overlay-up: 85px;
+}
+
+.mobile-hero-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MOBILE HERO TEXT */
+.mobile-hero-text {
+  text-align: center;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+.mobile-text-line {
+  font-family: "nunito", serif;
+  font-size: clamp(4rem, 14vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #ffffff; /* set to white for contrast on dark background */
+  margin-bottom: 0.1em;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.mobile-line-1 {
+  text-align: center;
+  transform: translateX(-65px) translateY(-30px);
+}
+
+.mobile-line-2 {
+  text-align: center;
+  transform: translateX(50px) translateY(-10px);
+}
+
+.mobile-line-4 {
+  text-align: center;
+  transform: translateX(-125px) translateY(20px);
+}
+
+.mobile-line-5 {
+  text-align: center;
+  transform: translateX(25px) translateY(40px);
+}
+
+/* Overlay Text */
+.mobile-hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*
+    Simple CSS-only control. To move the overlay set these variables on the
+    `.mobile-hero-section` or globally in your CSS. For example:
+      .mobile-hero-section { --overlay-x: -120px; --overlay-y: -160px; }
+    We provide fallbacks below so the overlay has a reasonable default if
+    you don't override the variables in your page CSS.
+  */
+  transform: translate(-50%, -50%)
+    translate(
+      calc(var(--overlay-right, 0px) - var(--overlay-left, 0px)),
+      calc(var(--overlay-down, 0px) - var(--overlay-up, 0px))
+    );
+  z-index: 11000;
+  text-align: center;
+  pointer-events: none;
+  max-width: 90vw;
+}
+
+.mobile-hero-overlay .overlay-line {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: clamp(3.12rem, 9.1vw, 5.46rem);
+  /* prevent this overlay from breaking into multiple lines */
+  white-space: nowrap; /* do not break words onto a new line */
+  overflow-wrap: normal; /* avoid breaking mid-word */
+  word-break: keep-all; /* keep words intact */
+  hyphens: none; /* avoid hyphenation */
+  display: block; /* each overlay line on its own line */
+  line-height: 1.2;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+.mobile-hero-overlay .overlay-line + .overlay-line {
+  margin-top: 0.25em; /* small gap between lines */
+  transform: translateX(
+    var(--overlay-second-indent, -11px)
+  ); /* slight indent */
+}
+
+.mobile-hero-overlay .overlay-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+/* MOBILE CTA BUTTON */
+.mobile-cta {
+  position: absolute;
+  top: calc(100vh - 150px - 80px - 100px); /* 100px above gallery items */
+  left: 20px; /* Aligned left with 20px margin */
+  z-index: 30;
+}
+
+/* MOBILE GALLERY */
+.mobile-gallery {
+  position: absolute;
+  top: calc(100vh - 150px - 80px); /* Position from top instead of bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 30;
+}
+
+.mobile-gallery-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.mobile-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MOBILE VIDEO LINE */
+.mobile-video-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0;
+}
+
+.mobile-video-space {
+  width: 360px;
+  height: 216px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: calc(50% - 25px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  opacity: 1;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.mobile-video-placeholder {
+  width: 360px;
+  height: 216px;
+  opacity: 0;
+}
+
+.mobile-video-space video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive for very small screens */
+@media (max-width: 480px) {
+  .mobile-text-line {
+    font-size: clamp(4rem, 12vw, 6rem);
+  }
+
+  .mobile-video-space {
+    width: 270px;
+    height: 162px;
+  }
+  /* Slightly reduce overlay offsets on very small screens to avoid clipping */
+  .mobile-hero-section {
+    --overlay-left: 70px;
+    --overlay-up: 190px;
+  }
+}
