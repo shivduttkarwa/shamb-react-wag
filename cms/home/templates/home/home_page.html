@@ -3,19 +3,46 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
-{% block extra_css %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
-
 {% block content %}
+<!-- Hero Section -->
+{% if page.hero_section %}
+<div class="hero-section">
+    {% include "core/blocks/hero_section.html" with hero=page.hero_section %}
+</div>
+{% endif %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+<!-- Dynamic Body Content -->
+{% if page.body_content %}
+<div class="page-content">
+    {% for block in page.body_content %}
+        {% include_block block %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Static Sections (for backward compatibility) -->
+<div id="services">
+    {% include "home/sections/services_section.html" %}
+</div>
+
+<div id="projects">
+    {% include "home/sections/projects_section.html" %}
+</div>
+
+<div id="vision">
+    {% include "home/sections/vision_section.html" %}
+</div>
+
+<div id="properties">
+    {% include "home/sections/properties_section.html" %}
+</div>
+
+<div id="blog">
+    {% include "home/sections/blog_section.html" %}
+</div>
+
+<div id="contact">
+    {% include "home/sections/cta_section.html" %}
+</div>
 
 {% endblock content %}

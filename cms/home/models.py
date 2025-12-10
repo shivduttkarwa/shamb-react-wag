@@ -6,11 +6,39 @@ from wagtail.snippets.models import register_snippet
 from wagtail.fields import StreamField
 from core.models import MainHero
 from core.blocks import (
+    # Basic Content Blocks
+    HeadingBlock,
+    ContentBlock,
+    LeadBlock,
+    QuoteBlock,
+    
+    # Media Blocks
+    ResponsiveImageBlock,
+    FullwidthImageBlock,
+    VideoBlock,
+    ImageGalleryBlock,
+    
+    # Layout Blocks
+    TwoColumnBlock,
+    ContentWithImageBlock,
+    ContentWithVariableWidthBlock,
+    AccordionBlock,
+    
+    # Card & Grid Blocks
+    CardGridBlock,
+    
+    # CTA & Button Blocks
+    CTAButtonBlock,
+    ButtonBlock,
+    MultipleButtonsBlock,
+    
+    # Specialized Blocks
     EssenceSectionBlock,
     GsapTextVideoBlock,
-    ContentWithImageBlock,
-    CardGridBlock,
-    CTAButtonBlock
+    
+    # Utility Blocks
+    SpaceBlock,
+    DividerBlock,
 )
 
 
@@ -25,12 +53,33 @@ class HomePage(Page):
     )
     
     body_content = StreamField([
+        ('heading', HeadingBlock()),
+        ('content', ContentBlock()),
+        ('lead', LeadBlock()),
+        ('quote', QuoteBlock()),
+        
+        ('image', ResponsiveImageBlock()),
+        ('fullwidth_image', FullwidthImageBlock()),
+        ('video', VideoBlock()),
+        ('image_gallery', ImageGalleryBlock()),
+        
+        ('two_column', TwoColumnBlock()),
+        ('content_with_image', ContentWithImageBlock()),
+        ('content_variable_width', ContentWithVariableWidthBlock()),
+        ('accordion', AccordionBlock()),
+        
+        ('card_grid', CardGridBlock()),
+        
+        ('cta_button', CTAButtonBlock()),
+        ('button', ButtonBlock()),
+        ('multiple_buttons', MultipleButtonsBlock()),
+        
         ('essence_section', EssenceSectionBlock()),
         ('gsap_text_video', GsapTextVideoBlock()),
-        ('content_with_image', ContentWithImageBlock()),
-        ('cta_button', CTAButtonBlock()),
-        ('card_grid', CardGridBlock()),
-    ], null=True, blank=True, use_json_field=True, help_text="Page content sections")
+        
+        ('space', SpaceBlock()),
+        ('divider', DividerBlock()),
+    ], null=True, blank=True, use_json_field=True, help_text="Page content sections - build your entire home page with these blocks")
 
     content_panels = Page.content_panels + [
         FieldPanel('hero_section'),
@@ -202,6 +251,211 @@ class HomePage(Page):
                     }
                 }
                 
+            elif block_type == 'heading':
+                block_data = {
+                    'id': block.id,
+                    'type': 'heading',
+                    'value': {
+                        'heading': str(block_value.get('heading', '')),
+                        'alignment': block_value.get('alignment', 'left'),
+                        'css_class': block_value.get('css_class', ''),
+                    }
+                }
+                
+            elif block_type == 'content':
+                block_data = {
+                    'id': block.id,
+                    'type': 'content',
+                    'value': {
+                        'content': str(block_value.get('content', '')),
+                        'list_style': block_value.get('list_style', 'default'),
+                        'css_class': block_value.get('css_class', ''),
+                    }
+                }
+                
+            elif block_type == 'lead':
+                block_data = {
+                    'id': block.id,
+                    'type': 'lead',
+                    'value': {
+                        'content': str(block_value.get('content', '')),
+                        'alignment': block_value.get('alignment', 'left'),
+                        'css_class': block_value.get('css_class', ''),
+                    }
+                }
+                
+            elif block_type == 'quote':
+                block_data = {
+                    'id': block.id,
+                    'type': 'quote',
+                    'value': {
+                        'quote': str(block_value.get('quote', '')),
+                        'author': block_value.get('author', ''),
+                        'position': block_value.get('position', ''),
+                    }
+                }
+                
+            elif block_type == 'image':
+                block_data = {
+                    'id': block.id,
+                    'type': 'image',
+                    'value': {
+                        'image': {
+                            'url': block_value['image'].file.url if block_value.get('image') else '',
+                            'alt': block_value.get('alt_text', '') or (block_value['image'].title if block_value.get('image') else ''),
+                        } if block_value.get('image') else None,
+                        'caption': block_value.get('caption', ''),
+                        'attribution': block_value.get('attribution', ''),
+                    }
+                }
+                
+            elif block_type == 'fullwidth_image':
+                block_data = {
+                    'id': block.id,
+                    'type': 'fullwidth_image',
+                    'value': {
+                        'image': {
+                            'url': block_value['image'].file.url if block_value.get('image') else '',
+                            'alt': block_value.get('alt_text', '') or (block_value['image'].title if block_value.get('image') else ''),
+                        } if block_value.get('image') else None,
+                        'caption': block_value.get('caption', ''),
+                    }
+                }
+                
+            elif block_type == 'video':
+                block_data = {
+                    'id': block.id,
+                    'type': 'video',
+                    'value': {
+                        'video_url': block_value.get('video_url', ''),
+                        'poster_image': {
+                            'url': block_value['poster_image'].file.url if block_value.get('poster_image') else '',
+                            'alt': block_value['poster_image'].title if block_value.get('poster_image') else '',
+                        } if block_value.get('poster_image') else None,
+                        'is_autoplay': block_value.get('is_autoplay', False),
+                        'caption': block_value.get('caption', ''),
+                        'video_type': block_value.video_type() if hasattr(block_value, 'video_type') else 'unknown',
+                    }
+                }
+                
+            elif block_type == 'image_gallery':
+                block_data = {
+                    'id': block.id,
+                    'type': 'image_gallery',
+                    'value': {
+                        'title': block_value.get('title', ''),
+                        'images': [
+                            {
+                                'url': img['image'].file.url if img.get('image') else '',
+                                'alt': img.get('image', {}).title if img.get('image') else '',
+                                'caption': img.get('caption', ''),
+                            }
+                            for img in block_value.get('images', [])
+                        ],
+                        'layout': block_value.get('layout', 'slider'),
+                    }
+                }
+                
+            elif block_type == 'two_column':
+                block_data = {
+                    'id': block.id,
+                    'type': 'two_column',
+                    'value': {
+                        'top_padding': block_value.get('top_padding', ''),
+                        'bottom_padding': block_value.get('bottom_padding', ''),
+                        'background': block_value.get('background', ''),
+                        'left_column': {
+                            'width': block_value.get('left_column_width', 'col-lg-6'),
+                            'offset': block_value.get('left_column_offset', ''),
+                            'content': self._serialize_content_stream(block_value.get('left_column', [])),
+                        },
+                        'right_column': {
+                            'width': block_value.get('right_column_width', 'col-lg-6'),
+                            'offset': block_value.get('right_column_offset', ''),
+                            'content': self._serialize_content_stream(block_value.get('right_column', [])),
+                        },
+                        'css_class': block_value.get('css_class', ''),
+                    }
+                }
+                
+            elif block_type == 'content_variable_width':
+                block_data = {
+                    'id': block.id,
+                    'type': 'content_variable_width',
+                    'value': {
+                        'top_padding': block_value.get('top_padding', ''),
+                        'bottom_padding': block_value.get('bottom_padding', ''),
+                        'column_width': block_value.get('column_width', 'col-lg-12'),
+                        'column_offset': block_value.get('column_offset', ''),
+                        'background': block_value.get('background', ''),
+                        'content': self._serialize_content_stream(block_value.get('content_blocks', [])),
+                        'css_class': block_value.get('css_class', ''),
+                    }
+                }
+                
+            elif block_type == 'accordion':
+                block_data = {
+                    'id': block.id,
+                    'type': 'accordion',
+                    'value': {
+                        'items': [
+                            {
+                                'title': item.get('title', ''),
+                                'content': self._serialize_content_stream(item.get('content', [])),
+                            }
+                            for item in block_value.get('items', [])
+                        ],
+                    }
+                }
+                
+            elif block_type == 'button':
+                block_data = {
+                    'id': block.id,
+                    'type': 'button',
+                    'value': {
+                        'text': block_value.get('text', ''),
+                        'href': block_value.get('href', {}).url() if block_value.get('href') and block_value.get('href').is_url() else '#',
+                        'theme': block_value.get('theme', 'btn-primary'),
+                        'size': block_value.get('size', 'btn-md'),
+                    }
+                }
+                
+            elif block_type == 'multiple_buttons':
+                block_data = {
+                    'id': block.id,
+                    'type': 'multiple_buttons',
+                    'value': {
+                        'buttons': [
+                            {
+                                'text': btn.get('text', ''),
+                                'href': btn.get('href', {}).url() if btn.get('href') and btn.get('href').is_url() else '#',
+                                'theme': btn.get('theme', 'btn-primary'),
+                                'size': btn.get('size', 'btn-md'),
+                            }
+                            for btn in block_value.get('buttons', [])
+                        ],
+                        'alignment': block_value.get('alignment', 'left'),
+                    }
+                }
+                
+            elif block_type == 'space':
+                block_data = {
+                    'id': block.id,
+                    'type': 'space',
+                    'value': {
+                        'height': block_value.get('height', 50),
+                    }
+                }
+                
+            elif block_type == 'divider':
+                block_data = {
+                    'id': block.id,
+                    'type': 'divider',
+                    'value': {
+                        'style': block_value.get('style', 'solid'),
+                    }
+                }
+            
             else:
                 # Handle unknown block types
                 block_data = {
@@ -227,6 +481,7 @@ class HomePage(Page):
                     'value': {
                         'heading': str(content_value.get('heading', '')),
                         'alignment': content_value.get('alignment', 'left'),
+                        'css_class': content_value.get('css_class', ''),
                     }
                 })
             elif content_type == 'content':
@@ -234,6 +489,26 @@ class HomePage(Page):
                     'type': 'content',
                     'value': {
                         'content': str(content_value.get('content', '')),
+                        'list_style': content_value.get('list_style', 'default'),
+                        'css_class': content_value.get('css_class', ''),
+                    }
+                })
+            elif content_type == 'lead':
+                serialized_content.append({
+                    'type': 'lead',
+                    'value': {
+                        'content': str(content_value.get('content', '')),
+                        'alignment': content_value.get('alignment', 'left'),
+                        'css_class': content_value.get('css_class', ''),
+                    }
+                })
+            elif content_type == 'quote':
+                serialized_content.append({
+                    'type': 'quote',
+                    'value': {
+                        'quote': str(content_value.get('quote', '')),
+                        'author': content_value.get('author', ''),
+                        'position': content_value.get('position', ''),
                     }
                 })
             elif content_type == 'button':
@@ -241,8 +516,65 @@ class HomePage(Page):
                     'type': 'button',
                     'value': {
                         'text': content_value.get('text', ''),
-                        'href': content_value['href'].url() if content_value.get('href') and content_value['href'].is_url() else '#',
+                        'href': content_value.get('href', {}).url() if content_value.get('href') and content_value.get('href').is_url() else '#',
                         'theme': content_value.get('theme', 'btn-primary'),
+                        'size': content_value.get('size', 'btn-md'),
+                    }
+                })
+            elif content_type == 'multiple_buttons':
+                serialized_content.append({
+                    'type': 'multiple_buttons',
+                    'value': {
+                        'buttons': [
+                            {
+                                'text': btn.get('text', ''),
+                                'href': btn.get('href', {}).url() if btn.get('href') and btn.get('href').is_url() else '#',
+                                'theme': btn.get('theme', 'btn-primary'),
+                                'size': btn.get('size', 'btn-md'),
+                            }
+                            for btn in content_value.get('buttons', [])
+                        ],
+                        'alignment': content_value.get('alignment', 'left'),
+                    }
+                })
+            elif content_type == 'image':
+                serialized_content.append({
+                    'type': 'image',
+                    'value': {
+                        'image': {
+                            'url': content_value['image'].file.url if content_value.get('image') else '',
+                            'alt': content_value.get('alt_text', '') or (content_value['image'].title if content_value.get('image') else ''),
+                        } if content_value.get('image') else None,
+                        'caption': content_value.get('caption', ''),
+                        'attribution': content_value.get('attribution', ''),
+                    }
+                })
+            elif content_type == 'video':
+                serialized_content.append({
+                    'type': 'video',
+                    'value': {
+                        'video_url': content_value.get('video_url', ''),
+                        'poster_image': {
+                            'url': content_value['poster_image'].file.url if content_value.get('poster_image') else '',
+                            'alt': content_value['poster_image'].title if content_value.get('poster_image') else '',
+                        } if content_value.get('poster_image') else None,
+                        'is_autoplay': content_value.get('is_autoplay', False),
+                        'caption': content_value.get('caption', ''),
+                        'video_type': content_value.video_type() if hasattr(content_value, 'video_type') else 'unknown',
+                    }
+                })
+            elif content_type == 'space':
+                serialized_content.append({
+                    'type': 'space',
+                    'value': {
+                        'height': content_value.get('height', 50),
+                    }
+                })
+            elif content_type == 'divider':
+                serialized_content.append({
+                    'type': 'divider',
+                    'value': {
+                        'style': content_value.get('style', 'solid'),
                     }
                 })
         
