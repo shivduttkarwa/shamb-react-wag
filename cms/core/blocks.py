@@ -715,6 +715,74 @@ class BlogSlideBlock(SlideItemBlock):
 
 
 # ============================================================================
+# ESSENCE SECTION BLOCKS
+# ============================================================================
+
+class EssenceSectionBlock(blocks.StructBlock):
+    """Simple content block for EssenceSection with only 4 fields."""
+    title = blocks.CharBlock(
+        max_length=200,
+        help_text="Main heading for the essence section"
+    )
+    description = blocks.TextBlock(
+        help_text="Description text for the essence section"
+    )
+    cta_text = blocks.CharBlock(
+        max_length=50,
+        help_text="Call-to-action button text"
+    )
+    cta_link = HrefBlock(
+        help_text="Call-to-action button link"
+    )
+    image = ImageChooserBlock(
+        help_text="Main image for the essence section"
+    )
+
+    class Meta:
+        label = "Essence Section"
+        icon = "doc-full-inverse"
+        template = "core/blocks/essence_section.html"
+
+
+class GsapTextVideoBlock(blocks.StructBlock):
+    """GSAP Text Video block for falling text animation with video."""
+    left_text = blocks.CharBlock(
+        max_length=100,
+        default="Latest",
+        help_text="Text on the left side"
+    )
+    right_text = blocks.CharBlock(
+        max_length=100,
+        default="Project",
+        help_text="Text on the right side"
+    )
+    video_url = blocks.URLBlock(
+        help_text="Direct video URL (.mp4, .webm, .ogg, .mov)"
+    )
+    background_color = blocks.CharBlock(
+        max_length=50,
+        default="var(--light-bg)",
+        required=False,
+        help_text="CSS background color value"
+    )
+    bottom_left_text = blocks.CharBlock(
+        max_length=50,
+        default="CREATIVE",
+        help_text="Bottom falling text on the left"
+    )
+    bottom_right_text = blocks.CharBlock(
+        max_length=50,
+        default="DIGITAL",
+        help_text="Bottom falling text on the right"
+    )
+
+    class Meta:
+        label = "GSAP Text Video"
+        icon = "media"
+        template = "core/blocks/gsap_text_video.html"
+
+
+# ============================================================================
 # SITE SETTINGS BLOCKS (Header/Footer)
 # ============================================================================
 

@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import GlassRainButton from "../UI/GlassRainButton";
 import DynamicHeroSlider from "../Home/DynamicHeroSlider";
@@ -11,6 +11,26 @@ interface ModernHeroProps {
 
 const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
   const { heroData, loading, error } = useMainHero();
+  const [videoError, setVideoError] = useState(false);
+  
+  // Reset video error when hero data changes
+  useEffect(() => {
+    setVideoError(false);
+  }, [heroData?.hero_video?.url]);
+
+  // Check if URL is a Vimeo URL
+  const isVimeoUrl = (url: string) => {
+    return url.includes('vimeo.com');
+  };
+
+  // Convert Vimeo URL to embed URL
+  const getVimeoEmbedUrl = (url: string) => {
+    const videoIdMatch = url.match(/vimeo\.com\/(\d+)/);
+    if (videoIdMatch) {
+      return `https://player.vimeo.com/video/${videoIdMatch[1]}?autoplay=1&loop=1&muted=1&background=1`;
+    }
+    return url;
+  };
   const curtainRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
@@ -37,7 +57,6 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
     if (
       !curtain ||
       !heroVideo ||
-      !videoEl ||
       !scatterWordEl ||
       !subtitleEl ||
       !subtitleDynamicEl ||
@@ -304,8 +323,10 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
 
     gsap.set(scatterSpans, { x: 0, y: 0, opacity: 0, scale: 1 });
 
-    videoEl.pause();
-    videoEl.currentTime = 0;
+    if (!videoError && videoEl && heroData?.hero_video?.url && !isVimeoUrl(heroData.hero_video.url)) {
+      videoEl.pause();
+      videoEl.currentTime = 0;
+    }
 
     gsap.set(ctaEl, { x: positions.ctaTargetX, y: positions.ctaTargetY + 80 });
     gsap.set(newsEl, {
@@ -332,8 +353,10 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         duration: VIDEO_EXPAND_DURATION,
         ease: "power2.out",
         onStart: () => {
-          videoEl.currentTime = 0;
-          videoEl.play();
+          if (!videoError && videoEl && heroData?.hero_video?.url && !isVimeoUrl(heroData.hero_video.url)) {
+            videoEl.currentTime = 0;
+            videoEl.play().catch(() => setVideoError(true));
+          }
         },
       },
       0
@@ -413,7 +436,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         },
         "postAssemble+=" + SUBTITLE_DELAY_AFTER_ASSEMBLY
       );
-  }, [animate, heroData, loading]);
+  }, [animate, heroData, loading, videoError]);
 
   if (loading) {
     return (
@@ -423,9 +446,6 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
     );
   }
 
-  if (error) {
-    console.warn('ModernHero error:', error);
-  }
 
   if (!heroData) {
     return (
@@ -462,13 +482,47 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       </div>
 
       <div className="mh-hero-video" ref={heroVideoRef}>
-        <video 
-          ref={videoElRef} 
-          src={heroData?.hero_video?.url || '/images/home_hero.mp4'} 
-          muted 
-          loop 
-          playsInline 
-        />
+        {!videoError && heroData?.hero_video?.url ? (
+          isVimeoUrl(heroData.hero_video.url) ? (
+            <iframe
+              src={getVimeoEmbedUrl(heroData.hero_video.url)}
+              allow="autoplay; fullscreen"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '100vw',
+                height: '56.25vw', // 16:9 aspect ratio
+                minHeight: '100vh',
+                minWidth: '177.78vh', // 16:9 aspect ratio
+                transform: 'translate(-50%, -50%)',
+                border: 'none'
+              }}
+              onError={() => setVideoError(true)}
+            />
+          ) : (
+            <video 
+              ref={videoElRef} 
+              src={heroData.hero_video.url}
+              muted 
+              loop 
+              playsInline 
+              onError={() => setVideoError(true)}
+            />
+          )
+        ) : (
+          <div 
+            style={{
+              backgroundImage: heroData?.hero_image?.url 
+                ? `url(${heroData.hero_image.url})` 
+                : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              width: '100%',
+              height: '100%'
+            }}
+          />
+        )}
         <div className="mh-image-overlay"></div>
       </div>
     </div>

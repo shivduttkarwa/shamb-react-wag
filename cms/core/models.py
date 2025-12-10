@@ -32,6 +32,12 @@ class MainHero(models.Model):
         help_text="Hero background video (.mp4, .webm)"
     )
     
+    hero_video_url = models.URLField(
+        null=True,
+        blank=True,
+        help_text="Hero video URL (alternative to uploaded video file)"
+    )
+    
     hero_text_static = models.CharField(
         max_length=100,
         default="Something",
@@ -111,6 +117,7 @@ class MainHero(models.Model):
         MultiFieldPanel([
             FieldPanel('hero_image'),
             FieldPanel('hero_video'),
+            FieldPanel('hero_video_url'),
         ], heading="Hero Media"),
         
         MultiFieldPanel([
@@ -164,10 +171,11 @@ class MainHero(models.Model):
             return self.blog_slider
         return None
 
-    @property 
-    def hero_video_url(self):
-        """Return hero video URL if exists"""
-        if self.hero_video:
+    def get_hero_video_url(self):
+        """Return hero video URL if exists (prioritize URL field over file)"""
+        if self.hero_video_url:
+            return self.hero_video_url
+        elif self.hero_video:
             return self.hero_video.url
         return None
 
@@ -188,8 +196,8 @@ class MainHero(models.Model):
                 'alt': self.hero_image.title if self.hero_image else '',
             } if self.hero_image else None,
             'hero_video': {
-                'url': self.hero_video_url
-            } if self.hero_video else None,
+                'url': self.get_hero_video_url()
+            } if self.get_hero_video_url() else None,
             'hero_text_static': self.hero_text_static,
             'changing_text_words': self.changing_words_list,
             'description': self.description,

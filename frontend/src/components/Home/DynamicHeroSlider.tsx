@@ -15,11 +15,6 @@ const DynamicHeroSlider = forwardRef<HTMLDivElement, DynamicHeroSliderProps>(
 
     const slides = sliderData?.slides || [];
     
-    console.log('DynamicHeroSlider Props:', {
-      sliderData,
-      sliderType,
-      slidesLength: slides.length
-    });
 
     useEffect(() => {
       if (!slides.length || !sliderData?.settings.autoplay) return;

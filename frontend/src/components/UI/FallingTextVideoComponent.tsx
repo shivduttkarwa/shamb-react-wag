@@ -22,6 +22,17 @@ const FallingTextVideoComponent: React.FC<FallingTextVideoComponentProps> = ({
   bottomLeftText = "CREATIVE",
   bottomRightText = "DIGITAL",
 }) => {
+  
+  // Debug logging
+  console.log('FallingTextVideoComponent props:', { 
+    leftText, 
+    rightText, 
+    videoSrc, 
+    backgroundColor, 
+    bottomLeftText, 
+    bottomRightText 
+  });
+
   const wrapperRef = useRef<HTMLElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);

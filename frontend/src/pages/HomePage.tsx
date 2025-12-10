@@ -1,7 +1,6 @@
 import React from "react";
 import ModernHero from "../components/Reusable/ModernHero";
 import {
-  EssenceSection,
   PortfolioShowcase,
   FeaturedProperties,
 } from "../components/Home";
@@ -31,7 +30,9 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _, animateHero = true }) 
       <div id="hero">
         <ModernHero animate={animateHero} />
       </div>
-      <EssenceSection />
+      
+      {/* Dynamic content from Wagtail */}
+      <BodyRenderer blocks={bodyBlocks} />
       <div id="services">
         <ServicesSection />
       </div>

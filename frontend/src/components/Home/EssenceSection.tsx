@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./EssenceSection.css";
 import GlassButton from "../UI/GlassButton";
-import FallingTextVideoComponent from "../UI/FallingTextVideoComponent";
 import TiltTextGsap from "../UI/TiltTextGsap";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +21,6 @@ interface EssenceSectionProps {
     mobile?: string;
     alt: string;
   };
-  videoUrl?: string;
 }
 
 const publicUrl = import.meta.env.BASE_URL;
@@ -34,17 +32,35 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
   description = "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort and beauty. From the way light moves through a room to the textures you brush past each morning, we obsess over the details so that each space tells a story, reflects its inhabitants, and quietly refreshes the spirit day after day.",
   ctaText = "VIEW OUR DESIGNS",
   ctaHref = "/projects",
-  image = {
+  image,
+}) => {
+  
+  // Debug logging
+  console.log('EssenceSection props:', { heading, description, ctaText, ctaHref, image });
+  
+  // Fallback image if none provided
+  const defaultImage = {
     src: `${publicUrl}images/fwi1.jpg`,
     alt: "Modern architectural design",
-  },
-  videoUrl = `${publicUrl}images/hero1.mp4`,
-}) => {
-  const shortDescription =
-    "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort and beauty.";
+  };
   
-  const extraLargeDescription = 
-    "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort.";
+  const displayImage = image || defaultImage;
+  // Use the passed description or truncate it for different screen sizes
+  const getDescriptionForScreen = () => {
+    if (!description) return "";
+    
+    // For very large screens, limit to ~400 chars
+    if (typeof window !== "undefined" && window.innerWidth >= 1600) {
+      return description.length > 400 ? description.substring(0, 400) + "..." : description;
+    }
+    
+    // For smaller screens, limit to ~300 chars
+    if (typeof window !== "undefined" && window.innerWidth < 1600) {
+      return description.length > 300 ? description.substring(0, 300) + "..." : description;
+    }
+    
+    return description;
+  };
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLDivElement>(null);
@@ -159,11 +175,7 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
             </div>
 
             <div className="essence-description">
-              {typeof window !== "undefined" && window.innerWidth >= 1600
-                ? extraLargeDescription
-                : typeof window !== "undefined" && window.innerWidth < 1600
-                ? shortDescription
-                : description}
+              {getDescriptionForScreen()}
             </div>
 
             <div ref={ctaRef} className="essence-cta-desktop">
@@ -175,18 +187,18 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
           <div className="essence-image">
             <img
               ref={imageRef}
-              src={image.src}
+              src={displayImage.src}
               srcSet={
-                image.mobile && image.tablet && image.desktop
-                  ? `${image.mobile} 700w, ${image.tablet} 1000w, ${image.desktop} 1200w`
+                displayImage.mobile && displayImage.tablet && displayImage.desktop
+                  ? `${displayImage.mobile} 700w, ${displayImage.tablet} 1000w, ${displayImage.desktop} 1200w`
                   : undefined
               }
               sizes={
-                image.mobile && image.tablet && image.desktop
+                displayImage.mobile && displayImage.tablet && displayImage.desktop
                   ? "(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
                   : undefined
               }
-              alt={image.alt}
+              alt={displayImage.alt}
               className="essence-img"
             />
           </div>
@@ -198,17 +210,6 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
         </div>
       </div>
 
-      {/* Video Text Animation Section */}
-      {videoUrl && (
-        <FallingTextVideoComponent
-          leftText="SERVICES"
-          rightText="PROJETS"
-          videoSrc={videoUrl}
-          backgroundColor="var(--light-bg)"
-          bottomLeftText="Design"
-          bottomRightText="purpose"
-        />
-      )}
     </section>
   );
 };

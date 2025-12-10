@@ -64,6 +64,13 @@
   object-fit: cover;
 }
 
+.ftv-video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+}
+
 .ftv-bottom-text {
   position: absolute;
   bottom: 15vh;

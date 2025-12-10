@@ -254,8 +254,67 @@ export interface FeaturedPropertiesBlock {
   id: string;
 }
 
+// Content With Image Block Types
+export interface ContentWithImageBlock {
+  type: 'content_with_image';
+  value: {
+    image: {
+      url: string;
+      alt: string;
+    };
+    alignment: 'left' | 'right';
+    content: any[]; // ContentStreamBlock content
+    background?: string;
+    top_padding?: string;
+    bottom_padding?: string;
+    css_class?: string;
+  };
+  id: string;
+}
+
+//EssenceSection Block Types
+export interface EssenceSectionBlock {
+  type: 'essence_section';
+  value: {
+    title: string;
+    description: string;
+    cta_text: string;
+    cta_href: string;
+    image: {
+      src: string;
+      alt: string;
+    } | null;
+  };
+  id: string;
+}
+
+// GSAP Text Video Block Types
+export interface GsapTextVideoBlock {
+  type: 'gsap_text_video';
+  value: {
+    left_text: string;
+    right_text: string;
+    video_src: string;
+    background_color: string;
+    bottom_left_text: string;
+    bottom_right_text: string;
+  };
+  id: string;
+}
+
 // Body Content Types
-export type BodyBlock = HorizontalSliderBlock | ResidentialProjectsBlock | CommercialProjectsBlock | QualityHomesBlock | BlogSectionBlock | FeaturedPropertiesBlock;
+export type BodyBlock = HorizontalSliderBlock | ResidentialProjectsBlock | CommercialProjectsBlock | QualityHomesBlock | BlogSectionBlock | FeaturedPropertiesBlock | ContentWithImageBlock | EssenceSectionBlock | GsapTextVideoBlock;
+
+export interface EssenceSectionData {
+  title: string;
+  description: string;
+  cta_text: string;
+  cta_href: string;
+  image: {
+    src: string;
+    alt: string;
+  } | null;
+}
 
 export interface WagtailHomePage {
   id: number;
@@ -343,7 +402,7 @@ export const fetchHomePage = async (): Promise<WagtailHomePage | null> => {
     const response = await api.get<WagtailApiResponse<WagtailHomePage>>('/pages/', {
       params: {
         type: 'home.HomePage',
-        fields: 'title,hero_section_data',
+        fields: 'title,hero_section_data,body_content_data',
         limit: 1,
       },
     });

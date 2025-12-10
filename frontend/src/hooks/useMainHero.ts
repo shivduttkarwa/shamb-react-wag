@@ -82,8 +82,6 @@ export const useMainHero = (): UseMainHeroReturn => {
         
         const data = await fetchHomePage();
         
-        console.log('API Response:', data);
-        console.log('Hero Section Data:', data?.hero_section_data);
         
         if (data && data.hero_section_data) {
           setHeroData(data.hero_section_data);

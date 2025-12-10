@@ -1,0 +1,38 @@
+.body-renderer {
+  /* Container for all body blocks */
+}
+
+.block-placeholder {
+  padding: 2rem;
+  margin: 1rem 0;
+  background-color: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.block-placeholder h3 {
+  color: #6c757d;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+}
+
+.block-placeholder p {
+  color: #6c757d;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.unknown-block {
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #fff3cd;
+  border: 2px solid #ffecb5;
+  border-radius: 8px;
+  color: #856404;
+}
+
+.unknown-block p {
+  margin: 0;
+  font-weight: 500;
+}
