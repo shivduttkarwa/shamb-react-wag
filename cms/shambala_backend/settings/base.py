@@ -34,7 +34,7 @@ environ.Env.read_env(BASE_DIR / '.env')
 # [HEADLESS/POSTGRES CHANGE] Use env variables for sensitive settings
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*']) # Allows all hosts for development
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', '127.0.0.1:8000']) # Allows frontend host
 
 # Application definition
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "home",
     "search",
     "core",
+    "payments",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -75,7 +76,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     # [HEADLESS/POSTGRES CHANGE] Add CORS middleware at the top
     "corsheaders.middleware.CorsMiddleware", 
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -226,3 +226,9 @@ WAGTAILAPI_ENABLED_CLASSES = [
 # [HEADLESS/POSTGRES CHANGE] CORS Settings (Crucial for React Frontend Access)
 # IMPORTANT: This allows ALL origins access. For production, restrict this to your React domain.
 CORS_ALLOW_ALL_ORIGINS = True
+
+# CSRF Trusted Origins for React Frontend
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]

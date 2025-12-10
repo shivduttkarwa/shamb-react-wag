@@ -13,6 +13,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import BlogListPage from "./pages/BlogListPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import Payments from "./pages/Payments";
 import { useSiteSettings } from "./hooks/useSiteSettings";
 import ScrollToTop from "./components/UI/ScrollToTop";
 import { useState } from "react";
@@ -45,6 +46,7 @@ function App() {
               <Route path="/blog/:slug" element={<BlogDetailPage />} />
               <Route path="/contact" element={<NewContact />} />
               <Route path="/new-contact" element={<NewContact />} />
+              <Route path="/payments" element={<Payments />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             </Routes>

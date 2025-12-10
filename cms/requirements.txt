@@ -11,6 +11,9 @@ django-cors-headers>=4.0.0
 # Environment variables
 django-environ>=0.10.0
 
+# Payment processing
+stripe>=7.0.0
+
 # Additional useful packages
 django-filter>=23.0
 Pillow>=10.0.0

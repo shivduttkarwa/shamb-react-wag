@@ -466,6 +466,32 @@ tl.to(path, {
                 <div className="olm-menu-item-revealer"></div>
               </div>
 
+              {/* 6 - Payments */}
+              <div className="olm-menu-item olm-modern-menu-item olm-menu-item-payments">
+                <div className="olm-menu-line"></div>
+                <Link to="/payments">
+                  <span className="olm-menu-number">05.</span>
+                  <div className="olm-menu-arrow">
+                    <svg width="40" height="25" viewBox="0 0 40 25">
+                      <path
+                        className="olm-arrow-line"
+                        d="M2 25 L2 5 L25 5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        fill="none"
+                      />
+                      <polygon
+                        className="olm-arrow-tip"
+                        points="25,1 37,5 25,9"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <span className="olm-menu-text">Payments</span>
+                </Link>
+                <div className="olm-menu-item-revealer"></div>
+              </div>
+
               {/* Mobile Secondary Menu - Only visible on mobile */}
               <div className="olm-mobile-secondary-menu">
                 <div className="olm-mobile-social-icons">
@@ -480,6 +506,9 @@ tl.to(path, {
                   </Link>
                   <Link to="/new-contact" className="olm-mobile-social-icon olm-mobile-contact-icon">
                     <span className="olm-mobile-menu-number">04</span>
+                  </Link>
+                  <Link to="/payments" className="olm-mobile-social-icon olm-mobile-payments-icon">
+                    <span className="olm-mobile-menu-number">05</span>
                   </Link>
                 </div>
               </div>
