@@ -41,29 +41,26 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
     }
   }, []);
 
-  // Big FORMA text animation (slide up + color flash) - SIMPLE VERSION
+  // Big FORMA text animation (slide up + color flash)
   useEffect(() => {
     const letters = brandTextRef.current?.querySelectorAll(".forma-footer-letter");
     if (!letters || letters.length === 0) return;
 
-    const colors = ["#ff6b6b", "#4ecdc4", "#ffe66d", "#a8e6cf", "#ff8b94"];
-    
-    // Simple initialization
+    const colors = ["#ff6b6b", "#4ecdc4", "#ffe66d", "#9b59b6", "#ff8b94"];
     gsap.set(letters, { yPercent: 100 });
 
     const st = ScrollTrigger.create({
       trigger: brandTextRef.current,
       start: "top 90%",
-      toggleActions: "play none none reverse",
+      toggleActions: "play reset play reset",
       onEnter: () => {
-        // Simple slide up
+        gsap.set(letters, { yPercent: 100, opacity: 1 });
         gsap.to(letters, {
           yPercent: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
+          duration: 0.6,
+          stagger: 0.06,
+          ease: "back.out(2.7)",
           onComplete: () => {
-            // Color flash after slide completes
             letters.forEach((letter, index) => {
               gsap.to(letter, {
                 color: colors[index % colors.length],

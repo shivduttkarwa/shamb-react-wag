@@ -5,10 +5,15 @@
   --cream: #faf8f3;
 }
 
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
 html,
 body {
   overflow-x: hidden !important;
 }
+
 body {
   margin: 0;
   color: var(--text);

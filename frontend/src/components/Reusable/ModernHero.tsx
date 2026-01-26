@@ -1,36 +1,19 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef } from "react";
 import gsap from "gsap";
 import GlassRainButton from "../UI/GlassRainButton";
-import DynamicHeroSlider from "../Home/DynamicHeroSlider";
-import { useMainHero } from "../../hooks/useMainHero";
+import HomeHeroSlider from "../Home/HomeHeroSlider";
 import "./ModernHero.css";
+
+const publicUrl = import.meta.env.BASE_URL || "/";
+const heroVideo = publicUrl.endsWith("/")
+  ? `${publicUrl}images/home_hero.mp4`
+  : `${publicUrl}/images/home_hero.mp4`;
 
 interface ModernHeroProps {
   animate?: boolean;
 }
 
 const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
-  const { heroData, loading, error } = useMainHero();
-  const [videoError, setVideoError] = useState(false);
-  
-  // Reset video error when hero data changes
-  useEffect(() => {
-    setVideoError(false);
-  }, [heroData?.hero_video?.url]);
-
-  // Check if URL is a Vimeo URL
-  const isVimeoUrl = (url: string) => {
-    return url.includes('vimeo.com');
-  };
-
-  // Convert Vimeo URL to embed URL
-  const getVimeoEmbedUrl = (url: string) => {
-    const videoIdMatch = url.match(/vimeo\.com\/(\d+)/);
-    if (videoIdMatch) {
-      return `https://player.vimeo.com/video/${videoIdMatch[1]}?autoplay=1&loop=1&muted=1&background=1`;
-    }
-    return url;
-  };
   const curtainRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
@@ -42,7 +25,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!animate || loading || !heroData) return;
+    if (!animate) return;
 
     const curtain = curtainRef.current;
     const heroVideo = heroVideoRef.current;
@@ -57,6 +40,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
     if (
       !curtain ||
       !heroVideo ||
+      !videoEl ||
       !scatterWordEl ||
       !subtitleEl ||
       !subtitleDynamicEl ||
@@ -88,7 +72,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       return spans;
     }
 
-    const SCATTER_TEXT = heroData?.title || "CREATE";
+    const SCATTER_TEXT = "CREATE";
 
     const scatterSpans = createCharSpans(
       scatterWordEl,
@@ -96,10 +80,9 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       "mh-scatter-letter"
     );
 
-    const changingWords = heroData?.changing_text_words || 
-      (window.innerWidth < 576 
-        ? ["SCULPTED", "WARM", "BALANCED", "ICONIC"] // Mobile: keep current words
-        : ["ELEGANT", "STUNNING", "PREMIUM", "CLASSIC"]); // Desktop: shorter by ~20%
+    const changingWords = window.innerWidth < 576 
+  ? ["SCULPTED", "WARM", "BALANCED", "ICONIC"] // Mobile: keep current words
+  : ["ELEGANT", "STUNNING", "PREMIUM", "CLASSIC"]; // Desktop: shorter by ~20%
 
     function animateSubtitleWord(index: number) {
       if (!subtitleDynamicEl) return;
@@ -323,10 +306,8 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
 
     gsap.set(scatterSpans, { x: 0, y: 0, opacity: 0, scale: 1 });
 
-    if (!videoError && videoEl && heroData?.hero_video?.url && !isVimeoUrl(heroData.hero_video.url)) {
-      videoEl.pause();
-      videoEl.currentTime = 0;
-    }
+    videoEl.pause();
+    videoEl.currentTime = 0;
 
     gsap.set(ctaEl, { x: positions.ctaTargetX, y: positions.ctaTargetY + 80 });
     gsap.set(newsEl, {
@@ -353,10 +334,8 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         duration: VIDEO_EXPAND_DURATION,
         ease: "power2.out",
         onStart: () => {
-          if (!videoError && videoEl && heroData?.hero_video?.url && !isVimeoUrl(heroData.hero_video.url)) {
-            videoEl.currentTime = 0;
-            videoEl.play().catch(() => setVideoError(true));
-          }
+          videoEl.currentTime = 0;
+          videoEl.play();
         },
       },
       0
@@ -436,24 +415,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         },
         "postAssemble+=" + SUBTITLE_DELAY_AFTER_ASSEMBLY
       );
-  }, [animate, heroData, loading, videoError]);
-
-  if (loading) {
-    return (
-      <div className="mh-hero" ref={heroRef}>
-        <div className="mh-hero-loading">Loading hero...</div>
-      </div>
-    );
-  }
-
-
-  if (!heroData) {
-    return (
-      <div className="mh-hero" ref={heroRef}>
-        <div className="mh-hero-loading">No hero data available</div>
-      </div>
-    );
-  }
+  }, [animate]);
 
   return (
     <div className="mh-hero" ref={heroRef}>
@@ -464,65 +426,19 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         <h1 className="mh-scatter-word" ref={scatterWordRef}></h1>
 
         <div className="mh-subtitle" ref={subtitleRef}>
-          <span className="mh-subtitle-static">{heroData?.hero_text_static || "Something"} </span>
+          <span className="mh-subtitle-static">Something </span>
           <span className="mh-subtitle-dynamic" ref={subtitleDynamicRef}></span>
         </div>
 
         <div className="mh-ui-cta" ref={ctaRef}>
-          <GlassRainButton href={heroData?.primary_cta?.link || "/projects"}>
-            {heroData?.primary_cta?.text || "Start a Project"}
-          </GlassRainButton>
+          <GlassRainButton href="/projects">Start a Project</GlassRainButton>
         </div>
 
-        <DynamicHeroSlider 
-          ref={newsRef}
-          sliderData={heroData?.active_slider || null}
-          sliderType={heroData?.slider_type || 'none'}
-        />
+        <HomeHeroSlider ref={newsRef} />
       </div>
 
       <div className="mh-hero-video" ref={heroVideoRef}>
-        {!videoError && heroData?.hero_video?.url ? (
-          isVimeoUrl(heroData.hero_video.url) ? (
-            <iframe
-              src={getVimeoEmbedUrl(heroData.hero_video.url)}
-              allow="autoplay; fullscreen"
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: '100vw',
-                height: '56.25vw', // 16:9 aspect ratio
-                minHeight: '100vh',
-                minWidth: '177.78vh', // 16:9 aspect ratio
-                transform: 'translate(-50%, -50%)',
-                border: 'none'
-              }}
-              onError={() => setVideoError(true)}
-            />
-          ) : (
-            <video 
-              ref={videoElRef} 
-              src={heroData.hero_video.url}
-              muted 
-              loop 
-              playsInline 
-              onError={() => setVideoError(true)}
-            />
-          )
-        ) : (
-          <div 
-            style={{
-              backgroundImage: heroData?.hero_image?.url 
-                ? `url(${heroData.hero_image.url})` 
-                : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              width: '100%',
-              height: '100%'
-            }}
-          />
-        )}
+        <video ref={videoElRef} src={heroVideo} muted loop playsInline />
         <div className="mh-image-overlay"></div>
       </div>
     </div>

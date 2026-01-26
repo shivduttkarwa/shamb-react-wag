@@ -1,6 +1,7 @@
 import React from "react";
 import ModernHero from "../components/Reusable/ModernHero";
 import {
+  EssenceSection,
   PortfolioShowcase,
   FeaturedProperties,
 } from "../components/Home";
@@ -9,7 +10,8 @@ import CTASection from "../components/Home/CTASection";
 import ServicesSection from "../components/Home/ServicesSection";
 import BlogSection from "../components/Home/BlogSection";
 import ProjectModernSlider from "../components/Projects/ProjectModernSlider";
-import { FormaServices } from "../components/Services/FormaServices";
+import ShambalaServices from
+  "../components/Home/ShambalaServices";
 // import TextVid from "../components/UI/TextVid";
 import BodyRenderer from "../components/BodyRenderer";
 import { useHome } from "../hooks/useHome";
@@ -17,10 +19,9 @@ import { SiteSettings } from "../services/api";
 
 interface HomePageProps {
   settings: SiteSettings | null;
-  animateHero?: boolean;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ settings: _, animateHero = true }) => {
+const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
   const { bodyBlocks } = useHome();
 
   console.log("HomePage bodyBlocks:", bodyBlocks);
@@ -28,16 +29,14 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _, animateHero = true }) 
   return (
     <>
       <div id="hero">
-        <ModernHero animate={animateHero} />
+        <ModernHero />
       </div>
-      
-      {/* Dynamic content from Wagtail */}
-      <BodyRenderer blocks={bodyBlocks} />
+      <EssenceSection />
       <div id="services">
         <ServicesSection />
       </div>
       <ProjectModernSlider />
-      <FormaServices />
+      <ShambalaServices />
       <div id="projects">
         <PortfolioShowcase />
       </div>

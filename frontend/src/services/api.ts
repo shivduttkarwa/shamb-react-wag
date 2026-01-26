@@ -254,81 +254,22 @@ export interface FeaturedPropertiesBlock {
   id: string;
 }
 
-// Content With Image Block Types
-export interface ContentWithImageBlock {
-  type: 'content_with_image';
-  value: {
-    image: {
-      url: string;
-      alt: string;
-    };
-    alignment: 'left' | 'right';
-    content: any[]; // ContentStreamBlock content
-    background?: string;
-    top_padding?: string;
-    bottom_padding?: string;
-    css_class?: string;
-  };
-  id: string;
-}
-
-//EssenceSection Block Types
-export interface EssenceSectionBlock {
-  type: 'essence_section';
-  value: {
-    title: string;
-    description: string;
-    cta_text: string;
-    cta_href: string;
-    image: {
-      src: string;
-      alt: string;
-    } | null;
-  };
-  id: string;
-}
-
-// GSAP Text Video Block Types
-export interface GsapTextVideoBlock {
-  type: 'gsap_text_video';
-  value: {
-    left_text: string;
-    right_text: string;
-    video_src: string;
-    background_color: string;
-    bottom_left_text: string;
-    bottom_right_text: string;
-  };
-  id: string;
-}
-
 // Body Content Types
-export type BodyBlock = HorizontalSliderBlock | ResidentialProjectsBlock | CommercialProjectsBlock | QualityHomesBlock | BlogSectionBlock | FeaturedPropertiesBlock | ContentWithImageBlock | EssenceSectionBlock | GsapTextVideoBlock;
-
-export interface EssenceSectionData {
-  title: string;
-  description: string;
-  cta_text: string;
-  cta_href: string;
-  image: {
-    src: string;
-    alt: string;
-  } | null;
-}
+export type BodyBlock = HorizontalSliderBlock | ResidentialProjectsBlock | CommercialProjectsBlock | QualityHomesBlock | BlogSectionBlock | FeaturedPropertiesBlock;
 
 export interface WagtailHomePage {
   id: number;
   title: string;
-  body_content_data?: BodyBlock[];
-  hero_section_data: any; // Using any for now to match our MainHero structure
+  body_content_data: BodyBlock[];
+  hero_section_data: HeroSectionData;
   // Legacy fields for backward compatibility
-  main_title?: string[];
-  typed_texts_list?: string[];
-  description?: string;
-  cta_text?: string;
-  cta_link?: string;
-  background_image?: WagtailImage;
-  service_boxes_list?: WagtailServiceBox[];
+  main_title: string[];
+  typed_texts_list: string[];
+  description: string;
+  cta_text: string;
+  cta_link: string;
+  background_image: WagtailImage;
+  service_boxes_list: WagtailServiceBox[];
   intro?: string;
   hero?: WagtailImage;
 }

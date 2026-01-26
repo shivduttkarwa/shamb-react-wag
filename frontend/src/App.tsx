@@ -13,17 +13,11 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import BlogListPage from "./pages/BlogListPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
-import Payments from "./pages/Payments";
 import { useSiteSettings } from "./hooks/useSiteSettings";
 import ScrollToTop from "./components/UI/ScrollToTop";
-import { useState } from "react";
-import HeroLoader from "./components/Reusable/HeroLoader";
 
 function App() {
   const { settings } = useSiteSettings();
-  const [startHero, setStartHero] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
-  const [hasLoaded, setHasLoaded] = useState(false);
 
   return (
     <>
@@ -33,7 +27,7 @@ function App() {
           <Header settings={settings} />
           <main>
             <Routes>
-              <Route path="/" element={<HomePage settings={settings} animateHero={startHero} />} />
+              <Route path="/" element={<HomePage settings={settings} />} />
               <Route path="/house-designs" element={<HouseDesignsRoute />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
@@ -46,22 +40,12 @@ function App() {
               <Route path="/blog/:slug" element={<BlogDetailPage />} />
               <Route path="/contact" element={<NewContact />} />
               <Route path="/new-contact" element={<NewContact />} />
-              <Route path="/payments" element={<Payments />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             </Routes>
           </main>
           <Footer settings={settings} />
         </div>
-        {showLoader && !hasLoaded && (
-          <HeroLoader
-            onComplete={() => {
-              setShowLoader(false);
-              setStartHero(true);
-              setHasLoaded(true);
-            }}
-          />
-        )}
       </Router>
     </>
   );
