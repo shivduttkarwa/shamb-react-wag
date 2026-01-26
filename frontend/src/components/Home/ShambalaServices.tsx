@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import SectionTitle from '../UI/SectionTitle';
+import './ShambalaServices.css';
 
 interface Slide {
   id: number;
@@ -70,32 +72,32 @@ const useWindowSize = () => {
 
 const ShambalaServices: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [contentVisible, setContentVisible] = useState(true);
+  const [previousSlide, setPreviousSlide] = useState(0);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [isPaused, setIsPaused] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const { width } = useWindowSize();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
 
   const goToSlide = useCallback((index: number, dir?: 'next' | 'prev') => {
-    if (!contentVisible || index === currentSlide) return;
+    if (isTransitioning || index === currentSlide) return;
 
     setDirection(dir || (index > currentSlide ? 'next' : 'prev'));
-    setContentVisible(false);
+    setPreviousSlide(currentSlide);
+    setIsTransitioning(true);
 
+    // Change slide immediately so both images are visible during transition
+    setCurrentSlide(index);
+
+    // Reset transition state after animation completes
     setTimeout(() => {
-      setCurrentSlide(index);
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setContentVisible(true);
-        });
-      });
-    }, 400);
-  }, [currentSlide, contentVisible]);
+      setIsTransitioning(false);
+    }, 1000);
+  }, [currentSlide, isTransitioning]);
 
   const nextSlide = useCallback(() => {
     const next = (currentSlide + 1) % slides.length;
@@ -134,9 +136,8 @@ const ShambalaServices: React.FC = () => {
 
   useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 6000);
-    return () => clearInterval(interval);
-  }, [nextSlide, isPaused]);
+    return undefined;
+  }, [isPaused]);
 
   const styles: { [key: string]: React.CSSProperties } = {
     section: {
@@ -153,31 +154,33 @@ const ShambalaServices: React.FC = () => {
       minHeight: '100vh',
       position: 'relative',
     },
+    sectionHeader: {
+      width: '100%',
+      padding: isMobile ? '2.5rem 1.5rem 1.5rem' : isTablet ? '3rem 2.5rem 1.5rem' : '3.5rem 3.75rem 1.5rem',
+      textAlign: isMobile ? 'center' : 'left',
+    },
     contentSide: {
       width: isMobile ? '100%' : isTablet ? '55%' : '50%',
-      padding: isMobile ? '6.25rem 1.5rem 2.5rem' : isTablet ? '3.75rem 2.5rem' : '5rem 3.75rem',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       position: 'relative',
-      backgroundColor: isMobile ? 'transparent' : 'var(--color-white)',
       zIndex: 2,
-      minHeight: isMobile ? '60vh' : 'auto',
-      paddingBottom: isMobile ? '12rem' : '2.5rem',
+      minHeight: isMobile ? 'auto' : '100vh',
+      overflow: 'hidden',
     },
     imageSide: {
       width: isMobile ? '100%' : isTablet ? '45%' : '50%',
-      position: isMobile ? 'absolute' : 'relative',
+      position: 'relative',
       overflow: 'hidden',
-      height: isMobile ? '100%' : 'auto',
-      inset: isMobile ? 0 : 'auto',
-      zIndex: isMobile ? 0 : 1,
+      height: isMobile ? '36vh' : 'auto',
+      zIndex: 1,
     },
     mobileOverlay: {
       position: 'absolute',
       inset: 0,
       background: isMobile
-        ? 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.7) 100%)'
+        ? 'none'
         : 'none',
       zIndex: 1,
       pointerEvents: 'none',
@@ -186,6 +189,24 @@ const ShambalaServices: React.FC = () => {
       position: 'relative',
       maxWidth: isMobile ? '100%' : '31.25rem',
       zIndex: 2,
+    },
+    contentStack: {
+      display: 'grid',
+      gridTemplateColumns: '1fr',
+      position: 'relative',
+      zIndex: 2,
+    },
+    contentLayer: {
+      gridArea: '1 / 1',
+    },
+    contentPanel: {
+      backgroundColor: 'var(--color-white)',
+      padding: isMobile ? '2.5rem 1.5rem 5rem' : isTablet ? '3.75rem 2.5rem' : '5rem 3.75rem',
+      paddingBottom: isMobile ? '6rem' : '2.5rem',
+      minHeight: isMobile ? 'auto' : '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
     },
     brandLabel: {
       display: 'inline-flex',
@@ -210,10 +231,8 @@ const ShambalaServices: React.FC = () => {
       textTransform: 'uppercase',
       color: 'var(--color-gold)',
       marginBottom: isMobile ? '0.5rem' : '0.75rem',
-      opacity: contentVisible ? 1 : 0,
-      transform: contentVisible ? 'translateY(0)' : 'translateY(1.25rem)',
-      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-      transitionDelay: contentVisible ? '0.1s' : '0s',
+      opacity: 1,
+      transition: 'opacity 0.3s ease',
     },
     title: {
       fontSize: isMobile ? '2.5rem' : isTablet ? '2.5rem' : 'clamp(2.5rem, 5vw, 4rem)',
@@ -221,30 +240,30 @@ const ShambalaServices: React.FC = () => {
       color: 'var(--color-black)',
       margin: isMobile ? '0 0 1rem 0' : '0 0 1.5rem 0',
       lineHeight: 1.1,
-      opacity: contentVisible ? 1 : 0,
-      transform: contentVisible ? 'translateY(0)' : 'translateY(1.875rem)',
-      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-      transitionDelay: contentVisible ? '0.15s' : '0s',
+      opacity: 1,
+      transition: 'opacity 0.3s ease',
+    },
+    titleRow: {
+      display: 'flex',
+      alignItems: 'baseline',
+      gap: isMobile ? '0.75rem' : '1rem',
+      flexWrap: 'wrap',
     },
     description: {
       fontSize: isMobile ? '1rem' : '1rem',
       lineHeight: 1.8,
       color: 'var(--color-tertiary-brown)',
       marginBottom: isMobile ? '1.5rem' : '2rem',
-      opacity: contentVisible ? 1 : 0,
-      transform: contentVisible ? 'translateY(0)' : 'translateY(1.25rem)',
-      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-      transitionDelay: contentVisible ? '0.2s' : '0s',
+      opacity: 1,
+      transition: 'opacity 0.3s ease',
     },
     features: {
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
       gap: isMobile ? '0.75rem' : '1rem',
       marginBottom: isMobile ? '2rem' : '3rem',
-      opacity: contentVisible ? 1 : 0,
-      transform: contentVisible ? 'translateY(0)' : 'translateY(1.25rem)',
-      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-      transitionDelay: contentVisible ? '0.25s' : '0s',
+      opacity: 1,
+      transition: 'opacity 0.3s ease',
     },
     featureItem: {
       display: 'flex',
@@ -278,10 +297,8 @@ const ShambalaServices: React.FC = () => {
       fontWeight: 600,
       letterSpacing: '0.0625rem',
       cursor: 'pointer',
-      opacity: contentVisible ? 1 : 0,
-      transform: contentVisible ? 'translateY(0)' : 'translateY(1.25rem)',
-      transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease',
-      transitionDelay: contentVisible ? '0.3s' : '0s',
+      opacity: 1,
+      transition: 'opacity 0.3s ease, background-color 0.3s ease',
       width: isMobile ? '100%' : 'auto',
     },
     imageContainer: {
@@ -294,7 +311,7 @@ const ShambalaServices: React.FC = () => {
       width: '100%',
       height: '100%',
       objectFit: 'cover',
-      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
+      willChange: 'transform',
     },
     imageOverlay: {
       position: 'absolute',
@@ -304,55 +321,50 @@ const ShambalaServices: React.FC = () => {
         : 'linear-gradient(135deg, rgba(71, 97, 77, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%)',
       zIndex: 1,
     },
-    slideNumber: {
-      position: 'absolute',
-      bottom: isMobile ? 'auto' : '2.5rem',
-      top: isMobile ? '1.5rem' : 'auto',
-      right: isMobile ? '1.5rem' : '2.5rem',
-      zIndex: 10,
-      display: 'flex',
-      alignItems: 'baseline',
-      gap: '0.5rem',
-      color: isMobile ? 'var(--color-black)' : 'var(--color-white)',
-    },
-    currentNum: {
-      fontSize: isMobile ? '1.75rem' : '3rem',
+    bigSlideNumber: {
+      fontSize: isMobile ? '3rem' : '6rem',
       fontWeight: 700,
-      lineHeight: 1,
+      color: isMobile ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.35)',
+      letterSpacing: '0.25rem',
+      fontFamily: '"Dream Avenue", cursive',
+      pointerEvents: 'none',
     },
-    totalNum: {
-      fontSize: isMobile ? '0.875rem' : '1rem',
-      fontWeight: 400,
-      opacity: 0.7,
+    bigSlideNumberBox: {
+      position: 'absolute',
+      top: isMobile ? 'calc(1.5rem + 30px)' : 'calc(2rem + 30px)',
+      right: isMobile ? '1.5rem' : '2.5rem',
+      zIndex: 3,
+      pointerEvents: 'none',
     },
     navigation: {
       position: 'absolute',
-      bottom: isMobile ? '2rem' : '2.5rem',
+      bottom: isMobile ? '2.75rem' : '2.5rem',
       left: isMobile ? '50%' : '3.75rem',
       transform: isMobile ? 'translateX(-50%)' : 'none',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: isMobile ? '1rem' : '1.5rem',
+      gap: isMobile ? '1.25rem' : '1.5rem',
       zIndex: 3,
     },
     navButton: {
       width: isMobile ? '2.75rem' : '3.125rem',
       height: isMobile ? '2.75rem' : '3.125rem',
-      border: '0.125rem solid var(--color-gold)',
-      backgroundColor: isMobile ? 'var(--color-white)' : 'transparent',
+      border: isMobile ? '0.0625rem solid rgba(255,255,255,0.85)' : '0.125rem solid rgba(0,0,0,0.15)',
+      backgroundColor: isMobile ? 'rgba(0,0,0,0.45)' : 'var(--color-green)',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       transition: 'all 0.3s ease',
-      color: 'var(--color-gold)',
-      borderRadius: isMobile ? '50%' : '0',
+      color: 'var(--color-white)',
+      borderRadius: '50%',
+      boxShadow: isMobile ? 'none' : '0 0.75rem 1.5rem rgba(0,0,0,0.15)',
     },
     pagination: {
       position: 'absolute',
       left: '50%',
-      bottom: isMobile ? '5rem' : '2.5rem',
+      bottom: isMobile ? '0.75rem' : '2.5rem',
       transform: 'translateX(-50%)',
       display: 'flex',
       justifyContent: 'center',
@@ -362,7 +374,7 @@ const ShambalaServices: React.FC = () => {
     paginationDot: {
       width: isMobile ? '1.5rem' : '2.5rem',
       height: '0.25rem',
-      backgroundColor: 'var(--color-gold-light)',
+      backgroundColor: isMobile ? 'rgba(255,255,255,0.5)' : 'var(--color-gold-light)',
       border: 'none',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
@@ -370,18 +382,9 @@ const ShambalaServices: React.FC = () => {
       borderRadius: isMobile ? '0.125rem' : '0',
     },
     paginationDotActive: {
-      backgroundColor: 'var(--color-gold)',
+      backgroundColor: isMobile ? 'var(--color-white)' : 'var(--color-gold)',
       transform: 'scaleY(1.5)',
       width: isMobile ? '2rem' : '2.5rem',
-    },
-    progressBar: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      height: isMobile ? '0.1875rem' : '0.25rem',
-      backgroundColor: 'var(--color-gold)',
-      zIndex: 10,
-      animation: isPaused ? 'none' : 'progress 6s linear infinite',
     },
     decorativeElement: {
       position: 'absolute',
@@ -406,9 +409,9 @@ const ShambalaServices: React.FC = () => {
       zIndex: 3,
     },
     verticalDot: {
-      width: '0.1875rem',
-      height: '1.875rem',
-      backgroundColor: 'rgba(255,255,255,0.3)',
+      width: '0.25rem',
+      height: '2.25rem',
+      backgroundColor: 'rgba(255,255,255,0.6)',
       border: 'none',
       padding: 0,
       cursor: 'pointer',
@@ -416,57 +419,79 @@ const ShambalaServices: React.FC = () => {
     },
     verticalDotActive: {
       backgroundColor: 'var(--color-gold)',
-      height: '3.125rem',
-    },
-    swipeHint: {
-      position: 'absolute',
-      bottom: '8rem',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      display: isMobile ? 'flex' : 'none',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '0.5rem',
-      fontSize: '0.75rem',
-      color: 'var(--color-tertiary-brown)',
-      opacity: 0.7,
-      zIndex: 3,
+      height: '3.5rem',
+      width: '0.3125rem',
     },
   };
 
   const keyframes = `
-    @keyframes progress {
-      from { width: 0%; }
-      to { width: 100%; }
-    }
-    @keyframes slideInFromRight {
+    @keyframes slideOverFromRight {
       from {
-        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        transform: translateX(100%);
       }
       to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateX(0);
       }
     }
-    @keyframes slideInFromLeft {
+    @keyframes slideOverFromLeft {
       from {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        transform: translateX(-100%);
       }
       to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateX(0);
       }
     }
-    @keyframes scaleIn {
-      from { transform: scale(1.1); }
-      to { transform: scale(1); }
+    @keyframes contentFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(1.25rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    @keyframes swipeHint {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(0.625rem); }
+    @keyframes contentInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(1rem) translateY(0.5rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+    }
+    @keyframes contentInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-1rem) translateY(0.5rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+    }
+    @keyframes panelInFromRight {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    @keyframes panelInFromLeft {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
     }
   `;
 
   return (
     <section
+      className="shambala-services"
       style={styles.section}
       onMouseEnter={() => !isMobile && setIsPaused(true)}
       onMouseLeave={() => !isMobile && setIsPaused(false)}
@@ -476,45 +501,79 @@ const ShambalaServices: React.FC = () => {
     >
       <style>{keyframes}</style>
 
-      {/* Progress Bar */}
-      <div
-        key={currentSlide}
-        style={styles.progressBar}
-      />
+
+      <div style={styles.sectionHeader}>
+        <SectionTitle>Explore our services</SectionTitle>
+      </div>
 
       <div style={styles.container}>
         {/* Image Side - Positioned first for mobile background */}
         <div style={styles.imageSide}>
           <div style={styles.imageContainer}>
-            {slides.map((slide, idx) => (
-              <img
-                key={slide.id}
-                src={slide.image}
-                alt={slide.title}
-                style={{
-                  ...styles.slideImage,
-                  opacity: idx === currentSlide ? 1 : 0,
-                  transform: idx === currentSlide ? 'scale(1)' : 'scale(1.1)',
-                  clipPath: idx === currentSlide
-                    ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
-                    : direction === 'next'
-                      ? 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)'
-                      : 'polygon(0 0, 0 0, 0 100%, 0 100%)',
-                  animation: idx === currentSlide
-                    ? `${direction === 'next' ? 'slideInFromRight' : 'slideInFromLeft'} 0.8s cubic-bezier(0.4, 0, 0.2, 1), scaleIn 1.2s ease-out`
-                    : 'none',
-                }}
-              />
-            ))}
+            {slides.map((slide, idx) => {
+              const isActive = idx === currentSlide;
+              const isPrevious = idx === previousSlide;
+              const shouldShow = isActive || (isPrevious && isTransitioning);
+
+              if (!shouldShow) return null;
+
+              const animationName = direction === 'next' ? 'slideOverFromRight' : 'slideOverFromLeft';
+
+              return (
+                <img
+                  key={`${slide.id}-${isActive ? 'active' : 'prev'}`}
+                  src={slide.image}
+                  alt={slide.title}
+                  style={{
+                    ...styles.slideImage,
+                    zIndex: isActive ? 2 : 1,
+                    opacity: 1,
+                    animation: isActive && isTransitioning
+                      ? `${animationName} 1s cubic-bezier(0.4, 0, 0.2, 1) forwards`
+                      : 'none',
+                  }}
+                />
+              );
+            })}
             <div style={styles.imageOverlay} />
           </div>
 
-          {/* Slide Number - Only show on desktop */}
-          {!isMobile && (
-            <div style={styles.slideNumber}>
-              <span style={styles.currentNum}>0{currentSlide + 1}</span>
-              <span style={styles.totalNum}>/ 0{slides.length}</span>
-            </div>
+
+          {/* Mobile controls over image */}
+          {isMobile && (
+            <>
+              <div style={styles.navigation}>
+                <button
+                  style={styles.navButton}
+                  onClick={prevSlide}
+                >
+                  <svg width={isMobile ? '18' : '20'} height={isMobile ? '18' : '20'} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <button
+                  style={styles.navButton}
+                  onClick={nextSlide}
+                >
+                  <svg width={isMobile ? '18' : '20'} height={isMobile ? '18' : '20'} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+
+              <div style={styles.pagination}>
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    style={{
+                      ...styles.paginationDot,
+                      ...(idx === currentSlide ? styles.paginationDotActive : {}),
+                    }}
+                    onClick={() => goToSlide(idx)}
+                  />
+                ))}
+              </div>
+            </>
           )}
 
           {/* Vertical Indicators - Only on desktop */}
@@ -541,131 +600,140 @@ const ShambalaServices: React.FC = () => {
 
           <div style={styles.decorativeElement} />
 
-          {/* Slide Number - Mobile position */}
-          {isMobile && (
-            <div style={styles.slideNumber}>
-              <span style={styles.currentNum}>0{currentSlide + 1}</span>
-              <span style={styles.totalNum}>/ 0{slides.length}</span>
-            </div>
-          )}
 
-          <div style={styles.slideContent}>
-            <div style={styles.brandLabel}>
-              <span style={styles.brandLine} />
-              Shambala Homes
-            </div>
-
-            <p style={styles.subtitle}>{slides[currentSlide].subtitle}</p>
-            <h2 style={styles.title}>{slides[currentSlide].title}</h2>
-            <p style={styles.description}>{slides[currentSlide].description}</p>
-
-            <div style={styles.features}>
-              {slides[currentSlide].features.map((feature, idx) => (
-                <div
-                  key={idx}
-                  style={styles.featureItem}
-                >
-                  <span style={styles.featureIcon}>✓</span>
-                  {feature}
-                </div>
-              ))}
-            </div>
-
-            <button
-              style={styles.ctaButton}
-              onMouseEnter={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.backgroundColor = 'var(--color-gold)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.backgroundColor = 'var(--color-green)';
-                }
-              }}
-            >
-              Explore Service
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
-
-          {/* Navigation - Fixed position for both mobile and desktop */}
-          <div style={styles.navigation}>
-            <button
-              style={styles.navButton}
-              onClick={prevSlide}
-              onMouseEnter={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.backgroundColor = 'var(--color-gold)';
-                  e.currentTarget.style.color = 'var(--color-white)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = 'var(--color-gold)';
-                }
-              }}
-            >
-              <svg width={isMobile ? '18' : '20'} height={isMobile ? '18' : '20'} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
-            </button>
-            <button
-              style={styles.navButton}
-              onClick={nextSlide}
-              onMouseEnter={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.backgroundColor = 'var(--color-gold)';
-                  e.currentTarget.style.color = 'var(--color-white)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isMobile) {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = 'var(--color-gold)';
-                }
-              }}
-            >
-              <svg width={isMobile ? '18' : '20'} height={isMobile ? '18' : '20'} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
-
-          {/* Pagination - Fixed position */}
-          <div style={styles.pagination}>
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
+          <div style={styles.contentStack}>
+            {isTransitioning && (
+              <div
                 style={{
-                  ...styles.paginationDot,
-                  ...(idx === currentSlide ? styles.paginationDotActive : {}),
+                  ...styles.contentPanel,
+                  ...styles.contentLayer,
+                  pointerEvents: 'none',
+                  zIndex: 1,
+                  opacity: 1,
                 }}
-                onClick={() => goToSlide(idx)}
-              />
-            ))}
+                aria-hidden="true"
+              >
+                <div style={styles.bigSlideNumberBox}>
+                  <span style={styles.bigSlideNumber}>
+                    {String(previousSlide + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <div style={styles.slideContent}>
+                  <div style={styles.brandLabel}>
+                    <span style={styles.brandLine} />
+                    Shambala Homes
+                  </div>
+
+                  <p style={styles.subtitle}>{slides[previousSlide].subtitle}</p>
+                  <h2 style={styles.title}>{slides[previousSlide].title}</h2>
+                  <p style={styles.description}>{slides[previousSlide].description}</p>
+
+                  <div style={styles.features}>
+                    {slides[previousSlide].features.map((feature, idx) => (
+                      <div
+                        key={idx}
+                        style={styles.featureItem}
+                      >
+                        <span style={styles.featureIcon}>✓</span>
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  <button style={styles.ctaButton}>
+                    Explore Service
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <div
+              key={currentSlide}
+              style={{
+                ...styles.contentPanel,
+                ...styles.contentLayer,
+                zIndex: 2,
+                animation: isTransitioning
+                  ? `${direction === 'next' ? 'panelInFromRight' : 'panelInFromLeft'} 1s cubic-bezier(0.4, 0, 0.2, 1) forwards`
+                  : 'none',
+              }}
+            >
+              <div style={styles.bigSlideNumberBox}>
+                <span style={styles.bigSlideNumber}>
+                  {String(currentSlide + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <div style={styles.slideContent}>
+                <div style={styles.brandLabel}>
+                  <span style={styles.brandLine} />
+                  Shambala Homes
+                </div>
+
+                <p style={styles.subtitle}>{slides[currentSlide].subtitle}</p>
+                <h2 style={styles.title}>{slides[currentSlide].title}</h2>
+                <p style={styles.description}>{slides[currentSlide].description}</p>
+
+                <div style={styles.features}>
+                  {slides[currentSlide].features.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      style={styles.featureItem}
+                    >
+                      <span style={styles.featureIcon}>✓</span>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  style={styles.ctaButton}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.backgroundColor = 'var(--color-gold)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.backgroundColor = 'var(--color-green)';
+                    }
+                  }}
+                >
+                  Explore Service
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Swipe Hint - Fixed position */}
-          {isMobile && (
-            <div style={styles.swipeHint}>
-              <span>Swipe to explore</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                style={{ animation: 'swipeHint 1.5s ease-in-out infinite' }}
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+          {/* Navigation - Desktop only */}
+          {!isMobile && (
+            <div className="fp-left-navigation shambala-services-nav">
+              <button className="fp-nav-btn fp-swiper-button-prev" onClick={prevSlide}>
+                <div className="fp-btn-outline fp-btn-outline-1"></div>
+                <div className="fp-btn-outline fp-btn-outline-2"></div>
+                <div className="fp-arrow-container">
+                  <svg width="30" height="12" viewBox="0 0 30 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                  </svg>
+                </div>
+              </button>
+              <button className="fp-nav-btn fp-swiper-button-next" onClick={nextSlide}>
+                <div className="fp-btn-outline fp-btn-outline-1"></div>
+                <div className="fp-btn-outline fp-btn-outline-2"></div>
+                <div className="fp-arrow-container">
+                  <svg width="30" height="12" viewBox="0 0 30 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 6H29M29 6L24 1M29 6L24 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                  </svg>
+                </div>
+              </button>
             </div>
           )}
+
         </div>
       </div>
     </section>

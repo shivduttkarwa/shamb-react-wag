@@ -1,0 +1,113 @@
+.shambala-services .fp-left-navigation {
+  position: absolute !important;
+  top: auto !important;
+  bottom: calc(2.5rem - 25px) !important;
+  left: 3.75rem !important;
+  right: auto !important;
+  display: flex;
+  gap: 2rem;
+  z-index: 6;
+  --_btn-size: 64px;
+}
+
+.shambala-services .fp-left-navigation .fp-nav-btn {
+  position: relative;
+  width: var(--_btn-size);
+  height: var(--_btn-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  border: none;
+  outline: none;
+  transition: transform 0.2s ease;
+  margin: 0;
+  padding: 0;
+}
+
+.shambala-services .fp-btn-outline {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--color-green);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.shambala-services .fp-btn-outline-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: nav-morph 4s linear infinite;
+}
+
+.shambala-services .fp-btn-outline-2 {
+  border-radius: 53% 47% 43% 58% / 51% 39% 61% 49%;
+}
+
+@keyframes nav-morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.shambala-services .fp-arrow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shambala-services .fp-arrow-container svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--color-green);
+  transition: transform 0.3s ease;
+}
+
+.shambala-services .fp-left-navigation .fp-nav-btn:hover .fp-btn-outline {
+  transform: scale(0.94);
+}
+
+.shambala-services
+  .fp-left-navigation
+  .fp-nav-btn:hover.fp-swiper-button-next
+  .fp-arrow-container
+  svg {
+  transform: translateX(3px);
+}
+
+.shambala-services
+  .fp-left-navigation
+  .fp-nav-btn:hover.fp-swiper-button-prev
+  .fp-arrow-container
+  svg {
+  transform: translateX(-3px);
+}
+
+.shambala-services .fp-left-navigation .fp-nav-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .shambala-services .fp-left-navigation {
+    --_btn-size: 56px;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .shambala-services .fp-left-navigation {
+    display: none;
+  }
+}
