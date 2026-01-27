@@ -201,110 +201,16 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
 
     const positions = calculatePositions();
 
-    const MAX_CONTAINER_WIDTH = 800;
-    const MAX_CONTAINER_HEIGHT = 600;
+    gsap.set(scatterWordEl, { y: positions.assembleY + 18 });
 
-    let scaleFactor: number, heightFraction: number;
-    switch (positions.sizeLabel) {
-      case "small":
-        scaleFactor = 0.7;
-        heightFraction = 0.85;
-        break;
-      case "medium":
-        scaleFactor = 0.9;
-        heightFraction = 0.75;
-        break;
-      case "large":
-        scaleFactor = 1.2;
-        heightFraction = 0.7;
-        break;
-      case "xlarge":
-      default:
-        scaleFactor = 1.4;
-        heightFraction = 0.7;
-        break;
-    }
-
-    const containerWidth = Math.min(
-      MAX_CONTAINER_WIDTH * scaleFactor,
-      positions.finalVw * 0.9
-    );
-    const containerHeight = Math.min(
-      MAX_CONTAINER_HEIGHT * scaleFactor,
-      positions.finalVh * heightFraction
-    );
-
-    let initialScale: number,
-      marginX: number,
-      marginY: number,
-      minDistance: number;
-    if (positions.sizeLabel === "small") {
-      initialScale = 1.1;
-      marginX = 40;
-      marginY = 50;
-      minDistance = 80;
-    } else if (positions.sizeLabel === "medium") {
-      initialScale = 1.3;
-      marginX = 60;
-      marginY = 70;
-      minDistance = 100;
-    } else {
-      initialScale = 1.5;
-      marginX = 70;
-      marginY = 80;
-      minDistance = 130;
-    }
-
-    const halfW = containerWidth / 2 - marginX;
-    const halfH = containerHeight / 2 - marginY;
-
-    function generateNonOverlappingPositions(
-      count: number,
-      halfW: number,
-      halfH: number,
-      minDist: number
-    ) {
-      const positions: { x: number; y: number }[] = [];
-      const maxAttempts = 2000;
-      let attempts = 0;
-      const minDistSq = minDist * minDist;
-
-      while (positions.length < count && attempts < maxAttempts) {
-        attempts++;
-        const x = (Math.random() * 2 - 1) * halfW;
-        const y = (Math.random() * 2 - 1) * halfH;
-
-        let ok = true;
-        for (let p of positions) {
-          const dx = x - p.x;
-          const dy = y - p.y;
-          const distSq = dx * dx + dy * dy;
-          if (distSq < minDistSq) {
-            ok = false;
-            break;
-          }
-        }
-
-        if (ok) positions.push({ x, y });
-      }
-
-      while (positions.length < count) {
-        const x = (Math.random() * 2 - 1) * halfW;
-        const y = (Math.random() * 2 - 1) * halfH;
-        positions.push({ x, y });
-      }
-
-      return positions;
-    }
-
-    const scatterPositions = generateNonOverlappingPositions(
-      scatterSpans.length,
-      halfW,
-      halfH,
-      minDistance
-    );
-
-    gsap.set(scatterSpans, { x: 0, y: 0, opacity: 0, scale: 1 });
+    gsap.set(scatterSpans, {
+      opacity: 0,
+      y: 24,
+      scale: 0.98,
+      filter: "blur(10px)",
+      color: "#dff6ff",
+      textShadow: "0 0 18px rgba(173, 216, 230, 0.6)",
+    });
 
     videoEl.pause();
     videoEl.currentTime = 0;
@@ -316,8 +222,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
     });
 
     const VIDEO_EXPAND_DURATION = 1.8;
-    const SCATTER_FADE_DURATION = 0.4;
-    const SCATTER_ASSEMBLE_DURATION = 1.5;
+    const TITLE_REVEAL_DURATION = 1.65;
     const SUBTITLE_DELAY_AFTER_ASSEMBLY = 0.02;
 
     const tl = gsap.timeline();
@@ -340,44 +245,20 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       },
       0
     )
-      .set(
-        scatterSpans,
-        {
-          x: (i: number) => scatterPositions[i].x,
-          y: (i: number) => scatterPositions[i].y,
-          scale: initialScale,
-          opacity: 0,
-        },
-        "videoScatter"
-      )
       .to(
         scatterSpans,
         {
           opacity: 1,
-          duration: SCATTER_FADE_DURATION,
-          stagger: 0.05,
-        },
-        "videoScatter"
-      )
-      .to(
-        scatterSpans,
-        {
-          x: 0,
-          y: positions.assembleY,
-          rotation: 0,
+          y: 0,
           scale: 1,
-          duration: SCATTER_ASSEMBLE_DURATION,
+          filter: "blur(0px)",
+          color: "#ffffff",
+          textShadow: "0 0 6px rgba(173, 216, 230, 0.2)",
+          duration: TITLE_REVEAL_DURATION,
           stagger: 0.08,
-          ease: "elastic.out(1, 0.5)",
+          ease: "power3.out",
         },
-        "-=0.5"
-      )
-      .set(
-        scatterSpans,
-        {
-          opacity: 1,
-        },
-        "postAssemble"
+        0.25
       )
       .add("postAssemble")
       .to(

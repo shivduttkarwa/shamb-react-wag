@@ -1,12 +1,9 @@
 import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./EssenceSection.css";
 import GlassButton from "../UI/GlassButton";
 import FallingTextVideoComponent from "../UI/FallingTextVideoComponent";
 import TiltTextGsap from "../UI/TiltTextGsap";
-
-gsap.registerPlugin(ScrollTrigger);
+import { initGsapSwitchAnimations } from "../../lib/gsapSwitchAnimations";
 
 interface EssenceSectionProps {
   logo?: string;
@@ -47,96 +44,9 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
     "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort.";
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null); // animate this
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const taglineChars = taglineRef.current?.querySelectorAll(".char");
-
-      // Initial states
-      if (taglineChars && taglineChars.length > 0) {
-        gsap.set(taglineChars, {
-          opacity: 0,
-          y: 20,
-        });
-      }
-      if (headingRef.current) {
-        gsap.set(headingRef.current, {
-          opacity: 1,
-        });
-      }
-      if (ctaRef.current) {
-        gsap.set(ctaRef.current, {
-          opacity: 0,
-          y: 30,
-        });
-      }
-
-      // Text timeline
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 60%",
-          end: "bottom 40%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      if (taglineChars && taglineChars.length > 0) {
-        tl.to(
-          taglineChars,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            stagger: 0.03,
-            ease: "power2.out",
-          },
-          0
-        );
-      }
-
-      if (ctaRef.current) {
-        tl.to(
-          ctaRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out",
-          },
-          0.6
-        );
-      }
-
-      // IMAGE REVEAL – clip-path on the IMAGE, right → left
-      if (imageRef.current) {
-        const img = imageRef.current;
-
-        // Start hidden from LEFT side (100% inset on left)
-        gsap.set(img, {
-          clipPath: "inset(0% 0% 0% 100%)",
-        });
-
-        gsap.to(img, {
-          clipPath: "inset(0% 0% 0% 0%)", // fully revealed
-          ease: "power3.out",
-          duration: 1.2,
-          scrollTrigger: {
-            trigger: img,
-            start: "top 65%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return initGsapSwitchAnimations(sectionRef.current || undefined);
   }, []);
 
   return (
@@ -152,13 +62,13 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
               </div>
             )}
 
-            <div className="essence-heading" ref={headingRef}>
+            <div className="essence-heading" data-gsap="fade-up">
               <TiltTextGsap startTrigger="top 70%" endTrigger="bottom -10%">
                 {heading}
               </TiltTextGsap>
             </div>
 
-            <div className="essence-description">
+            <div className="essence-description" data-gsap="fade-up" data-gsap-delay="0.1">
               {typeof window !== "undefined" && window.innerWidth >= 1600
                 ? extraLargeDescription
                 : typeof window !== "undefined" && window.innerWidth < 1600
@@ -166,15 +76,14 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
                 : description}
             </div>
 
-            <div ref={ctaRef} className="essence-cta-desktop">
+            <div className="essence-cta-desktop" data-gsap="fade-up" data-gsap-delay="0.2">
               <GlassButton href={ctaHref}>{ctaText}</GlassButton>
             </div>
           </div>
 
           {/* Right side: beige bg + image sliding in over it */}
-          <div className="essence-image">
+          <div className="essence-image" data-gsap="clip-reveal-center">
             <img
-              ref={imageRef}
               src={image.src}
               srcSet={
                 image.mobile && image.tablet && image.desktop
