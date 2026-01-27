@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 interface ServiceOption {
   id: number;
@@ -90,9 +92,53 @@ const IWantToSection: React.FC = () => {
   const { width } = useWindowSize();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cards = gsap.utils.toArray<HTMLElement>(
+      sectionRef.current.querySelectorAll('.three-campuses-section__card')
+    );
+
+    cards.forEach((card, index) => {
+      gsap.set(card, {
+        opacity: 0,
+        x: 1720,
+       
+       
+        transformOrigin: '50% 50%',
+      });
+
+      gsap.to(card, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        rotation: 0,
+        duration: 0.9,
+        ease: 'elastic.out(1, 0.75)',
+        delay: index * 0.4,
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => {
+        if (cards.includes(st.trigger as HTMLElement)) {
+          st.kill();
+        }
+      });
+    };
   }, []);
 
   const styles: { [key: string]: React.CSSProperties } = {
@@ -123,7 +169,7 @@ const IWantToSection: React.FC = () => {
       opacity: 0.25,
     },
     container: {
-      maxWidth: '85rem',
+      maxWidth: '97.75rem',
       margin: '0 auto',
       position: 'relative',
     },
@@ -133,7 +179,7 @@ const IWantToSection: React.FC = () => {
       textAlign: 'center',
     },
     eyebrow: {
-      fontSize: '0.6875rem',
+      fontSize: '0.9rem',
       fontWeight: 700,
       letterSpacing: '0.2rem',
       textTransform: 'uppercase',
@@ -158,7 +204,7 @@ const IWantToSection: React.FC = () => {
       color: '#C9A961',
     },
     description: {
-      fontSize: isMobile ? '1rem' : '1.0625rem',
+      fontSize: isMobile ? '1.3rem' : '1.38rem',
       color: '#6B6B6B',
       maxWidth: '40rem',
       margin: '0 auto',
@@ -172,6 +218,8 @@ const IWantToSection: React.FC = () => {
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
       gap: isMobile ? '1.5rem' : isTablet ? '2rem' : '2rem',
+      maxWidth: isMobile ? '100%' : '115%',
+      margin: '0 auto',
     },
   };
 
@@ -197,7 +245,7 @@ const IWantToSection: React.FC = () => {
         : '0 0.5rem 1.5rem rgba(0, 0, 0, 0.04)',
       transform: isHovered ? 'translateY(-0.5rem)' : 'translateY(0)',
       opacity: mounted ? 1 : 0,
-      animation: mounted ? `slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.4 + index * 0.12}s forwards` : 'none',
+      animation: 'none',
     };
   };
 
@@ -247,7 +295,7 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
     
     return {
-      fontSize: isMobile ? '1.875rem' : '2.25rem',
+      fontSize: isMobile ? '2.4375rem' : '2.925rem',
       fontWeight: 800,
       color: isHovered ? '#FFFFFF' : '#1A1A1A',
       margin: '0 0 0.625rem 0',
@@ -261,7 +309,7 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
     
     return {
-      fontSize: '0.9375rem',
+      fontSize: '1.21875rem',
       color: isHovered ? 'rgba(255, 255, 255, 0.75)' : '#6B6B6B',
       margin: '0 0 2.5rem 0',
       lineHeight: 1.6,
@@ -279,7 +327,7 @@ const IWantToSection: React.FC = () => {
       alignItems: 'center',
       gap: '0.625rem',
       color: isHovered ? '#C9A961' : '#47614D',
-      fontSize: '0.75rem',
+      fontSize: '0.975rem',
       fontWeight: 700,
       letterSpacing: '0.12rem',
       textTransform: 'uppercase',
@@ -291,7 +339,7 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
     
     return {
-      width: isHovered ? '2.5rem' : '1.75rem',
+      width: isHovered ? '3.25rem' : '2.275rem',
       height: '1.5px',
       backgroundColor: isHovered ? '#C9A961' : '#47614D',
       transition: 'all 0.3s ease',
@@ -306,8 +354,8 @@ const IWantToSection: React.FC = () => {
       position: 'absolute',
       right: '-4px',
       top: '-3px',
-      width: '8px',
-      height: '8px',
+      width: '10.4px',
+      height: '10.4px',
       borderTop: `1.5px solid ${isHovered ? '#C9A961' : '#47614D'}`,
       borderRight: `1.5px solid ${isHovered ? '#C9A961' : '#47614D'}`,
       transform: 'rotate(45deg)',
@@ -334,7 +382,11 @@ const IWantToSection: React.FC = () => {
         `}
       </style>
       
-      <section style={styles.section}>
+      <section
+        ref={sectionRef}
+        style={styles.section}
+        className="three-campuses-section"
+      >
         <div style={styles.ornamentTop} />
         <div style={styles.ornamentBottom} />
         
@@ -351,11 +403,12 @@ const IWantToSection: React.FC = () => {
           </div>
 
           {/* Grid */}
-          <div style={styles.grid}>
+          <div style={styles.grid} className="image-cards-row">
             {serviceOptions.map((option, index) => (
               <button
                 key={option.id}
                 style={getCardStyles(option.id, index)}
+                className="three-campuses-section__card"
                 onMouseEnter={() => setHoveredId(option.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => console.log(`Navigate to ${option.title}`)}
@@ -365,7 +418,7 @@ const IWantToSection: React.FC = () => {
                 <div style={getColorFillStyles(option.id)} />
                 
                 {/* Content */}
-                <div style={getContentStyles()}>
+                <div style={getContentStyles()} className="three-campuses-section__card-content">
                   <div style={getIconWrapperStyles(option.id)}>
                     {option.icon}
                   </div>
