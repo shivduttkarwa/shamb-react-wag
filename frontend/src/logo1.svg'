@@ -77,7 +77,7 @@
     stroke-width="1.4"
   />
 
-  <!-- FORMA Wordmark -->
+  <!-- shambala Wordmark -->
   <text
     x="50%"
     y="50%"
@@ -88,6 +88,6 @@
     letter-spacing="10"
     fill="#111111"
   >
-    FORMA
+    shambala
   </text>
 </svg>

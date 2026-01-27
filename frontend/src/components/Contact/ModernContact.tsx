@@ -203,7 +203,7 @@ const ModernContact: React.FC = () => {
             <div className="info-card contact-details">
               <div className="info-card-image">
                 <img 
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&auto=format" 
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&auto=shambalat" 
                   alt="Studio workspace" 
                 />
               </div>
@@ -215,7 +215,7 @@ const ModernContact: React.FC = () => {
                 </div>
                 <div className="contact-item">
                   <span className="contact-label">Email</span>
-                  <a href="mailto:studio@forma.archi" className="contact-value">studio@forma.archi</a>
+                  <a href="mailto:studio@shambala.archi" className="contact-value">studio@shambala.archi</a>
                 </div>
                 <div className="contact-item">
                   <span className="contact-label">Hours</span>
@@ -227,7 +227,7 @@ const ModernContact: React.FC = () => {
             <div className="info-card office-location">
               <div className="info-card-image">
                 <img 
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop&auto=format" 
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop&auto=shambalat" 
                   alt="Melbourne office building" 
                 />
               </div>
@@ -251,7 +251,7 @@ const ModernContact: React.FC = () => {
             <div className="info-card process-info">
               <div className="info-card-image">
                 <img 
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop&auto=format" 
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop&auto=shambalat" 
                   alt="Design process" 
                 />
               </div>
@@ -315,7 +315,7 @@ const ModernContact: React.FC = () => {
         </div>
         <div className="cta-background">
           <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=600&fit=crop&auto=format" 
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=600&fit=crop&auto=shambalat" 
             alt="Modern architecture" 
           />
         </div>

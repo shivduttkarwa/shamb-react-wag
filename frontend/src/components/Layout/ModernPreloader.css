@@ -320,7 +320,7 @@
   }
 }
 
-/* Performance optimizations */
+/* Pershambalance optimizations */
 .modern-preloader * {
   backface-visibility: hidden;
   perspective: 1000px;

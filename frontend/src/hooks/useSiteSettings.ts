@@ -27,12 +27,12 @@ export const useSiteSettings = (): UseSiteSettingsReturn => {
         // Provide fallback settings
         setSettings({
           header: {
-            logo_text: "FORMA",
+            logo_text: "shambala",
             menu_items: [],
           },
           footer: {
             sections: [],
-            copyright: "© 2025 FORMA. All rights reserved.",
+            copyright: "© 2025 shambala. All rights reserved.",
           },
           contact: {
             email: "",

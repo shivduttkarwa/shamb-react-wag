@@ -102,7 +102,7 @@ export default function SelectedProjectsStack() {
       {/* HERO */}
       <section className="prstack-hero">
         <img
-          src="https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?auto=format&fit=crop&w=2000&q=80"
+          src="https://images.unsplash.com/photo-1505842465776-3b4953ca4f44?auto=shambalat&fit=crop&w=2000&q=80"
           alt="Hero"
         />
         <div className="prstack-hero-content">
@@ -133,7 +133,7 @@ export default function SelectedProjectsStack() {
             <div className="prstack-project-img-wrap">
               <img
                 className="prstack-project-img"
-                src="https://images.prismic.io/andre-arch/Z6wzp5bqstJ9-gm9_BEEHIVE-EXT-2Bee.png?auto=format&fit=crop&w=2000&q=80"
+                src="https://images.prismic.io/andre-arch/Z6wzp5bqstJ9-gm9_BEEHIVE-EXT-2Bee.png?auto=shambalat&fit=crop&w=2000&q=80"
                 alt="Beehive House"
               />
             </div>
@@ -144,7 +144,7 @@ export default function SelectedProjectsStack() {
             <div className="prstack-project-img-wrap">
               <img
                 className="prstack-project-img"
-                src="https://images.prismic.io/andre-arch/Z99gaHdAxsiBvxNk_718BRDWY-KITCHEN-ABSTRACT.png?auto=format&fit=crop&w=2000&q=80"
+                src="https://images.prismic.io/andre-arch/Z99gaHdAxsiBvxNk_718BRDWY-KITCHEN-ABSTRACT.png?auto=shambalat&fit=crop&w=2000&q=80"
                 alt="Broadway Loft"
               />
             </div>
@@ -155,7 +155,7 @@ export default function SelectedProjectsStack() {
             <div className="prstack-project-img-wrap">
               <img
                 className="prstack-project-img"
-                src="https://images.prismic.io/andre-arch/Z-HjnndAxsiBv2H4_CopyofOCEANPKWYEXT-1.jpg?auto=format&fit=crop&w=2000&q=80"
+                src="https://images.prismic.io/andre-arch/Z-HjnndAxsiBv2H4_CopyofOCEANPKWYEXT-1.jpg?auto=shambalat&fit=crop&w=2000&q=80"
                 alt="Ocean Parkway"
               />
             </div>
@@ -166,7 +166,7 @@ export default function SelectedProjectsStack() {
             <div className="prstack-project-img-wrap">
               <img
                 className="prstack-project-img"
-                src="https://images.prismic.io/andre-arch/Z-6KNHdAxsiBwRrJ_SEQUOIA-FRONT1-EDIT.jpg?auto=format&fit=crop&w=2000&q=80"
+                src="https://images.prismic.io/andre-arch/Z-6KNHdAxsiBwRrJ_SEQUOIA-FRONT1-EDIT.jpg?auto=shambalat&fit=crop&w=2000&q=80"
                 alt="Sequoia House"
               />
             </div>
@@ -177,7 +177,7 @@ export default function SelectedProjectsStack() {
             <div className="prstack-project-img-wrap">
               <img
                 className="prstack-project-img"
-                src="https://images.prismic.io/andre-arch/Z6LpFJbqstJ9-O8h_7%2BSonDelNorte.png?auto=format&fit=crop&w=2000&q=80"
+                src="https://images.prismic.io/andre-arch/Z6LpFJbqstJ9-O8h_7%2BSonDelNorte.png?auto=shambalat&fit=crop&w=2000&q=80"
                 alt="Son Del North"
               />
             </div>

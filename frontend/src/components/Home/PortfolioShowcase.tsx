@@ -84,7 +84,7 @@ const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
       ".project > figure > img[data-speed]"
     );
 
-    // Performance optimization variables
+    // Pershambalance optimization variables
     let ticking = false;
     let lastScrollY = 0;
 
@@ -122,7 +122,7 @@ const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
       }
     }
 
-    // Use passive listeners for better scroll performance
+    // Use passive listeners for better scroll pershambalance
     window.addEventListener("scroll", handleParallax, { passive: true });
     window.addEventListener("load", handleParallax);
     window.addEventListener("resize", handleParallax);

@@ -11,7 +11,7 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
   // Elegant architectural contact slides
   const contactSlides = [
     {
-      leftBg: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop&auto=format",
+      leftBg: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop&auto=shambalat",
       rightBg: "#f8f9fa",
       leftContent: {
         title: "Let's Create\nSomething Extraordinary",
@@ -22,14 +22,14 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
         title: "Get in Touch",
         contactInfo: [
           { label: "Studio", value: "+61 3 1234 5678", link: "tel:+61312345678" },
-          { label: "Email", value: "studio@forma.archi", link: "mailto:studio@forma.archi" },
+          { label: "Email", value: "studio@shambala.archi", link: "mailto:studio@shambala.archi" },
           { label: "Hours", value: "Monday - Friday\n9AM - 6PM AEST" }
         ]
       }
     },
     {
       leftBg: "#2d3748",
-      rightBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&auto=format",
+      rightBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&auto=shambalat",
       leftContent: {
         title: "Visit Our Studio",
         subtitle: "Melbourne • Fitzroy",
@@ -46,7 +46,7 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
       }
     },
     {
-      leftBg: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop&auto=format",
+      leftBg: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop&auto=shambalat",
       rightBg: "#f8f9fa",
       leftContent: {
         title: "Our Services",
@@ -77,7 +77,7 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
     },
     {
       leftBg: "#1a202c",
-      rightBg: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop&auto=format",
+      rightBg: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop&auto=shambalat",
       leftContent: {
         title: "Start Your Project",
         subtitle: "Tell Us About Your Vision",
@@ -89,8 +89,8 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
       }
     },
     {
-      leftBg: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=1080&fit=crop&auto=format",
-      rightBg: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1920&h=1080&fit=crop&auto=format",
+      leftBg: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=1080&fit=crop&auto=shambalat",
+      rightBg: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1920&h=1080&fit=crop&auto=shambalat",
       leftContent: {
         title: "Ready to Begin?",
         subtitle: "Your Dream Space Awaits",
@@ -109,25 +109,25 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
       title: "Let's Create Together",
       subtitle: "Premium Architectural Design",
       description: "Transform your space with our award-winning architectural expertise. Every project is a unique journey of creative collaboration.",
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&auto=format"
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&auto=shambalat"
     },
     {
       title: "Share Your Vision", 
       subtitle: "Project Consultation",
       description: "Whether it's a new build, renovation, or commercial project - we're here to listen, understand, and bring your architectural dreams to life.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format"
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=shambalat"
     },
     {
       title: "Our Process",
       subtitle: "From Concept to Reality", 
       description: "We guide you through every step with clear communication, expert craftsmanship, and meticulous attention to detail.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&auto=format"
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&auto=shambalat"
     },
     {
       title: "Let's Connect",
       subtitle: "Begin Your Journey",
       description: "Ready to start your project? Contact us today for a consultation and discover how we can create something extraordinary together.",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&auto=format"
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&auto=shambalat"
     }
   ];
 

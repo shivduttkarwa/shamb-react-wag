@@ -1,8 +1,8 @@
-// FormaServices.tsx
+// shambalaServices.tsx
 import { FC, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./FormaServices.css";
+import "./shambalaServices.css";
 import TiltTextGsap from "../UI/TiltTextGsap";
 import GlassButton from "../UI/GlassButton";
 
@@ -89,7 +89,7 @@ const serviceSlides: ServiceSlide[] = [
   },
 ];
 
-export const FormaServices: FC = () => {
+export const shambalaServices: FC = () => {
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
@@ -563,7 +563,7 @@ export const FormaServices: FC = () => {
   const first = serviceSlides[0];
 
   return (
-    <div className="forma-services" id="services-content" ref={rootRef}>
+    <div className="shambala-services" id="services-content" ref={rootRef}>
       <div className="fs-heading">
         <TiltTextGsap
           tag="h2"
@@ -579,7 +579,7 @@ export const FormaServices: FC = () => {
           <div className="fs-layout">
             <div className="fs-left">
               <div>
-                <div className="fs-kicker">FORMA SERVICES</div>
+                <div className="fs-kicker">shambala SERVICES</div>
 
                 <div className="fs-title">{first.title}</div>
 

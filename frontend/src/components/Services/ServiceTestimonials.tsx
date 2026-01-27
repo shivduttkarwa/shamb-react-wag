@@ -77,7 +77,7 @@ const ServiceTestimonials: React.FC = () => {
         </TiltTextGsap>
         <p>
           Real stories from real people who&apos;ve transformed their spaces
-          with Forma&apos;s thoughtful design approach.
+          with shambala&apos;s thoughtful design approach.
         </p>
       </div>
 
@@ -95,7 +95,7 @@ const ServiceTestimonials: React.FC = () => {
             work"
           </h3>
           <p className="ser-mb-8" style={{ color: "#333" }}>
-            "Forma completely transformed our home. Every detail was considered,
+            "shambala completely transformed our home. Every detail was considered,
             from the natural light flow to the choice of materials. Our space
             now feels calm, functional, and truly reflects who we are as a
             family."
@@ -122,7 +122,7 @@ const ServiceTestimonials: React.FC = () => {
             expectations
           </h3>
           <p className="ser-mb-8" style={{ color: "#333" }}>
-            "The team at Forma didn&apos;t just design our office space—they
+            "The team at shambala didn&apos;t just design our office space—they
             understood our brand and created an environment where creativity
             flows naturally. Our clients are always impressed."
           </p>
@@ -148,7 +148,7 @@ const ServiceTestimonials: React.FC = () => {
             meets reality"
           </h3>
           <p className="ser-mb-8" style={{ color: "#fff" }}>
-            "Forma took our vision and brought it to life in ways we never
+            "shambala took our vision and brought it to life in ways we never
             imagined. The attention to detail and innovative solutions made our
             dream home a reality. Every day feels like a luxury retreat."
           </p>
@@ -174,7 +174,7 @@ const ServiceTestimonials: React.FC = () => {
           </h3>
           <p className="ser-mb-8" style={{ color: "#fff" }}>
             "We wanted an eco-friendly home without compromising on style.
-            Forma delivered perfectly with sustainable materials and smart
+            shambala delivered perfectly with sustainable materials and smart
             design that reduces our environmental footprint while looking
             absolutely stunning."
           </p>

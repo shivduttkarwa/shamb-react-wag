@@ -135,7 +135,7 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
             style={{
               height: "80px",
               width: "auto",
-              transform: "scale(2)",
+              transform: "scale(2) translateY(3px)",
               transformOrigin: "left center",
             }}
           />
@@ -148,7 +148,11 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
               #toggle-btn.olm-btn {
                 transform: scale(0.72) translateY(-54px) !important;
               }
-              
+
+              .header-logo {
+                filter: brightness(0) invert(1);
+              }
+
               /* Mobile Styles */
               @media (max-width: 768px) {
                 .header-logo {

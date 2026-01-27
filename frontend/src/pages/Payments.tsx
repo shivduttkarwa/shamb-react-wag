@@ -172,7 +172,7 @@ const Payments: React.FC = () => {
 
   const renderBasicForm = () => (
     <div className="form-container basic-form">
-      <h2>Basic Information Form</h2>
+      <h2>Basic Inshambalation Form</h2>
       {submitMessage && <div className="success-message">{submitMessage}</div>}
       {submitError && <div className="error-message">{submitError}</div>}
       <form onSubmit={handleBasicFormSubmit}>
@@ -228,7 +228,7 @@ const Payments: React.FC = () => {
 
   const renderPaymentFormStep1 = () => (
     <div className="payment-step">
-      <h3>Step 1: Personal Information & Amount</h3>
+      <h3>Step 1: Personal Inshambalation & Amount</h3>
       
       <div className="form-group">
         <label htmlFor="fullName">Full Name *</label>
@@ -351,7 +351,7 @@ const Payments: React.FC = () => {
 
   const renderPaymentFormStep3 = () => (
     <div className="payment-step">
-      <h3>Step 3: Payment Information</h3>
+      <h3>Step 3: Payment Inshambalation</h3>
       <div className="form-group">
         <label htmlFor="cardName">Name on Card *</label>
         <input

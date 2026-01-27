@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FORMA Hero – Responsive Custom</title>
+    <title>shambala Hero – Responsive Custom</title>
     <style>
       * {
         margin: 0;
@@ -80,7 +80,7 @@
         display: inline-block;
       }
 
-      /* Logo text (FORMA) */
+      /* Logo text (shambala) */
       #logoText {
         font-weight: 300;
       }
@@ -346,7 +346,7 @@
         <div class="ui-news" id="newsBlock">
           <div class="ui-news-card">
             <div class="ui-news-label">Latest</div>
-            <div class="ui-news-title">New case study: Forma Studio</div>
+            <div class="ui-news-title">New case study: shambala Studio</div>
             <div class="ui-news-meta">
               <span>2025</span>
               <span>Read →</span>
@@ -393,7 +393,7 @@
           return spans;
         }
 
-        const LOGO_TEXT = "FORMA";
+        const LOGO_TEXT = "shambala";
         const SCATTER_TEXT = "CREATE";
 
         const logoSpans = createCharSpans(logoTextEl, LOGO_TEXT, "logo-letter");

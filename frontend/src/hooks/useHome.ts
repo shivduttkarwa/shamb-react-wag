@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchHomePage, WagtailHomePage, HeroSectionData, BodyBlock } from '../services/api';
 
-// Transform Wagtail data to component props format
+// Transform Wagtail data to component props shambalat
 interface HeroProps {
   mainTitle: string[];
   typedTexts: string[];
@@ -165,7 +165,7 @@ export const useHome = (): UseHomeReturn => {
             setBodyBlocks([]);
           }
           
-          // Transform Wagtail data to HeroSection component format
+          // Transform Wagtail data to HeroSection component shambalat
           const API_BASE = import.meta.env.VITE_API_URL?.replace('/api/v2', '') || 'http://127.0.0.1:8000';
           
           const transformedProps: HeroProps = {

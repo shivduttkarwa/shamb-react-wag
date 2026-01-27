@@ -138,7 +138,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
           <div className="footer-brand-box">
             <div className="footer-brand-circle">
               <div className="footer-brand-inner">
-                <h2 className="footer-brand-title">FORMA</h2>
+                <h2 className="footer-brand-title">shambala</h2>
                 <p className="footer-brand-subtitle">HOMES</p>
               </div>
             </div>
@@ -212,12 +212,12 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 <div className="contact-label">Email Us</div>
                 <a
                   href={`mailto:${
-                    settings?.contact?.email || "info@FORMAhomes.com"
+                    settings?.contact?.email || "info@shambalahomes.com"
                   }`}
                   className="footer-contact-item"
                 >
                   {settings?.contact?.email?.toUpperCase() ||
-                    "INFO@FORMAHOMES.COM"}
+                    "INFO@shambalaHOMES.COM"}
                 </a>
               </div>
             </div>
@@ -230,7 +230,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 Privacy Policy
               </a>
               <span className="footer-copyright">
-                © 2025 FORMA. All rights reserved.
+                © 2025 shambala. All rights reserved.
               </span>
               <p className="footer-developer-credit-inline">
                 Designed and developed by Shivdutt Karwa

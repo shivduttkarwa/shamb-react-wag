@@ -155,7 +155,7 @@ const ContactUsPage: React.FC = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:studio@forma.design";
+    window.location.href = "mailto:studio@shambala.design";
   };
 
   return (
@@ -591,7 +591,7 @@ const ContactUsPage: React.FC = () => {
           letter-spacing: 0.28em;
         }
 
-        /* ========== RIGHT-SIDE CONTACT INFO (FORMA) ========== */
+        /* ========== RIGHT-SIDE CONTACT INFO (shambala) ========== */
         .cup-info-column {
           width: 35%;
           flex: 0 0 35%;
@@ -899,7 +899,7 @@ const ContactUsPage: React.FC = () => {
         <div className="cup-hero-overlay" />
         <div className="cup-hero-content">
           <p className="cup-hero-kicker">
-            <span className="cup-hero-reveal-line">Forma Studio</span>
+            <span className="cup-hero-reveal-line">shambala Studio</span>
           </p>
           <h1 className="cup-hero-title">
             <span className="cup-hero-reveal-line">
@@ -1037,15 +1037,15 @@ const ContactUsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT – CONTACT INFO (FORMA) */}
+            {/* RIGHT – CONTACT INFO (shambala) */}
             <div className="cup-info-column contact-animate contact-tilt">
-              <h3 className="cup-info-title">Forma Studio</h3>
+              <h3 className="cup-info-title">shambala Studio</h3>
               <ul className="cup-info-list">
                 <li>
-                  <strong>Projects:</strong> studio@forma.design
+                  <strong>Projects:</strong> studio@shambala.design
                 </li>
                 <li>
-                  <strong>New enquiries:</strong> hello@forma.design
+                  <strong>New enquiries:</strong> hello@shambala.design
                 </li>
                 <li>
                   <strong>Phone:</strong> +61 (0) 400 000 000
@@ -1081,7 +1081,7 @@ const ContactUsPage: React.FC = () => {
               timeless, not temporary.
             </p>
             <GlassButton
-              href="mailto:studio@forma.design"
+              href="mailto:studio@shambala.design"
               className="cup-parallax-cta-btn"
             >
               Schedule a Consultation

@@ -22,7 +22,7 @@ const ServicesPage: React.FC = () => {
         </TiltTextGsap>
         <p>
           Tailored residential and development services—from feasibility and
-          planning to interiors and aftercare—delivered by Forma&apos;s
+          planning to interiors and aftercare—delivered by shambala&apos;s
           integrated team.
         </p>
       </div>

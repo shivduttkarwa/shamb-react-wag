@@ -94,13 +94,13 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: inherit; /* Use same font as FORMA logo */
+  font-family: inherit; /* Use same font as shambala logo */
   font-size: 1.5rem; /* Reduced menu button size */
   font-weight: 200; /* Thinner font weight */
   padding: 0.5rem;
   transition: color 0.3s ease;
   color: rgba(255, 255, 255, 0.8) !important; /* Slightly darker/transparent white */
-  letter-spacing: -0.04em; /* Match FORMA logo spacing */
+  letter-spacing: -0.04em; /* Match shambala logo spacing */
   text-transform: uppercase;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;

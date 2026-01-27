@@ -170,7 +170,9 @@ const ShambalaServices: React.FC = () => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="shambala-services__header">
-        <SectionTitle>Explore our services</SectionTitle>
+        <SectionTitle className="shambala-services__section-title">
+          Explore our services
+        </SectionTitle>
       </div>
 
       <div className="shambala-services__container">

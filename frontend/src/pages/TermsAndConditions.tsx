@@ -47,7 +47,7 @@ const TermsAndConditions: React.FC = () => {
           <section className="legal-section">
             <h2>Acceptance of Terms</h2>
             <p>
-              By accessing and using FORMA's services, you agree to be bound by these Terms and 
+              By accessing and using shambala's services, you agree to be bound by these Terms and 
               Conditions. If you do not agree to these terms, please do not use our services.
             </p>
           </section>
@@ -55,7 +55,7 @@ const TermsAndConditions: React.FC = () => {
           <section className="legal-section">
             <h2>Services</h2>
             <p>
-              FORMA provides architectural design, interior design, and related consulting services. 
+              shambala provides architectural design, interior design, and related consulting services. 
               Specific service details, timelines, and deliverables will be outlined in individual 
               project agreements.
             </p>
@@ -99,7 +99,7 @@ const TermsAndConditions: React.FC = () => {
           <section className="legal-section">
             <h2>Intellectual Property</h2>
             <p>
-              All designs, plans, and creative work remain the intellectual property of FORMA 
+              All designs, plans, and creative work remain the intellectual property of shambala 
               until full payment is received. Upon completion of payment, clients receive 
               usage rights for the intended project purpose.
             </p>
@@ -108,10 +108,10 @@ const TermsAndConditions: React.FC = () => {
           <section className="legal-section">
             <h2>Client Responsibilities</h2>
             <ul>
-              <li>Provide accurate and complete project information</li>
+              <li>Provide accurate and complete project inshambalation</li>
               <li>Timely review and feedback on design proposals</li>
               <li>Obtain necessary permits and approvals</li>
-              <li>Ensure site access for FORMA team when required</li>
+              <li>Ensure site access for shambala team when required</li>
               <li>Make payments according to agreed schedule</li>
             </ul>
           </section>
@@ -138,9 +138,9 @@ const TermsAndConditions: React.FC = () => {
           <section className="legal-section">
             <h2>Limitation of Liability</h2>
             <p>
-              FORMA's liability is limited to the total value of the project agreement. 
+              shambala's liability is limited to the total value of the project agreement. 
               We are not responsible for construction defects, permit issues, or costs 
-              arising from third-party services not directly provided by FORMA.
+              arising from third-party services not directly provided by shambala.
             </p>
           </section>
 
@@ -158,7 +158,7 @@ const TermsAndConditions: React.FC = () => {
             <p>
               We respect client confidentiality and will not disclose project details 
               without permission. Our privacy policy governs the collection and use 
-              of personal information.
+              of personal inshambalation.
             </p>
           </section>
 
@@ -180,12 +180,12 @@ const TermsAndConditions: React.FC = () => {
           </section>
 
           <section className="legal-section">
-            <h2>Contact Information</h2>
+            <h2>Contact Inshambalation</h2>
             <p>
               Questions about these terms should be directed to:
             </p>
             <div className="contact-info">
-              <p>Email: <a href="mailto:legal@forma.design">legal@forma.design</a></p>
+              <p>Email: <a href="mailto:legal@shambala.design">legal@shambala.design</a></p>
               <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
               <p>Address: 123 Design Avenue, Creative District, New York, NY 10001</p>
             </div>

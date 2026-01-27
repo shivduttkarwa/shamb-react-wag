@@ -283,7 +283,7 @@ const ModernPreloader: React.FC<ModernPreloaderProps> = ({
                   textShadow: "0 2px 4px rgba(51, 51, 51, 0.1)",
                 }}
               >
-                FORMA
+                shambala
               </motion.h1>
 
               <motion.p

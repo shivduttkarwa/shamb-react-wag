@@ -31,7 +31,7 @@ const defaultProperties: PropertySlide[] = [
     tabletImage: `${publicUrl}images/zz.jpg`,
     subtitle: "Creating exceptional living spaces",
     description:
-      "Building tomorrow's homes today. Our vision is to transform how Australians live by creating homes that harmonize with nature, embrace sustainability, and foster community connections. Every FORMA home is designed to enhance your lifestyle while respecting the environment. Thoughtful design, timeless comfort.",
+      "Building tomorrow's homes today. Our vision is to transform how Australians live by creating homes that harmonize with nature, embrace sustainability, and foster community connections. Every shambala home is designed to enhance your lifestyle while respecting the environment. Thoughtful design, timeless comfort.",
     link: "/projects",
   },
   {

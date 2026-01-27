@@ -999,7 +999,7 @@ const SkewedSlider: React.FC<{ className?: string }> = ({ className = "" }) => {
 
       {/* MOBILE contact form + details */}
       <div id="contact-form" className="skew-mobile__form-block">
-        <h2 className="skew-mobile__form-heading">Contact Forma</h2>
+        <h2 className="skew-mobile__form-heading">Contact shambala</h2>
         <div className="skew-mobile__form-grid">
           <div className="skew-mobile__field">
             <label className="skew-mobile__label">Full Name *</label>

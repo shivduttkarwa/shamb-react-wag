@@ -23,7 +23,7 @@ const BlueprintSlider: React.FC<{ className?: string }> = ({ className = "" }) =
         title: "CONTACT_ENDPOINTS",
         data: [
           { label: "PHONE_NUMBER", value: "+61.3.1234.5678" },
-          { label: "EMAIL_ADDRESS", value: "studio@forma.archi" },
+          { label: "EMAIL_ADDRESS", value: "studio@shambala.archi" },
           { label: "WORK_HOURS", value: "MON-FRI 09:00-18:00 AEST" },
           { label: "RESPONSE_TIME", value: "< 24 HOURS" }
         ]
@@ -112,7 +112,7 @@ const BlueprintSlider: React.FC<{ className?: string }> = ({ className = "" }) =
   const mobileBlueprintSlides = [
     {
       title: "SYSTEM_INITIALIZE",
-      subtitle: "// Welcome to Forma Digital Studio",
+      subtitle: "// Welcome to shambala Digital Studio",
       description: "Advanced architectural design platform\nready for new project input.",
       annotations: ["STATUS: ONLINE", "VERSION: 2024.1"]
     },

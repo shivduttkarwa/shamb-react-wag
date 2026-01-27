@@ -152,10 +152,10 @@
 }
 
 .vimeo-iframe {
-  /* Optimized Vimeo iframe for better performance and full coverage */
+  /* Optimized Vimeo iframe for better pershambalance and full coverage */
   width: 100vw;
   height: 100vh;
-  /* Use transform3d for better performance */
+  /* Use transform3d for better pershambalance */
   transform: translate3d(-50%, -50%, 0) scale(1.02);
   top: 50%;
   left: 50%;

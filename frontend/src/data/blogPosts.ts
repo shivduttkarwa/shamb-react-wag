@@ -331,7 +331,7 @@ export const blogPosts: BlogPost[] = [
         body: [
           "Control layers remain intuitive: tactile switches for everyday use, scenes for convenience, and discreet sensors for efficiency.",
           "We prioritize reliability and serviceability over novelty, choosing ecosystems that age gracefully with minimal friction.",
-          "Envelope performance—insulation, air-sealing, shading—does the heavy lifting so tech enhances rather than compensates.",
+          "Envelope pershambalance—insulation, air-sealing, shading—does the heavy lifting so tech enhances rather than compensates.",
           "We document networks, power, and device maps so future upgrades are predictable, keeping your home adaptable without rewiring.",
         ],
         image: {

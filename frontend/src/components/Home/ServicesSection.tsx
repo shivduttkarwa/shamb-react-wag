@@ -72,7 +72,7 @@ const defaultServices: ServiceCard[] = [
 ];
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({
-  title = "FORMA PROJECTS",
+  title = "shambala PROJECTS",
   subtitle = "",
   description =
     "A curated look at how we shape coastal retreats, urban sanctuaries, and country escapes—each crafted with calm, warmth, and precision. From the first sketch to final styling, our teams steward every detail so the architecture, interiors, and landscape speak the same language. Expect measured light, honest materials, and rooms that feel effortlessly livable day after day.",

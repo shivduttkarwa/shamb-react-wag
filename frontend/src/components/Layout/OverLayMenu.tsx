@@ -556,7 +556,7 @@ tl.to(path, {
                   </Link>
                 </div>
                 <div className="olm-copyright">
-                  <p>© 2025 FORMA. All rights reserved.</p>
+                  <p>© 2025 shambala. All rights reserved.</p>
                 </div>
               </div>
               <div className="olm-menu-item-revealer"></div>

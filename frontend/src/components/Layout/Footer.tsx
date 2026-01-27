@@ -20,30 +20,30 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
   const topSectionRef = useRef<HTMLDivElement>(null);
   const phone = settings?.contact?.phone || "+61 3 1234 5678";
   const email = (
-    settings?.contact?.email || "info@FORMAhomes.com"
+    settings?.contact?.email || "info@shambalahomes.com"
   ).toLowerCase();
 
   // Footer visibility
   useEffect(() => {
     const topSection = topSectionRef.current;
     if (topSection) {
-      const brandBox = topSection.querySelector(".forma-footer-brand-box");
-      const linksSection = topSection.querySelector(".forma-footer-links-section");
-      const contactSection = topSection.querySelector(".forma-footer-contact-section");
-      const followSection = topSection.querySelector(".forma-footer-follow-us-section");
-      const allLinks = topSection.querySelectorAll(".forma-footer-link, .forma-social-link, .forma-footer-contact-item");
+      const brandBox = topSection.querySelector(".shambala-footer-brand-box");
+      const linksSection = topSection.querySelector(".shambala-footer-links-section");
+      const contactSection = topSection.querySelector(".shambala-footer-contact-section");
+      const followSection = topSection.querySelector(".shambala-footer-follow-us-section");
+      const allLinks = topSection.querySelectorAll(".shambala-footer-link, .shambala-social-link, .shambala-footer-contact-item");
       gsap.set([brandBox, linksSection, contactSection, followSection], { opacity: 1, y: 0 });
       gsap.set(allLinks, { opacity: 1, x: 0 });
     }
-    const letters = brandTextRef.current?.querySelectorAll(".forma-footer-letter");
+    const letters = brandTextRef.current?.querySelectorAll(".shambala-footer-letter");
     if (letters && letters.length > 0) {
       gsap.set(letters, { yPercent: 0, opacity: 1 });
     }
   }, []);
 
-  // Big FORMA text animation (slide up + color flash)
+  // Big shambala text animation (slide up + color flash)
   useEffect(() => {
-    const letters = brandTextRef.current?.querySelectorAll(".forma-footer-letter");
+    const letters = brandTextRef.current?.querySelectorAll(".shambala-footer-letter");
     if (!letters || letters.length === 0) return;
 
     const colors = ["#ff6b6b", "#4ecdc4", "#ffe66d", "#9b59b6", "#ff8b94"];
@@ -87,13 +87,13 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
     };
   }, []);
   return (
-    <footer className="forma-footer" ref={footerRef}>
-      <div className="forma-footer-container">
+    <footer className="shambala-footer" ref={footerRef}>
+      <div className="shambala-footer-container">
         {/* Main Footer Content */}
-        <div className="forma-footer-top-section" ref={topSectionRef}>
+        <div className="shambala-footer-top-section" ref={topSectionRef}>
           {/* Brand Box */}
           <div
-            className="forma-footer-brand-box"
+            className="shambala-footer-brand-box"
             style={{
               overflow: "visible",
               position: "relative",
@@ -101,7 +101,8 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
             }}
           >
             <HomeLogo
-              ariaLabel="FORMA"
+              ariaLabel="shambala"
+              className="shambala-footer-logo"
               onClick={() => {
                 navigate("/");
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -118,7 +119,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 cursor: "pointer",
               }}
             />
-            <p className="forma-footer-brand-description">
+            <p className="shambala-footer-brand-description">
               Creating architectural masterpieces that blend vision with
               craftsmanship, transforming dreams into extraordinary living
               spaces across Australia.
@@ -126,51 +127,51 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
           </div>
 
           {/* Navigation Links */}
-          <div className="forma-footer-links-section">
-            <h3 className="forma-footer-section-title">Explore</h3>
-            <div className="forma-footer-links">
-              <Link to="/house-designs" className="forma-footer-link">
-                <span className="forma-link-arrow">→</span>
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Portfolio</span>
-                    <span className="forma-link-text">Portfolio</span>
+          <div className="shambala-footer-links-section">
+            <h3 className="shambala-footer-section-title">Explore</h3>
+            <div className="shambala-footer-links">
+              <Link to="/house-designs" className="shambala-footer-link">
+                <span className="shambala-link-arrow">→</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Portfolio</span>
+                    <span className="shambala-link-text">Portfolio</span>
                   </span>
                 </span>
               </Link>
-              <Link to="/projects" className="forma-footer-link">
-                <span className="forma-link-arrow">→</span>
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Projects</span>
-                    <span className="forma-link-text">Projects</span>
+              <Link to="/projects" className="shambala-footer-link">
+                <span className="shambala-link-arrow">→</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Projects</span>
+                    <span className="shambala-link-text">Projects</span>
                   </span>
                 </span>
               </Link>
-              <Link to="/services" className="forma-footer-link">
-                <span className="forma-link-arrow">→</span>
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Services</span>
-                    <span className="forma-link-text">Services</span>
+              <Link to="/services" className="shambala-footer-link">
+                <span className="shambala-link-arrow">→</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Services</span>
+                    <span className="shambala-link-text">Services</span>
                   </span>
                 </span>
               </Link>
-              <Link to="/about" className="forma-footer-link">
-                <span className="forma-link-arrow">→</span>
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">About</span>
-                    <span className="forma-link-text">About</span>
+              <Link to="/about" className="shambala-footer-link">
+                <span className="shambala-link-arrow">→</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">About</span>
+                    <span className="shambala-link-text">About</span>
                   </span>
                 </span>
               </Link>
-              <Link to="/contact" className="forma-footer-link">
-                <span className="forma-link-arrow">→</span>
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Inquire</span>
-                    <span className="forma-link-text">Inquire</span>
+              <Link to="/contact" className="shambala-footer-link">
+                <span className="shambala-link-arrow">→</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Inquire</span>
+                    <span className="shambala-link-text">Inquire</span>
                   </span>
                 </span>
               </Link>
@@ -178,20 +179,20 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
           </div>
 
           {/* Contact Section */}
-          <div className="forma-footer-contact-section">
-            <h3 className="forma-footer-section-title">Get in Touch</h3>
-            <div className="forma-footer-contact-info">
-              <div className="forma-contact-item">
-                <div className="forma-contact-label">Visit Us</div>
+          <div className="shambala-footer-contact-section">
+            <h3 className="shambala-footer-section-title">Get in Touch</h3>
+            <div className="shambala-footer-contact-info">
+              <div className="shambala-contact-item">
+                <div className="shambala-contact-label">Visit Us</div>
                 {settings?.contact?.address ? (
                   <div
-                    className="forma-footer-contact-item"
+                    className="shambala-footer-contact-item"
                     dangerouslySetInnerHTML={{
                       __html: settings.contact.address.replace(/\n/g, "<br/>"),
                     }}
                   />
                 ) : (
-                  <div className="forma-footer-contact-item">
+                  <div className="shambala-footer-contact-item">
                     123 Garden Street
                     <br />
                     Melbourne, VIC 3000
@@ -199,121 +200,121 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 )}
               </div>
 
-              <div className="forma-contact-item">
-                <div className="forma-contact-label">Call Us</div>
+              <div className="shambala-contact-item">
+                <div className="shambala-contact-label">Call Us</div>
                 <a
                   href={`tel:${settings?.contact?.phone || "+61312345678"}`}
-                  className="forma-footer-contact-item"
+                  className="shambala-footer-contact-item"
                 >
-                  <span className="forma-link-window">
-                    <span className="forma-link-track">
-                      <span className="forma-link-text">{phone}</span>
-                      <span className="forma-link-text">{phone}</span>
+                  <span className="shambala-link-window">
+                    <span className="shambala-link-track">
+                      <span className="shambala-link-text">{phone}</span>
+                      <span className="shambala-link-text">{phone}</span>
                     </span>
                   </span>
                 </a>
               </div>
 
-              <div className="forma-contact-item">
-                <div className="forma-contact-label">Email Us</div>
+              <div className="shambala-contact-item">
+                <div className="shambala-contact-label">Email Us</div>
                 <a
                   href={`mailto:${
-                    settings?.contact?.email || "info@FORMAhomes.com"
+                    settings?.contact?.email || "info@shambalahomes.com"
                   }`}
-                  className="forma-footer-contact-item"
+                  className="shambala-footer-contact-item"
                 >
-                  <span className="forma-link-window">
-                    <span className="forma-link-track">
-                      <span className="forma-link-text">{email}</span>
-                      <span className="forma-link-text">{email}</span>
+                  <span className="shambala-link-window">
+                    <span className="shambala-link-track">
+                      <span className="shambala-link-text">{email}</span>
+                      <span className="shambala-link-text">{email}</span>
                     </span>
                   </span>
                 </a>
               </div>
             </div>
 
-            <div className="forma-footer-legal">
+            <div className="shambala-footer-legal">
               <Link
                 to="/privacy-policy"
-                className="forma-footer-link forma-legal-link"
+                className="shambala-footer-link shambala-legal-link"
               >
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Privacy Policy</span>
-                    <span className="forma-link-text">Privacy Policy</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Privacy Policy</span>
+                    <span className="shambala-link-text">Privacy Policy</span>
                   </span>
                 </span>
               </Link>
               <Link
                 to="/terms-and-conditions"
-                className="forma-footer-link forma-legal-link"
+                className="shambala-footer-link shambala-legal-link"
               >
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Terms & Conditions</span>
-                    <span className="forma-link-text">Terms & Conditions</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Terms & Conditions</span>
+                    <span className="shambala-link-text">Terms & Conditions</span>
                   </span>
                 </span>
               </Link>
-              <span className="forma-footer-copyright">
-                © 2025 FORMA. All rights reserved.
+              <span className="shambala-footer-copyright">
+                © 2025 shambala. All rights reserved.
               </span>
             </div>
           </div>
 
           {/* Follow Us Section */}
-          <div className="forma-footer-follow-us-section">
-            <h3 className="forma-footer-section-title">Follow Us</h3>
-            <div className="forma-footer-follow-links">
+          <div className="shambala-footer-follow-us-section">
+            <h3 className="shambala-footer-section-title">Follow Us</h3>
+            <div className="shambala-footer-follow-links">
               <a
                 href={settings?.social?.instagram || "https://instagram.com"}
-                className="forma-follow-link"
+                className="shambala-follow-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Instagram</span>
-                    <span className="forma-link-text">Instagram</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Instagram</span>
+                    <span className="shambala-link-text">Instagram</span>
                   </span>
                 </span>
               </a>
               <a
                 href={settings?.social?.facebook || "https://facebook.com"}
-                className="forma-follow-link"
+                className="shambala-follow-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">Facebook</span>
-                    <span className="forma-link-text">Facebook</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">Facebook</span>
+                    <span className="shambala-link-text">Facebook</span>
                   </span>
                 </span>
               </a>
               <a
                 href={settings?.social?.linkedin || "https://linkedin.com"}
-                className="forma-follow-link"
+                className="shambala-follow-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">LinkedIn</span>
-                    <span className="forma-link-text">LinkedIn</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">LinkedIn</span>
+                    <span className="shambala-link-text">LinkedIn</span>
                   </span>
                 </span>
               </a>
               <a
                 href={settings?.social?.youtube || "https://youtube.com"}
-                className="forma-follow-link"
+                className="shambala-follow-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="forma-link-window">
-                  <span className="forma-link-track">
-                    <span className="forma-link-text">YouTube</span>
-                    <span className="forma-link-text">YouTube</span>
+                <span className="shambala-link-window">
+                  <span className="shambala-link-track">
+                    <span className="shambala-link-text">YouTube</span>
+                    <span className="shambala-link-text">YouTube</span>
                   </span>
                 </span>
               </a>
@@ -322,22 +323,31 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
         </div>
 
         {/* Large Brand Name at Bottom */}
-        <div className="forma-footer-brand-large">
-          <h1 className="forma-footer-brand-text" ref={brandTextRef}>
-            <div className="forma-footer-mask">
-              <span className="forma-footer-letter">F</span>
+        <div className="shambala-footer-brand-large">
+          <h1 className="shambala-footer-brand-text" ref={brandTextRef}>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">S</span>
             </div>
-            <div className="forma-footer-mask">
-              <span className="forma-footer-letter">O</span>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">H</span>
             </div>
-            <div className="forma-footer-mask">
-              <span className="forma-footer-letter">R</span>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">A</span>
             </div>
-            <div className="forma-footer-mask">
-              <span className="forma-footer-letter">M</span>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">M</span>
             </div>
-            <div className="forma-footer-mask">
-              <span className="forma-footer-letter">A</span>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">B</span>
+            </div>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">A</span>
+            </div>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">L</span>
+            </div>
+            <div className="shambala-footer-mask">
+              <span className="shambala-footer-letter">A</span>
             </div>
           </h1>
         </div>

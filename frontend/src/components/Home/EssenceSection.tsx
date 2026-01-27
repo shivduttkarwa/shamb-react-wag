@@ -29,7 +29,7 @@ const publicUrl = import.meta.env.BASE_URL;
 
 const EssenceSection: React.FC<EssenceSectionProps> = ({
   logo,
-  tagline: _tagline = "WHY FORMA?",
+  tagline: _tagline = "WHY shambala?",
   heading = "WE SHAPE THE ESSENCE OF LIVING",
   description = "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort and beauty. From the way light moves through a room to the textures you brush past each morning, we obsess over the details so that each space tells a story, reflects its inhabitants, and quietly refreshes the spirit day after day.",
   ctaText = "VIEW OUR DESIGNS",

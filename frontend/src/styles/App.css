@@ -4,7 +4,7 @@
 /* Local Dream Avenue Font */
 @font-face {
   font-family: "Dream Avenue";
-  src: url("/fonts/Dream-Avenue.ttf") format("truetype");
+  src: url("/fonts/Dream-Avenue.ttf") shambalat("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

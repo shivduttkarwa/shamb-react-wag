@@ -27,6 +27,11 @@
   text-align: left;
 }
 
+.shambala-services__section-title {
+  font-family: "Dream Avenue", serif;
+  font-weight: 500;
+}
+
 /* Content Side */
 .shambala-services__content-side {
   width: 50%;

@@ -49,7 +49,7 @@ const ArchScrollReveal: React.FC = () => {
       }
     }
 
-    // Debounce resize for performance
+    // Debounce resize for pershambalance
     let resizeTimeout: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -62,7 +62,7 @@ const ArchScrollReveal: React.FC = () => {
     handleMobileLayout();
 
     const imgs = gsap.utils.toArray(".arch-img-wrapper img") as Element[];
-    // FORMA footer letter hover colors made lighter for backgrounds
+    // shambala footer letter hover colors made lighter for backgrounds
     const bgColors = [
       "#ffe9e9", // Light coral red (#ff6b6b made lighter)
       "#e8faf9", // Light turquoise (#4ecdc4 made lighter) 

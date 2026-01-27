@@ -85,14 +85,14 @@ export const ProcessSection: FC = () => {
       const ctx = gsap.context(() => {
         const q = gsap.utils.selector(rootRef);
 
-        const stepEls = q(".forma-process-step");
+        const stepEls = q(".shambala-process-step");
 
         const splitTitleChars = (el: HTMLElement | null) => {
           if (!el) return [];
           // Avoid re-splitting if already done
-          if (el.querySelector(".forma-title-char")) {
+          if (el.querySelector(".shambala-title-char")) {
             return Array.from(
-              el.querySelectorAll<HTMLElement>(".forma-title-char")
+              el.querySelectorAll<HTMLElement>(".shambala-title-char")
             );
           }
 
@@ -103,8 +103,8 @@ export const ProcessSection: FC = () => {
           [...text].forEach((char) => {
             const span = document.createElement("span");
             const isSpace = char === " ";
-            span.className = `forma-title-char${
-              isSpace ? " forma-title-space" : ""
+            span.className = `shambala-title-char${
+              isSpace ? " shambala-title-space" : ""
             }`;
             span.textContent = isSpace ? "\u00a0" : char;
             el.appendChild(span);
@@ -117,22 +117,22 @@ export const ProcessSection: FC = () => {
           const step = stepEl as HTMLElement;
 
           const imgContainer = step.querySelector(
-            ".forma-process-step-image-container"
+            ".shambala-process-step-image-container"
           ) as HTMLElement | null;
           const num = step.querySelector(
-            ".forma-process-step-number"
+            ".shambala-process-step-number"
           ) as HTMLElement | null;
           const title = step.querySelector(
-            ".forma-process-step-title"
+            ".shambala-process-step-title"
           ) as HTMLElement | null;
           const subtitle = step.querySelector(
-            ".forma-process-step-subtitle"
+            ".shambala-process-step-subtitle"
           ) as HTMLElement | null;
           const desc = step.querySelector(
-            ".forma-process-step-desc"
+            ".shambala-process-step-desc"
           ) as HTMLElement | null;
           const outcome = step.querySelector(
-            ".forma-process-outcome-box"
+            ".shambala-process-outcome-box"
           ) as HTMLElement | null;
 
           // Image slide down reveal using clip-path
@@ -250,7 +250,7 @@ export const ProcessSection: FC = () => {
 
       // Reset all image containers to initial state
       const imageContainers = rootRef.current.querySelectorAll(
-        ".forma-process-step-image-container"
+        ".shambala-process-step-image-container"
       );
       imageContainers.forEach((container) => {
         gsap.set(container, {
@@ -260,19 +260,19 @@ export const ProcessSection: FC = () => {
 
       // Reset all content elements to initial state
       const nums = rootRef.current.querySelectorAll(
-        ".forma-process-step-number"
+        ".shambala-process-step-number"
       );
       const titles = rootRef.current.querySelectorAll(
-        ".forma-process-step-title"
+        ".shambala-process-step-title"
       );
       const subtitles = rootRef.current.querySelectorAll(
-        ".forma-process-step-subtitle"
+        ".shambala-process-step-subtitle"
       );
       const descs = rootRef.current.querySelectorAll(
-        ".forma-process-step-desc"
+        ".shambala-process-step-desc"
       );
       const outcomes = rootRef.current.querySelectorAll(
-        ".forma-process-outcome-box"
+        ".shambala-process-outcome-box"
       );
 
       gsap.set(nums, { opacity: 0, y: 90 });
@@ -298,39 +298,39 @@ export const ProcessSection: FC = () => {
   }, []);
 
   return (
-    <section className="forma-process-section" ref={rootRef}>
-      <JelloText text="OUR PROCESS" className="forma-process-title" />
+    <section className="shambala-process-section" ref={rootRef}>
+      <JelloText text="OUR PROCESS" className="shambala-process-title" />
 
       {processSteps.map((step) => (
         <div
           key={step.number}
-          className={`forma-process-step ${
-            step.reverse ? "forma-process-reverse" : ""
+          className={`shambala-process-step ${
+            step.reverse ? "shambala-process-reverse" : ""
           }`}
           data-step={step.number}
         >
-          <div className="forma-process-step-image-wrap">
-            <div className="forma-process-step-image-container">
+          <div className="shambala-process-step-image-wrap">
+            <div className="shambala-process-step-image-container">
               <img
-                className="forma-process-step-image"
+                className="shambala-process-step-image"
                 src={step.image}
                 alt={step.title}
               />
             </div>
           </div>
 
-          <div className="forma-process-step-content">
-            <div className="forma-process-step-number forma-process-serif">
+          <div className="shambala-process-step-content">
+            <div className="shambala-process-step-number shambala-process-serif">
               {step.number}
             </div>
-            <h3 className="forma-process-step-title forma-process-serif">
+            <h3 className="shambala-process-step-title shambala-process-serif">
               {step.title}
             </h3>
-            <div className="forma-process-step-subtitle">{step.subtitle}</div>
-            <p className="forma-process-step-desc">{step.description}</p>
-            <div className="forma-process-outcome-box">
-              <div className="forma-process-outcome-label">OUTCOME</div>
-              <p className="forma-process-outcome-text">{step.outcome}</p>
+            <div className="shambala-process-step-subtitle">{step.subtitle}</div>
+            <p className="shambala-process-step-desc">{step.description}</p>
+            <div className="shambala-process-outcome-box">
+              <div className="shambala-process-outcome-label">OUTCOME</div>
+              <p className="shambala-process-outcome-text">{step.outcome}</p>
             </div>
           </div>
         </div>

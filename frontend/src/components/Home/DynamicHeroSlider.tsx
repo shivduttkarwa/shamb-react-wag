@@ -39,7 +39,7 @@ const DynamicHeroSlider = forwardRef<HTMLDivElement, DynamicHeroSliderProps>(
       return null;
     }
 
-    const formatMeta = (slide: SliderSlide) => {
+    const shambalatMeta = (slide: SliderSlide) => {
       const parts: string[] = [];
       
       if (slide.date) {
@@ -85,7 +85,7 @@ const DynamicHeroSlider = forwardRef<HTMLDivElement, DynamicHeroSliderProps>(
               </Link>
             </h4>
             <p className="mh-ui-news-meta">
-              {formatMeta(currentSlide)}
+              {shambalatMeta(currentSlide)}
             </p>
             {currentSlide.excerpt && (
               <p className="mh-ui-news-excerpt">

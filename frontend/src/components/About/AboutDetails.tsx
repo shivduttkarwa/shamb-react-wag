@@ -139,7 +139,7 @@ const AboutDetails: React.FC = () => {
             <div className="w-full h-auto rounded-2xl overflow-hidden about-animate-in aboutdetail-image-container">
               <img
                 src={`${publicUrl}images/hero_poster.jpg`}
-                alt="FORMA Architectural Excellence"
+                alt="shambala Architectural Excellence"
                 className="reduced-hero-image"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -163,7 +163,7 @@ const AboutDetails: React.FC = () => {
                   tag="p"
                 />
                 <ASCIIGlitchText
-                  text="With over 25 years of experience, FORMA has established itself as a pioneering force in sustainable luxury design. From intimate residential retreats to grand commercial complexes, we create spaces that honor both aesthetic excellence and environmental stewardship."
+                  text="With over 25 years of experience, shambala has established itself as a pioneering force in sustainable luxury design. From intimate residential retreats to grand commercial complexes, we create spaces that honor both aesthetic excellence and environmental stewardship."
                   className="about-interactive-element text-lg leading-relaxed"
                   duration={900}
                   spread={0.7}

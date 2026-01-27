@@ -270,7 +270,7 @@ const GsapSlider: FC = () => {
   const first = serviceSlides[0];
 
   return (
-    <div className="gs-forma-services" id="services-content" ref={rootRef}>
+    <div className="gs-shambala-services" id="services-content" ref={rootRef}>
       <div className="gs-fs-heading">
         <TiltTextGsap
           tag="h2"
@@ -278,7 +278,7 @@ const GsapSlider: FC = () => {
           startTrigger="top 75%"
           endTrigger="bottom 0%"
         >
-          Forma Services
+          shambala Services
         </TiltTextGsap>
         <div className="gs-fs-heading-subtitle">
           Architecture, interiors, and landscapes crafted as one seamless story,
@@ -291,7 +291,7 @@ const GsapSlider: FC = () => {
           <div className="gs-fs-layout">
             <div className="gs-fs-left">
               <div>
-                <div className="gs-fs-kicker">FORMA SERVICES</div>
+                <div className="gs-fs-kicker">shambala SERVICES</div>
                 <h1 className="gs-fs-title">{first.title}</h1>
 
                 <div className="gs-fs-meta">
@@ -307,7 +307,7 @@ const GsapSlider: FC = () => {
 
               <div>
                 <div className="gs-fs-cta">
-                  <GlassButton href="/projects">Talk to Forma</GlassButton>
+                  <GlassButton href="/projects">Talk to shambala</GlassButton>
                 </div>
                 <div className="gs-fs-counter">
                   <span className="gs-fs-counter-current">01</span> / {" "}
