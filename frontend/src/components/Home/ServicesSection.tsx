@@ -2,9 +2,11 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./ServicesSection.css";
-import GlassButton from "../UI/GlassButton";
 import ReadMoreButton from "../UI/ReadMoreButton";
+import AestheticButton from "../UI/AestheticButton";
 import TiltTextGsap from "../UI/TiltTextGsap";
+import { initGsapSwitchAnimations } from "../../lib/gsapSwitchAnimations";
+
 
 const publicUrl = import.meta.env.BASE_URL;
 
@@ -124,7 +126,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
 
       // Parallax effect on images
       cards.forEach((card) => {
-        const img = (card as Element).querySelector(".service-card-image");
+        const img = (card as Element).querySelector(".hss-service-card-image");
         if (img) {
           gsap.to(img, {
             yPercent: -1,
@@ -139,38 +141,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
         }
       });
 
-        // Fade in content elements on desktop only
-      if (window.innerWidth > 1024) {
-        gsap.from(".hss-services-description", {
-          scrollTrigger: {
-            trigger: ".hss-services-content",
-            start: "top 70%",
-          },
-          opacity: 0,
-          y: 20,
-          duration: 0.6,
-          delay: 0.4,
-          ease: "linear",
-        });
-
-        // Button animation - simple fade in
-        gsap.from(".hss-services-content .home-benefits-cta", {
-          opacity: 0,
-          y: 15,
-          duration: 0.6,
-          delay: 0.6,
-          ease: "linear",
-          scrollTrigger: {
-            trigger: ".hss-services-content",
-            start: "top 70%",
-            toggleActions: "play none none none",
-          },
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  useEffect(() => {
+      return initGsapSwitchAnimations(sectionRef.current || undefined);
+    }, []);
 
   return (
     <section className="hss-services-section" ref={sectionRef}>
@@ -194,19 +172,19 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                     <div className="hss-service-title">
                       {service.title}
                     </div>
-                  <div className="hss-service-description">
-                    {service.description}
+                    <div className="hss-service-description">
+                      {service.description}
+                    </div>
                   </div>
+                  <ReadMoreButton
+                    href={service.ctaLink || "#"}
+                    text={service.ctaText || "Read More"}
+                    size="card"
+                    className="hss-readmore-btn"
+                  />
                 </div>
-                <ReadMoreButton
-                  href={service.ctaLink || "#"}
-                  text={service.ctaText || "Read More"}
-                  size="card"
-                  className="hss-readmore-btn"
-                />
               </div>
-            </div>
-          ))}
+            ))}
           </div>
 
           {/* Right side - Sticky Content */}
@@ -214,10 +192,12 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
             <TiltTextGsap startTrigger="top 70%" endTrigger="bottom -1000%">
               {`${title} ${subtitle}`}
             </TiltTextGsap>
-            <div className="hss-services-description">
+            <div data-gsap="fade-up" className="hss-services-description">
               {typeof window !== 'undefined' && window.innerWidth < 1600 ? shortDescription : description}
             </div>
-            <GlassButton href={ctaLink}>{ctaText}</GlassButton>
+           <div data-gsap="slide-right" > <AestheticButton className="essence-cta-btn" href={ctaLink}>
+              {ctaText}
+            </AestheticButton></div>
           </div>
         </div>
       </div>
