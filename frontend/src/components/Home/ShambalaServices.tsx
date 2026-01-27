@@ -262,7 +262,7 @@ const ShambalaServices: React.FC = () => {
           <div className="shambala-services__content-stack">
             {isTransitioning && (
               <div
-                className="shambala-services__content-panel shambala-services__content-layer"
+                className="shambala-services__content-panel shambala-services__content-layer shambala-services__content-layer--previous"
                 style={{
                   pointerEvents: 'none',
                   zIndex: 1,

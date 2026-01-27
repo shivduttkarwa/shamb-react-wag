@@ -4,6 +4,7 @@
   background: transparent;
   position: relative;
   overflow: hidden;
+  color: #1a1a1a;
 }
 
 .essence-container {
@@ -33,6 +34,7 @@
   position: relative;
   overflow: hidden;
   min-height: 110vh;
+  color: #1a1a1a;
 }
 
 .essence-logo {
@@ -68,7 +70,7 @@
 .essence-description {
   font-size: clamp(16px, 2vw, 18px); /* Responsive: 16px min, 2vw fluid, 18px max */
   line-height: 1.7;
-  color: #4a4a4a;
+  color: #1f1f1f;
   margin-bottom: 35px;
   max-width: 100%;
   font-weight: 400;

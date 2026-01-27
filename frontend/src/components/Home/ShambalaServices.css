@@ -76,10 +76,17 @@
   grid-template-columns: 1fr;
   position: relative;
   z-index: 2;
+  min-height: 100vh;
 }
 
 .shambala-services__content-layer {
   grid-area: 1 / 1;
+  position: absolute;
+  inset: 0;
+}
+
+.shambala-services__content-layer--previous {
+  animation: contentFadeOut 0.35s ease forwards;
 }
 
 /* Content Panel */
@@ -453,6 +460,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes contentFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
