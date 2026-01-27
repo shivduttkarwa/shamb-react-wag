@@ -204,7 +204,6 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
           leftText="SERVICES"
           rightText="PROJETS"
           videoSrc={videoUrl}
-          backgroundColor="var(--light-bg)"
           bottomLeftText="Design"
           bottomRightText="purpose"
         />

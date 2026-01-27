@@ -25,7 +25,7 @@
 
 /* Left side: Content area */
 .essence-content {
-  background: var(--light-bg);
+  background: transparent;
   padding: 60px 80px;
   display: flex;
   flex-direction: column;
@@ -155,7 +155,7 @@
   padding-bottom: 60px;
   position: relative;
   overflow: hidden;
-  background: var(--light-bg); /* matches left side */
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,7 +214,7 @@
     height: auto;
     margin: 20px;
     padding: 0;
-    background: var(--light-bg);
+    background: transparent;
     order: 2;
   }
 
@@ -223,7 +223,7 @@
     display: flex;
     justify-content: center;
     padding: 40px 5.5%;
-    background: var(--light-bg);
+    background: transparent;
     order: 3;
   }
 
@@ -255,7 +255,7 @@
     min-height: 45vh;
     margin: 20px;
     padding: 0;
-    background: var(--light-bg);
+   
   }
 
   .essence-img {
@@ -283,7 +283,7 @@
     min-height: 40vh;
     margin: 0px;
     padding: 0;
-    background: var(--light-bg);
+    background: transparent;
     padding-top: 10px;
   }
 

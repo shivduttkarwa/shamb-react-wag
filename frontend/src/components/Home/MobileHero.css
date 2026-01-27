@@ -10,7 +10,7 @@
   width: 100%;
   height: 10vh;
   position: relative;
-  background: #ffffff;
+  background: transparent;
   overflow: hidden;
   /* Default overlay offsets: moved left 30px and up 50px from original values */
   --overlay-left: 90px;

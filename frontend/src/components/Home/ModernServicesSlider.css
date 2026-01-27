@@ -9,7 +9,7 @@
 }
 
 .mss-creative-fullpage--slider {
-  background-color: var(--cream);
+  background-color: transparent;
   z-index: 2;
   width: 100%;
   position: relative;
@@ -132,7 +132,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #fff;
+  background: transparent;
   margin-top: 8px;
 }
 

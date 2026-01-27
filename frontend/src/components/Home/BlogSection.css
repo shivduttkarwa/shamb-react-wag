@@ -2,7 +2,7 @@
 
 .blog-section-wrapper {
   /* Main wrapper for the new blog section */
-  background: #f8f8f8;
+  background: transparent;
 }
 
 /* SCROLL VELOCITY TITLE */
@@ -74,7 +74,7 @@
   height: 90vh;
   display: flex;
   align-items: center;
-  background: #f8f8f8;
+  background: transparent;
 }
 
 .blog-featured-container {
@@ -161,7 +161,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 80px;
-  background: #f8f8f8;
+  background: transparent;
 }
 
 .blog-featured-title {
@@ -245,7 +245,7 @@
 .blog-posts-section {
   min-height: 100vh;
   padding: 80px 40px;
-  background: #f8f8f8;
+  background: transparent;
 }
 
 .blog-posts-container {
@@ -258,7 +258,7 @@
 }
 
 .blog-post-card {
-  background: #f8f8f8;
+  background: transparent;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 20px;

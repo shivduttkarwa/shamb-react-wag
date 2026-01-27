@@ -4,7 +4,7 @@
 #fp-home_accommodation {
   padding: 20px 8.5% 0 8.5%;
   position: relative;
-  background: #f8f8f8;
+  background: transparent;
   min-height: calc(100vh - 50px);
 }
 

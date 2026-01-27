@@ -9,7 +9,6 @@ interface FallingTextVideoComponentProps {
   leftText?: string;
   rightText?: string;
   videoSrc?: string;
-  backgroundColor?: string;
   bottomLeftText?: string;
   bottomRightText?: string;
 }
@@ -18,7 +17,6 @@ const FallingTextVideoComponent: React.FC<FallingTextVideoComponentProps> = ({
   leftText = "Latest",
   rightText = "Project",
   videoSrc = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-  backgroundColor = "var(--light-bg)",
   bottomLeftText = "CREATIVE",
   bottomRightText = "DIGITAL",
 }) => {
@@ -230,11 +228,7 @@ const FallingTextVideoComponent: React.FC<FallingTextVideoComponentProps> = ({
   }, [bottomLeftText, bottomRightText]);
 
   return (
-    <section
-      ref={wrapperRef}
-      className="ftv-video-wrapper"
-      style={{ backgroundColor }}
-    >
+    <section ref={wrapperRef} className="ftv-video-wrapper">
       <div className="ftv-video-content">
         {/* Top big headings */}
         <div className="ftv-text-container">

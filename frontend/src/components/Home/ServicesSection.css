@@ -1,6 +1,6 @@
 /* HSS Services Section Styles */
 .hss-services-section {
-  background: #fafafa;
+  
   color: #2c3e50;
   line-height: 1.6;
 }
@@ -98,7 +98,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: #ffffff;
+  background: transparent;
   padding: 20px;
   height: 40%;
   display: flex;

@@ -24,7 +24,6 @@ section.project-feature {
   padding-bottom: clamp(1rem, 1.5vw + 0.5rem, 2rem);
   position: relative;
   font-family: "Nunito", sans-serif;
-  background: #f8f8f8;
   --grid-column-count: 12;
   /* Force normal overflow for sticky positioning */
   overflow: visible !important;

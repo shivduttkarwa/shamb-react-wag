@@ -4,7 +4,7 @@
 .benefits-inside-title {
   text-align: center;
   padding: 60px 0 40px;
-  background: #f8f8f8;
+  background: transparent;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -124,7 +124,7 @@ section[data-block-type="blockBenefits"] {
   border-left: 2px solid #e0e0e0;
   border-right: 2px solid #e0e0e0;
   padding: 1.5rem;
-  background: #f8f8f8;
+  background: transparent;
   z-index: 1;
   cursor: pointer;
   text-decoration: none;
@@ -133,7 +133,7 @@ section[data-block-type="blockBenefits"] {
 }
 
 .benefits-card:hover {
-  background: #f0f0f0;
+  background: transparent;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -168,7 +168,7 @@ section[data-block-type="blockBenefits"] {
   border-left: 2px solid #e0e0e0;
   border-right: 2px solid #e0e0e0;
   padding: 1.5rem;
-  background: #f8f8f8;
+  background: transparent;
   z-index: 1;
   cursor: pointer;
   text-decoration: none;
@@ -177,7 +177,7 @@ section[data-block-type="blockBenefits"] {
 }
 
 .benefits-card-mobile:hover {
-  background: #f0f0f0;
+  background: transparent;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -190,7 +190,7 @@ section[data-block-type="blockBenefits"] {
   margin-top: -1px;
   pointer-events: none;
   aspect-ratio: 1;
-  background: #f8f8f8;
+  background: transparent;
 }
 
 .benefits-spacer:first-child {
@@ -238,7 +238,7 @@ section[data-block-type="blockBenefits"] {
   justify-content: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  background: #f8f8f8;
+  background: transparent;
 }
 
 .benefits-lg-col-start-2 {

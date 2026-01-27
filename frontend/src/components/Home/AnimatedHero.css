@@ -31,7 +31,7 @@
 #animated-hero-section.hero-section {
   height: 390vh; /* matches animation duration */
   position: relative;
-  background: #ffffff;
+  background: transparent;
 }
 
 #animated-hero-section .hero-sticky {
