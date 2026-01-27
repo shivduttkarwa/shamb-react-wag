@@ -89,8 +89,8 @@
 
 .hss-service-card-image {
   width: 100%;
-  height: 34%;
-  flex: 0 0 34%;
+  height: 39%;
+  flex: 0 0 39%;
   object-fit: cover;
   display: block;
   transition: transform 0.6s ease;
@@ -117,7 +117,7 @@
   font-weight: 500;
   margin-bottom: 0;
   letter-spacing: 0.02em;
-  font-family: "Dream Avenue", cursive;
+  font-family: "Nunito", sans-serif;
   display: inline-block;
 }
 
@@ -173,7 +173,7 @@
 }
 
 .hss-services-title {
-  font-family: "Dream Avenue", cursive !important;
+  font-family: nunito, sans-serif ;
   text-transform: uppercase !important;
   letter-spacing: 0.04em !important;
   line-height: 1.2 !important;
