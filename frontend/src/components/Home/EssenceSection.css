@@ -160,7 +160,15 @@
   background: transparent;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.essence-image-mask {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
 }
 
 /* Image itself slides in right → left via clip-path */

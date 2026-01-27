@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./EssenceSection.css";
 import AestheticButton from "../UI/AestheticButton";
 import FallingTextVideoComponent from "../UI/FallingTextVideoComponent";
@@ -44,6 +46,39 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
     "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort.";
 
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageMaskRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!imageMaskRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mask = imageMaskRef.current;
+    gsap.set(mask, { width: 0, marginLeft: "auto", overflow: "hidden" });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: mask,
+        start: "top 40%",
+        toggleActions: "play none none none",
+        once: true,
+      },
+    });
+
+    tl.to(mask, {
+      width: "100%",
+      duration: 1.1,
+      ease: "power3.out",
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === mask) {
+          st.kill();
+        }
+      });
+    };
+  }, []);
 
   useEffect(() => {
     return initGsapSwitchAnimations(sectionRef.current || undefined);
@@ -62,7 +97,7 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
               </div>
             )}
 
-            <div className="essence-heading" data-gsap="fade-up">
+            <div className="essence-heading" >
               <TiltTextGsap startTrigger="top 70%" endTrigger="bottom -10%">
                 {heading}
               </TiltTextGsap>
@@ -76,15 +111,16 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
                 : description}
             </div>
 
-            <div className="essence-cta-desktop" data-gsap-delay="0.2">
+            <div className="essence-cta-desktop" data-gsap="slide-left">
               <AestheticButton href={ctaHref}>{ctaText}</AestheticButton>
             </div>
           </div>
 
           {/* Right side: beige bg + image sliding in over it */}
-          <div className="essence-image" data-gsap="clip-reveal-center">
-            <img
-              src={image.src}
+          <div className="essence-image">
+            <div className="essence-image-mask" ref={imageMaskRef}>
+              <img
+                src={image.src}
               srcSet={
                 image.mobile && image.tablet && image.desktop
                   ? `${image.mobile} 700w, ${image.tablet} 1000w, ${image.desktop} 1200w`
@@ -97,7 +133,8 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
               }
               alt={image.alt}
               className="essence-img"
-            />
+              />
+            </div>
           </div>
 
           {/* Mobile CTA - only visible on mobile after image */}

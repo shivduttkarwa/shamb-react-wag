@@ -48,11 +48,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30vw;
-  height: 12.5vw;
+  width: 40vw;
+  height: 20vw;
   border-radius: 0px;
   overflow: hidden;
   z-index: 5;
+  border-radius: 20px;
 }
 
 .ftv-video-container video {

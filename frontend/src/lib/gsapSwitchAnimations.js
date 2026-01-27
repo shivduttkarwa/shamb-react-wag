@@ -86,6 +86,9 @@ class GSAPAnimations {
           case 'clip-reveal-center':
             this.clipRevealCenter(el, config);
             break;
+          case 'clip-reveal-rtl':
+            this.clipRevealRightToLeft(el, config);
+            break;
           case 'writing-text':
             this.writingText(el, config);
             break;
@@ -661,6 +664,74 @@ class GSAPAnimations {
           }
         }
       );
+    });
+  }
+
+  // Clip reveal animation from right to left
+  clipRevealRightToLeft(el, config) {
+    if (!el) return;
+
+    const targetMode = el.getAttribute('data-gsap-target');
+    const isImageElement = el.tagName === 'IMG';
+    const fallbackImages = !isImageElement ? el.querySelectorAll('img') : [];
+    const maskTarget = el.querySelector('.essence-image-mask');
+    const elements = targetMode === 'self'
+      ? [maskTarget || el]
+      : targetMode === 'img'
+      ? Array.from(fallbackImages)
+      : fallbackImages.length
+      ? Array.from(fallbackImages)
+      : [el];
+
+    if (!elements.length) return;
+
+    const hasStartAttr = el.hasAttribute('data-gsap-start');
+    const hasDurationAttr = el.hasAttribute('data-gsap-duration');
+    const hasEaseAttr = el.hasAttribute('data-gsap-ease');
+    const hasDelayAttr = el.hasAttribute('data-gsap-delay');
+
+    const start = hasStartAttr ? config.start : 'top 65%';
+    const duration = hasDurationAttr && Number.isFinite(config.duration) ? config.duration : 1.1;
+    const ease = hasEaseAttr ? config.ease : 'power3.out';
+    const delay = hasDelayAttr && Number.isFinite(config.delay) ? config.delay : 0;
+
+    elements.forEach((img) => {
+      if (img.dataset.clipRevealRtlInit === 'true') return;
+      img.dataset.clipRevealRtlInit = 'true';
+
+      const triggerElement = el;
+      gsap.set(img, {
+        willChange: 'width',
+        opacity: 1,
+        width: 0,
+        display: 'block',
+        overflow: 'hidden',
+      });
+
+      const prefersReducedMotion = window.matchMedia
+        ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        : false;
+
+      if (prefersReducedMotion) {
+        gsap.set(img, { clipPath: 'inset(0 0 0 0)', webkitClipPath: 'inset(0 0 0 0)' });
+        return;
+      }
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerElement,
+          start,
+          toggleActions: 'play none none none',
+          once: true,
+        },
+      });
+
+      tl.to(img, {
+        width: '100%',
+        duration,
+        ease,
+        delay,
+      });
     });
   }
 
