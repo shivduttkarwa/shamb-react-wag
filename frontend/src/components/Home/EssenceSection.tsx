@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "./EssenceSection.css";
-import GlassButton from "../UI/GlassButton";
+import AestheticButton from "../UI/AestheticButton";
 import FallingTextVideoComponent from "../UI/FallingTextVideoComponent";
 import TiltTextGsap from "../UI/TiltTextGsap";
 import { initGsapSwitchAnimations } from "../../lib/gsapSwitchAnimations";
@@ -76,8 +76,8 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
                 : description}
             </div>
 
-            <div className="essence-cta-desktop" data-gsap="fade-up" data-gsap-delay="0.2">
-              <GlassButton href={ctaHref}>{ctaText}</GlassButton>
+            <div className="essence-cta-desktop" data-gsap-delay="0.2">
+              <AestheticButton href={ctaHref}>{ctaText}</AestheticButton>
             </div>
           </div>
 
@@ -102,7 +102,7 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
 
           {/* Mobile CTA - only visible on mobile after image */}
           <div className="essence-cta-mobile">
-            <GlassButton href={ctaHref}>{ctaText}</GlassButton>
+            <AestheticButton href={ctaHref}>{ctaText}</AestheticButton>
           </div>
         </div>
       </div>
