@@ -30,19 +30,24 @@
 .hss-services-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px; /* Reduced gap */
+  gap: 16px;
   grid-auto-rows: 10px;
 }
 
 .hss-service-card {
   position: relative;
-  border-radius: 0;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: #f6f4ee;
+  border: 1px solid rgba(64, 81, 59, 0.18);
+  box-shadow: 0 10px 24px rgba(30, 33, 28, 0.08);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   will-change: transform;
-  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  height: auto;
 }
 
 /* Staggered masonry layout */
@@ -77,16 +82,18 @@
 }
 
 .hss-service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(30, 33, 28, 0.16);
+  border-color: rgba(230, 126, 34, 0.6);
 }
 
 .hss-service-card-image {
   width: 100%;
-  height: 60%;
+  height: 34%;
+  flex: 0 0 34%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .hss-service-card:hover .hss-service-card-image {
@@ -94,33 +101,31 @@
 }
 
 .hss-service-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  padding: 20px;
-  height: 40%;
+  position: relative;
+  background: #f6f4ee;
+  padding: 22px 22px 26px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
+  justify-content: flex-start;
+  flex: 1;
 }
 
 .hss-service-title {
   color: #1a1a1a;
-  font-size: 25px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: -0.3px;
-  font-family: "Nunito", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
+  font-family: "Dream Avenue", cursive;
   display: inline-block;
 }
 
 .hss-service-description {
-  color: #666;
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 12px;
+  color: #4a4a4a;
+  font-size: 20px;
+  line-height: 1.65;
+  margin-bottom: 10px;
   font-family: "Nunito", sans-serif;
   display: block;
   /* Prevent layout shift during hover animation */
@@ -244,27 +249,12 @@
   flex-shrink: 0 !important;
 }
 
-/* Glass Button Styling for HSS Service Cards */
-.hss-service-overlay .home-benefits-cta {
-  height: auto !important;
-  min-height: auto !important;
-  width: auto !important;
-  max-width: none !important;
-  padding: 8px 16px !important;
-  margin: 0 !important;
-  align-self: flex-start !important;
-  font-size: 10px !important;
-  letter-spacing: 0.5px !important;
-  text-transform: uppercase !important;
-  gap: 0.5rem !important;
-}
-
-.hss-service-overlay .home-benefits-cta .home-benefits-cta-icon {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  min-width: 1.5rem !important;
-  min-height: 1.5rem !important;
-  font-size: 0.8rem !important;
+/* ReadMoreButton Styling for HSS Service Cards */
+.hss-readmore-btn {
+  align-self: center;
+ 
+  
+  transform-origin: right center;
 }
 
 /* Text animation masks */
@@ -332,16 +322,14 @@
   }
 
   .hss-services-cards {
-    display: block; /* Switch from grid to block for mobile */
+    display: block;
     gap: 0;
   }
 
   .hss-service-card {
     margin-bottom: 20px;
-    position: relative;
-    grid-row: auto;
-    grid-column: auto;
-    height: 500px; /* Fixed height for consistency */
+    min-height: 520px;
+    height: auto;
   }
 
   .hss-service-card:nth-child(1),
@@ -355,23 +343,22 @@
   }
 
   .hss-service-card-image {
-    height: 55%; /* Reduce image height to give more space for content */
+    height: 30%;
+    flex: 0 0 30%;
   }
 
   .hss-service-overlay {
-    height: 45%; /* Increase overlay height for content */
-    padding: 15px;
+    padding: 18px;
+    flex: 1;
   }
 
   .hss-service-title {
-    font-size: 18px;
-    margin-bottom: 6px;
+    font-size: 24px;
   }
 
   .hss-service-description {
-    font-size: 12px;
-    line-height: 1.4;
-    margin-bottom: 10px;
+    font-size: 19px;
+    line-height: 1.5;
   }
 
   .hss-services-title {
@@ -394,12 +381,13 @@
   }
 
   .hss-services-cards {
-    margin: 0 -5px; /* Negative margin to allow cards to be slightly wider */
+    margin: 0;
   }
 
   .hss-service-card {
-    margin: 0 5px 15px 5px; /* Adjust margins */
-    height: 460px; /* Increased height for better content visibility */
+    margin: 0 0 16px 0;
+    min-height: 500px;
+    height: auto;
   }
 
   .hss-service-title {
@@ -407,7 +395,7 @@
   }
 
   .hss-service-description {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .hss-services-title {

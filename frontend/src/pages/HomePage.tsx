@@ -16,6 +16,7 @@ import ShambalaServices from
 import BodyRenderer from "../components/BodyRenderer";
 import { useHome } from "../hooks/useHome";
 import { SiteSettings } from "../services/api";
+import IWantToSection from "@/components/Home/IWantToSection";
 
 interface HomePageProps {
   settings: SiteSettings | null;
@@ -35,6 +36,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       <div id="services">
         <ServicesSection />
       </div>
+      <IWantToSection />
       <ProjectModernSlider />
       <ShambalaServices />
       <div id="projects">

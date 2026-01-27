@@ -1,30 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface ReadMoreButtonProps {
   text?: string;
+  href?: string;
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  target?: '_blank' | '_self';
+  rel?: string;
+  size?: 'default' | 'compact' | 'card';
 }
 
 const ReadMoreButton: React.FC<ReadMoreButtonProps> = ({
   text = 'Read More',
+  href,
   onClick,
   disabled = false,
   className = '',
+  target = '_self',
+  rel,
+  size = 'default',
 }) => {
   const [isHovered, setIsHovered] = React.useState(false);
+
+  const isCompact = size === 'compact';
+  const isCard = size === 'card';
 
   const styles = {
     button: {
       position: 'relative' as const,
-      padding: '24px 60px',
+      padding: isCard ? '16px 40px' : isCompact ? '12px 28px' : '24px 60px',
       background: 'white',
       color: '#40513B',
       border: 'none',
       fontFamily: "'Cormorant Garamond', serif",
-      fontSize: '1.1rem',
-      letterSpacing: '5px',
+      fontSize: isCard ? '0.95rem' : isCompact ? '0.8rem' : '1.1rem',
+      letterSpacing: isCard ? '3px' : isCompact ? '2px' : '5px',
       textTransform: 'uppercase' as const,
       cursor: disabled ? 'not-allowed' : 'pointer',
       boxShadow: isHovered
@@ -54,17 +66,43 @@ const ReadMoreButton: React.FC<ReadMoreButtonProps> = ({
     } as React.CSSProperties,
   };
 
-  return (
-    <button
-      className={className}
-      style={styles.button}
-      onClick={onClick}
-      disabled={disabled}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+  const content = (
+    <>
       <span style={styles.fill}></span>
       <span style={styles.text}>{text}</span>
+    </>
+  );
+
+  const commonProps = {
+    className,
+    style: styles.button,
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false),
+  };
+
+  if (href) {
+    if (href.startsWith('/')) {
+      return (
+        <Link to={href} {...commonProps}>
+          {content}
+        </Link>
+      );
+    }
+    return (
+      <a href={href} target={target} rel={rel} {...commonProps}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      {...commonProps}
+      onClick={onClick}
+      disabled={disabled}
+      type="button"
+    >
+      {content}
     </button>
   );
 };

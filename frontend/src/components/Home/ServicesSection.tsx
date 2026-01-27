@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./ServicesSection.css";
 import GlassButton from "../UI/GlassButton";
+import ReadMoreButton from "../UI/ReadMoreButton";
 import TiltTextGsap from "../UI/TiltTextGsap";
 
 const publicUrl = import.meta.env.BASE_URL;
@@ -33,7 +34,7 @@ const defaultServices: ServiceCard[] = [
     id: "1",
     title: "Seacliff Residence",
     description:
-      "Ocean-facing luxury retreat with layered terraces, native landscaping, and seamless indoor-outdoor living.",
+      "Ocean-facing luxury retreat with layered terraces, native landscaping, and seamless indoor-outdoor living. Crafted to capture sunrise light, the plan flows from sheltered courtyards to broad coastal decks.",
     imageSrc: `${publicUrl}images/sercard1.jpg`,
     alt: "Seacliff Residence project",
     ctaText: "View Project",
@@ -43,7 +44,7 @@ const defaultServices: ServiceCard[] = [
     id: "2",
     title: "Hinterland Pavilion",
     description:
-      "Elevated pavilion home with timber screening, passive cooling, and a warm minimalist interior palette.",
+      "Elevated pavilion home with timber screening, passive cooling, and a warm minimalist interior palette. Deep overhangs, cross-ventilation, and a central hearth create a calm, low-maintenance retreat.",
     imageSrc: `${publicUrl}images/sercard2.jpg`,
     alt: "Hinterland Pavilion project",
     ctaText: "View Project",
@@ -53,7 +54,7 @@ const defaultServices: ServiceCard[] = [
     id: "3",
     title: "Urban Courtyard House",
     description:
-      "Inner-city sanctuary built around a sculpted courtyard, clerestory light, and bespoke joinery moments.",
+      "Inner-city sanctuary built around a sculpted courtyard, clerestory light, and bespoke joinery moments. The layout opens and closes with the day, creating layered spaces for work and family life.",
     imageSrc: `${publicUrl}images/sercard3.jpg`,
     alt: "Urban Courtyard House project",
     ctaText: "View Project",
@@ -63,7 +64,7 @@ const defaultServices: ServiceCard[] = [
     id: "4",
     title: "Forest Ridge Lodge",
     description:
-      "Weekend lodge with stone, cedar, and expansive glazing framing the treetops.",
+      "Weekend lodge with stone, cedar, and expansive glazing framing the treetops. Warm, textured rooms wrap a central fireplace, easing the transition between forest and interior.",
     imageSrc: `${publicUrl}images/4.avif`,
     alt: "Forest Ridge Lodge project",
     ctaText: "View Project",
@@ -193,16 +194,19 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                     <div className="hss-service-title">
                       {service.title}
                     </div>
-                    <div className="hss-service-description">
-                      {service.description}
-                    </div>
+                  <div className="hss-service-description">
+                    {service.description}
                   </div>
-                  <GlassButton href={service.ctaLink || "#"}>
-                    {service.ctaText || "Learn More"}
-                  </GlassButton>
                 </div>
+                <ReadMoreButton
+                  href={service.ctaLink || "#"}
+                  text={service.ctaText || "Read More"}
+                  size="card"
+                  className="hss-readmore-btn"
+                />
               </div>
-            ))}
+            </div>
+          ))}
           </div>
 
           {/* Right side - Sticky Content */}

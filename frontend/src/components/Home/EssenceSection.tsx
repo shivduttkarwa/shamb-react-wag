@@ -112,7 +112,9 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
             </div>
 
             <div className="essence-cta-desktop" data-gsap="slide-left">
-              <AestheticButton href={ctaHref}>{ctaText}</AestheticButton>
+              <AestheticButton className="essence-cta-btn" href={ctaHref}>
+                {ctaText}
+              </AestheticButton>
             </div>
           </div>
 
@@ -139,7 +141,9 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
 
           {/* Mobile CTA - only visible on mobile after image */}
           <div className="essence-cta-mobile">
-            <AestheticButton href={ctaHref}>{ctaText}</AestheticButton>
+            <AestheticButton className="essence-cta-btn" href={ctaHref}>
+              {ctaText}
+            </AestheticButton>
           </div>
         </div>
       </div>
