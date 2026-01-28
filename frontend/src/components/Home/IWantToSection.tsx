@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { initGsapSwitchAnimations } from '../../lib/gsapSwitchAnimations';
+import AestheticButton from '../UI/AestheticButton';
 
 interface ServiceOption {
   id: number;
@@ -87,15 +88,10 @@ const useWindowSize = () => {
 
 const IWantToSection: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
   const { width } = useWindowSize();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     return initGsapSwitchAnimations(sectionRef.current || undefined);
@@ -110,15 +106,7 @@ const IWantToSection: React.FC = () => {
       position: 'relative',
       overflow: 'hidden',
     },
-    ornamentTop: {
-      position: 'absolute',
-      top: '3rem',
-      right: '5%',
-      width: '1px',
-      height: '6rem',
-      backgroundColor: '#C9A961',
-      opacity: 0.25,
-    },
+    
     ornamentBottom: {
       position: 'absolute',
       bottom: '3rem',
@@ -143,36 +131,28 @@ const IWantToSection: React.FC = () => {
       fontWeight: 700,
       letterSpacing: '0.2rem',
       textTransform: 'uppercase',
-      color: '#C9A961',
+      color: '#6a4c09',
       marginBottom: '1.25rem',
-      opacity: mounted ? 1 : 0,
-      transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-      transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
     },
     title: {
       fontSize: isMobile ? '3rem' : isTablet ? '4rem' : '5rem',
       fontWeight: 800,
+      fontFamily: '"Dream Avenue", sans-serif',
       color: '#1A1A1A',
       margin: '0 0 1rem 0',
       lineHeight: 1.1,
       letterSpacing: '-0.02em',
-      opacity: mounted ? 1 : 0,
-      transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-      transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
     },
     titleAccent: {
-      color: '#C9A961',
+      color: '#6a4c09',
     },
     description: {
       fontSize: isMobile ? '1.3rem' : '1.38rem',
-      color: '#6B6B6B',
+      color: '#000000',
       maxWidth: '40rem',
       margin: '0 auto',
       lineHeight: 1.7,
       fontWeight: 400,
-      opacity: mounted ? 1 : 0,
-      transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-      transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
     },
     grid: {
       display: 'grid',
@@ -180,6 +160,11 @@ const IWantToSection: React.FC = () => {
       gap: isMobile ? '1.5rem' : isTablet ? '2rem' : '2rem',
       maxWidth: isMobile ? '100%' : '115%',
       margin: '0 auto',
+    },
+    ctaWrapper: {
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: isMobile ? '3rem' : isTablet ? '4rem' : '5rem',
     },
   };
 
@@ -307,57 +292,42 @@ const IWantToSection: React.FC = () => {
 
   return (
     <>
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
-          
-          @keyframes slideUp {
-            from {
-              opacity: 0;
-              transform: translateY(40px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
+      
       
       <section
         ref={sectionRef}
         style={styles.section}
-        className="three-campuses-section"
+        className="i-want-section"
       >
         <div style={styles.ornamentTop} />
-        <div style={styles.ornamentBottom} />
+        
         
         <div style={styles.container}>
           {/* Header */}
           <div style={styles.header}>
-            <div style={styles.eyebrow}>Your Journey Begins</div>
-            <h2 style={styles.title}>
+            <div data-gsap="fade-up" style={styles.eyebrow}>Your Journey Begins</div>
+            <h2 data-gsap="fade-up" style={styles.title}>
               I want to<span style={styles.titleAccent}>...</span>
             </h2>
-            <p style={styles.description} className="lead">
+            <p data-gsap="lines" style={styles.description} className="lead">
               Every great transformation starts with a single decision. Choose your path and let us guide you through an exceptional experience.
             </p>
           </div>
 
           {/* Grid */}
-          <div style={styles.grid} className="image-cards-row">
+          <div data-gsap="slide-right" data-gsap-stagger="0.2" data-gsap-ease="elastic.out(1, 0.5)" style={styles.grid} className="image-cards-row">
             {serviceOptions.map((option, index) => (
               <button
                 key={option.id}
                 style={getCardStyles(option.id, index)}
-                className="three-campuses-section__card"
+                className="i-want-section__card"
                 onMouseEnter={() => setHoveredId(option.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => console.log(`Navigate to ${option.title}`)}
                 aria-label={`${option.title} - ${option.subtitle}`}
               >
                 {/* Content */}
-                <div style={getContentStyles()} className="three-campuses-section__card-content">
+                <div style={getContentStyles()} className="i-want-section__card-content">
                   <div style={getIconWrapperStyles(option.id)}>
                     {option.icon}
                   </div>
@@ -378,6 +348,12 @@ const IWantToSection: React.FC = () => {
               </button>
             ))}
           </div>
+
+          {/* CTA Section */}
+          <div data-gsap="fade-up" style={styles.ctaWrapper}>
+            <AestheticButton className="essence-cta-btn" text="Get in Touch" href="/contact" />
+          </div>
+
         </div>
       </section>
     </>

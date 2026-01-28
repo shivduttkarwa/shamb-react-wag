@@ -34,10 +34,12 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
         <ModernHero />
       </div>
       <EssenceSection />
+
+      <IWantToSection />
       <div id="services">
         <ServicesSection />
       </div>
-      <IWantToSection />
+      
       
       <ProjectModernSlider />
       <ShambalaServices />

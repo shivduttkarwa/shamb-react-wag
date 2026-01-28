@@ -189,7 +189,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
 
           {/* Right side - Sticky Content */}
           <div className="hss-services-content">
-            <TiltTextGsap startTrigger="top 70%" endTrigger="bottom -1000%">
+            <TiltTextGsap startTrigger="top 90%" >
               {`${title} ${subtitle}`}
             </TiltTextGsap>
             <div data-gsap="fade-up" className="hss-services-description">
