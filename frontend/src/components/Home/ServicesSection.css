@@ -161,7 +161,7 @@
 /* Right side - Sticky Content */
 .hss-services-content {
   position: sticky;
-  top: 120px;
+  top: 60px;
   padding: 40px;
   max-height: calc(100vh - 160px);
   display: flex;
