@@ -195,7 +195,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
             <div data-gsap="fade-up" className="hss-services-description">
               {typeof window !== 'undefined' && window.innerWidth < 1600 ? shortDescription : description}
             </div>
-           <div data-gsap="slide-right" className="hss-services-cta-wrapper-desktop">
+           <div data-gsap="btn-clip-bottom" className="hss-services-cta-wrapper-desktop">
              <AestheticButton className="essence-cta-btn" href={ctaLink}>
               {ctaText}
             </AestheticButton>
@@ -204,7 +204,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
         </div>
 
         {/* Mobile CTA - appears after all cards */}
-        <div className="hss-services-cta-wrapper-mobile">
+        <div data-gsap="btn-clip-bottom" className="hss-services-cta-wrapper-mobile">
           <AestheticButton className="essence-cta-btn" href={ctaLink}>
             {ctaText}
           </AestheticButton>

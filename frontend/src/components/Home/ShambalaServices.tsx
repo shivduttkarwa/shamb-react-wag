@@ -148,6 +148,7 @@ const ShambalaServices: React.FC = () => {
     return initGsapSwitchAnimations(sectionRef.current || undefined);
   }, []);
 
+  
   // Only dynamic animation styles that depend on state
   const getAnimationStyle = (isActive: boolean, isPrevious: boolean) => {
     if (!isActive || !isTransitioning) return {};
@@ -308,7 +309,7 @@ const ShambalaServices: React.FC = () => {
                     ))}
                   </div>
 
-                  <div data-gsap="fade-up" data-gsap-delay="0.5">
+                  <div data-gsap="fade-up" data-gsap-delay="1.5" className="shambala-services__explore-cta">
                   <AestheticButton
                     className="essence-cta-btn"
                     text="Explore Service"
@@ -351,7 +352,7 @@ const ShambalaServices: React.FC = () => {
                   ))}
                 </div>
 
-                <div data-gsap="fade-up" data-gsap-delay="0.5">
+                <div data-gsap="btn-clip-bottom">
                 <AestheticButton
                   className="essence-cta-btn"
                   text="Explore Service"

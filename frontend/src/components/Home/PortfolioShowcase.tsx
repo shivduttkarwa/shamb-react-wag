@@ -208,7 +208,7 @@ const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
         ))}
       </div>
 
-      <div className="cta-wrapper">
+      <div data-gsap="btn-clip-bottom" className="cta-wrapper">
         <AestheticButton className="essence-cta-btn" href={ctaHref}>{ctaText}</AestheticButton>
       </div>
     </section>

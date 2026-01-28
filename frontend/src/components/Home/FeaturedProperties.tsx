@@ -156,9 +156,11 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
                   <div className="fp-text">
                     <p>{property.description}</p>
                   </div>
-                  <AestheticButton className="essence-cta-btn" href={property.link}>
-                    Discover
-                  </AestheticButton>
+                  <div data-gsap="btn-clip-bottom">
+                    <AestheticButton className="essence-cta-btn" href={property.link}>
+                      Discover
+                    </AestheticButton>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
