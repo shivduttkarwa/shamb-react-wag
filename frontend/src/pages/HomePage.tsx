@@ -4,6 +4,7 @@ import {
   EssenceSection,
   PortfolioShowcase,
   FeaturedProperties,
+  QualityHomes,
  
   
 } from "../components/Home";
@@ -54,6 +55,10 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       </section>
       <section className="home-section home-section--shambala-services">
         <ShambalaServices />
+      </section>
+
+      <section>
+        <QualityHomes />
       </section>
       <div id="projects" className="home-section home-section--projects">
         <PortfolioShowcase />

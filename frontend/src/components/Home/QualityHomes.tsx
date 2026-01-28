@@ -1,99 +1,107 @@
-import React from "react";
-import "./QualityHomes.css";
-import GlassButton from "../UI/GlassButton";
+import React, { useEffect, useRef } from 'react';
+import { initGsapSwitchAnimations } from '../../lib/gsapSwitchAnimations';
+import './QualityHomes.css';
 
-interface Feature {
-  icon: string;
-  title: string;
-  description: string;
-  image: string;
-}
+const QualityHomes: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
 
-interface QualityHomesProps {
-  mainTitle?: string;
-  features?: Feature[];
-  ctaText?: string;
-  ctaLink?: string;
-}
+  useEffect(() => {
+    return initGsapSwitchAnimations(sectionRef.current || undefined);
+  }, []);
 
-const publicUrl = import.meta.env.BASE_URL;
-
-const QualityHomes: React.FC<QualityHomesProps> = ({
-  mainTitle = "Quality Homes",
-  features = [
-    {
-      icon: "✓",
-      title: "Master of design",
-      description:
-        "Our homes are designed to celebrate you. This is why we continually strive to create innovative, award-winning designs that help you make the most of your home and the life you live in it.",
-      image: `${publicUrl}images/1.jpg`,
-    },
-    {
-      icon: "✓",
-      title: "Lifetime structural guarantee",
-      description:
-        "Every shambala home is backed by a Lifetime Structural Guarantee*, so you can build with confidence and peace of mind that it will stand the test of time.",
-      image: `${publicUrl}images/2.jpg`,
-    },
-    {
-      icon: "✓",
-      title: "6 stage quality assurance",
-      description:
-        "Our homes may have changed over the years but our commitment to excellence hasn't. Our rigorous quality assurance process ensures every shambala home is built to the highest standard.",
-      image: `${publicUrl}images/3.jpg`,
-    },
-    {
-      icon: "✓",
-      title: "Australia's no.1 home builder",
-      description:
-        "We believe no one else designs and builds as well as us and, as Australia's No.1 home builder for the ninth year running, we must be doing something right.",
-      image: `${publicUrl}images/4.jpg`,
-    },
-  ],
-  ctaText = "Learn more about building with shambala",
-  ctaLink = "#",
-}) => {
   return (
-    <section className="quality-homes">
-      <div className="quality-container">
-        <div className="quality-header">
-          <h2
-            className="quality-main-title"
-            style={{ textAlign: "center", overflow: "visible" }}
-          >
-            {mainTitle}
+    <section ref={sectionRef} className="quality home-section home-section--quality">
+      <div className="quality__inner">
+        {/* Content Side */}
+        <div className="quality__content">
+          <p data-gsap="fade-up" data-gsap-delay="0.1" className="quality__label">Why Shambala</p>
+
+          <h2 data-gsap="fade-up" data-gsap-delay="0.2" className="quality__title">
+            Homes built with
+            <span>intention</span>
           </h2>
-        </div>
 
-        <div className="quality-content">
-          <div className="features-section">
-            {features.map((feature, index) => (
-              <div key={index} className="feature-item">
-                <div className="feature-content">
-                  <div className="feature-header">
-                    <div className="feature-icon">{feature.icon}</div>
-                    <h3 className="feature-title">{feature.title}</h3>
-                  </div>
-                  <p className="feature-description">{feature.description}</p>
-                </div>
-                <div className="feature-image-wrapper">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="feature-image"
-                    loading="lazy"
-                  />
-                </div>
+          <p data-gsap="fade-up" data-gsap-delay="0.3" className="quality__desc">
+            We believe a home is more than walls and windows. It's where
+            life happens, memories are made, and dreams take shape.
+          </p>
+
+          {/* Features */}
+          <div data-gsap="fade-up" data-gsap-delay="0.4" className="quality__features">
+            <div className="quality__feature">
+              <div className="quality__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
               </div>
-            ))}
+              <div className="quality__feature-text">
+                <h3>Thoughtful Design</h3>
+                <p>Every space crafted with purpose and beauty in mind.</p>
+              </div>
+            </div>
+
+            <div className="quality__feature">
+              <div className="quality__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div className="quality__feature-text">
+                <h3>Quality Assured</h3>
+                <p>Premium materials and meticulous craftsmanship.</p>
+              </div>
+            </div>
+
+            <div className="quality__feature">
+              <div className="quality__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div className="quality__feature-text">
+                <h3>Timely Delivery</h3>
+                <p>Your dream home, delivered when promised.</p>
+              </div>
+            </div>
+
+            <div className="quality__feature">
+              <div className="quality__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <div className="quality__feature-text">
+                <h3>Personal Touch</h3>
+                <p>Dedicated support through every step of your journey.</p>
+              </div>
+            </div>
+          </div>
+
+          <div data-gsap="fade-up" data-gsap-delay="0.5">
+            <a href="/about" className="quality__btn">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
           </div>
         </div>
 
-        {ctaText && (
-          <div className="quality-cta">
-            <GlassButton href={ctaLink}>{ctaText}</GlassButton>
+        {/* Image Side */}
+        <div className="quality__media">
+          <div className="quality__img-wrap">
+            <img data-gsap="zoom-in"
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80"
+              alt="Luxury Interior"
+              className="quality__img"
+            />
           </div>
-        )}
+          <div data-gsap="zoom-in" data-gsap-delay="0.4" className="quality__years">
+            <span className="quality__years-num">15</span>
+            <span className="quality__years-text">Years</span>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -127,7 +127,7 @@ const IWantToSection: React.FC = () => {
       marginBottom: '1.25rem',
     },
     title: {
-      fontSize: isMobile ? '3rem' : isTablet ? '4rem' : '5rem',
+      fontSize: 'var(--home-section-title-size)',
       fontWeight: 800,
       fontFamily: '"Dream Avenue", sans-serif',
       color: '#1A1A1A',

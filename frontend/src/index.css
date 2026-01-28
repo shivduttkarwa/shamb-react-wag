@@ -66,10 +66,23 @@ code {
 /* Home page section overlays + CTA theme hooks */
 .home-section {
   position: relative;
+  --home-section-title-size: clamp(2rem, 4vw, 3.2rem);
   --ab-text-color: #1f1b16;
   --ab-icon-color: #1f1b16;
   --ab-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
   --ab-shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 1600px) {
+  .home-section {
+    --home-section-title-size: clamp(2.6rem, 5.2vw, 4.16rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    --home-section-title-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
 }
 
 .home-section::before {
@@ -84,6 +97,12 @@ code {
 .home-section > * {
   position: relative;
   z-index: 1;
+}
+
+.home-section .section-title,
+.home-section .tilt-text-heading,
+.home-section .cta-title {
+  font-size: var(--home-section-title-size);
 }
 
 .home-section--hero {
@@ -164,4 +183,12 @@ code {
   --ab-text-bg-hover: #35bbb2;
   --ab-icon-bg: var(--accent-sunny);
   --ab-icon-bg-hover: #f0d352;
+}
+
+.home-section--quality {
+  --section-overlay: linear-gradient(180deg, rgba(255, 230, 109, 0.16), rgba(255, 139, 148, 0.12));
+  --ab-text-bg: var(--accent-sunny);
+  --ab-text-bg-hover: #f5d65a;
+  --ab-icon-bg: var(--accent-pink);
+  --ab-icon-bg-hover: #ff7a85;
 }
