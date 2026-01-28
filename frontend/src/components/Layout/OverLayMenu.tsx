@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import { Link } from "react-router-dom";
 import GlassRainButton from "../UI/GlassRainButton";
 import "./OverLayMenu.css";
@@ -12,8 +11,6 @@ const getImagePath = (imageName: string) => {
     : `${publicUrl}/images/${imageName}`;
 };
 
-gsap.registerPlugin(CSSRulePlugin);
-
 const OverlayMenu: React.FC = () => {
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });
@@ -21,18 +18,6 @@ const OverlayMenu: React.FC = () => {
     const path = document.querySelector(
       ".olm-overlay svg path"
     ) as SVGPathElement | null;
-
-    let spanBefore: CSSRule | null = null;
-
-    // CSSRulePlugin (safe try/catch)
-    try {
-      spanBefore = CSSRulePlugin.getRule("#hamburger .line-2");
-      if (spanBefore) {
-        gsap.set(spanBefore, { background: "#000" });
-      }
-    } catch (e) {
-      console.warn("CSSRulePlugin not available:", e);
-    }
 
     // Initial menu state - hidden by default
     gsap.set(".olm-menu", { visibility: "hidden" });
@@ -52,56 +37,7 @@ const OverlayMenu: React.FC = () => {
       const end = "M0 1000S100 1000 500 1000s500 1000 1000 1000V0H0Z";
       const power2 = "power2.inout";
 
-      const isMobile = window.innerWidth <= 768;
-      const shiftX = isMobile ? -20 : -32;
-      const shiftY = isMobile ? 20 : 32;
-      const outlineSize = isMobile ? "80px" : "100px";
-
-      tl.to("#hamburger", {
-        duration: 1.25,
-        marginTop: "-5px",
-        x: shiftX,
-        y: shiftY,
-        ease: power2,
-      })
-        // Change hamburger line colors to white
-        .to(
-          "#hamburger .line",
-          {
-            duration: 1,
-            background: "#fff",
-            ease: power2,
-          },
-          "<"
-        );
-
-      // Change pseudo element color (CSSRulePlugin)
-      if (spanBefore) {
-        tl.to(
-          spanBefore,
-          {
-            duration: 1,
-            background: "#fff",
-            ease: power2,
-          },
-          "<"
-        );
-      }
-
-      // Animate button outline circles
-      tl.to(
-        ".olm-btn .olm-btn-outline",
-        {
-          duration: 1.25,
-          x: shiftX,
-          y: shiftY,
-          width: outlineSize,
-          height: outlineSize,
-          border: "1px solid #e2e2dc",
-          ease: power2,
-        },
-        "<"
-      );
+      // Keep toggle button static (no GSAP on hamburger/logo)
 
       tl.to(".olm-overlay", {
   duration: 0.4,
@@ -225,6 +161,7 @@ tl.to(path, {
       if (!hamburger) return;
 
       hamburger.classList.toggle("active");
+      toggleBtn?.classList.toggle("is-open");
       const isReversed = !tl.reversed();
       tl.reversed(isReversed);
 
@@ -274,6 +211,7 @@ tl.to(path, {
       // Close menu for all internal navigation
       if (hamburger && hamburger.classList.contains("active")) {
         hamburger.classList.remove("active");
+        toggleBtn?.classList.remove("is-open");
         tl.reverse();
         document.body.style.overflow = "";
         document.body.classList.remove("menu-open");
@@ -289,9 +227,6 @@ tl.to(path, {
       // Kill any running GSAP animations to prevent DOM conflicts
       tl.kill();
       gsap.killTweensOf([
-        "#hamburger",
-        "#hamburger .line",
-        ".olm-btn .olm-btn-outline",
         ".olm-overlay",
         path,
         ".olm-menu",
@@ -306,6 +241,7 @@ tl.to(path, {
       
       toggleBtn?.removeEventListener("click", handleToggle);
       toggleBtn?.removeEventListener("touchend", handleToggle);
+      toggleBtn?.classList.remove("is-open");
       menuLinks.forEach((link) =>
         link.removeEventListener("click", handleMenuLinkClick)
       );

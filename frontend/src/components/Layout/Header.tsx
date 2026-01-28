@@ -67,22 +67,8 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
 
   useEffect(() => {
     if (!headerRef.current) return;
-
-    // Only animate on homepage
-    if (location.pathname === "/" || location.pathname === publicUrl) {
-      // Header starts hidden above viewport, slides down after hero video expands
-      // New timing: texts (simultaneous) + video expand (1.5s) = ~3.5s total
-      gsap.to(headerRef.current, {
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        delay: 4.0 // Slide in after video expands
-      });
-    } else {
-      // On other pages, header is immediately visible
-      gsap.set(headerRef.current, { y: 0 });
-    }
-  }, [location.pathname, publicUrl]);
+    gsap.set(headerRef.current, { y: 0 });
+  }, []);
 
   return (
     <header 
@@ -93,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
         left: 0,
         right: 0,
         zIndex: 999,
-        transform: 'translateY(-100%)',
+        transform: 'translateY(0)',
         transition: 'none'
       }}
     >
@@ -107,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
           right: 0,
           bottom: 0,
           background: 'rgba(0, 0, 0, 0.3)',
-          backdropFilter: 'blur(10px)',
+          backdropFilter: 'blur(0.625rem)',
           opacity: 0,
           zIndex: -1
         }}
@@ -118,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '1rem 2rem',
-        height: '84px'
+        height: '5.25rem'
       }}>
         {/* Logo - Left Side */}
         <div 
@@ -133,9 +119,9 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
           <HomeLogo
             className="header-logo"
             style={{
-              height: "80px",
+              height: "5rem",
               width: "auto",
-              transform: "scale(2) translateY(3px)",
+              transform: "scale(2) translateY(0.1875rem)",
               transformOrigin: "left center",
             }}
           />
@@ -145,10 +131,6 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
         <div className="header-hamburger-container">
           <style>
             {`
-              #toggle-btn.olm-btn {
-                transform: scale(0.72) translateY(-54px) !important;
-              }
-
               .header-logo {
                 filter: brightness(0) invert(1);
               }
@@ -162,29 +144,17 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 
                 .header-logo-container {
                   position: absolute !important;
-                  left: 6px !important; /* Pushed right by 20px (was -14px, so -14px + 20px = 6px) */
+                  left: 0.375rem !important;
                   top: 50% !important;
                   transform: translateY(-50%) !important;
-                }
-                
-                #toggle-btn.olm-btn {
-                  transform: scale(0.94) translateY(-10px) !important;
                 }
               }
               
               /* Large screens 1600px and above - increase logo size by 15% */
               @media (min-width: 1600px) {
                 .header-logo {
-                  transform: scale(2.3) translateY(7px) !important; /* Pushed down by 7px */
+                  transform: scale(2.3) translateY(0.4375rem) !important;
                   transform-origin: left center !important;
-                }
-                
-                #toggle-btn.olm-btn {
-                  transform: scale(0.828) translateY(-34px) !important; /* Pushed further down by 10px (was -44px, so -44px + 10px = -34px) */
-                }
-                
-                header {
-                  height: 104px !important; /* Increased by 20px (was 84px) */
                 }
               }
             `}
