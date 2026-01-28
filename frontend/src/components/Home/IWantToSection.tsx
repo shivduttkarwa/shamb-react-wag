@@ -105,7 +105,7 @@ const IWantToSection: React.FC = () => {
     section: {
       width: '100%',
       padding: isMobile ? '5rem 1.5rem' : isTablet ? '7rem 2.5rem' : '9rem 4rem',
-      backgroundColor: '#FAFAF7',
+      backgroundColor: 'transparent',
       fontFamily: '"Nunito", sans-serif',
       position: 'relative',
       overflow: 'hidden',
@@ -185,53 +185,37 @@ const IWantToSection: React.FC = () => {
 
   const getCardStyles = (id: number, index: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       position: 'relative',
       padding: isMobile ? '2.5rem 2rem' : '3rem 2.25rem',
       backgroundColor: '#FFFFFF',
-      border: `1px solid ${isHovered ? '#47614D' : '#E8E8E3'}`,
+      border: '1px solid #E8E8E3',
       borderRadius: '0.75rem',
       cursor: 'pointer',
       textAlign: 'left',
-      transition: 'all 0.3s ease',
+      transition: 'all 0.2s ease',
       overflow: 'hidden',
       minHeight: isMobile ? '18rem' : '22rem',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
       boxShadow: isHovered
-        ? '0 1.25rem 3rem rgba(71, 97, 77, 0.15)'
-        : '0 0.5rem 1.5rem rgba(0, 0, 0, 0.04)',
-      transform: isHovered ? 'translateY(-0.5rem)' : 'translateY(0)',
+        ? '0 0.25rem 0.75rem rgba(0, 0, 0, 0.08), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.06)'
+        : '0 0.5rem 1.5rem rgba(0, 0, 0, 0.1), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.08)',
+      transform: isHovered ? 'translateY(0.25rem)' : 'translateY(0)',
     };
   };
 
-  const getColorFillStyles = (id: number): React.CSSProperties => {
-    const isHovered = hoveredId === id;
-    
-    return {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: '100%',
-      backgroundColor: '#47614D',
-      transform: isHovered ? 'translateY(0)' : 'translateY(100%)',
-      transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-      borderRadius: '0.75rem',
-      zIndex: 1,
-    };
-  };
 
   const getIconWrapperStyles = (id: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       width: '4.5rem',
       height: '4.5rem',
       marginBottom: '2rem',
-      color: isHovered ? '#C9A961' : '#47614D',
+      color: isHovered ? '#47614D' : '#47614D',
       transition: 'all 0.3s ease',
       transform: isHovered ? 'scale(1.05) rotate(-5deg)' : 'scale(1)',
       position: 'relative',
@@ -251,11 +235,11 @@ const IWantToSection: React.FC = () => {
 
   const getTitleStyles = (id: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       fontSize: isMobile ? '2.4375rem' : '2.925rem',
       fontWeight: 800,
-      color: isHovered ? '#FFFFFF' : '#1A1A1A',
+      color: isHovered ? '#47614D' : '#1A1A1A',
       margin: '0 0 0.625rem 0',
       lineHeight: 1.2,
       transition: 'all 0.3s ease',
@@ -265,10 +249,10 @@ const IWantToSection: React.FC = () => {
 
   const getSubtitleStyles = (id: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       fontSize: '1.21875rem',
-      color: isHovered ? 'rgba(255, 255, 255, 0.75)' : '#6B6B6B',
+      color: isHovered ? '#47614D' : '#6B6B6B',
       margin: '0 0 2.5rem 0',
       lineHeight: 1.6,
       fontWeight: 400,
@@ -278,13 +262,13 @@ const IWantToSection: React.FC = () => {
 
   const getArrowWrapperStyles = (id: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       marginTop: 'auto',
       display: 'flex',
       alignItems: 'center',
       gap: '0.625rem',
-      color: isHovered ? '#C9A961' : '#47614D',
+      color: isHovered ? '#47614D' : '#47614D',
       fontSize: '0.975rem',
       fontWeight: 700,
       letterSpacing: '0.12rem',
@@ -295,11 +279,11 @@ const IWantToSection: React.FC = () => {
 
   const getArrowStyles = (id: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       width: isHovered ? '3.25rem' : '2.275rem',
       height: '1.5px',
-      backgroundColor: isHovered ? '#C9A961' : '#47614D',
+      backgroundColor: isHovered ? '#47614D' : '#47614D',
       transition: 'all 0.3s ease',
       position: 'relative',
     };
@@ -307,15 +291,15 @@ const IWantToSection: React.FC = () => {
 
   const getArrowHeadStyles = (id: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
-    
+
     return {
       position: 'absolute',
       right: '-4px',
       top: '-3px',
       width: '10.4px',
       height: '10.4px',
-      borderTop: `1.5px solid ${isHovered ? '#C9A961' : '#47614D'}`,
-      borderRight: `1.5px solid ${isHovered ? '#C9A961' : '#47614D'}`,
+      borderTop: `1.5px solid ${isHovered ? '#47614D' : '#47614D'}`,
+      borderRight: `1.5px solid ${isHovered ? '#47614D' : '#47614D'}`,
       transform: 'rotate(45deg)',
       transition: 'all 0.3s ease',
     };
@@ -372,9 +356,6 @@ const IWantToSection: React.FC = () => {
                 onClick={() => console.log(`Navigate to ${option.title}`)}
                 aria-label={`${option.title} - ${option.subtitle}`}
               >
-                {/* Color Fill Background */}
-                <div style={getColorFillStyles(option.id)} />
-
                 {/* Content */}
                 <div style={getContentStyles()} className="three-campuses-section__card-content">
                   <div style={getIconWrapperStyles(option.id)}>
