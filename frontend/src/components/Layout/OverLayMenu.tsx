@@ -53,12 +53,15 @@ const OverlayMenu: React.FC = () => {
       const power2 = "power2.inout";
 
       const isMobile = window.innerWidth <= 768;
+      const shiftX = isMobile ? -20 : -32;
+      const shiftY = isMobile ? 20 : 32;
+      const outlineSize = isMobile ? "80px" : "100px";
 
       tl.to("#hamburger", {
         duration: 1.25,
         marginTop: "-5px",
-        x: isMobile ? -20 : -40,
-        y: isMobile ? 20 : 40,
+        x: shiftX,
+        y: shiftY,
         ease: power2,
       })
         // Change hamburger line colors to white
@@ -90,10 +93,10 @@ const OverlayMenu: React.FC = () => {
         ".olm-btn .olm-btn-outline",
         {
           duration: 1.25,
-          x: isMobile ? -20 : -40,
-          y: isMobile ? 20 : 40,
-          width: isMobile ? "80px" : "140px",
-          height: isMobile ? "80px" : "140px",
+          x: shiftX,
+          y: shiftY,
+          width: outlineSize,
+          height: outlineSize,
           border: "1px solid #e2e2dc",
           ease: power2,
         },
