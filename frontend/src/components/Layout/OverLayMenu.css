@@ -36,8 +36,8 @@
 /* Toggle Button Container - Fixed position button with morphing circles */
 #toggle-btn.olm-btn {
   position: fixed;
-  top: clamp(0.5rem, 1.5vw, 1rem);
-  right: clamp(0.9rem, 2vw, 1.6rem);
+  top: 1rem;
+  right: 1.25rem;
   width: 5rem;
   height: 5rem;
   display: flex;
@@ -900,7 +900,7 @@ body.menu-open {
     width: 5.5rem;
     height: 5.5rem;
     top: 1rem;
-    right: 1rem;
+    right: 1.25rem;
   }
 
   .olm-btn-outline {

@@ -99,11 +99,10 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
         }}
       />
       
-      <div style={{
+      <div className="header-inner" style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '1rem 2rem',
         height: '5.25rem'
       }}>
         {/* Logo - Left Side */}
@@ -135,6 +134,10 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 filter: brightness(0) invert(1);
               }
 
+              .header-inner {
+                padding: 1rem 1.25rem;
+              }
+
               @media (max-width: 1024px) {
                 header {
                   height: 3.94rem !important;
@@ -158,15 +161,37 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
               /* Mobile Styles */
               @media (max-width: 768px) {
                 .header-logo {
-                  transform: scale(1.6) !important;
+                  transform: scale(2.2176) translateY(0.5rem) !important;
                   transform-origin: left center !important;
                 }
-                
-                .header-logo-container {
-                  position: absolute !important;
-                  left: 0.375rem !important;
-                  top: 50% !important;
-                  transform: translateY(-50%) !important;
+
+                .header-inner {
+                  padding: 0.75rem;
+                }
+
+                #toggle-btn.olm-btn {
+                  transform: scale(1.2) translateY(0.35rem) !important;
+                  transform-origin: right center !important;
+                }
+              }
+
+              @media (max-width: 480px) {
+                .header-inner {
+                  padding: 0.6rem;
+                }
+
+                #toggle-btn.olm-btn {
+                  transform: scale(1.2) translateY(1rem) !important;
+                }
+              }
+
+              @media (max-width: 360px) {
+                .header-inner {
+                  padding: 0.5rem;
+                }
+
+                #toggle-btn.olm-btn {
+                  transform: scale(1.2) translateY(1rem) !important;
                 }
               }
               
