@@ -88,15 +88,19 @@ h6::before,
   display: none !important;
 }
 
-/* Allow normal overflow when portfolio component is present for sticky behavior */
-body.portfolio-active {
-  overflow-x: visible !important;
-  overflow-y: visible !important;
-}
+/* Allow normal overflow for sticky behavior in all sections */
 body {
   margin: 0;
   color: var(--text);
   font-family: "Nunito", sans-serif;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+/* Legacy class - kept for compatibility but no longer needed */
+body.portfolio-active {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
 }
 
 * {

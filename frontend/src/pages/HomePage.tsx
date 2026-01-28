@@ -2,7 +2,7 @@ import React from "react";
 import ModernHero from "../components/Reusable/ModernHero";
 import {
   EssenceSection,
-  PortfolioShowcase,
+ 
   FeaturedProperties,
   QualityHomes,
  
@@ -61,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
         <QualityHomes />
       </section>
       <div id="projects" className="home-section home-section--projects">
-        <PortfolioShowcase />
+      
       </div>
       {/* <div id="projects">
         <TextVid />
