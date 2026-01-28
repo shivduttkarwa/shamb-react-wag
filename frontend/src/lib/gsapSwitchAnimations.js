@@ -622,8 +622,8 @@ class GSAPAnimations {
     const elements = targets.length
       ? Array.from(targets)
       : fallbackImages.length
-      ? Array.from(fallbackImages)
-      : [el];
+        ? Array.from(fallbackImages)
+        : [el];
 
     const hasStartAttr = el.hasAttribute('data-gsap-start');
     const hasDurationAttr = el.hasAttribute('data-gsap-duration');
@@ -681,10 +681,10 @@ class GSAPAnimations {
     const elements = targetMode === 'self'
       ? [maskTarget || el]
       : targetMode === 'img'
-      ? Array.from(fallbackImages)
-      : fallbackImages.length
-      ? Array.from(fallbackImages)
-      : [el];
+        ? Array.from(fallbackImages)
+        : fallbackImages.length
+          ? Array.from(fallbackImages)
+          : [el];
 
     if (!elements.length) return;
 
@@ -3510,9 +3510,11 @@ class GSAPAnimations {
     const hasEaseAttr = el.hasAttribute('data-gsap-ease');
     const hasDelayAttr = el.hasAttribute('data-gsap-delay');
 
+    const hasStartAttr = el.hasAttribute('data-gsap-start');
     const duration = hasDurationAttr && Number.isFinite(config.duration) ? config.duration : 1.2;
     const ease = hasEaseAttr ? config.ease : 'power2.out';
     const delay = hasDelayAttr && Number.isFinite(config.delay) ? config.delay : 0;
+    const start = hasStartAttr ? config.start : 'top 100%';
 
     // Clip from bottom to top (reverse of writingText which goes left to right)
     // Negative values on left/right extend clip area to avoid rendering issues
@@ -3539,7 +3541,7 @@ class GSAPAnimations {
       delay: delay,
       scrollTrigger: {
         trigger: btn,
-        start: config.start || 'top 80%',
+        start: start,
         toggleActions: 'play none none none'
       },
       onComplete: () => {
@@ -3674,7 +3676,7 @@ class GSAPAnimations {
 }
 
 export const initGsapSwitchAnimations = (root) => {
-  if (typeof window === 'undefined') return () => {};
+  if (typeof window === 'undefined') return () => { };
 
   const scope = root || document;
   const ctx = gsap.context(() => {
