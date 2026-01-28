@@ -106,13 +106,13 @@ const AestheticButton: React.FC<AestheticButtonProps> = ({
   );
 
   const commonProps = {
-    className,
-    style: {
-      ...styles.button,
-      boxShadow: isHovered
-        ? '0 12px 30px rgba(64, 81, 59, 0.22)'
-        : '0 4px 16px rgba(64, 81, 59, 0.12)',
-    } as React.CSSProperties,
+        className,
+        style: {
+          ...styles.button,
+          boxShadow: isHovered
+            ? '0 12px 30px rgba(64, 81, 59, 0.22)'
+            : '0 4px 16px rgba(64, 81, 59, 0.12)',
+        } as React.CSSProperties,
     onMouseEnter: () => setIsHovered(true),
     onMouseLeave: () => setIsHovered(false),
   };

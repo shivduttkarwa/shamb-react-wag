@@ -32,37 +32,51 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
   return (
     <>
       <div id="hero">
-        <ModernHero />
+        <div className="home-section home-section--hero">
+          <ModernHero />
+        </div>
       </div>
-      <EssenceSection />
+      <section className="home-section home-section--essence">
+        <EssenceSection />
+      </section>
 
-      <IWantToSection />
-      <div id="services">
+      <section className="home-section home-section--iwant">
+        <IWantToSection />
+      </section>
+      <div id="services" className="home-section home-section--services">
         <ServicesSection />
       </div>
       
       
       
-      <ProjectModernSlider />
-      <ShambalaServices />
-      <div id="projects">
+      <section className="home-section home-section--projects">
+        <ProjectModernSlider />
+      </section>
+      <section className="home-section home-section--shambala-services">
+        <ShambalaServices />
+      </section>
+      <div id="projects" className="home-section home-section--projects">
         <PortfolioShowcase />
       </div>
       {/* <div id="projects">
         <TextVid />
       </div> */}
 
-      <div id="vision">
+      <div id="vision" className="home-section home-section--vision">
         <OurVisionSection />
       </div>
 
-      <FeaturedProperties />
+      <section className="home-section home-section--featured">
+        <FeaturedProperties />
+      </section>
 
-      <BlogSection />
+      <section className="home-section home-section--blog">
+        <BlogSection />
+      </section>
 
       <BodyRenderer blocks={bodyBlocks} />
 
-      <div id="contact">
+      <div id="contact" className="home-section home-section--contact">
         <CTASection />
       </div>
     </>

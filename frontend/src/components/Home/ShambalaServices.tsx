@@ -309,7 +309,11 @@ const ShambalaServices: React.FC = () => {
                   </div>
 
                   <div data-gsap="fade-up" data-gsap-delay="0.5">
-                    <AestheticButton text="Explore Service" href={`/services/${slides[previousSlide].title.toLowerCase().replace(' ', '-')}`} />
+                  <AestheticButton
+                    className="essence-cta-btn"
+                    text="Explore Service"
+                    href={`/services/${slides[previousSlide].title.toLowerCase().replace(' ', '-')}`}
+                  />
                   </div>
                 </div>
               </div>
@@ -348,7 +352,11 @@ const ShambalaServices: React.FC = () => {
                 </div>
 
                 <div data-gsap="fade-up" data-gsap-delay="0.5">
-                  <AestheticButton text="Explore Service" href={`/services/${slides[currentSlide].title.toLowerCase().replace(' ', '-')}`} />
+                <AestheticButton
+                  className="essence-cta-btn"
+                  text="Explore Service"
+                  href={`/services/${slides[currentSlide].title.toLowerCase().replace(' ', '-')}`}
+                />
                 </div>
               </div>
             </div>

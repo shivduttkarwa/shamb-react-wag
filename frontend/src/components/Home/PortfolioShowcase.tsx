@@ -4,6 +4,7 @@ import GlassButton from "../UI/GlassButton";
 import TiltTextGsap from "../UI/TiltTextGsap";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AestheticButton from "../UI/AestheticButton";
 
 const publicUrl = import.meta.env.BASE_URL || "/";
 
@@ -208,7 +209,7 @@ const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
       </div>
 
       <div className="cta-wrapper">
-        <GlassButton href={ctaHref}>{ctaText}</GlassButton>
+        <AestheticButton className="essence-cta-btn" href={ctaHref}>{ctaText}</AestheticButton>
       </div>
     </section>
   );

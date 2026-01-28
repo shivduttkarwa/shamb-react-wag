@@ -51,4 +51,117 @@ code {
 
   /* Yellows */
   --color-yellow-soft: #fcf8d8; /* system warning background */
+
+  /* Accent palette (footer brand colors) */
+  --accent-coral: #ff6b6b;
+  --accent-turquoise: #4ecdc4;
+  --accent-sunny: #ffe66d;
+  --accent-mint: #a8e6cf;
+  --accent-pink: #ff8b94;
+  --accent-lavender: #c7ceea;
+  --accent-peach: #ffdac1;
+  --accent-seafoam: #b5ead7;
+}
+
+/* Home page section overlays + CTA theme hooks */
+.home-section {
+  position: relative;
+  --ab-text-color: #1f1b16;
+  --ab-icon-color: #1f1b16;
+  --ab-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  --ab-shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.home-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--section-overlay, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-section--hero {
+  --section-overlay: linear-gradient(180deg, rgba(255, 218, 193, 0.18), rgba(255, 107, 107, 0.08));
+  --ab-text-bg: var(--accent-peach);
+  --ab-text-bg-hover: #ffc8ad;
+  --ab-icon-bg: var(--accent-coral);
+  --ab-icon-bg-hover: #ff5a5a;
+}
+
+.home-section--essence {
+  --section-overlay: linear-gradient(180deg, rgba(78, 205, 196, 0.12), rgba(168, 230, 207, 0.18));
+  --ab-text-bg: var(--accent-turquoise);
+  --ab-text-bg-hover: #3bc2b8;
+  --ab-icon-bg: var(--accent-mint);
+  --ab-icon-bg-hover: #92ddc2;
+}
+
+.home-section--iwant {
+  --section-overlay: linear-gradient(180deg, rgba(255, 230, 109, 0.14), rgba(255, 218, 193, 0.16));
+  --ab-text-bg: var(--accent-sunny);
+  --ab-text-bg-hover: #f6da59;
+  --ab-icon-bg: var(--accent-peach);
+  --ab-icon-bg-hover: #f7c9ad;
+}
+
+.home-section--services {
+  --section-overlay: linear-gradient(180deg, rgba(255, 139, 148, 0.14), rgba(199, 206, 234, 0.14));
+  --ab-text-bg: var(--accent-pink);
+  --ab-text-bg-hover: #ff7680;
+  --ab-icon-bg: var(--accent-lavender);
+  --ab-icon-bg-hover: #b8c0e6;
+}
+
+.home-section--projects {
+  --section-overlay: linear-gradient(180deg, rgba(181, 234, 215, 0.16), rgba(78, 205, 196, 0.1));
+  --ab-text-bg: var(--accent-seafoam);
+  --ab-text-bg-hover: #a7decf;
+  --ab-icon-bg: var(--accent-turquoise);
+  --ab-icon-bg-hover: #3bbdb3;
+}
+
+.home-section--shambala-services {
+  --section-overlay: linear-gradient(180deg, rgba(168, 230, 207, 0.16), rgba(255, 230, 109, 0.12));
+  --ab-text-bg: var(--accent-mint);
+  --ab-text-bg-hover: #94dcc6;
+  --ab-icon-bg: var(--accent-sunny);
+  --ab-icon-bg-hover: #f2d85f;
+}
+
+.home-section--vision {
+  --section-overlay: linear-gradient(180deg, rgba(199, 206, 234, 0.16), rgba(255, 218, 193, 0.12));
+  --ab-text-bg: var(--accent-lavender);
+  --ab-text-bg-hover: #b7c0e0;
+  --ab-icon-bg: var(--accent-peach);
+  --ab-icon-bg-hover: #f6c5a7;
+}
+
+.home-section--featured {
+  --section-overlay: linear-gradient(180deg, rgba(255, 107, 107, 0.12), rgba(255, 139, 148, 0.14));
+  --ab-text-bg: var(--accent-coral);
+  --ab-text-bg-hover: #ff5757;
+  --ab-icon-bg: var(--accent-pink);
+  --ab-icon-bg-hover: #ff7480;
+}
+
+.home-section--blog {
+  --section-overlay: linear-gradient(180deg, rgba(255, 218, 193, 0.18), rgba(181, 234, 215, 0.12));
+  --ab-text-bg: var(--accent-peach);
+  --ab-text-bg-hover: #ffc2a3;
+  --ab-icon-bg: var(--accent-seafoam);
+  --ab-icon-bg-hover: #a1dacb;
+}
+
+.home-section--contact {
+  --section-overlay: linear-gradient(180deg, rgba(78, 205, 196, 0.14), rgba(255, 230, 109, 0.14));
+  --ab-text-bg: var(--accent-turquoise);
+  --ab-text-bg-hover: #35bbb2;
+  --ab-icon-bg: var(--accent-sunny);
+  --ab-icon-bg-hover: #f0d352;
 }
