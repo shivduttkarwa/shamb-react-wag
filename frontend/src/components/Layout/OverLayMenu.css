@@ -917,69 +917,6 @@ body.menu-open {
   }
 }
 
-/* Extra Large Screens - Increase buttons and social media icons by 20% */
-@media (min-width: 1560px) {
-  /* Fix menu item spacing and center alignment */
-  .olm-modern-menu-item {
-    padding: 1.5rem 0 !important; /* Reduced from 2.3rem */
-    border-bottom: none !important; /* Remove border lines */
-    display: flex !important; /* Change from inline-block to flex */
-    align-items: center !important; /* Center content vertically */
-    justify-content: flex-start !important; /* Align content to left */
-  }
-  
-  /* Ensure wrapper uses center alignment instead of space-between */
-  .olm-primary-menu .olm-menu-container .olm-wrapper {
-    justify-content: center !important; /* Center items instead of space-between */
-    gap: 0.5rem !important; /* Add consistent gap between items */
-  }
-  
-  /* GlassRainButton size increase */
-  .olm-secondary-menu .glass-rain-btn {
-    width: calc(100% * 1.1) !important;
-    height: clamp(3.2rem, 3.4rem + 0.5vmin, 4.2rem) !important;
-    font-size: clamp(0.9rem, 1rem + 0.3vmin, 1.05rem) !important;
-    padding: clamp(0.8rem, 0.9rem + 0.3vmin, 1.1rem)
-      clamp(1.1rem, 1.3rem + 0.5vmin, 1.8rem) !important;
-    gap: clamp(0.4rem, 0.5rem + 0.2vmin, 0.7rem) !important;
-  }
-  
-  .olm-secondary-menu .glass-rain-btn-label {
-    font-size: clamp(0.9rem, 1rem + 0.3vmin, 1.05rem) !important;
-  }
-  
-  .olm-secondary-menu .glass-rain-btn-icon {
-    width: clamp(1.8rem, 2rem + 0.2vmin, 2.3rem) !important;
-    height: clamp(1.8rem, 2rem + 0.2vmin, 2.3rem) !important;
-    font-size: clamp(0.9rem, 1rem + 0.3vmin, 1.05rem) !important;
-  }
-  
-  /* Social media icons size increase */
-  .olm-social-card {
-    width: clamp(3.2rem, 3.4rem + 0.5vmin, 3.8rem) !important;
-    height: clamp(3.2rem, 3.4rem + 0.5vmin, 3.8rem) !important;
-    font-size: clamp(1.4rem, 1.5rem + 0.2vmin, 1.7rem) !important;
-  }
-  
-  /* Menu items size increase by 20% */
-  .olm-menu-text {
-    font-size: clamp(2.8rem, 4.2vw, 4.8rem) !important;
-  }
-  
-  .olm-menu-number {
-    font-size: clamp(1rem, 1.8vw, 1.4rem) !important;
-  }
-  
-  .olm-modern-menu-item a {
-    font-size: clamp(3rem, 5vw, 5rem) !important;
-  }
-  
-  
-  .olm-social-links {
-    gap: calc(1.5rem * 1.2) !important; /* 1.8rem */
-  }
-}
-
 /* Mobile Secondary Menu - Only visible on mobile */
 .olm-mobile-secondary-menu {
   display: none;
