@@ -15,7 +15,7 @@ const serviceOptions: ServiceOption[] = [
     title: 'Build New',
     subtitle: 'Start fresh with your dream home',
     icon: (
-      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
         <polyline points="9 22 9 12 15 12 15 22"/>
         <line x1="9" y1="17" x2="15" y2="17"/>
@@ -28,40 +28,12 @@ const serviceOptions: ServiceOption[] = [
     title: 'Upgrade',
     subtitle: 'Elevate your current space',
     icon: (
-      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 10L12 3L3 10v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/>
         <polyline points="8 10 12 6 16 10"/>
         <line x1="8" y1="21" x2="8" y2="14"/>
         <line x1="12" y1="21" x2="12" y2="11"/>
         <line x1="16" y1="21" x2="16" y2="16"/>
-      </svg>
-    ),
-  },
-  {
-    id: 3,
-    title: 'Downsize',
-    subtitle: 'Simplify your lifestyle',
-    icon: (
-      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
-        <rect x="8" y="8" width="8" height="8" rx="1" ry="1"/>
-        <line x1="8" y1="12" x2="16" y2="12"/>
-        <circle cx="12" cy="12" r="1" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    id: 4,
-    title: 'Commercial',
-    subtitle: 'Professional business spaces',
-    icon: (
-      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="7" width="18" height="13" rx="2" ry="2"/>
-        <path d="M8 3v4M16 3v4"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <circle cx="7.5" cy="16" r="0.5" fill="currentColor"/>
-        <circle cx="12" cy="16" r="0.5" fill="currentColor"/>
-        <circle cx="16.5" cy="16" r="0.5" fill="currentColor"/>
       </svg>
     ),
   },
@@ -148,9 +120,9 @@ const IWantToSection: React.FC = () => {
     },
     grid: {
       display: 'grid',
-      gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-      gap: isMobile ? '1.5rem' : isTablet ? '2rem' : '2rem',
-      maxWidth: isMobile ? '100%' : '115%',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+      gap: isMobile ? '1.5rem' : isTablet ? '2.5rem' : '3rem',
+      maxWidth: isMobile ? '100%' : isTablet ? '90%' : '85%',
       margin: '0 auto',
     },
     ctaWrapper: {
@@ -163,17 +135,21 @@ const IWantToSection: React.FC = () => {
   const getCardStyles = (id: number, index: number): React.CSSProperties => {
     const isHovered = hoveredId === id;
 
+    // Color palette from ServiceTestimonials
+    const cardColors = ['#ffe66d', '#a8e6cf'];
+    const backgroundColor = cardColors[index] || '#FFFFFF';
+
     return {
       position: 'relative',
-      padding: isMobile ? '2.5rem 2rem' : '3rem 2.25rem',
-      backgroundColor: '#FFFFFF',
+      padding: isMobile ? '3rem 2.5rem' : isTablet ? '4rem 3rem' : '5rem 4rem',
+      backgroundColor: backgroundColor,
       border: '1px solid #E8E8E3',
-      borderRadius: '0.75rem',
+      borderRadius: '1rem',
       cursor: 'pointer',
       textAlign: 'left',
       transition: 'all 0.2s ease',
       overflow: 'hidden',
-      minHeight: isMobile ? '18rem' : '22rem',
+      minHeight: isMobile ? '20rem' : isTablet ? '28rem' : '32rem',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
@@ -189,9 +165,9 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
 
     return {
-      width: '4.5rem',
-      height: '4.5rem',
-      marginBottom: '2rem',
+      width: isMobile ? '5rem' : isTablet ? '6rem' : '7rem',
+      height: isMobile ? '5rem' : isTablet ? '6rem' : '7rem',
+      marginBottom: isMobile ? '2.5rem' : '3rem',
       color: isHovered ? '#47614D' : '#47614D',
       transition: 'all 0.3s ease',
       transform: isHovered ? 'scale(1.05) rotate(-5deg)' : 'scale(1)',
@@ -214,10 +190,10 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
 
     return {
-      fontSize: isMobile ? '2.4375rem' : '2.925rem',
+      fontSize: isMobile ? '2.8rem' : isTablet ? '3.5rem' : '4rem',
       fontWeight: 800,
       color: isHovered ? '#47614D' : '#1A1A1A',
-      margin: '0 0 0.625rem 0',
+      margin: '0 0 1rem 0',
       lineHeight: 1.2,
       transition: 'all 0.3s ease',
       letterSpacing: '-0.01em',
@@ -228,9 +204,9 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
 
     return {
-      fontSize: '1.21875rem',
-      color: isHovered ? '#47614D' : '#6B6B6B',
-      margin: '0 0 2.5rem 0',
+      fontSize: isMobile ? '1.3rem' : isTablet ? '1.5rem' : '1.7rem',
+      color: isHovered ? '#47614D' : '#333',
+      margin: '0 0 3rem 0',
       lineHeight: 1.6,
       fontWeight: 400,
       transition: 'all 0.3s ease',
@@ -244,9 +220,9 @@ const IWantToSection: React.FC = () => {
       marginTop: 'auto',
       display: 'flex',
       alignItems: 'center',
-      gap: '0.625rem',
+      gap: '0.8rem',
       color: isHovered ? '#47614D' : '#47614D',
-      fontSize: '0.975rem',
+      fontSize: isMobile ? '1rem' : isTablet ? '1.1rem' : '1.2rem',
       fontWeight: 700,
       letterSpacing: '0.12rem',
       textTransform: 'uppercase',
@@ -258,8 +234,8 @@ const IWantToSection: React.FC = () => {
     const isHovered = hoveredId === id;
 
     return {
-      width: isHovered ? '3.25rem' : '2.275rem',
-      height: '1.5px',
+      width: isHovered ? '4rem' : '3rem',
+      height: '2px',
       backgroundColor: isHovered ? '#47614D' : '#47614D',
       transition: 'all 0.3s ease',
       position: 'relative',
@@ -271,12 +247,12 @@ const IWantToSection: React.FC = () => {
 
     return {
       position: 'absolute',
-      right: '-4px',
-      top: '-3px',
-      width: '10.4px',
-      height: '10.4px',
-      borderTop: `1.5px solid ${isHovered ? '#47614D' : '#47614D'}`,
-      borderRight: `1.5px solid ${isHovered ? '#47614D' : '#47614D'}`,
+      right: '-5px',
+      top: '-4px',
+      width: '12px',
+      height: '12px',
+      borderTop: `2px solid ${isHovered ? '#47614D' : '#47614D'}`,
+      borderRight: `2px solid ${isHovered ? '#47614D' : '#47614D'}`,
       transform: 'rotate(45deg)',
       transition: 'all 0.3s ease',
     };

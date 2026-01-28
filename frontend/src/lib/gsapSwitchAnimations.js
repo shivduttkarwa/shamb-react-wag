@@ -3514,7 +3514,7 @@ class GSAPAnimations {
     const duration = hasDurationAttr && Number.isFinite(config.duration) ? config.duration : 1.2;
     const ease = hasEaseAttr ? config.ease : 'power2.out';
     const delay = hasDelayAttr && Number.isFinite(config.delay) ? config.delay : 0;
-    const start = hasStartAttr ? config.start : 'top 100%';
+    const start = hasStartAttr ? config.start : 'top 105%';
 
     // Clip from bottom to top (reverse of writingText which goes left to right)
     // Negative values on left/right extend clip area to avoid rendering issues

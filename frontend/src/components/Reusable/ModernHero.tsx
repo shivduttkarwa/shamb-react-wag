@@ -1,7 +1,6 @@
 import { memo, useEffect, useRef } from "react";
 import gsap from "gsap";
 import GlassRainButton from "../UI/GlassRainButton";
-import HomeHeroSlider from "../Home/HomeHeroSlider";
 import "./ModernHero.css";
 
 const publicUrl = import.meta.env.BASE_URL || "/";
@@ -21,7 +20,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
   const subtitleRef = useRef<HTMLDivElement>(null);
   const subtitleDynamicRef = useRef<HTMLSpanElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const newsRef = useRef<HTMLDivElement>(null);
+  const rightCtaRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
     const subtitleEl = subtitleRef.current;
     const subtitleDynamicEl = subtitleDynamicRef.current;
     const ctaEl = ctaRef.current;
-    const newsEl = newsRef.current;
+    const rightCtaEl = rightCtaRef.current;
     const hero = heroRef.current;
 
     if (
@@ -45,7 +44,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
       !subtitleEl ||
       !subtitleDynamicEl ||
       !ctaEl ||
-      !newsEl ||
+      !rightCtaEl ||
       !hero
     )
       return;
@@ -157,7 +156,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
 
       let logoTargetX: number, logoTargetY: number, assembleY: number;
       let ctaTargetX: number, ctaTargetY: number;
-      let newsTargetX: number, newsTargetY: number;
+      let rightCtaTargetX: number, rightCtaTargetY: number;
 
       if (sizeLabel === "small") {
         logoTargetX = -finalVw / 2 + 70;
@@ -165,24 +164,24 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         assembleY = -110;
         ctaTargetX = 0;
         ctaTargetY = finalVh / 2 - 70;
-        newsTargetX = finalVw / 2 - 115;
-        newsTargetY = finalVh / 2 - 80;
+        rightCtaTargetX = finalVw / 2 - 115;
+        rightCtaTargetY = finalVh / 2 - 80;
       } else if (sizeLabel === "medium") {
         logoTargetX = -finalVw / 2 + 70;
         logoTargetY = -finalVh / 2 + 25;
         assembleY = -110;
         ctaTargetX = -finalVw / 2 + 150;
         ctaTargetY = finalVh / 2 - 90;
-        newsTargetX = finalVw / 2 - 140;
-        newsTargetY = finalVh / 2 - 100;
+        rightCtaTargetX = finalVw / 2 - 140;
+        rightCtaTargetY = finalVh / 2 - 100;
       } else {
         logoTargetX = -finalVw / 2 + 110;
         logoTargetY = -finalVh / 2 + 35;
         assembleY = -220;
         ctaTargetX = -finalVw / 2 + 170;
         ctaTargetY = finalVh / 2 - 100;
-        newsTargetX = finalVw / 2 - 160;
-        newsTargetY = finalVh / 2 - 110;
+        rightCtaTargetX = finalVw / 2 - 160;
+        rightCtaTargetY = finalVh / 2 - 110;
       }
 
       return {
@@ -191,8 +190,8 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         assembleY,
         ctaTargetX,
         ctaTargetY,
-        newsTargetX,
-        newsTargetY,
+        rightCtaTargetX,
+        rightCtaTargetY,
         sizeLabel,
         finalVw,
         finalVh,
@@ -216,9 +215,9 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
     videoEl.currentTime = 0;
 
     gsap.set(ctaEl, { x: positions.ctaTargetX, y: positions.ctaTargetY + 80 });
-    gsap.set(newsEl, {
-      x: positions.newsTargetX + 120,
-      y: positions.newsTargetY,
+    gsap.set(rightCtaEl, {
+      x: positions.rightCtaTargetX + 120,
+      y: positions.rightCtaTargetY,
     });
 
     const VIDEO_EXPAND_DURATION = 1.8;
@@ -273,10 +272,10 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
         "postAssemble-=0"
       )
       .to(
-        newsEl,
+        rightCtaEl,
         {
-          x: positions.newsTargetX,
-          y: positions.newsTargetY,
+          x: positions.rightCtaTargetX,
+          y: positions.rightCtaTargetY,
           opacity: 1,
           duration: 0.7,
           ease: "power3.out",
@@ -315,7 +314,9 @@ const ModernHero: React.FC<ModernHeroProps> = ({ animate = true }) => {
           <GlassRainButton href="/projects">Start a Project</GlassRainButton>
         </div>
 
-        <HomeHeroSlider ref={newsRef} />
+        <div className="mh-ui-cta" ref={rightCtaRef}>
+          <GlassRainButton href="tel:+1234567890">Call Us</GlassRainButton>
+        </div>
       </div>
 
       <div className="mh-hero-video" ref={heroVideoRef}>

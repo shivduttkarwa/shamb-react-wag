@@ -352,7 +352,7 @@ const ShambalaServices: React.FC = () => {
                   ))}
                 </div>
 
-                <div data-gsap="btn-clip-bottom">
+                <div data-gsap="fade-up">
                 <AestheticButton
                   className="essence-cta-btn"
                   text="Explore Service"
@@ -365,7 +365,7 @@ const ShambalaServices: React.FC = () => {
 
           {/* Navigation - Desktop only */}
           {!isMobile && !isMobileLandscape && (
-            <div data-gsap="slide-right" data-gsap-ease="back.out(1.7)" className="fp-left-navigation shambala-services-nav">
+            <div data-gsap="slide-right" data-gsap-ease="back.out(1.7)" data-gsap-start="top 100%" className="fp-left-navigation shambala-services-nav">
               <button className="fp-nav-btn fp-swiper-button-prev" onClick={prevSlide}>
                 <div className="fp-btn-outline fp-btn-outline-1"></div>
                 <div className="fp-btn-outline fp-btn-outline-2"></div>
