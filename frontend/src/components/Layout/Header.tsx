@@ -135,6 +135,26 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 filter: brightness(0) invert(1);
               }
 
+              @media (max-width: 1024px) {
+                header {
+                  height: 3.94rem !important;
+                }
+
+                .header-logo {
+                  transform: scale(1.5) translateY(0.14rem) !important;
+                }
+
+                .header-logo-container {
+                  transform: scale(0.75) !important;
+                  transform-origin: left center !important;
+                }
+
+                #toggle-btn.olm-btn {
+                  transform: scale(0.75) !important;
+                  transform-origin: right center !important;
+                }
+              }
+
               /* Mobile Styles */
               @media (max-width: 768px) {
                 .header-logo {

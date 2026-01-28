@@ -274,19 +274,19 @@
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .mh-scatter-word {
-    font-size: 5.6rem;
+    font-size: 4.2rem;
   }
 
   .mh-subtitle {
-    font-size: 2.5rem;
-    letter-spacing: 0.18em;
+    font-size: 1.875rem;
+    letter-spacing: 0.14em;
   }
 
   .mh-cta .glass-rain-btn {
-    padding: clamp(0.7rem, 0.6rem + 1vmin, 1.05rem)
-      clamp(0.95rem, 0.85rem + 1.8vmin, 1.55rem);
-    font-size: clamp(0.78rem, 0.72rem + 0.45vmin, 0.92rem);
-    gap: clamp(0.45rem, 0.35rem + 0.6vmin, 0.75rem);
+    padding: clamp(0.525rem, 0.45rem + 0.75vmin, 0.8rem)
+      clamp(0.7125rem, 0.64rem + 1.35vmin, 1.1625rem);
+    font-size: clamp(0.585rem, 0.54rem + 0.34vmin, 0.69rem);
+    gap: clamp(0.3375rem, 0.26rem + 0.45vmin, 0.5625rem);
   }
 }
 
