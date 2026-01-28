@@ -48,6 +48,17 @@
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  --olm-btn-x: 0rem;
+  --olm-btn-y: 0rem;
+  --olm-btn-scale: 1;
+  --olm-btn-open-x: 0rem;
+  --olm-btn-open-y: 0rem;
+  --olm-btn-open-scale: 1;
+  transform: translate(
+      calc(var(--olm-btn-x) + var(--olm-btn-open-x)),
+      calc(var(--olm-btn-y) + var(--olm-btn-open-y))
+    )
+    scale(calc(var(--olm-btn-scale) * var(--olm-btn-open-scale)));
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -1196,7 +1207,9 @@ body.menu-open {
   }
 }
 .olm-btn.is-open {
-  transform: translate(-0.35rem, 0.35rem) scale(1.06);
+  --olm-btn-open-x: -0.35rem;
+  --olm-btn-open-y: 0.35rem;
+  --olm-btn-open-scale: 1.06;
 }
 
 .olm-btn.is-open .olm-btn-outline {

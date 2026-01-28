@@ -135,7 +135,12 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
               }
 
               .header-inner {
-                padding: 1rem 1.25rem;
+                padding: 1rem 1rem 1rem 0.75rem;
+              }
+
+              .header-logo-container {
+                margin-left: -1.95rem;
+                margin-top: 0.525rem;
               }
 
               @media (max-width: 1024px) {
@@ -153,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 }
 
                 #toggle-btn.olm-btn {
-                  transform: scale(0.75) !important;
+                  --olm-btn-scale: 0.75;
                   transform-origin: right center !important;
                 }
               }
@@ -170,9 +175,14 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 }
 
                 #toggle-btn.olm-btn {
-                  transform: scale(1.2) translateY(0.35rem) !important;
+                  --olm-btn-scale: 1.2;
+                  --olm-btn-y: 0.2rem;
                   transform-origin: right center !important;
                 }
+                  .header-logo-container {
+                margin-left: -1.95rem;
+                margin-top: -0.525rem;
+              }
               }
 
               @media (max-width: 480px) {
@@ -181,7 +191,8 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 }
 
                 #toggle-btn.olm-btn {
-                  transform: scale(1.2) translateY(1rem) !important;
+                  --olm-btn-scale: 1.1;
+                  --olm-btn-y: 0.5rem;
                 }
               }
 
@@ -191,7 +202,21 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
                 }
 
                 #toggle-btn.olm-btn {
-                  transform: scale(1.2) translateY(1rem) !important;
+                  --olm-btn-scale: 1.2;
+                  --olm-btn-y: 0.2rem;
+                  
+                }
+              }
+
+              /* Mobile landscape */
+              @media (max-width: 1024px) and (max-height: 600px) {
+                .header-logo {
+                  transform: scale(2.275) translateY(0.5rem) !important;
+                  transform-origin: left center !important;
+                }
+
+                #toggle-btn.olm-btn {
+                  --olm-btn-scale: 1.231;
                 }
               }
               
