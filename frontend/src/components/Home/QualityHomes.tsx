@@ -27,7 +27,7 @@ const QualityHomes: React.FC = () => {
           </p>
 
           {/* Features */}
-          <div data-gsap="fade-up" data-gsap-delay="0.4" className="quality__features">
+          <div data-gsap="fade-up" data-gsap-stagger="0.2" className="quality__features">
             <div className="quality__feature">
               <div className="quality__feature-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -78,7 +78,7 @@ const QualityHomes: React.FC = () => {
             </div>
           </div>
 
-          <div data-gsap="fade-up" data-gsap-delay="0.5">
+          <div data-gsap="fade-up" data-gsap-delay="0.2">
             <a href="/about" className="quality__btn">
               Learn More
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
