@@ -4,6 +4,7 @@ import {
   EssenceSection,
   PortfolioShowcase,
   FeaturedProperties,
+  
 } from "../components/Home";
 import OurVisionSection from "../components/Home/OurVisionSection";
 import CTASection from "../components/Home/CTASection";
@@ -37,6 +38,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
         <ServicesSection />
       </div>
       <IWantToSection />
+      
       <ProjectModernSlider />
       <ShambalaServices />
       <div id="projects">

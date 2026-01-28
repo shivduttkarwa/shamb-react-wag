@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { initGsapSwitchAnimations } from '../../lib/gsapSwitchAnimations';
 
 interface ServiceOption {
   id: number;
@@ -99,46 +98,7 @@ const IWantToSection: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const cards = gsap.utils.toArray<HTMLElement>(
-      sectionRef.current.querySelectorAll('.three-campuses-section__card')
-    );
-
-    cards.forEach((card, index) => {
-      gsap.set(card, {
-        opacity: 0,
-        x: 1720,
-       
-       
-        transformOrigin: '50% 50%',
-      });
-
-      gsap.to(card, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        rotation: 0,
-        duration: 0.9,
-        ease: 'elastic.out(1, 0.75)',
-        delay: index * 0.4,
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => {
-        if (cards.includes(st.trigger as HTMLElement)) {
-          st.kill();
-        }
-      });
-    };
+    return initGsapSwitchAnimations(sectionRef.current || undefined);
   }, []);
 
   const styles: { [key: string]: React.CSSProperties } = {
@@ -240,12 +200,10 @@ const IWantToSection: React.FC = () => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      boxShadow: isHovered 
-        ? '0 1.25rem 3rem rgba(71, 97, 77, 0.15)' 
+      boxShadow: isHovered
+        ? '0 1.25rem 3rem rgba(71, 97, 77, 0.15)'
         : '0 0.5rem 1.5rem rgba(0, 0, 0, 0.04)',
       transform: isHovered ? 'translateY(-0.5rem)' : 'translateY(0)',
-      opacity: mounted ? 1 : 0,
-      animation: 'none',
     };
   };
 
@@ -397,7 +355,7 @@ const IWantToSection: React.FC = () => {
             <h2 style={styles.title}>
               I want to<span style={styles.titleAccent}>...</span>
             </h2>
-            <p style={styles.description}>
+            <p style={styles.description} className="lead">
               Every great transformation starts with a single decision. Choose your path and let us guide you through an exceptional experience.
             </p>
           </div>
@@ -416,7 +374,7 @@ const IWantToSection: React.FC = () => {
               >
                 {/* Color Fill Background */}
                 <div style={getColorFillStyles(option.id)} />
-                
+
                 {/* Content */}
                 <div style={getContentStyles()} className="three-campuses-section__card-content">
                   <div style={getIconWrapperStyles(option.id)}>
