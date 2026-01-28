@@ -46,38 +46,36 @@
   will-change: transform;
   display: flex;
   flex-direction: column;
-  min-height: 520px;
-  height: auto;
 }
 
 /* Staggered masonry layout */
 .hss-service-card:nth-child(1) {
-  grid-row: 6 / span 22;
+  grid-row: 6 / span 28;
   grid-column: 1;
 }
 
 .hss-service-card:nth-child(2) {
-  grid-row: 1 / span 22;
+  grid-row: 1 / span 28;
   grid-column: 2;
 }
 
 .hss-service-card:nth-child(3) {
-  grid-row: 28 / span 22;
+  grid-row: 34 / span 28;
   grid-column: 1;
 }
 
 .hss-service-card:nth-child(4) {
-  grid-row: 23 / span 22;
+  grid-row: 29 / span 28;
   grid-column: 2;
 }
 
 .hss-service-card:nth-child(5) {
-  grid-row: 50 / span 22;
+  grid-row: 62 / span 28;
   grid-column: 1;
 }
 
 .hss-service-card:nth-child(6) {
-  grid-row: 45 / span 22;
+  grid-row: 57 / span 28;
   grid-column: 2;
 }
 
@@ -89,8 +87,8 @@
 
 .hss-service-card-image {
   width: 100%;
-  height: 39%;
-  flex: 0 0 39%;
+  height: 310px;
+  flex: 0 0 px;
   object-fit: cover;
   display: block;
   transition: transform 0.6s ease;
@@ -109,6 +107,13 @@
   gap: 10px;
   justify-content: flex-start;
   flex: 1;
+}
+
+.hss-service-text-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .hss-service-title {
@@ -156,12 +161,12 @@
 /* Right side - Sticky Content */
 .hss-services-content {
   position: sticky;
-  top: calc(30vh - 100px);
+  top: 120px;
   padding: 40px;
-  max-height: 70vh; /* Prevent content from going off-screen */
+  max-height: calc(100vh - 160px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-self: start; /* Ensures it sticks properly within the grid container */
 }
 
@@ -328,7 +333,7 @@
 
   .hss-service-card {
     margin-bottom: 20px;
-    min-height: 520px;
+    min-height: 540px;
     height: auto;
   }
 
@@ -343,8 +348,8 @@
   }
 
   .hss-service-card-image {
-    height: 30%;
-    flex: 0 0 30%;
+    height: 218px;
+    flex: 0 0 218px;
   }
 
   .hss-service-overlay {
@@ -386,7 +391,7 @@
 
   .hss-service-card {
     margin: 0 0 16px 0;
-    min-height: 500px;
+    min-height: 520px;
     height: auto;
   }
 

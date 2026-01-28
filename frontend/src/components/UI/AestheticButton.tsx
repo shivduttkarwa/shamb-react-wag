@@ -26,6 +26,7 @@ const AestheticButton: React.FC<AestheticButtonProps> = ({
       padding: 0,
       background: 'transparent',
       border: 'none',
+      borderRadius: '8px',
       cursor: disabled ? 'not-allowed' : 'pointer',
       display: 'inline-flex',
       alignItems: 'stretch',

@@ -323,7 +323,7 @@ const ShambalaServices: React.FC = () => {
                 ...getPanelAnimationStyle(),
               }}
             >
-              <div className="shambala-services__big-slide-number-box">
+              <div data-gsap="zoom-in" data-gsap-delay="0.4" data-gsap-ease="back.out(1.7)" className="shambala-services__big-slide-number-box">
                 <span className="shambala-services__big-slide-number">
                   {String(currentSlide + 1).padStart(2, '0')}
                 </span>

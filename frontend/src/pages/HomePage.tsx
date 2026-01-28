@@ -4,6 +4,7 @@ import {
   EssenceSection,
   PortfolioShowcase,
   FeaturedProperties,
+ 
   
 } from "../components/Home";
 import OurVisionSection from "../components/Home/OurVisionSection";
@@ -39,6 +40,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       <div id="services">
         <ServicesSection />
       </div>
+      
       
       
       <ProjectModernSlider />

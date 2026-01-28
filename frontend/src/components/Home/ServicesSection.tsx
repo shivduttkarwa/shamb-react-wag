@@ -34,56 +34,56 @@ interface ServicesSectionProps {
 const defaultServices: ServiceCard[] = [
   {
     id: "1",
-    title: "Seacliff Residence",
+    title: "Building New With Shambala",
     description:
-      "Ocean-facing luxury retreat with layered terraces, native landscaping, and seamless indoor-outdoor living. Crafted to capture sunrise light, the plan flows from sheltered courtyards to broad coastal decks.",
+      "Start fresh with a custom-designed home tailored to your lifestyle. From foundation to finishing touches, we bring your vision to life with innovative layouts, sustainable materials, and modern design that stands the test of time.",
     imageSrc: `${publicUrl}images/sercard1.jpg`,
-    alt: "Seacliff Residence project",
-    ctaText: "View Project",
-    ctaLink: "/projects/seacliff-residence",
+    alt: "New home construction",
+    ctaText: "Learn More",
+    ctaLink: "/services/new-builds",
   },
   {
     id: "2",
-    title: "Hinterland Pavilion",
+    title: "Renovate & Elevate",
     description:
-      "Elevated pavilion home with timber screening, passive cooling, and a warm minimalist interior palette. Deep overhangs, cross-ventilation, and a central hearth create a calm, low-maintenance retreat.",
+      "Transform your current space into something extraordinary. Our renovation expertise enhances both comfort and value with thoughtful upgrades, kitchen remodels, bathroom transformations, and seamless room additions.",
     imageSrc: `${publicUrl}images/sercard2.jpg`,
-    alt: "Hinterland Pavilion project",
-    ctaText: "View Project",
-    ctaLink: "/projects/hinterland-pavilion",
+    alt: "Home renovation services",
+    ctaText: "Learn More",
+    ctaLink: "/services/renovations",
   },
   {
     id: "3",
-    title: "Urban Courtyard House",
+    title: "Downsize With Grace",
     description:
-      "Inner-city sanctuary built around a sculpted courtyard, clerestory light, and bespoke joinery moments. The layout opens and closes with the day, creating layered spaces for work and family life.",
+      "Transition to a more manageable space without sacrificing style or comfort. Our smart downsizing solutions feature space optimization, clever storage, accessible design, and low-maintenance living tailored to your needs.",
     imageSrc: `${publicUrl}images/sercard3.jpg`,
-    alt: "Urban Courtyard House project",
-    ctaText: "View Project",
-    ctaLink: "/projects/urban-courtyard-house",
+    alt: "Downsizing solutions",
+    ctaText: "Learn More",
+    ctaLink: "/services/downsizing",
   },
   {
     id: "4",
-    title: "Forest Ridge Lodge",
+    title: "Commercial Excellence",
     description:
-      "Weekend lodge with stone, cedar, and expansive glazing framing the treetops. Warm, textured rooms wrap a central fireplace, easing the transition between forest and interior.",
+      "Professional spaces that inspire productivity and impress clients. From modern offices to retail environments and hospitality venues, we create commercial spaces designed for success and built to perform.",
     imageSrc: `${publicUrl}images/4.avif`,
-    alt: "Forest Ridge Lodge project",
-    ctaText: "View Project",
-    ctaLink: "/projects/forest-ridge-lodge",
+    alt: "Commercial construction",
+    ctaText: "Learn More",
+    ctaLink: "/services/commercial",
   },
 ];
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({
-  title = "shambala PROJECTS",
-  subtitle = "",
+  title = "Find The Right Build",
+  subtitle = "Type For Your Needs",
   description =
-    "A curated look at how we shape coastal retreats, urban sanctuaries, and country escapes—each crafted with calm, warmth, and precision. From the first sketch to final styling, our teams steward every detail so the architecture, interiors, and landscape speak the same language. Expect measured light, honest materials, and rooms that feel effortlessly livable day after day.",
-  ctaText = "View All Projects",
-  ctaLink = "/projects",
+    "Whether you're dreaming of a brand new custom home, elevating your current space, simplifying your lifestyle, or creating a commercial masterpiece—we have the expertise to bring your vision to life. Each service is crafted with the same dedication to quality, sustainability, and timeless design that defines the Shambala approach.",
+  ctaText = "Explore All Services",
+  ctaLink = "/services",
   services = defaultServices,
 }) => {
-  const shortDescription = "A curated look at how we shape coastal retreats, urban sanctuaries, and country escapes—each crafted with calm, warmth, and precision. From the first sketch to final styling, our teams steward every detail so the architecture, interiors, and landscape speak the same language.";
+  const shortDescription = "Whether you're dreaming of a brand new custom home, elevating your current space, simplifying your lifestyle, or creating a commercial masterpiece—we have the expertise to bring your vision to life.";
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -168,7 +168,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                   className="hss-service-card-image"
                 />
                 <div className="hss-service-overlay">
-                  <div>
+                  <div className="hss-service-text-wrapper">
                     <div className="hss-service-title">
                       {service.title}
                     </div>

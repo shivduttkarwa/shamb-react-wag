@@ -144,11 +144,14 @@
 /* Desktop CTA wrapper (referenced in TSX) */
 .essence-cta-desktop {
   /* visible by default, hidden on mobile via media queries */
+  display: flex;
+  justify-content: center;
 }
 
 /* Mobile CTA - hidden by default, shown only on mobile */
 .essence-cta-mobile {
   display: none;
+  justify-content: center;
 }
 
 /* Right side: Full-bleed image area with beige bg */
@@ -165,7 +168,7 @@
 
 .essence-cta-btn {
   transform: scale(1.22);
-  transform-origin: left center;
+  transform-origin: center center;
 }
 
 .essence-image-mask {
@@ -248,6 +251,10 @@
 }
 
 @media (max-width: 768px) {
+  .essence-cta-btn {
+    transform: scale(1.076);
+  }
+
   .essence-content {
     padding: 60px 5.5% 0 5.5%; /* Remove bottom padding */
     text-align: center; /* Keep center alignment like 968px breakpoint */
