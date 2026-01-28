@@ -107,15 +107,7 @@ const IWantToSection: React.FC = () => {
       overflow: 'hidden',
     },
     
-    ornamentBottom: {
-      position: 'absolute',
-      bottom: '3rem',
-      left: '5%',
-      width: '6rem',
-      height: '1px',
-      backgroundColor: '#47614D',
-      opacity: 0.25,
-    },
+    
     container: {
       maxWidth: '97.75rem',
       margin: '0 auto',

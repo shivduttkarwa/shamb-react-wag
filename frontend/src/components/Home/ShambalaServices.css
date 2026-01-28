@@ -5,7 +5,7 @@
 /* Section */
 .shambala-services {
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: transparent;
   position: relative;
   overflow: hidden;
@@ -16,14 +16,14 @@
 .shambala-services__container {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;
 }
 
 /* Section Header */
 .shambala-services__header {
   width: 100%;
-  padding: 3.5rem 3.75rem 1.5rem;
+  padding: 5.5rem 3.75rem 6.5rem;
   text-align: left;
 }
 
@@ -49,8 +49,8 @@
   width: 50%;
   position: relative;
   overflow: hidden;
-  height: 100vh;
-  min-height: 100vh;
+  height: 90vh;
+  min-height: 90vh;
   z-index: 1;
 }
 
@@ -81,7 +81,7 @@
   grid-template-columns: 1fr;
   position: relative;
   z-index: 2;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 .shambala-services__content-layer {
@@ -97,10 +97,11 @@
 /* Content Panel */
 .shambala-services__content-panel {
   background-color: transparent;
-  padding: 5rem 3.75rem;
+  padding-top: 1rem ;
+  padding-left: 9.75rem;
   padding-bottom: 2.5rem;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 90vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,24 +114,7 @@
   z-index: 2;
 }
 
-/* Brand Label */
-.shambala-services__brand-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1875rem;
-  text-transform: uppercase;
-  color: var(--color-green);
-}
 
-.shambala-services__brand-line {
-  width: 2.5rem;
-  height: 0.125rem;
-  background-color: var(--color-gold);
-}
 
 /* Subtitle */
 .shambala-services__subtitle {
@@ -138,7 +122,7 @@
   font-weight: 600;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   margin-bottom: 0.75rem;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -159,7 +143,7 @@
 .shambala-services__description {
   font-size: 1.35rem;
   line-height: 1.8;
-  color: var(--color-tertiary-brown);
+  color: var(--color-black);
   margin-bottom: 2rem;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -187,37 +171,18 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
-  background-color: var(--color-green-soft);
+  background-color: var(--color-green-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-success-text);
+  color: var(--color-off-white);
   font-size: 0.75rem;
   flex-shrink: 0;
 }
 
-/* CTA Button */
-.shambala-services__cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background-color: var(--color-green);
-  color: var(--color-white);
-  border: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.0625rem;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.3s ease, background-color 0.3s ease;
-  width: auto;
-}
 
-.shambala-services__cta-button:hover {
-  background-color: var(--color-gold);
-}
+
+
 
 /* Big Slide Number */
 .shambala-services__big-slide-number-box {
@@ -263,7 +228,7 @@
 /* Navigation (Mobile on Image) */
 .shambala-services__navigation {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 4.5rem;
   left: 3.75rem;
   transform: none;
   display: flex;
@@ -350,12 +315,12 @@
   position: absolute !important;
   top: auto !important;
   bottom: calc(2.5rem - 25px) !important;
-  left: 3.75rem !important;
+  left: 12.75rem !important;
   right: auto !important;
   display: flex;
   gap: 2rem;
   z-index: 6;
-  --_btn-size: 64px;
+  --_btn-size: 84px;
 }
 
 .shambala-services .fp-left-navigation .fp-nav-btn {
@@ -601,11 +566,6 @@
     font-size: 0.65rem;
   }
 
-  .shambala-services__cta-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.85rem;
-  }
-
   .shambala-services__big-slide-number {
     font-size: 6rem;
     color: rgba(0,0,0,0.5);
@@ -730,16 +690,6 @@
     width: 1.125rem;
     height: 1.125rem;
     font-size: 0.625rem;
-  }
-
-  .shambala-services__cta-button {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9375rem;
-    width: 100%;
-  }
-
-  .shambala-services__cta-button:hover {
-    background-color: var(--color-green);
   }
 
   .shambala-services__big-slide-number {
@@ -878,16 +828,6 @@
     width: 1rem;
     height: 1rem;
     font-size: 0.55rem;
-  }
-
-  .shambala-services__cta-button {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.8rem;
-    width: auto;
-  }
-
-  .shambala-services__cta-button:hover {
-    background-color: var(--color-green);
   }
 
   .shambala-services__big-slide-number {

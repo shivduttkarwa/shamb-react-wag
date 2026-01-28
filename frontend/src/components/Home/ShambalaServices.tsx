@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import SectionTitle from '../UI/SectionTitle';
+import AestheticButton from '../UI/AestheticButton';
 import './ShambalaServices.css';
 
 interface Slide {
@@ -278,10 +279,7 @@ const ShambalaServices: React.FC = () => {
                   </span>
                 </div>
                 <div className="shambala-services__slide-content">
-                  <div className="shambala-services__brand-label">
-                    <span className="shambala-services__brand-line" />
-                    Shambala Homes
-                  </div>
+                  
 
                   <p className="shambala-services__subtitle">{slides[previousSlide].subtitle}</p>
                   <h2 className="shambala-services__title">{slides[previousSlide].title}</h2>
@@ -299,12 +297,7 @@ const ShambalaServices: React.FC = () => {
                     ))}
                   </div>
 
-                  <button className="shambala-services__cta-button">
-                    Explore Service
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                  </button>
+                  <AestheticButton text="Explore Service" href={`/services/${slides[previousSlide].title.toLowerCase().replace(' ', '-')}`} />
                 </div>
               </div>
             )}
@@ -323,10 +316,7 @@ const ShambalaServices: React.FC = () => {
                 </span>
               </div>
               <div className="shambala-services__slide-content">
-                <div className="shambala-services__brand-label">
-                  <span className="shambala-services__brand-line" />
-                  Shambala Homes
-                </div>
+                
 
                 <p className="shambala-services__subtitle">{slides[currentSlide].subtitle}</p>
                 <h2 className="shambala-services__title">{slides[currentSlide].title}</h2>
@@ -344,12 +334,7 @@ const ShambalaServices: React.FC = () => {
                   ))}
                 </div>
 
-                <button className="shambala-services__cta-button">
-                  Explore Service
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
+                <AestheticButton text="Explore Service" href={`/services/${slides[currentSlide].title.toLowerCase().replace(' ', '-')}`} />
               </div>
             </div>
           </div>
