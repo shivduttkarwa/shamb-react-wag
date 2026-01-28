@@ -2,10 +2,11 @@
 .mh-hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   background-color: #171717;
+  color: #ffffff;
 }
 
 .mh-curtain {
@@ -13,18 +14,23 @@
   inset: 0;
   background-color: #47614d;
   z-index: 40;
-  transform: translateX(-100%);
+  opacity: 0;
 }
 
 .mh-text-container {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  z-index: 50;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 50;
-  overflow: visible; /* avoid clipping scatter letters (Firefox positioning) */
-  pointer-events: none;
+  gap: 0.2rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  pointer-events: auto;
+  transform: translateY(-1.2rem);
 }
 
 .mh-text-container > * {
@@ -34,7 +40,7 @@
 
 .mh-text-backdrop {
   position: absolute;
-  inset: -12% -8%;
+  inset: -18% -12%;
   background: radial-gradient(
       circle at 30% 30%,
       rgba(0, 0, 0, 0.28),
@@ -54,12 +60,14 @@
 }
 
 .mh-scatter-word {
-  position: absolute;
   text-transform: uppercase;
-  font-size: 12.8rem; /* reduced 20% */
-  font-weight: 100; /* Reduced to 100 (lightest weight) */
+  font-size: clamp(2.6rem, 12vw, 8.2rem);
+  font-weight: 100;
   text-align: center;
-  font-family: "nunito", cursive; /* Changed to nunito font */
+  font-family: "Nunito", sans-serif;
+  letter-spacing: 0.28em;
+  margin: 0;
+  transform: translateY(-0.6rem);
 }
 
 .mh-scatter-letter {
@@ -69,32 +77,23 @@
 }
 
 .mh-subtitle {
-  position: absolute;
-  top: 56%;
-  left: 50%;
-  transform: translateX(-85%);
   color: #ffffff;
-  font-size: 2.7rem;
-  letter-spacing: 0.25em;
+  font-size: clamp(1.68rem, 5.32vw, 3.92rem);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  opacity: 0;
+  opacity: 0.95;
+  margin: 0;
+  transform: translateY(-0.4rem);
 }
 
 .mh-subtitle-static {
   white-space: nowrap;
 }
 
-.mh-subtitle-dynamic span {
-  display: inline-block;
-}
-
 .mh-hero-video {
   position: absolute;
   inset: 0;
   z-index: 45;
-  transform: scale(0);
-  transform-origin: left bottom;
-  opacity: 0;
   overflow: hidden;
 }
 
@@ -111,11 +110,19 @@
   background-color: rgba(0, 0, 0, 0.35);
 }
 
-.mh-ui-cta {
+.mh-cta {
   position: absolute;
+  bottom: clamp(1.5rem, 4vw, 3rem);
   z-index: 60;
   pointer-events: auto;
-  opacity: 0;
+}
+
+.mh-cta--left {
+  left: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.mh-cta--right {
+  right: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .mh-ui-cta .glass-rain-btn {
@@ -190,19 +197,19 @@
   margin-top: 0.35rem;
 }
 
+.mh-cta .glass-rain-btn {
+  white-space: nowrap;
+}
+
 @media (max-width: 575.98px) {
   .mh-scatter-word {
-    font-size: 2.72rem; /* 20% smaller */
-    letter-spacing: 2.4px;
-    white-space: nowrap;
+    font-size: 2.3rem;
+    letter-spacing: 0.18em;
   }
 
   .mh-subtitle {
-    font-size: 1.292rem; /* 20% smaller */
-    letter-spacing: 0.12em;
-    top: calc(50% - 10px);
-    left: calc(50% - 5px);
-    white-space: nowrap;
+    font-size: 1.47rem;
+    letter-spacing: 0.16em;
   }
 
   .mh-ui-menu {
@@ -220,21 +227,28 @@
     display: none;
   }
 
-  .mh-ui-cta .glass-rain-btn {
-    padding: 1.125rem 1.75rem;
-    font-size: 0.86rem;
+  .mh-cta {
+    bottom: 1.25rem;
   }
+
+  .mh-cta--left {
+    left: 1.25rem;
+  }
+
+  .mh-cta--right {
+    right: 1.25rem;
+  }
+
 }
 
 @media (min-width: 576px) and (max-width: 991.98px) {
   .mh-scatter-word {
-    font-size: 3.6rem; /* reduced 20% */
+    font-size: 3.2rem;
   }
 
   .mh-subtitle {
-    font-size: 1.1rem;
-    letter-spacing: 0.2em;
-    top: 63%;
+    font-size: 1.89rem;
+    letter-spacing: 0.18em;
   }
 
   .mh-ui-menu {
@@ -242,40 +256,70 @@
   }
 }
 
-@media (min-width: 992px) and (max-width: 1439.98px) {
+@media (max-width: 991.98px) and (max-height: 600px) {
   .mh-scatter-word {
-    font-size: 8rem; /* reduced 20% */
+    font-size: 2.4rem;
+    letter-spacing: 0.16em;
   }
 
   .mh-subtitle {
-    font-size: 1.98rem;
-    letter-spacing: 0.22em;
-    top: calc(50% - 60px);
-    left: calc(50% - 30px);
+    font-size: 1.4rem;
+    letter-spacing: 0.14em;
+  }
+
+  .mh-cta {
+    bottom: 1rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .mh-scatter-word {
+    font-size: 5.6rem;
+  }
+
+  .mh-subtitle {
+    font-size: 2.5rem;
+    letter-spacing: 0.18em;
+  }
+
+  .mh-cta .glass-rain-btn {
+    padding: clamp(0.7rem, 0.6rem + 1vmin, 1.05rem)
+      clamp(0.95rem, 0.85rem + 1.8vmin, 1.55rem);
+    font-size: clamp(0.78rem, 0.72rem + 0.45vmin, 0.92rem);
+    gap: clamp(0.45rem, 0.35rem + 0.6vmin, 0.75rem);
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1439.98px) {
+  .mh-scatter-word {
+    font-size: 6.4rem;
+  }
+
+  .mh-subtitle {
+    font-size: 2.94rem;
+    letter-spacing: 0.2em;
   }
 }
 
 @media (min-width: 1440px) {
   .mh-scatter-word {
-    font-size: 5.6rem; /* reduced 20% */
+    font-size: 7.6rem;
   }
 
   .mh-subtitle {
-    font-size: 2.2rem;
-    letter-spacing: 0.26em;
-    top: calc(57% - 70px);
-    left: calc(50% - 30px);
+    font-size: 3.5rem;
+    letter-spacing: 0.24em;
   }
 }
 
 /* Large screens 1600px and above - increase font size by 20% */
 @media (min-width: 1600px) {
   .mh-scatter-word {
-    font-size: 6.72rem; /* 5.6rem * 1.2 = 6.72rem (20% increase) */
+    font-size: 8.6rem;
   }
 
   .mh-subtitle {
-    font-size: 2.64rem; /* 2.2rem * 1.2 = 2.64rem (20% increase) */
-    letter-spacing: 0.312em; /* 0.26em * 1.2 = 0.312em (20% increase) */
+    font-size: 3.92rem;
+    letter-spacing: 0.28em;
   }
 }
