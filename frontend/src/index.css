@@ -164,11 +164,12 @@ code {
 }
 
 .home-section--featured {
-  --section-overlay: linear-gradient(180deg, rgba(255, 107, 107, 0.12), rgba(255, 139, 148, 0.14));
-  --ab-text-bg: var(--accent-coral);
-  --ab-text-bg-hover: #ff5757;
-  --ab-icon-bg: var(--accent-pink);
-  --ab-icon-bg-hover: #ff7480;
+ --section-overlay: linear-gradient(180deg, rgba(199, 206, 234, 0.16), rgba(255, 218, 193, 0.12));
+  --ab-text-bg: var(--accent-lavender);
+  --ab-text-bg-hover: #b7c0e0;
+  --ab-icon-bg: var(--accent-peach);
+  --ab-icon-bg-hover: #f6c5a7;
+
 }
 
 .home-section--blog {

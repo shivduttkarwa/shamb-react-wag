@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { initGsapSwitchAnimations } from '../../lib/gsapSwitchAnimations';
+import AestheticButton from '../UI/AestheticButton';
 import './QualityHomes.css';
 
 const QualityHomes: React.FC = () => {
@@ -78,13 +79,8 @@ const QualityHomes: React.FC = () => {
             </div>
           </div>
 
-          <div data-gsap="fade-up" data-gsap-delay="0.2">
-            <a href="/about" className="quality__btn">
-              Learn More
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
+          <div data-gsap="btn-clip-bottom" data-gsap-delay="0.5" style={{ display: 'flex', justifyContent: 'center' }}>
+            <AestheticButton className="essence-cta-btn" text="Learn More" href="/about" />
           </div>
         </div>
 
@@ -96,10 +92,6 @@ const QualityHomes: React.FC = () => {
               alt="Luxury Interior"
               className="quality__img"
             />
-          </div>
-          <div data-gsap="zoom-in" data-gsap-delay="0.4" className="quality__years">
-            <span className="quality__years-num">15</span>
-            <span className="quality__years-text">Years</span>
           </div>
         </div>
       </div>

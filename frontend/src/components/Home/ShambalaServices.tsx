@@ -24,27 +24,11 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    title: 'Upgrade',
+    title: 'Renovation',
     subtitle: 'Elevate Your Living',
     description: 'Transform your current space into something extraordinary. Modern renovations that enhance both comfort and value.',
     features: ['Kitchen Remodels', 'Bathroom Upgrades', 'Room Additions', 'Outdoor Living'],
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-  },
-  {
-    id: 3,
-    title: 'Downsize',
-    subtitle: 'Simplify Elegantly',
-    description: 'Transition to a more manageable space without sacrificing style. Smart solutions for comfortable, efficient living.',
-    features: ['Space Optimization', 'Storage Solutions', 'Accessible Design', 'Low Maintenance'],
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-  },
-  {
-    id: 4,
-    title: 'Commercial',
-    subtitle: 'Business Excellence',
-    description: 'Professional spaces that inspire productivity and impress clients. From offices to retail, we build for success.',
-    features: ['Office Design', 'Retail Spaces', 'Hospitality', 'Industrial'],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
   },
 ];
 

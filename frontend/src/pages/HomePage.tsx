@@ -11,7 +11,7 @@ import {
 import OurVisionSection from "../components/Home/OurVisionSection";
 import CTASection from "../components/Home/CTASection";
 import ServicesSection from "../components/Home/ServicesSection";
-import BlogSection from "../components/Home/BlogSection";
+
 import ProjectModernSlider from "../components/Projects/ProjectModernSlider";
 import ShambalaServices from
   "../components/Home/ShambalaServices";
@@ -60,9 +60,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       <section>
         <QualityHomes />
       </section>
-      <div id="projects" className="home-section home-section--projects">
       
-      </div>
       {/* <div id="projects">
         <TextVid />
       </div> */}
@@ -75,9 +73,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
         <FeaturedProperties />
       </section>
 
-      <section className="home-section home-section--blog">
-        <BlogSection />
-      </section>
+      
 
       <BodyRenderer blocks={bodyBlocks} />
 

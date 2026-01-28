@@ -34,56 +34,56 @@ interface ServicesSectionProps {
 const defaultServices: ServiceCard[] = [
   {
     id: "1",
-    title: "Building New With Shambala",
+    title: "Sustainable Vision",
     description:
-      "Start fresh with a custom-designed home tailored to your lifestyle. From foundation to finishing touches, we bring your vision to life with innovative layouts, sustainable materials, and modern design that stands the test of time.",
+      "We believe in building for generations, not just years. Every project honors the environment through eco-conscious materials, energy-efficient design, and practices that minimize our footprint while maximizing your home's harmony with nature.",
     imageSrc: `${publicUrl}images/sercard1.jpg`,
-    alt: "New home construction",
-    ctaText: "Learn More",
-    ctaLink: "/services/new-builds",
+    alt: "Sustainable building philosophy",
+    ctaText: "Our Approach",
+    ctaLink: "/about",
   },
   {
     id: "2",
-    title: "Renovate & Elevate",
+    title: "Timeless Craftsmanship",
     description:
-      "Transform your current space into something extraordinary. Our renovation expertise enhances both comfort and value with thoughtful upgrades, kitchen remodels, bathroom transformations, and seamless room additions.",
+      "Quality isn't rushed—it's refined. Our master craftsmen blend time-honored techniques with modern innovation, ensuring every detail stands as a testament to precision, durability, and enduring beauty that transcends fleeting trends.",
     imageSrc: `${publicUrl}images/sercard2.jpg`,
-    alt: "Home renovation services",
-    ctaText: "Learn More",
-    ctaLink: "/services/renovations",
+    alt: "Quality craftsmanship",
+    ctaText: "Our Approach",
+    ctaLink: "/about",
   },
   {
     id: "3",
-    title: "Downsize With Grace",
+    title: "Human-Centered Design",
     description:
-      "Transition to a more manageable space without sacrificing style or comfort. Our smart downsizing solutions feature space optimization, clever storage, accessible design, and low-maintenance living tailored to your needs.",
+      "Spaces shape lives. We listen deeply to understand how you live, work, and dream—then craft environments that elevate your daily experience, nurture well-being, and grow beautifully with your evolving story.",
     imageSrc: `${publicUrl}images/sercard3.jpg`,
-    alt: "Downsizing solutions",
-    ctaText: "Learn More",
-    ctaLink: "/services/downsizing",
+    alt: "Human-centered design philosophy",
+    ctaText: "Our Approach",
+    ctaLink: "/about",
   },
   {
     id: "4",
-    title: "Commercial Excellence",
+    title: "Integrity & Trust",
     description:
-      "Professional spaces that inspire productivity and impress clients. From modern offices to retail environments and hospitality venues, we create commercial spaces designed for success and built to perform.",
+      "Your vision deserves unwavering commitment. We build relationships on transparency, honest communication, and meticulous attention to your needs—because the foundation of every great project is trust earned through consistent excellence.",
     imageSrc: `${publicUrl}images/4.avif`,
-    alt: "Commercial construction",
-    ctaText: "Learn More",
-    ctaLink: "/services/commercial",
+    alt: "Trust and integrity",
+    ctaText: "Our Approach",
+    ctaLink: "/about",
   },
 ];
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({
-  title = "Find The Right Build",
-  subtitle = "Type For Your Needs",
+  title = "Our Foundation",
+  subtitle = "Built to Last",
   description =
-    "Whether you're dreaming of a brand new custom home, elevating your current space, simplifying your lifestyle, or creating a commercial masterpiece—we have the expertise to bring your vision to life. Each service is crafted with the same dedication to quality, sustainability, and timeless design that defines the Shambala approach.",
-  ctaText = "Explore All Services",
-  ctaLink = "/services",
+    "At Shambala, we don't just construct buildings—we cultivate lasting legacies. Our philosophy is rooted in four unwavering pillars: respect for the environment, reverence for craftsmanship, dedication to human experience, and an unshakeable commitment to integrity. These aren't just values we speak; they're the foundation of every project we touch, every relationship we build, and every space we bring to life.",
+  ctaText = "Discover Our Story",
+  ctaLink = "/about",
   services = defaultServices,
 }) => {
-  const shortDescription = "Whether you're dreaming of a brand new custom home, elevating your current space, simplifying your lifestyle, or creating a commercial masterpiece—we have the expertise to bring your vision to life.";
+  const shortDescription = "At Shambala, we don't just construct buildings—we cultivate lasting legacies. Our philosophy is rooted in four unwavering pillars: respect for the environment, reverence for craftsmanship, dedication to human experience, and integrity.";
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
