@@ -59,7 +59,7 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: mask,
-        start: "top 40%",
+        start: "top 80%",
         toggleActions: "play none none none",
         once: true,
       },
