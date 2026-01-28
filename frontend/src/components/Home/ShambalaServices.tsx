@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import SectionTitle from '../UI/SectionTitle';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import TiltTextGsap from '../UI/TiltTextGsap';
 import AestheticButton from '../UI/AestheticButton';
+import { initGsapSwitchAnimations } from '../../lib/gsapSwitchAnimations';
 import './ShambalaServices.css';
 
 interface Slide {
@@ -79,6 +80,7 @@ const ShambalaServices: React.FC = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const { width, height } = useWindowSize();
   const isMobile = width < 768;
@@ -142,6 +144,10 @@ const ShambalaServices: React.FC = () => {
     return undefined;
   }, [isPaused]);
 
+  useEffect(() => {
+    return initGsapSwitchAnimations(sectionRef.current || undefined);
+  }, []);
+
   // Only dynamic animation styles that depend on state
   const getAnimationStyle = (isActive: boolean, isPrevious: boolean) => {
     if (!isActive || !isTransitioning) return {};
@@ -163,6 +169,7 @@ const ShambalaServices: React.FC = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="shambala-services"
       onMouseEnter={() => !isMobile && !isMobileLandscape && setIsPaused(true)}
       onMouseLeave={() => !isMobile && !isMobileLandscape && setIsPaused(false)}
@@ -171,14 +178,18 @@ const ShambalaServices: React.FC = () => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="shambala-services__header">
-        <SectionTitle className="shambala-services__section-title">
+        <TiltTextGsap
+          className="shambala-services__section-title"
+          startTrigger="top 90%"
+          endTrigger="top 70%"
+        >
           Explore our services
-        </SectionTitle>
+        </TiltTextGsap>
       </div>
 
       <div className="shambala-services__container">
         {/* Image Side - Positioned first for mobile background */}
-        <div className="shambala-services__image-side">
+        <div className="shambala-services__image-side" data-gsap="slide-left">
           <div className="shambala-services__image-container">
             {slides.map((slide, idx) => {
               const isActive = idx === currentSlide;
@@ -279,13 +290,13 @@ const ShambalaServices: React.FC = () => {
                   </span>
                 </div>
                 <div className="shambala-services__slide-content">
-                  
 
-                  <p className="shambala-services__subtitle">{slides[previousSlide].subtitle}</p>
-                  <h2 className="shambala-services__title">{slides[previousSlide].title}</h2>
-                  <p className="shambala-services__description">{slides[previousSlide].description}</p>
 
-                  <div className="shambala-services__features">
+                  <p data-gsap="fade-up" data-gsap-delay="0.1" className="shambala-services__subtitle">{slides[previousSlide].subtitle}</p>
+                  <h2 data-gsap="fade-up" data-gsap-delay="0.2" className="shambala-services__title">{slides[previousSlide].title}</h2>
+                  <p data-gsap="fade-up" data-gsap-delay="0.3" className="shambala-services__description">{slides[previousSlide].description}</p>
+
+                  <div data-gsap="fade-up" data-gsap-delay="0.4" className="shambala-services__features">
                     {slides[previousSlide].features.map((feature, idx) => (
                       <div
                         key={idx}
@@ -297,14 +308,16 @@ const ShambalaServices: React.FC = () => {
                     ))}
                   </div>
 
-                  <AestheticButton text="Explore Service" href={`/services/${slides[previousSlide].title.toLowerCase().replace(' ', '-')}`} />
+                  <div data-gsap="fade-up" data-gsap-delay="0.5">
+                    <AestheticButton text="Explore Service" href={`/services/${slides[previousSlide].title.toLowerCase().replace(' ', '-')}`} />
+                  </div>
                 </div>
               </div>
             )}
 
             <div
               key={currentSlide}
-              className="shambala-services__content-panel shambala-services__content-layer"
+              className="shambala-services__content-panel shambala-services__content-layer shambala-services__content-layer--active"
               style={{
                 zIndex: 2,
                 ...getPanelAnimationStyle(),
@@ -316,13 +329,13 @@ const ShambalaServices: React.FC = () => {
                 </span>
               </div>
               <div className="shambala-services__slide-content">
-                
 
-                <p className="shambala-services__subtitle">{slides[currentSlide].subtitle}</p>
-                <h2 className="shambala-services__title">{slides[currentSlide].title}</h2>
-                <p className="shambala-services__description">{slides[currentSlide].description}</p>
 
-                <div className="shambala-services__features">
+                <p data-gsap="fade-up" data-gsap-delay="0.1" className="shambala-services__subtitle">{slides[currentSlide].subtitle}</p>
+                <h2 data-gsap="fade-up" data-gsap-delay="0.2" className="shambala-services__title">{slides[currentSlide].title}</h2>
+                <p data-gsap="fade-up" data-gsap-delay="0.3" className="shambala-services__description">{slides[currentSlide].description}</p>
+
+                <div data-gsap="fade-up" data-gsap-delay="0.4" className="shambala-services__features">
                   {slides[currentSlide].features.map((feature, idx) => (
                     <div
                       key={idx}
@@ -334,14 +347,16 @@ const ShambalaServices: React.FC = () => {
                   ))}
                 </div>
 
-                <AestheticButton text="Explore Service" href={`/services/${slides[currentSlide].title.toLowerCase().replace(' ', '-')}`} />
+                <div data-gsap="fade-up" data-gsap-delay="0.5">
+                  <AestheticButton text="Explore Service" href={`/services/${slides[currentSlide].title.toLowerCase().replace(' ', '-')}`} />
+                </div>
               </div>
             </div>
           </div>
 
           {/* Navigation - Desktop only */}
           {!isMobile && !isMobileLandscape && (
-            <div className="fp-left-navigation shambala-services-nav">
+            <div data-gsap="slide-right" data-gsap-ease="back.out(1.7)" className="fp-left-navigation shambala-services-nav">
               <button className="fp-nav-btn fp-swiper-button-prev" onClick={prevSlide}>
                 <div className="fp-btn-outline fp-btn-outline-1"></div>
                 <div className="fp-btn-outline fp-btn-outline-2"></div>

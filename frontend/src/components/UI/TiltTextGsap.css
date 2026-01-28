@@ -10,12 +10,14 @@
   font-weight: 360; /* 40% lighter than previous 600 weight */
   color: var(--text);
   margin: 0;
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 0.18em;
   position: relative;
   visibility: hidden; /* Initially hidden until GSAP reveals it */
   word-spacing: 0.21em;
+  justify-content: center;
+  width: 100%;
 }
 
 .tilt-text-word {

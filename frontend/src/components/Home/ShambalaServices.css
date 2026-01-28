@@ -30,6 +30,7 @@
 .shambala-services__section-title {
   font-family: "Dream Avenue", serif;
   font-weight: 500;
+  text-align: center;
 }
 
 /* Content Side */
@@ -305,7 +306,7 @@
 }
 
 .shambala-services__vertical-dot--active {
-  background-color: var(--color-gold);
+  background-color:#312306;
   height: 3.5rem;
   width: 0.3125rem;
 }
@@ -616,6 +617,20 @@
   .shambala-services__container {
     flex-direction: column;
     min-height: auto;
+  }
+
+  .shambala-services__content-stack {
+    min-height: auto;
+  }
+
+  .shambala-services__content-layer--active {
+    position: relative;
+    inset: auto;
+  }
+
+  .shambala-services__content-layer--previous {
+    position: absolute;
+    inset: 0;
   }
 
   .shambala-services__header {
