@@ -16,8 +16,10 @@ body {
 @media (max-width: 968px) {
   body {
     
-    background-image: linear-gradient(rgba(224, 242, 228, 0.6), rgba(224, 242, 228, 0.8)), url('/images/bg-paint-1.jpg');
+    background-image: linear-gradient(rgba(224, 242, 228, 0.6), rgba(224, 242, 228, 0.8)),url('/images/bg-pait-1.jpg'); 
+    ;
   
+
     background-attachment: scroll;
     background-size: 100% 100%;
     background-position: center;

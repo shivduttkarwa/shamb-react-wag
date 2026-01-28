@@ -5,7 +5,8 @@
       "Bash(mkdir:*)",
       "Bash(python:*)",
       "Bash(npm start)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(npx gh-pages:*)"
     ],
     "deny": []
   }

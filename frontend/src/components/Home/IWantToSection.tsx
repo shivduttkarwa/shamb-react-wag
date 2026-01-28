@@ -307,7 +307,7 @@ const IWantToSection: React.FC = () => {
           </div>
 
           {/* Grid */}
-          <div data-gsap="slide-right" data-gsap-stagger="0.2" data-gsap-ease="elastic.out(1, 0.5)" style={styles.grid} className="image-cards-row">
+          <div data-gsap="slide-right" data-gsap-stagger="0.2" data-gsap-ease="back.out(1.2)" style={styles.grid} className="image-cards-row">
             {serviceOptions.map((option, index) => (
               <button
                 key={option.id}
@@ -342,7 +342,7 @@ const IWantToSection: React.FC = () => {
           </div>
 
           {/* CTA Section */}
-          <div data-gsap="fade-up" style={styles.ctaWrapper}>
+          <div data-gsap="btn-clip-bottom" style={styles.ctaWrapper}>
             <AestheticButton className="essence-cta-btn" text="Get in Touch" href="/contact" />
           </div>
 

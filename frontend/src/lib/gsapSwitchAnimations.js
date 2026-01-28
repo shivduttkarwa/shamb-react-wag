@@ -161,6 +161,9 @@ class GSAPAnimations {
           case 'btn-clip-reveal':
             this.btnClipReveal(el, config);
             break;
+          case 'btn-clip-bottom':
+            this.btnClipBottom(el, config);
+            break;
           case 'wellbeing-timeline':
             this.wellbeingTimeline(el, config);
             break;
@@ -3494,6 +3497,55 @@ class GSAPAnimations {
         autoRound: false // Prevent sub-pixel rounding jitter
       }, T.textDelay); // Start text reveal T.textDelay seconds after fill begins
     }
+  }
+
+  // Button clip reveal from bottom to top (same technique as writingText)
+  btnClipBottom(el, config) {
+    if (!el) return;
+
+    const btn = el.tagName === 'A' || el.tagName === 'BUTTON' ? el : el.querySelector('a, button');
+    if (!btn) return;
+
+    const hasDurationAttr = el.hasAttribute('data-gsap-duration');
+    const hasEaseAttr = el.hasAttribute('data-gsap-ease');
+    const hasDelayAttr = el.hasAttribute('data-gsap-delay');
+
+    const duration = hasDurationAttr && Number.isFinite(config.duration) ? config.duration : 1.2;
+    const ease = hasEaseAttr ? config.ease : 'power2.out';
+    const delay = hasDelayAttr && Number.isFinite(config.delay) ? config.delay : 0;
+
+    // Clip from bottom to top (reverse of writingText which goes left to right)
+    // Negative values on left/right extend clip area to avoid rendering issues
+    const clipStart = 'inset(100% -0.2em -0.4em -0.2em)'; // Hidden from top (reveals bottom to top)
+    const clipEnd = 'inset(-0.4em -0.2em -0.4em -0.2em)'; // Fully revealed
+
+    // Set initial state (same pattern as writingText)
+    gsap.set(btn, {
+      clipPath: clipStart,
+      webkitClipPath: clipStart,
+      opacity: 0,
+      y: 10,
+      willChange: 'clip-path, transform, opacity'
+    });
+
+    // Animate button (same pattern as writingText)
+    gsap.to(btn, {
+      clipPath: clipEnd,
+      webkitClipPath: clipEnd,
+      opacity: 1,
+      y: 0,
+      duration: duration,
+      ease: ease,
+      delay: delay,
+      scrollTrigger: {
+        trigger: btn,
+        start: config.start || 'top 80%',
+        toggleActions: 'play none none none'
+      },
+      onComplete: () => {
+        gsap.set(btn, { clearProps: 'will-change' });
+      }
+    });
   }
 
 
