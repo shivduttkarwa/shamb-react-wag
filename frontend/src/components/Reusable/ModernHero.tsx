@@ -6,6 +6,12 @@ const publicUrl = import.meta.env.BASE_URL || "/";
 const heroVideo = publicUrl.endsWith("/")
   ? `${publicUrl}images/home_hero.mp4`
   : `${publicUrl}/images/home_hero.mp4`;
+const heroPoster = publicUrl.endsWith("/")
+  ? `${publicUrl}images/home_hero_poster.jpg`
+  : `${publicUrl}/images/home_hero_poster.jpg`;
+const heroFallback = publicUrl.endsWith("/")
+  ? `${publicUrl}images/home_hero_fallback.jpg`
+  : `${publicUrl}/images/home_hero_fallback.jpg`;
 
 interface ModernHeroProps {
   animate?: boolean;
@@ -14,33 +20,46 @@ interface ModernHeroProps {
 const ModernHero: React.FC<ModernHeroProps> = () => {
   return (
     <div className="mh-hero">
-      <div className="mh-curtain" aria-hidden="true"></div>
-
-      <div className="mh-text-container">
-        <div className="mh-text-backdrop" aria-hidden="true"></div>
-        <h1 className="mh-scatter-word">CREATE</h1>
-
-        <div className="mh-subtitle">
-          <span className="mh-subtitle-static">Something </span>
-          <span className="mh-subtitle-dynamic">ELEGANT</span>
-        </div>
-
-        <div className="mh-cta mh-cta--left">
-          <GlassRainButton href="/projects">Start a Project</GlassRainButton>
-        </div>
-
-        <div className="mh-cta mh-cta--right">
-          <GlassRainButton href="tel:+1234567890">Call Us</GlassRainButton>
-        </div>
+      {/* Full bleed video */}
+      <div className="mh-video-container">
+        <video
+          src={heroVideo}
+          poster={heroPoster}
+          muted
+          loop
+          playsInline
+          autoPlay
+          className="mh-video"
+        />
+        <img
+          src={heroFallback}
+          alt="Architecture background"
+          className="mh-fallback-image"
+        />
+        <div className="mh-overlay"></div>
       </div>
 
-      <div className="mh-hero-video" aria-hidden="true">
-        <video src={heroVideo} muted loop playsInline autoPlay />
-        <div className="mh-image-overlay"></div>
+      {/* Hero content */}
+      <div className="mh-content">
+        <div className="mh-hero-text">
+          <h1 className="mh-headline">
+            <span className="mh-headline-primary">Designing Spaces</span>
+            <span className="mh-headline-secondary">for Modern Living</span>
+          </h1>
+
+          <div className="mh-divider"></div>
+
+          <p className="mh-tagline">
+            Where architectural vision meets exceptional craftsmanship
+          </p>
+
+          <div className="mh-action">
+            <GlassRainButton href="/projects">View Portfolio</GlassRainButton>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-// Memoized so React doesn't rerender and wipe the GSAP-managed DOM nodes
 export default memo(ModernHero);

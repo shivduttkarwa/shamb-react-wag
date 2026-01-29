@@ -1,5 +1,5 @@
 import React from "react";
-import ModernHero from "../components/Reusable/ModernHero";
+
 import {
   EssenceSection,
  
@@ -20,6 +20,7 @@ import BodyRenderer from "../components/BodyRenderer";
 import { useHome } from "../hooks/useHome";
 import { SiteSettings } from "../services/api";
 import IWantToSection from "@/components/Home/IWantToSection";
+import AncientHero from "@/components/Home/AncientHero";
 
 interface HomePageProps {
   settings: SiteSettings | null;
@@ -34,7 +35,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
     <>
       <div id="hero">
         <div className="home-section home-section--hero">
-          <ModernHero />
+          <AncientHero />
         </div>
       </div>
       <section className="home-section home-section--essence">
