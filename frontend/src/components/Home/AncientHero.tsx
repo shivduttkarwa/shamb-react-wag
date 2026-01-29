@@ -83,29 +83,29 @@ const AncientHero: React.FC = () => {
       {/* Main Content */}
       <div className="sanctuary__content">
         <div className="gateway">
-          <div className="subtitle">The Hidden Kingdom</div>
-          <h1>
-            <span className="line">Architecture</span>
-            <span className="line">of the Soul</span>
+          <div className="eyebrow">Architectural Excellence</div>
+          <h1 className="ancient-hero-title">
+            <span className="line">Timeless Design</span>
+            <span className="line">Modern Living</span>
           </h1>
-          <p className="tagline">
-            We design sacred spaces that bridge the earthly and the divine, 
-            drawing from the ancient wisdom of Shambhala's golden age.
+          <p className="ancient-hero-subtitle">
+            Where modern design meets exceptional craftsmanship.
+            We create architectural masterpieces that stand the test of time.
           </p>
-          
-          <a 
-            href="#" 
-            className="cta-prayer" 
+
+          <a
+            href="/projects"
+            className="ancient-hero-cta"
             onMouseMove={handleMouseMove}
           >
             <span className="wheel" />
-            <span>Enter the Sanctuary</span>
+            <span>View Our Projects</span>
           </a>
         </div>
       </div>
 
-      {/* Scroll Indicator - Moved Down */}
-      <div className="lotus-scroll">
+      {/* Scroll Indicator */}
+      <div className="ancient-hero-scroll-btn">
         <div className="lotus" />
         <div className="lotus-line" />
       </div>

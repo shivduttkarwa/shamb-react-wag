@@ -28,7 +28,7 @@
   min-height: 600px;
   overflow: hidden;
   background-color: var(--midnight);
-  font-family: 'Crimson Text', serif;
+  font-family: 'nunito', sans-serif;
   color: var(--cream);
 }
 
@@ -156,7 +156,7 @@
 /* Gateway - No Border, No Glassmorphism */
 .gateway {
   position: relative;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 10rem 1rem;
   width: 100%;
   max-width: 100%;
   /* REMOVED: border, background, backdrop-filter */
@@ -166,21 +166,21 @@
 }
 
 /* Typography */
-.subtitle {
+.eyebrow {
   font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   letter-spacing: 0.3em;
-  color: var(--turquoise);
+  color: rgba(255, 255, 255, 0.95);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeIn 2s ease 1s forwards;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
   white-space: nowrap;
 }
 
-h1 {
-  font-family: 'Cinzel', serif;
+.ancient-hero-title {
+  font-family: 'Dream Avenue', serif;
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.1;
@@ -188,57 +188,57 @@ h1 {
   margin-bottom: 1.25rem;
   opacity: 0;
   animation: rise 2s var(--ease-out-expo) 0.5s forwards;
-  /* Prevent text cutoff */
   width: 100%;
   max-width: 100%;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  text-transform: uppercase;
 }
 
-h1 .line {
+.ancient-hero-title .line {
   display: block;
   background: linear-gradient(to bottom, var(--gold-light) 0%, var(--gold) 50%, #b8956b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
-  /* Ensure lines don't overflow */
+  filter: drop-shadow(0 2px 15px rgba(0, 0, 0, 0.8));
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
 }
 
-h1 .line:last-child {
+.ancient-hero-title .line:last-child {
   font-style: italic;
   opacity: 0.9;
 }
 
-/* Description - More Readable Sans-Serif */
-.tagline {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+/* Description */
+.ancient-hero-subtitle {
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
-  font-style: normal; /* REMOVED: italic */
+  font-style: normal;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.95); /* Brighter for readability */
+  color: rgba(255, 255, 255, 0.95);
   max-width: 100%;
-  line-height: 1.7; /* Increased line height */
-  margin-bottom: 2rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
   opacity: 0;
   animation: fadeIn 2s ease 1.5s forwards;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.9); /* Stronger shadow for legibility */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
   padding: 0 0.5rem;
 }
 
 /* CTA Button */
-.cta-prayer {
+.ancient-hero-cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem 2rem;
-  background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.6);
   color: var(--gold);
   text-decoration: none;
   font-family: 'Cinzel', serif;
@@ -250,11 +250,11 @@ h1 .line:last-child {
   opacity: 0;
   animation: fadeIn 2s ease 2s forwards;
   cursor: pointer;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
   white-space: nowrap;
 }
 
-.cta-prayer::before {
+.ancient-hero-cta::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -263,12 +263,12 @@ h1 .line:last-child {
   transition: opacity 0.4s;
 }
 
-.cta-prayer:hover {
+.ancient-hero-cta:hover {
   border-color: var(--gold);
   letter-spacing: 0.25em;
 }
 
-.cta-prayer:hover::before {
+.ancient-hero-cta:hover::before {
   opacity: 1;
 }
 
@@ -282,7 +282,7 @@ h1 .line:last-child {
   transition: animation-duration 0.3s;
 }
 
-.cta-prayer:hover .wheel {
+.ancient-hero-cta:hover .wheel {
   animation-duration: 2s;
 }
 
@@ -318,11 +318,10 @@ h1 .line:last-child {
   to { opacity: 1; }
 }
 
-/* Scroll Indicator - Moved Down */
-.lotus-scroll {
+/* Scroll Indicator - At Bottom */
+.ancient-hero-scroll-btn {
   position: absolute;
-  /* Moved down from 2rem to 3rem on mobile */
-  bottom: 3rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -373,18 +372,18 @@ h1 .line:last-child {
     max-width: 700px; /* Prevent cutting off */
   }
 
-  h1 {
+  .ancient-hero-title {
     font-size: 3.5rem;
     letter-spacing: 0.08em;
   }
 
-  .subtitle {
+  .eyebrow {
     font-size: 0.8rem;
     letter-spacing: 0.4em;
     margin-bottom: 2rem;
   }
 
-  .tagline {
+  .ancient-hero-subtitle {
     font-size: 1.1rem;
     max-width: 500px;
     line-height: 1.8;
@@ -392,7 +391,7 @@ h1 .line:last-child {
     padding: 0;
   }
 
-  .cta-prayer {
+  .ancient-hero-cta {
     padding: 1.2rem 2.5rem;
     font-size: 0.8rem;
     letter-spacing: 0.25em;
@@ -405,7 +404,7 @@ h1 .line:last-child {
   }
 
   /* Moved down further on tablet */
-  .lotus-scroll {
+  .ancient-hero-scroll-btn {
     bottom: 4rem;
   }
 
@@ -431,26 +430,26 @@ h1 .line:last-child {
     max-width: 900px; /* Wider to prevent text cutoff */
   }
 
-  h1 {
+  .ancient-hero-title {
     font-size: 5rem;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
   }
 
-  .subtitle {
+  .eyebrow {
     font-size: 0.9rem;
     letter-spacing: 0.5em;
     margin-bottom: 2.5rem;
   }
 
-  .tagline {
+  .ancient-hero-subtitle {
     font-size: 1.25rem;
     max-width: 600px;
     margin-bottom: 3rem;
     color: rgba(255, 255, 255, 0.95);
   }
 
-  .cta-prayer {
+  .ancient-hero-cta {
     padding: 1.2rem 3rem;
     font-size: 0.9rem;
     letter-spacing: 0.3em;
@@ -463,7 +462,7 @@ h1 .line:last-child {
   }
 
   /* Moved down on desktop */
-  .lotus-scroll {
+  .ancient-hero-scroll-btn {
     bottom: 5rem;
   }
 
@@ -490,7 +489,7 @@ h1 .line:last-child {
    LARGE SCREENS (1440px+)
    ============================================ */
 @media (min-width: 1440px) {
-  h1 {
+  .ancient-hero-title {
     font-size: 6rem;
   }
 
@@ -498,7 +497,7 @@ h1 .line:last-child {
     max-width: 1000px;
   }
 
-  .tagline {
+  .ancient-hero-subtitle {
     font-size: 1.35rem;
     max-width: 700px;
   }
@@ -514,11 +513,11 @@ h1 .line:last-child {
     animation: none;
   }
   
-  .subtitle,
-  h1,
-  .tagline,
-  .cta-prayer,
-  .lotus-scroll {
+  .eyebrow,
+  .ancient-hero-title,
+  .ancient-hero-subtitle,
+  .ancient-hero-cta,
+  .ancient-hero-scroll-btn {
     opacity: 1;
     animation: none;
   }
