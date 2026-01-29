@@ -264,7 +264,7 @@
   position: absolute;
   top: auto;
   bottom: 1.25rem;
-  left: calc(50% - 2rem);
+  left: calc(50% - 4rem);
   right: auto;
   display: none;
   gap: 1.25rem;
@@ -379,6 +379,8 @@
   .shambala-services__container {
     flex-direction: row;
     min-height: 90vh;
+    --services-gap: clamp(1rem, 2.5vw, 2.5rem);
+    gap: var(--services-gap);
   }
 
   .shambala-services__header {
@@ -387,12 +389,12 @@
   }
 
   .shambala-services__content-side {
-    width: 55%;
+    width: calc(55% - (var(--services-gap) / 2));
     min-height: 0;
   }
 
   .shambala-services__image-side {
-    width: 45%;
+    width: calc(45% - (var(--services-gap) / 2));
     height: 90vh;
     min-height: 90vh;
   }
@@ -455,7 +457,7 @@
   .shambala-services .fp-left-navigation {
     display: flex;
     bottom: clamp(1.5rem, 4vh, 2.5rem);
-    left: calc(50% - 2rem);
+    left: calc(50% - 4rem);
     gap: clamp(1rem, 3vw, 1.75rem);
     --_btn-size: clamp(44px, 6.5vw, 64px);
     transform: translateX(-50%);
@@ -501,34 +503,43 @@
    ============================================ */
 @media (min-width: 1024px) {
   .shambala-services__content-panel {
-    padding: 2.5rem 3rem clamp(5rem, 9vh, 6.5rem);
+    padding: 2rem 2.4rem clamp(4rem, 7.2vh, 5.2rem);
   }
 
   .shambala-services__slide-content {
-    max-width: 30rem;
+    max-width: 24rem;
   }
 
   .shambala-services__subtitle {
-    font-size: 0.8rem;
+    font-size: 0.64rem;
   }
 
   .shambala-services__title {
-    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    font-size: clamp(1.6rem, 2.56vw, 2.08rem);
   }
 
   .shambala-services__description {
-    font-size: 0.95rem;
+    font-size: 0.76rem;
   }
 
   .shambala-services__feature-item {
-    font-size: 0.82rem;
+    font-size: 0.66rem;
   }
 
   .shambala-services .fp-left-navigation {
     bottom: clamp(1.75rem, 4vh, 2.75rem);
-    left: calc(50% - 2rem);
-    --_btn-size: clamp(52px, 5.5vw, 70px);
+    left: calc(50% - 4rem);
+    --_btn-size: clamp(36px, 3.85vw, 49px);
     transform: translateX(-50%);
+  }
+
+  .shambala-services .fp-arrow-container svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .shambala-services .essence-cta-btn {
+    transform: scale(0.7);
   }
 }
 
@@ -545,11 +556,11 @@
   }
 
   .shambala-services__content-side {
-    width: 50%;
+    width: calc(50% - (var(--services-gap) / 2));
   }
 
   .shambala-services__image-side {
-    width: 50%;
+    width: calc(50% - (var(--services-gap) / 2));
   }
 
   .shambala-services__content-panel {
@@ -658,15 +669,19 @@
 
   .shambala-services .fp-left-navigation {
     bottom: clamp(2rem, 4vh, 3rem);
-    left: calc(50% - 2rem);
+    left: calc(50% - 4rem);
     gap: clamp(1.25rem, 2.5vw, 2rem);
-    --_btn-size: clamp(64px, 6vw, 84px);
+    --_btn-size: clamp(45px, 4.2vw, 59px);
     transform: translateX(-50%);
   }
 
   .shambala-services .fp-arrow-container svg {
-    width: 26px;
-    height: 26px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .shambala-services .essence-cta-btn {
+    transform: scale(0.7);
   }
 }
 
@@ -680,6 +695,19 @@
 
   .shambala-services__content-panel {
     padding-left: 8rem;
+  }
+
+  .shambala-services .fp-left-navigation {
+    --_btn-size: clamp(52px, 5.2vw, 67px);
+  }
+
+  .shambala-services .fp-arrow-container svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .shambala-services .essence-cta-btn {
+    transform: scale(0.8);
   }
 }
 
@@ -769,6 +797,19 @@
     width: 1.25rem;
     height: 1.25rem;
     font-size: 0.75rem;
+  }
+
+  .shambala-services .fp-left-navigation {
+    --_btn-size: clamp(66px, 6.58vw, 85px);
+  }
+
+  .shambala-services .fp-arrow-container svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .shambala-services .essence-cta-btn {
+    transform: scale(1.01);
   }
 
 }
@@ -879,6 +920,8 @@
   .shambala-services__container {
     flex-direction: row;
     min-height: 100vh;
+    --services-gap: clamp(0.75rem, 3vw, 1.5rem);
+    gap: var(--services-gap);
   }
 
   .shambala-services__header {
@@ -887,12 +930,12 @@
   }
 
   .shambala-services__content-side {
-    width: 55%;
+    width: calc(55% - (var(--services-gap) / 2));
     min-height: 0;
   }
 
   .shambala-services__image-side {
-    width: 45%;
+    width: calc(45% - (var(--services-gap) / 2));
     height: 100vh;
     min-height: 100vh;
   }
