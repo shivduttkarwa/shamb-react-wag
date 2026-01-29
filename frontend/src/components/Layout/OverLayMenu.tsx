@@ -327,32 +327,7 @@ tl.to(path, {
                 <div className="olm-menu-item-revealer"></div>
               </div>
 
-              {/* 3 - Projects */}
-              <div className="olm-menu-item olm-modern-menu-item olm-menu-item-projects">
-                <div className="olm-menu-line"></div>
-                <Link to="/projects">
-                  <span className="olm-menu-number">02.</span>
-                  <div className="olm-menu-arrow">
-                    <svg width="40" height="25" viewBox="0 0 40 25">
-                      <path
-                        className="olm-arrow-line"
-                        d="M2 25 L2 5 L25 5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                      />
-                      <polygon
-                        className="olm-arrow-tip"
-                        points="25,1 37,5 25,9"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <span className="olm-menu-text">Projects</span>
-                </Link>
-                <div className="olm-menu-item-revealer"></div>
-              </div>
-
+              
               {/* 4 - About Us */}
               <div className="olm-menu-item olm-modern-menu-item olm-menu-item-about">
                 <div className="olm-menu-line"></div>

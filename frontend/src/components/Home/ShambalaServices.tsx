@@ -269,11 +269,6 @@ const ShambalaServices: React.FC = () => {
                 }}
                 aria-hidden="true"
               >
-                <div className="shambala-services__big-slide-number-box">
-                  <span className="shambala-services__big-slide-number">
-                    {String(previousSlide + 1).padStart(2, '0')}
-                  </span>
-                </div>
                 <div className="shambala-services__slide-content">
 
 
@@ -312,11 +307,6 @@ const ShambalaServices: React.FC = () => {
                 ...getPanelAnimationStyle(),
               }}
             >
-              <div data-gsap="zoom-in" data-gsap-delay="0.4" data-gsap-ease="back.out(1.7)" className="shambala-services__big-slide-number-box">
-                <span className="shambala-services__big-slide-number">
-                  {String(currentSlide + 1).padStart(2, '0')}
-                </span>
-              </div>
               <div className="shambala-services__slide-content">
 
 
