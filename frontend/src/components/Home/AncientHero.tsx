@@ -85,8 +85,8 @@ const AncientHero: React.FC = () => {
         <div className="gateway">
           <div className="eyebrow">Architectural Excellence</div>
           <h1 className="ancient-hero-title">
-            <span className="line">Timeless Design</span>
-            <span className="line">Living</span>
+            <span className="line">Architectural Vision</span>
+            <span className="line">Realized</span>
           </h1>
           <p className="ancient-hero-subtitle">
             Where modern design meets exceptional craftsmanship.

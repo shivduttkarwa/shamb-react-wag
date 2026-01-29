@@ -417,47 +417,47 @@
 }
 
 /* ============================================
-   DESKTOP (1024px-1279px) - 24% Size Reduction
+   DESKTOP (1024px-1279px) - Further Reduced
    ============================================ */
 @media (min-width: 1024px) {
   .sanctuary__content {
-    padding: 3.04rem;
+    padding: 2.584rem;
   }
 
   .gateway {
-    padding: 3.04rem 2.28rem;
-    max-width: 684px;
+    padding: 2.584rem 1.938rem;
+    max-width: 581px;
   }
 
   .ancient-hero-title {
-    font-size: 3.8rem;
-    letter-spacing: 0.076em;
-    margin-bottom: 1.14rem;
+    font-size: 3.23rem;
+    letter-spacing: 0.065em;
+    margin-bottom: 0.969rem;
   }
 
   .eyebrow {
-    font-size: 0.684rem;
-    letter-spacing: 0.38em;
-    margin-bottom: 1.9rem;
+    font-size: 0.581rem;
+    letter-spacing: 0.323em;
+    margin-bottom: 1.615rem;
   }
 
   .ancient-hero-subtitle {
-    font-size: 0.95rem;
-    max-width: 456px;
-    margin-bottom: 2.28rem;
+    font-size: 0.808rem;
+    max-width: 388px;
+    margin-bottom: 1.938rem;
     color: rgba(255, 255, 255, 0.95);
   }
 
   .ancient-hero-cta {
-    padding: 0.912rem 2.28rem;
-    font-size: 0.684rem;
-    letter-spacing: 0.228em;
-    gap: 1.14rem;
+    padding: 0.775rem 1.938rem;
+    font-size: 0.581rem;
+    letter-spacing: 0.194em;
+    gap: 0.969rem;
   }
 
   .wheel {
-    width: 15.2px;
-    height: 15.2px;
+    width: 12.92px;
+    height: 12.92px;
   }
 
   .ancient-hero-scroll-btn {
@@ -465,11 +465,11 @@
   }
 
   .lotus::before {
-    font-size: 1.52rem;
+    font-size: 1.292rem;
   }
 
   .lotus-line {
-    height: 45.6px;
+    height: 38.76px;
   }
 
   .mandala {
