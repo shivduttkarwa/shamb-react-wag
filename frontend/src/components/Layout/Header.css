@@ -62,13 +62,15 @@ header {
    Tablets (≥ 768px)
    ============================================ */
 @media (min-width: 768px) {
-  .header-inner {
-    padding: 1rem 1rem 1rem 0.75rem;
+
+    header {
+    height: 7.25rem;
   }
 
-  .header-logo-container {
-    margin-top: 0.525rem;
+  .header-inner {
+    height: 7.25rem;
   }
+ 
 
   .header-logo {
     height: 10rem;
@@ -81,11 +83,11 @@ header {
    ============================================ */
 @media (min-width: 1024px) {
   header {
-    height: 6.25rem;
+    height: 5.25rem;
   }
 
   .header-inner {
-    height: 6.25rem;
+    height: 5.25rem;
   }
 
   .header-logo-container {
@@ -94,8 +96,12 @@ header {
   }
 
   .header-logo {
-    height: 10rem;
-    transform: translateY(0.1875rem);
+    height: 9rem;
+    transform: translateY(0.6875rem);
+  }
+   #toggle-btn.olm-btn {
+    scale: 0.8;
+    transform: translateY(-1rem) translateX(-0.2375rem);
   }
 }
 
@@ -103,13 +109,22 @@ header {
    Desktops (≥ 1280px)
    ============================================ */
 @media (min-width: 1280px) {
+  header {
+    height: 6.5rem;
+  }
+
+  .header-inner {
+    height: 6.5rem;
+  }
+
   #toggle-btn.olm-btn {
     scale: 0.9;
-    transform: translateY(-0.6375rem);
+    transform: translateY(-0.5rem) translateX(-0.2375rem);
   }
 
   .header-logo {
-    transform: translateX(-0.975rem);
+    height: 10.5rem;
+    transform: translateY(0.4375rem) translateX(-.975rem);
   }
 }
 
@@ -117,6 +132,29 @@ header {
    Large desktops / 2K (≥ 1536px)
    ============================================ */
 @media (min-width: 1536px) {
+  header {
+    height: 6.5rem;
+  }
+
+  .header-inner {
+    height: 6.5rem;
+  }
+
+  #toggle-btn.olm-btn {
+    scale: 0.9;
+    transform: translateY(-0.5rem) translateX(-0.2375rem);
+  }
+
+  .header-logo {
+    height: 10.5rem;
+    transform: translateY(0.4375rem) translateX(-.975rem);
+  }
+}
+
+/* ============================================
+   Ultra-wide / 4K (≥ 1920px)
+   ============================================ */
+@media (min-width: 1920px) {
   header {
     height: 7.5rem;
   }
@@ -127,20 +165,13 @@ header {
 
   #toggle-btn.olm-btn {
     scale: 1.1;
-    transform: translateY(0.1rem) translateX(-0.4375rem);
+    transform: translateY(0rem) translateX(-0.2375rem);
   }
 
   .header-logo {
-    height: 13.5rem;
-    transform: translateY(0.4375rem) translateX(-1.975rem);
+    height: 12.5rem;
+    transform: translateY(0.4375rem) translateX(-.975rem);
   }
-}
-
-/* ============================================
-   Ultra-wide / 4K (≥ 1920px)
-   ============================================ */
-@media (min-width: 1920px) {
-  /* Add your 4K styles here */
 }
 
 /* ============================================
