@@ -197,7 +197,7 @@
 
 .ancient-hero-title .line {
   display: block;
-  background: linear-gradient(to bottom, var(--gold-light) 0%, var(--gold) 50%, #b8956b 100%);
+  background: linear-gradient(to bottom, var(--gold-light) 0%, var(--gold) 50%, #dcba91 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -207,10 +207,8 @@
   hyphens: auto;
 }
 
-.ancient-hero-title .line:last-child {
-  font-style: italic;
-  opacity: 0.9;
-}
+
+
 
 /* Description */
 .ancient-hero-subtitle {
@@ -321,7 +319,7 @@
 /* Scroll Indicator - At Bottom */
 .ancient-hero-scroll-btn {
   position: absolute;
-  bottom: 2rem;
+  bottom: 0rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
