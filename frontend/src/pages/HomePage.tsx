@@ -45,6 +45,9 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       <section className="home-section home-section--iwant">
         <IWantToSection />
       </section>
+      <section className="home-section home-section--shambala-services">
+        <ShambalaServices />
+      </section>
       <div id="services" className="home-section home-section--services">
         <ServicesSection />
       </div>
@@ -54,9 +57,7 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       <section className="home-section home-section--projects">
         <ProjectModernSlider />
       </section>
-      <section className="home-section home-section--shambala-services">
-        <ShambalaServices />
-      </section>
+      
 
       <section>
         <QualityHomes />

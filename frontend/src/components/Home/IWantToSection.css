@@ -1,0 +1,425 @@
+/* ============================================
+   I WANT TO SECTION - Mobile First
+   ============================================ */
+
+/* ============================================
+   BASE STYLES - Mobile (< 480px)
+   ============================================ */
+
+.i-want-section {
+  width: 100%;
+  padding: 5rem 1.5rem;
+  background-color: transparent;
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.i-want-section__container {
+  max-width: 97.75rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.i-want-section__header {
+  margin-bottom: 3.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.i-want-section__eyebrow {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #6a4c09;
+  margin-bottom: 1.25rem;
+}
+
+.i-want-section__title {
+  font-size: var(--home-section-title-size);
+  font-weight: 800;
+  font-family: "Dream Avenue", sans-serif;
+  color: #1A1A1A;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.i-want-section__title-accent {
+  color: #6a4c09;
+}
+
+.i-want-section__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.i-want-section__card {
+  position: relative;
+  padding: 3rem 2.5rem;
+  border: 1px solid #E8E8E3;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
+}
+
+.i-want-section__card:hover {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.06);
+  transform: translateY(0.25rem);
+}
+
+.i-want-section__card:nth-child(1) {
+  background-color: #ffe66d;
+}
+
+.i-want-section__card:nth-child(2) {
+  background-color: #a8e6cf;
+}
+
+.i-want-section__card-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.i-want-section__icon {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 2.5rem;
+  color: #47614D;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  position: relative;
+  z-index: 2;
+}
+
+.i-want-section__card:hover .i-want-section__icon {
+  transform: scale(1.05) rotate(-5deg);
+}
+
+.i-want-section__card-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #1A1A1A;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
+}
+
+.i-want-section__card:hover .i-want-section__card-title {
+  color: #47614D;
+}
+
+.i-want-section__card-subtitle {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 0 0 3rem 0;
+  line-height: 1.6;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.i-want-section__card:hover .i-want-section__card-subtitle {
+  color: #47614D;
+}
+
+.i-want-section__arrow-wrapper {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #47614D;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.i-want-section__arrow {
+  width: 3rem;
+  height: 0.125rem;
+  background-color: #47614D;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.i-want-section__card:hover .i-want-section__arrow {
+  width: 4rem;
+}
+
+.i-want-section__arrow-head {
+  position: absolute;
+  right: -0.3125rem;
+  top: -0.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-top: 0.125rem solid #47614D;
+  border-right: 0.125rem solid #47614D;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.i-want-section__cta-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.i-want-section .essence-cta-btn {
+  transform: scale(1);
+  transform-origin: center center;
+}
+
+/* ============================================
+   Small phones (≥ 480px)
+   ============================================ */
+@media (min-width: 480px) {
+  .i-want-section {
+    padding: 5.5rem 1.75rem;
+  }
+
+  .i-want-section__header {
+    margin-bottom: 4rem;
+  }
+
+  .i-want-section__grid {
+    gap: 1.75rem;
+  }
+
+  .i-want-section__card {
+    padding: 2.6rem 2.2rem;
+    min-height: 17.6rem;
+  }
+
+  .i-want-section__icon {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+
+  .i-want-section__card-title {
+    font-size: 3rem;
+  }
+
+  .i-want-section__card-subtitle {
+    font-size: 1.35rem;
+  }
+
+  .i-want-section__cta-wrapper {
+    margin-top: 3.25rem;
+  }
+}
+
+/* ============================================
+   Phones / small tablets (≥ 640px)
+   ============================================ */
+@media (min-width: 640px) {
+  .i-want-section {
+    padding: 6rem 2rem;
+  }
+
+  .i-want-section__grid {
+    gap: 2rem;
+  }
+
+  .i-want-section__card {
+    padding: 2.8rem 2.3rem;
+    min-height: 19.2rem;
+  }
+
+  .i-want-section__icon {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .i-want-section__card-title {
+    font-size: 3.2rem;
+  }
+
+  .i-want-section__card-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .i-want-section__cta-wrapper {
+    margin-top: 3.5rem;
+  }
+
+  .i-want-section .essence-cta-btn {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   Tablets (≥ 768px)
+   ============================================ */
+@media (min-width: 768px) {
+  .i-want-section {
+    padding: 7rem 2.5rem;
+  }
+
+  .i-want-section__header {
+    margin-bottom: 4.5rem;
+  }
+
+  .i-want-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 90%;
+  }
+
+  .i-want-section__card {
+    padding: 3.2rem 2.4rem;
+    min-height: 22.4rem;
+  }
+
+  .i-want-section__icon {
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 3rem;
+  }
+
+  .i-want-section__card-title {
+    font-size: 3.5rem;
+  }
+
+  .i-want-section__card-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .i-want-section__arrow-wrapper {
+    font-size: 1.1rem;
+  }
+
+  .i-want-section__cta-wrapper {
+    margin-top: 4rem;
+  }
+
+  .i-want-section .essence-cta-btn {
+    transform: scale(1.2912);
+  }
+}
+
+/* ============================================
+   Small laptops (≥ 1124px)
+   ============================================ */
+@media (min-width: 1124px) {
+  .i-want-section {
+    padding: 11rem 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .i-want-section__header {
+    margin-bottom: 5.5rem;
+  }
+
+  .i-want-section__grid {
+    gap: 3rem;
+    max-width: 85%;
+  }
+
+  .i-want-section__card {
+    padding: 1.456rem 1.165rem;
+    min-height: 9.318rem;
+  }
+
+  .i-want-section__icon {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .i-want-section__card-title {
+    font-size: 4rem;
+  }
+
+  .i-want-section__card-subtitle {
+    font-size: 1.7rem;
+  }
+
+  .i-want-section__arrow-wrapper {
+    font-size: 1.2rem;
+  }
+
+  .i-want-section__cta-wrapper {
+    margin-top: 5rem;
+  }
+
+  .i-want-section .essence-cta-btn {
+    transform: scale(0.736);
+  }
+}
+
+/* ============================================
+   Desktops (≥ 1280px)
+   ============================================ */
+@media (min-width: 1280px) {
+ 
+
+  .i-want-section__card {
+    padding: 2.38rem 1.904rem;
+    min-height: 15.232rem;
+  }
+
+  .i-want-section .essence-cta-btn {
+    transform: scale(0.944);
+  }
+}
+
+/* ============================================
+   Large desktops / 2K (≥ 1536px)
+   ============================================ */
+@media (min-width: 1536px) {
+ 
+
+  .i-want-section__card {
+    padding: 3.96rem 3.24rem;
+    min-height: 24.48rem;
+  }
+
+  .i-want-section .essence-cta-btn {
+    transform: scale(0.98);
+  }
+}
+
+/* ============================================
+   Ultra-wide / 4K (≥ 1920px)
+   ============================================ */
+@media (min-width: 1920px) {
+ 
+
+  .i-want-section__card {
+    padding: 6rem 5rem;
+    min-height: 36rem;
+  }
+
+  .i-want-section__icon {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .i-want-section__card-title {
+    font-size: 4.5rem;
+  }
+
+  .i-want-section__card-subtitle {
+    font-size: 1.9rem;
+  }
+
+  .i-want-section .essence-cta-btn {
+    transform: scale(1.22);
+  }
+}
