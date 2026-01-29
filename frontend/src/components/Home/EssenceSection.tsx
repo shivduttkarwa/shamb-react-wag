@@ -151,11 +151,9 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
       {/* Video Text Animation Section */}
       {videoUrl && (
         <FallingTextVideoComponent
-          leftText="SERVICES"
-          rightText="PROJETS"
+          leftText="PRECISION"
+          rightText="ARTISTRY"
           videoSrc={videoUrl}
-          bottomLeftText="Design"
-          bottomRightText="purpose"
         />
       )}
     </section>

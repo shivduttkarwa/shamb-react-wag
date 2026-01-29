@@ -3,12 +3,12 @@ import React from "react";
 import {
   EssenceSection,
  
-  FeaturedProperties,
+ 
   QualityHomes,
  
   
 } from "../components/Home";
-import OurVisionSection from "../components/Home/OurVisionSection";
+
 import CTASection from "../components/Home/CTASection";
 import ServicesSection from "../components/Home/ServicesSection";
 
@@ -65,14 +65,6 @@ const HomePage: React.FC<HomePageProps> = ({ settings: _ }) => {
       {/* <div id="projects">
         <TextVid />
       </div> */}
-
-      <div id="vision" className="home-section home-section--vision">
-        <OurVisionSection />
-      </div>
-
-      <section className="home-section home-section--featured">
-        <FeaturedProperties />
-      </section>
 
       
 

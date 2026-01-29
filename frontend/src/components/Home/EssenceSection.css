@@ -1,4 +1,11 @@
-/* ESSENCE SECTION */
+/* ============================================
+   ESSENCE SECTION - Mobile First
+   ============================================ */
+
+/* ============================================
+   BASE STYLES - Mobile (< 480px)
+   ============================================ */
+
 .essence-section {
   padding: 0;
   background: transparent;
@@ -15,31 +22,34 @@
   z-index: 1;
 }
 
-/* Two-column layout: 40% content, 60% image */
+/* Mobile: Single column layout */
 .essence-layout {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  height: 110vh;
-  max-height: 110vh;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: none;
 }
 
-/* Left side: Content area */
+/* Content area */
 .essence-content {
   background: transparent;
-  padding: 60px 80px;
+  padding: 3.125rem 5.5% 0 5.5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  min-height: 110vh;
+  min-height: auto;
   color: #1a1a1a;
+  order: 1;
+  text-align: center;
 }
 
 .essence-logo {
-  margin-bottom: 40px;
-  max-width: 100px;
+  margin-bottom: 2.5rem;
+  max-width: 6.25rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .essence-logo img {
@@ -49,53 +59,31 @@
 }
 
 .essence-heading {
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
   max-width: 100%;
-}
-
-/* Laptop and above screens */
-@media (min-width: 1024px) {
-  .essence-layout {
-    height: calc(
-      93.5vh + 20px
-    ); /* Reduced from 110vh by 15%, then added 20px total */
-    max-height: calc(93.5vh + 20px);
-  }
-
-  .essence-content {
-    min-height: calc(93.5vh + 20px);
-  }
 }
 
 .essence-description {
-  font-size: clamp(16px, 2vw, 18px); /* Responsive: 16px min, 2vw fluid, 18px max */
+  font-size: clamp(1rem, 2vw, 1.125rem);
   line-height: 1.7;
   color: #1f1f1f;
-  margin-bottom: 35px;
+  margin-bottom: 0;
   max-width: 100%;
   font-weight: 400;
   opacity: 0.95;
-  /* Prevent layout shift during hover animation */
   display: block;
   width: 100%;
   height: auto;
-  min-height: 1.2em; /* Prevent collapse */
+  min-height: 1.2em;
 }
 
-/* Prevent HoverText component from causing layout shifts */
 .essence-description > * {
   display: block;
   width: 100%;
   height: auto;
   min-height: 1.2em;
   transition: font-weight 0.3s ease;
-  /* Reserve space for font weight changes */
   letter-spacing: 0.01em;
-}
-
-/* Ensure the text container maintains consistent dimensions */
-.essence-description > *:hover {
-  /* transform: scale(1.001);  Removed hover animation */
 }
 
 .essence-description .mask {
@@ -110,64 +98,62 @@
 
 .essence-cta {
   display: inline-block;
-  padding: 14px 35px;
-  background: linear-gradient(
-    135deg,
-    #6b8e5f 0%,
-    var(--accent) 50%,
-    #4a6b3e 100%
-  );
+  padding: 0.75rem 1.5625rem;
+  background: linear-gradient(135deg, #6b8e5f 0%, var(--accent) 50%, #4a6b3e 100%);
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-radius: 0px;
+  border-radius: 0;
   transition: all 0.3s ease;
   width: fit-content;
   text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px,
-    rgba(91, 124, 79, 0.3) 0px 8px 16px -4px,
-    rgba(0, 0, 0, 0.1) 0px -3px 0px inset;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0.25rem 0.5rem,
+    rgba(91, 124, 79, 0.3) 0 0.5rem 1rem -0.25rem,
+    rgba(0, 0, 0, 0.1) 0 -0.1875rem 0 inset;
+  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
   will-change: transform, opacity;
 }
 
 .essence-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 12px,
-    rgba(91, 124, 79, 0.4) 0px 12px 20px -4px,
-    rgba(0, 0, 0, 0.1) 0px -3px 0px inset;
+  transform: translateY(-0.1875rem);
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0.375rem 0.75rem,
+    rgba(91, 124, 79, 0.4) 0 0.75rem 1.25rem -0.25rem,
+    rgba(0, 0, 0, 0.1) 0 -0.1875rem 0 inset;
 }
 
-/* Desktop CTA wrapper (referenced in TSX) */
+/* Desktop CTA - hidden by default on mobile */
 .essence-cta-desktop {
-  /* visible by default, hidden on mobile via media queries */
+  display: none;
+}
+
+/* Mobile CTA - shown by default */
+.essence-cta-mobile {
   display: flex;
   justify-content: center;
+  padding: 2.5rem 5.5%;
+  background: transparent;
+  order: 3;
 }
 
-/* Mobile CTA - hidden by default, shown only on mobile */
-.essence-cta-mobile {
-  display: none;
-  justify-content: center;
-}
-
-/* Right side: Full-bleed image area with beige bg */
+/* Image area */
 .essence-image {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding: 0.625rem 0;
   position: relative;
   overflow: hidden;
   background: transparent;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  min-height: 40vh;
+  margin: 0;
+  order: 2;
 }
 
 .essence-cta-btn {
-  transform: scale(1.22);
+  transform: scale(1);
   transform-origin: center center;
 }
 
@@ -179,101 +165,31 @@
   margin-left: auto;
 }
 
-/* Image itself slides in right → left via clip-path */
 .essence-img {
   width: 100%;
   height: 100%;
+  min-height: 40vh;
   object-fit: cover;
   display: block;
   will-change: clip-path;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
+/* ============================================
+   Small phones (≥ 480px)
+   ============================================ */
+@media (min-width: 480px) {
   .essence-content {
-    padding: 60px 50px;
-  }
-}
-
-@media (max-width: 968px) {
-  .essence-layout {
-    grid-template-columns: 1fr;
-    height: auto;
-    max-height: none;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .essence-content {
-    padding: 80px 5.5% 0 5.5%; /* Remove bottom padding */
-    min-height: auto;
-    height: auto;
-    order: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .essence-description {
-    margin-bottom: 0; /* Remove bottom margin since CTA is moved */
-  }
-
-  /* Hide desktop CTA on mobile */
-  .essence-cta-desktop {
-    display: none;
-  }
-
-  .essence-image {
-    min-height: 50vh;
-    height: auto;
-    margin: 20px;
-    padding: 0;
-    background: transparent;
-    order: 2;
-  }
-
-  /* Show mobile CTA after image */
-  .essence-cta-mobile {
-    display: flex;
-    justify-content: center;
-    padding: 40px 5.5%;
-    background: transparent;
-    order: 3;
-  }
-
-  .essence-img {
-    width: 100%;
-    height: auto;
-    min-height: 50vh;
-    object-fit: cover;
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
-  .essence-cta-btn {
-    transform: scale(1.076);
-  }
-
-  .essence-content {
-    padding: 60px 5.5% 0 5.5%; /* Remove bottom padding */
-    text-align: center; /* Keep center alignment like 968px breakpoint */
-  }
-
-  .essence-description {
-    margin-bottom: 0; /* Remove bottom margin */
+    padding: 3.75rem 5.5% 0 5.5%;
   }
 
   .essence-cta {
-    padding: 14px 30px;
+    padding: 0.875rem 1.875rem;
     font-size: 0.85rem;
   }
 
   .essence-image {
     min-height: 45vh;
-    margin: 20px;
-    padding: 0;
-   
+    margin: 1.25rem;
   }
 
   .essence-img {
@@ -281,47 +197,230 @@
   }
 }
 
-@media (max-width: 480px) {
+/* ============================================
+   Phones / small tablets (≥ 640px)
+   ============================================ */
+@media (min-width: 640px) {
   .essence-content {
-    padding: 50px 5.5% 0 5.5%; /* Remove bottom padding */
-  }
-
-  .essence-description {
-    margin-bottom: 0; /* Remove bottom margin */
-  }
-
-  .essence-cta {
-    padding: 12px 25px;
-    font-size: 0.8rem;
-    width: auto;
-    max-width: none;
+    padding: 4.5rem 5.5% 0 5.5%;
   }
 
   .essence-image {
-    min-height: 40vh;
-    margin: 0px;
-    padding: 0;
-    background: transparent;
-    padding-top: 10px;
+    min-height: 50vh;
+    margin: 1.25rem;
   }
 
   .essence-img {
-    min-height: 40vh;
+    min-height: 50vh;
   }
 
-  .essence-video-section {
-    height: 70vh;
-  }
-
-  .essence-video-play-btn svg {
-    width: 50px;
-    height: 50px;
+  .essence-cta-btn {
+    transform: scale(1.05);
   }
 }
 
-/* Increase TiltTextGsap font size by 30% on 1600px+ screens */
-@media (min-width: 1600px) {
-  .essence-heading .tilt-text-heading {
-    font-size: clamp(2.6rem, 5.2vw, 4.16rem) !important;
+/* ============================================
+   Tablets (≥ 768px)
+   ============================================ */
+@media (min-width: 768px) {
+  .essence-content {
+    padding: 5rem 5.5% 0 5.5%;
+  }
+
+  .essence-description {
+    font-size: clamp(1.2rem, 2.4vw, 1.35rem);
+  }
+
+  .essence-cta {
+    padding: 1.05rem 2.25rem;
+    font-size: 1.02rem;
+  }
+
+  .essence-image {
+    min-height: 41.25vh;
+  }
+
+  .essence-img {
+    min-height: 41.25vh;
+  }
+
+  .essence-cta-btn {
+    transform: scale(1.2912);
+  }
+}
+
+/* ============================================
+   Small laptops (≥ 1124px)
+   ============================================ */
+@media (min-width: 1124px) {
+  /* Switch to two-column layout */
+  .essence-layout {
+    display: grid;
+    grid-template-columns: 38% 62%;
+    height: 93.5vh;
+    max-height: 93.5vh;
+    overflow: hidden;
+  }
+
+  .essence-content {
+    padding: 2.7rem 2.25rem;
+    min-height: 93.5vh;
+    text-align: left;
+    order: initial;
+  }
+
+  .essence-logo {
+    max-width: 4.05rem;
+    margin-bottom: 1.575rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .essence-heading {
+    margin-bottom: 1.0125rem;
+  }
+
+  .essence-description {
+    font-size: clamp(0.765rem, 1.53vw, 0.855rem);
+    margin-bottom: 1.575rem;
+  }
+
+  .essence-cta {
+    padding: 0.56rem 1.2rem;
+    font-size: 0.576rem;
+  }
+
+  /* Show desktop CTA */
+  .essence-cta-desktop {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Hide mobile CTA */
+  .essence-cta-mobile {
+    display: none;
+  }
+
+  .essence-image {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    min-height: 93.5vh;
+    margin: 0;
+    order: initial;
+    justify-content: flex-end;
+  }
+
+  .essence-img {
+    min-height: 100%;
+  }
+
+  .essence-cta-btn {
+    transform: scale(0.736);
+  }
+}
+
+/* ============================================
+   Desktops (≥ 1280px)
+   ============================================ */
+@media (min-width: 1280px) {
+  .essence-layout {
+    grid-template-columns: 40% 60%;
+    height: 95vh;
+    max-height: 95vh;
+  }
+
+  .essence-content {
+    padding: 3.75rem 4.5rem;
+    min-height: 95vh;
+  }
+
+  .essence-logo {
+    max-width: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  .essence-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .essence-description {
+    font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+    margin-bottom: 1.75rem;
+  }
+
+  .essence-cta {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.68rem;
+  }
+
+  .essence-image {
+    min-height: 95vh;
+  }
+
+  .essence-cta-btn {
+    transform: scale(0.944);
+  }
+}
+
+/* ============================================
+   Large desktops / 2K (≥ 1536px)
+   ============================================ */
+@media (min-width: 1536px) {
+  .essence-layout {
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  .essence-content {
+    padding: 3.75rem 5rem;
+    min-height: 100vh;
+  }
+
+  .essence-image {
+    min-height: 100vh;
+  }
+
+  .essence-cta {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.68rem;
+  }
+
+  .essence-cta-btn {
+    transform: scale(0.98);
+  }
+}
+
+/* ============================================
+   Ultra-wide / 4K (≥ 1920px)
+   ============================================ */
+@media (min-width: 1920px) {
+  .essence-layout {
+    height: 110vh;
+    max-height: 110vh;
+  }
+
+  .essence-content {
+    min-height: 110vh;
+  }
+
+  .essence-image {
+    min-height: 110vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .essence-image-mask {
+    min-height: 88vh;
+    max-height: 88vh;
+  }
+
+  .essence-img {
+    min-height: 88vh;
+    max-height: 88vh;
+  }
+
+  .essence-cta-btn {
+    transform: scale(1.22);
   }
 }
