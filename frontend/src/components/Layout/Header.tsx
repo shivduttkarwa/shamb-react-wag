@@ -4,6 +4,7 @@ import gsap from "gsap";
 import OverLayMenu from "./OverLayMenu";
 import { SiteSettings } from "../../services/api";
 import HomeLogo from "../UI/HomeLogo";
+import "./Header.css";
 
 interface HeaderProps {
   settings: SiteSettings | null;
@@ -92,143 +93,24 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(0, 0, 0, 0.3)',
+          background: 'rgba(0, 0, 0, 0.7)',
           backdropFilter: 'blur(0.625rem)',
           opacity: 0,
           zIndex: -1
         }}
       />
       
-      <div className="header-inner" style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: '5.25rem'
-      }}>
+      <div className="header-inner">
         {/* Logo - Left Side */}
-        <div 
+        <div
           onClick={() => navigate('/')}
           className="header-logo-container"
-          style={{
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center'
-          }}
         >
-          <HomeLogo
-            className="header-logo"
-            style={{
-              height: "5rem",
-              width: "auto",
-              transform: "scale(2) translateY(0.1875rem)",
-              transformOrigin: "left center",
-            }}
-          />
+          <HomeLogo className="header-logo" />
         </div>
         
         {/* Hamburger Menu - Right Side */}
         <div className="header-hamburger-container">
-          <style>
-            {`
-              .header-logo {
-                filter: brightness(0) invert(1);
-              }
-
-              .header-inner {
-                padding: 1rem 1rem 1rem 0.75rem;
-              }
-
-              .header-logo-container {
-                margin-left: -1.95rem;
-                margin-top: 0.525rem;
-              }
-
-              @media (max-width: 1024px) {
-                header {
-                  height: 3.94rem !important;
-                }
-
-                .header-logo {
-                  transform: scale(1.5) translateY(0.14rem) !important;
-                }
-
-                .header-logo-container {
-                  transform: scale(0.75) !important;
-                  transform-origin: left center !important;
-                }
-
-                #toggle-btn.olm-btn {
-                  --olm-btn-scale: 0.75;
-                  transform-origin: right center !important;
-                }
-              }
-
-              /* Mobile Styles */
-              @media (max-width: 768px) {
-                .header-logo {
-                  transform: scale(2.2176) translateY(0.5rem) !important;
-                  transform-origin: left center !important;
-                }
-
-                .header-inner {
-                  padding: 0.75rem;
-                }
-
-                #toggle-btn.olm-btn {
-                  --olm-btn-scale: 1.2;
-                  --olm-btn-y: 0.2rem;
-                  transform-origin: right center !important;
-                }
-                  .header-logo-container {
-                margin-left: -1.95rem;
-                margin-top: -0.525rem;
-              }
-              }
-
-              @media (max-width: 480px) {
-                .header-inner {
-                  padding: 0.6rem;
-                }
-
-                #toggle-btn.olm-btn {
-                  --olm-btn-scale: 1.1;
-                  --olm-btn-y: 0.5rem;
-                }
-              }
-
-              @media (max-width: 360px) {
-                .header-inner {
-                  padding: 0.5rem;
-                }
-
-                #toggle-btn.olm-btn {
-                  --olm-btn-scale: 1.2;
-                  --olm-btn-y: 0.2rem;
-                  
-                }
-              }
-
-              /* Mobile landscape */
-              @media (max-width: 1024px) and (max-height: 600px) {
-                .header-logo {
-                  transform: scale(2.275) translateY(0.5rem) !important;
-                  transform-origin: left center !important;
-                }
-
-                #toggle-btn.olm-btn {
-                  --olm-btn-scale: 1.231;
-                }
-              }
-              
-              /* Large screens 1600px and above - increase logo size by 15% */
-              @media (min-width: 1600px) {
-                .header-logo {
-                  transform: scale(2.3) translateY(0.4375rem) !important;
-                  transform-origin: left center !important;
-                }
-              }
-            `}
-          </style>
           <OverLayMenu />
         </div>
       </div>
