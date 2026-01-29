@@ -81,7 +81,7 @@ header {
 /* ============================================
    Small laptops (≥ 1024px)
    ============================================ */
-@media (min-width: 1024px) {
+@media (min-width: 1124px) {
   header {
     height: 5.25rem;
   }
