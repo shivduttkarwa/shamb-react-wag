@@ -319,8 +319,9 @@
 /* Scroll Indicator - At Bottom */
 .ancient-hero-scroll-btn {
   position: absolute;
-  bottom: 0rem;
+  bottom: 2rem;
   left: 50%;
+ 
   transform: translateX(-50%);
   z-index: 20;
   display: flex;
@@ -403,7 +404,7 @@
 
   /* Moved down further on tablet */
   .ancient-hero-scroll-btn {
-    bottom: 4rem;
+    bottom: 2rem;
   }
 
   .lotus::before {
@@ -461,7 +462,7 @@
 
   /* Moved down on desktop */
   .ancient-hero-scroll-btn {
-    bottom: 5rem;
+    bottom: 2rem;
   }
 
   .lotus::before {
@@ -498,6 +499,110 @@
   .ancient-hero-subtitle {
     font-size: 1.35rem;
     max-width: 700px;
+  }
+}
+
+/* ============================================
+   LARGE SCREENS (1536px-1699px) - Adjusted Sizes
+   ============================================ */
+@media (min-width: 1536px) {
+  .sanctuary__content {
+    padding: 3.15rem;
+  }
+
+  .gateway {
+    padding: 3.15rem 2.36rem;
+    max-width: 787px;
+  }
+
+  .ancient-hero-title {
+    font-size: 4.73rem;
+    letter-spacing: 0.079em;
+    margin-bottom: 1.18rem;
+  }
+
+  .eyebrow {
+    font-size: 0.71rem;
+    letter-spacing: 0.39em;
+    margin-bottom: 1.97rem;
+  }
+
+  .ancient-hero-subtitle {
+    font-size: 1.06rem;
+    max-width: 551px;
+    margin-bottom: 2.36rem;
+  }
+
+  .ancient-hero-cta {
+    padding: 0.95rem 2.36rem;
+    font-size: 0.71rem;
+    letter-spacing: 0.24em;
+    gap: 1.18rem;
+  }
+
+  .wheel {
+    width: 15.75px;
+    height: 15.75px;
+  }
+
+  .lotus::before {
+    font-size: 1.58rem;
+  }
+
+  .lotus-line {
+    height: 47px;
+  }
+}
+
+/* ============================================
+   EXTRA LARGE SCREENS (1700px+) - Restore Original Sizes
+   ============================================ */
+@media (min-width: 1700px) {
+  .sanctuary__content {
+    padding: 4rem;
+  }
+
+  .gateway {
+    padding: 4rem 3rem;
+    max-width: 1000px;
+  }
+
+  .ancient-hero-title {
+    font-size: 6rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.5em;
+    margin-bottom: 2.5rem;
+  }
+
+  .ancient-hero-subtitle {
+    font-size: 1.35rem;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  .ancient-hero-cta {
+    padding: 1.2rem 3rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    gap: 1.5rem;
+  }
+
+  .wheel {
+    width: 20px;
+    height: 20px;
+  }
+
+  .lotus::before {
+    font-size: 2rem;
+  }
+
+  .lotus-line {
+    height: 60px;
   }
 }
 
