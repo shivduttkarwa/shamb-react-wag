@@ -51,8 +51,8 @@ const AncientHero: React.FC = () => {
     <section className="sanctuary" onMouseMove={handleParallax}>
       {/* Background Image */}
       <div className="sanctuary__bg">
-        <img 
-          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2940&auto=format&fit=crop" 
+        <img
+          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2940&auto=format&fit=crop"
           alt="Ancient Himalayan Architecture at Golden Hour"
         />
       </div>
@@ -86,7 +86,7 @@ const AncientHero: React.FC = () => {
           <div className="eyebrow">Architectural Excellence</div>
           <h1 className="ancient-hero-title">
             <span className="line">Timeless Design</span>
-            <span className="line">Modern Living</span>
+            <span className="line">Living</span>
           </h1>
           <p className="ancient-hero-subtitle">
             Where modern design meets exceptional craftsmanship.

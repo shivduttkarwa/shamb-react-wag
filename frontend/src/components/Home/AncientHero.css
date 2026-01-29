@@ -58,9 +58,9 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: 
+  background:
     radial-gradient(circle at 50% 50%, transparent 0%, var(--midnight) 150%),
-    linear-gradient(to bottom, rgba(26,27,58,0.5) 0%, transparent 40%, rgba(15,15,26,0.95) 100%);
+    linear-gradient(to bottom, rgba(26,27,58,0.7) 0%, rgba(0,0,0,0.3) 40%, rgba(15,15,26,0.95) 100%);
   pointer-events: none;
 }
 
@@ -417,60 +417,59 @@
 }
 
 /* ============================================
-   DESKTOP (1024px+)
+   DESKTOP (1024px-1279px) - 24% Size Reduction
    ============================================ */
 @media (min-width: 1024px) {
   .sanctuary__content {
-    padding: 4rem;
+    padding: 3.04rem;
   }
 
   .gateway {
-    padding: 4rem 3rem;
-    max-width: 900px; /* Wider to prevent text cutoff */
+    padding: 3.04rem 2.28rem;
+    max-width: 684px;
   }
 
   .ancient-hero-title {
-    font-size: 5rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
+    font-size: 3.8rem;
+    letter-spacing: 0.076em;
+    margin-bottom: 1.14rem;
   }
 
   .eyebrow {
-    font-size: 0.9rem;
-    letter-spacing: 0.5em;
-    margin-bottom: 2.5rem;
+    font-size: 0.684rem;
+    letter-spacing: 0.38em;
+    margin-bottom: 1.9rem;
   }
 
   .ancient-hero-subtitle {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin-bottom: 3rem;
+    font-size: 0.95rem;
+    max-width: 456px;
+    margin-bottom: 2.28rem;
     color: rgba(255, 255, 255, 0.95);
   }
 
   .ancient-hero-cta {
-    padding: 1.2rem 3rem;
-    font-size: 0.9rem;
-    letter-spacing: 0.3em;
-    gap: 1.5rem;
+    padding: 0.912rem 2.28rem;
+    font-size: 0.684rem;
+    letter-spacing: 0.228em;
+    gap: 1.14rem;
   }
 
   .wheel {
-    width: 20px;
-    height: 20px;
+    width: 15.2px;
+    height: 15.2px;
   }
 
-  /* Moved down on desktop */
   .ancient-hero-scroll-btn {
     bottom: 2rem;
   }
 
   .lotus::before {
-    font-size: 2rem;
+    font-size: 1.52rem;
   }
 
   .lotus-line {
-    height: 60px;
+    height: 45.6px;
   }
 
   .mandala {
@@ -481,6 +480,58 @@
 
   .mandala svg {
     stroke-width: 0.5;
+  }
+}
+
+/* ============================================
+   DESKTOP (1280px-1439px) - 15% Size Reduction
+   ============================================ */
+@media (min-width: 1280px) {
+  .sanctuary__content {
+    padding: 3.4rem;
+  }
+
+  .gateway {
+    padding: 3.4rem 2.55rem;
+    max-width: 765px;
+  }
+
+  .ancient-hero-title {
+    font-size: 4.25rem;
+    letter-spacing: 0.085em;
+    margin-bottom: 1.275rem;
+  }
+
+  .eyebrow {
+    font-size: 0.765rem;
+    letter-spacing: 0.425em;
+    margin-bottom: 2.125rem;
+  }
+
+  .ancient-hero-subtitle {
+    font-size: 1.0625rem;
+    max-width: 510px;
+    margin-bottom: 2.55rem;
+  }
+
+  .ancient-hero-cta {
+    padding: 1.02rem 2.55rem;
+    font-size: 0.765rem;
+    letter-spacing: 0.255em;
+    gap: 1.275rem;
+  }
+
+  .wheel {
+    width: 17px;
+    height: 17px;
+  }
+
+  .lotus::before {
+    font-size: 1.7rem;
+  }
+
+  .lotus-line {
+    height: 51px;
   }
 }
 
