@@ -7,7 +7,7 @@
    ============================================ */
 
 header {
-  height: 6.25rem;
+  height: 5.65rem;
 }
 
 .header-inner {
@@ -15,7 +15,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 6.25rem;
+  height: 5.65rem;
 }
 
 .header-logo-container {
@@ -28,14 +28,16 @@ header {
 
 .header-logo {
   filter: brightness(0) invert(1);
-  height: 11.088rem;
+  height: 9.088rem;
   width: auto;
-  transform: translateY(0.5rem);
+  transform: translateY(0.8rem) translateX(-0.5rem);
   transform-origin: left center;
 }
 
 #toggle-btn.olm-btn {
   transform-origin: right center;
+  scale: 1.1;
+  transform: translateY(0.28rem) translateX(-0.5rem);
 }
 
 /* ============================================
@@ -70,7 +72,7 @@ header {
 
   .header-logo {
     height: 10rem;
-    transform: translateY(0.1875rem);
+    
   }
 }
 
