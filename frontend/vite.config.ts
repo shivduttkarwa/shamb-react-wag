@@ -2,10 +2,14 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { fileURLToPath, URL } from "node:url";
 
+const base =
+  process.env.VITE_BASE ??
+  (process.env.NODE_ENV === 'production' ? '/shamb-react-wag/' : '/');
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/shamb-react-wag/' : '/',
+  base,
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
