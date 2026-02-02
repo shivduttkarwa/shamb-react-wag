@@ -158,7 +158,7 @@ const Preloader = () => {
         </div>
 
         {/* Logo */}
-        <img className="brand-logo" src="/images/shambala.png" alt="Shambala Homes Logo" />
+        <img className="brand-logo" src={`${import.meta.env.BASE_URL}images/shambala.png`} alt="Shambala Homes Logo" />
       </div>
 
       {/* Counter - Bottom Right */}

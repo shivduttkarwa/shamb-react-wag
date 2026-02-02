@@ -1,0 +1,165 @@
+Here's a BIG, satisfying counter loader animation for you (perfect for splash screens, loading pages, or just pure
+dopamine):
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BIG COUNTER LOADER</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #0f0f1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+
+        .counter-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .counter {
+            font-size: 18vw;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow:
+                0 0 20px #00ff88,
+                0 0 40px #00ff88,
+                0 0 80px #00ff88,
+                0 0 160px #00ff88;
+            letter-spacing: -0.05em;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .percent {
+            font-size: 8vw;
+            color: #00ff88;
+            opacity: 0.8;
+        }
+
+        .glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: #ff00ff;
+            opacity: 0;
+            animation: glitch 3s infinite;
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(transparent, rgba(0, 255, 136, 0.3));
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes pulse {
+            from {
+                opacity: 0.9;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glitch {
+
+            0%,
+            90%,
+            100% {
+                opacity: 0;
+                transform: translate(0);
+            }
+
+            92% {
+                opacity: 0.8;
+                transform: translate(-10px, -10px);
+                clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+            }
+
+            94% {
+                opacity: 0.8;
+                transform: translate(10px, 10px);
+                clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+            }
+        }
+
+        @keyframes scan {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="counter-container">
+        <div class="counter" id="counter">0</div>
+        <div class="percent">%</div>
+        <div class="glitch" id="glitch">0%</div>
+        <div class="scanline"></div>
+    </div>
+
+    <script>
+        let count = 0;
+        const counter = document.getElementById('counter');
+        const glitch = document.getElementById('glitch');
+
+        const interval = setInterval(() => {
+            count += Math.floor(Math.random() * 8) + 1;
+
+            if (count > 100) {
+                count = 100;
+                counter.textContent = '100';
+                glitch.textContent = '100%';
+                clearInterval(interval);
+
+                // FINAL BOOM
+                counter.style.color = '#ff0066';
+                counter.style.textShadow =
+                    '0 0 50px #ff0066, 0 0 100px #ff0066, 0 0 200px #ff0066';
+                setTimeout(() => {
+                    counter.textContent = 'LOADED';
+                    counter.style.fontSize = '12vw';
+                }, 800);
+            } else {
+                counter.textContent = count;
+                glitch.textContent = count + '%';
+
+                // Random glitch bursts
+                if (Math.random() < 0.15) {
+                    counter.style.transform = `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px)`;
+                    setTimeout(() => counter.style.transform = '', 100);
+                }
+            }
+        }, 80);
+    </script>
+
+</body>
+
+</html>
+```
+
+Copy-paste that into an HTML file and open it — you get an absolutely MASSIVE, cyberpunk-style counter that races to
+100% with glitches, scanlines, and a final explosion.
+
+Want it even BIGGER or with sound? I got you 😉
