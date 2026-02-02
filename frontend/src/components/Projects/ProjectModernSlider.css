@@ -392,31 +392,101 @@
   overflow: hidden;
 }
 
+/* ====================== Small Desktop (992px - 1280px) =============================== */
+@media (min-width: 992px) and (max-width: 1280px) {
+  .pms-swiper-content {
+    max-width: 550px;
+    padding-bottom: 180px;
+  }
+
+  .pms-title-area .pms-title,
+  .pms-title-area .pms-title-tilt {
+    font-size: 6vw !important;
+    margin-top: 35px !important;
+    margin-bottom: 35px !important;
+  }
+
+  .pms-title-area .pms-tag {
+    font-size: 20px;
+  }
+
+  .pms-disc {
+    font-size: 17px;
+    line-height: 28px;
+    margin: 15px 0 30px 0;
+  }
+
+  .pms-swiper-button-next,
+  .pms-swiper-button-prev {
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    bottom: 3%;
+  }
+
+  .pms-swiper-button-next::after,
+  .pms-swiper-button-prev::after {
+    font-size: 50px;
+  }
+
+  .pms-swiper-button-next {
+    right: 40px;
+  }
+
+  .pms-swiper-button-prev {
+    left: 40px;
+  }
+
+  .pms-slider-pagination-area {
+    bottom: 60px;
+    width: 400px;
+  }
+
+  .pms-swiper-pagination {
+    width: 400px !important;
+  }
+
+  .pms-slide-range {
+    font-size: 18px;
+  }
+
+  .pms-one {
+    left: -45px;
+  }
+
+  .pms-three {
+    right: -45px;
+  }
+}
+
 /* ====================== Responsive Ipad =============================== */
 @media (max-width: 991px) {
   .pms-swiper-content {
     width: 100%;
     text-align: center;
     left: 0;
-    padding: 0 20px;
-    top: 18%;
+    padding: 0 20px 160px 20px;
+    top: 15%;
+    max-height: 85vh;
+    overflow-y: auto;
   }
 
   .pms-title-area .pms-title,
   .pms-title-area .pms-title-tilt {
-    margin-top: clamp(25px, 4vw, 35px) !important;
-    margin-bottom: clamp(25px, 4vw, 35px) !important;
-    font-size: clamp(2.8rem, 7vw, 4rem) !important;
+    margin-top: clamp(20px, 3.5vw, 28px) !important;
+    margin-bottom: clamp(20px, 3.5vw, 28px) !important;
+    font-size: clamp(2.5rem, 6.5vw, 3.5rem) !important;
   }
 
   .pms-title-area .pms-tag {
-    margin-bottom: clamp(8px, 2vw, 12px);
-    font-size: clamp(18px, 3vw, 22px);
+    margin-bottom: clamp(6px, 1.8vw, 10px);
+    font-size: clamp(16px, 2.8vw, 20px);
   }
 
   .pms-disc {
-    margin: clamp(15px, 3vw, 20px) auto clamp(25px, 4vw, 30px) auto;
-    font-size: clamp(16px, 2.5vw, 18px);
+    margin: clamp(12px, 2.5vw, 16px) auto clamp(20px, 3.5vw, 25px) auto;
+    font-size: clamp(15px, 2.3vw, 17px);
+    line-height: clamp(24px, 3.5vw, 28px);
     width: 90%;
   }
 
@@ -425,32 +495,42 @@
     height: 50px;
     width: 50px;
     line-height: 50px;
-  }
-
-  .pms-slider-pagination-area {
-    width: 200px;
+    bottom: 2.5%;
+    background: rgba(255, 255, 255, 0.23);
   }
 
   .pms-swiper-button-next::after,
   .pms-swiper-button-prev::after {
-    font-size: 30px;
+    font-size: 28px;
   }
 
-  .pms-swiper-button-next,
+  .pms-swiper-button-next {
+    right: 30px;
+  }
+
   .pms-swiper-button-prev {
-    background: rgba(255, 255, 255, 0.23);
+    left: 30px;
+  }
+
+  .pms-slider-pagination-area {
+    width: 200px;
+    bottom: 50px;
   }
 
   .pms-swiper-pagination {
     width: 200px !important;
   }
 
+  .pms-slide-range {
+    font-size: 16px;
+  }
+
   .pms-one {
-    left: -40px;
+    left: -35px;
   }
 
   .pms-three {
-    right: -40px;
+    right: -35px;
   }
 }
 
