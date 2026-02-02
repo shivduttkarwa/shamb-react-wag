@@ -27,7 +27,7 @@
   align-items: center;
   opacity: 0;
   transform: scale(0.6);
-  animation: mandala-zoom-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: mandala-zoom-in 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ====== LOGO (instead of counter in center) ====== */
@@ -39,7 +39,7 @@
   height: auto;
   opacity: 0;
   transform: scale(0.5);
-  animation: logo-zoom-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logo-zoom-in 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: 0.2s;
   filter: brightness(0) saturate(100%) invert(75%) sepia(50%) saturate(400%) hue-rotate(5deg) brightness(1.1) drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
 }

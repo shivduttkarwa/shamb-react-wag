@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import shambalaLogo from '@/assets/shambala.png';
 import './Preloader.css';
 
 const Preloader = () => {
@@ -155,7 +156,7 @@ const Preloader = () => {
         </div>
 
         {/* Logo */}
-        <img className="brand-logo" src={`${import.meta.env.BASE_URL}images/shambala.png`} alt="Shambala Homes Logo" />
+        <img className="brand-logo" src={shambalaLogo} alt="Shambala Homes Logo" />
       </div>
 
       {/* Counter - Bottom Right */}
