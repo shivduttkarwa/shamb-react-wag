@@ -34,7 +34,7 @@ const AncientHero: React.FC = () => {
     // Animation timing control
     // DELAY_CONTROL: Change this value to control when animations start
     // Reference point: When curtain FINISHES opening
-    const ANIMATION_DELAY = -800; // milliseconds
+    const ANIMATION_DELAY = -900; // milliseconds
     // Examples:
     //   0 = Start exactly when curtain finishes opening
     //   500 = Start 0.5 seconds AFTER curtain opens (delay)
@@ -73,7 +73,7 @@ const AncientHero: React.FC = () => {
       // 1. Eyebrow fades in with upward movement
       tl.fromTo(
         eyebrowRef.current,
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 0 },
         { opacity: 1, y: 0, duration: 1 },
         0,
       );
@@ -82,7 +82,7 @@ const AncientHero: React.FC = () => {
       tl.fromTo(
         titleLine1Ref.current,
         { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" },
+        { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
         0.3,
       );
 
@@ -90,7 +90,7 @@ const AncientHero: React.FC = () => {
       tl.fromTo(
         titleLine2Ref.current,
         { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" },
+        { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
         0.6,
       );
 
@@ -99,7 +99,7 @@ const AncientHero: React.FC = () => {
         subtitleRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 1 },
-        1.1,
+        1.7,
       );
 
       // 5. CTA reveals with clip-path animation
@@ -112,7 +112,7 @@ const AncientHero: React.FC = () => {
           duration: 1.1,
           ease: "expo.out",
         },
-        1.7,
+        1.5,
       );
 
       // 6. Scroll indicator slides up
@@ -120,7 +120,7 @@ const AncientHero: React.FC = () => {
         scrollBtnRef.current,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-        2.3,
+        4.3,
       );
     }
   }, [animationsStarted]);
