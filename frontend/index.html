@@ -55,15 +55,31 @@
 
     <!-- Prevent flash of content before preloader -->
     <style>
+      html {
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%) !important;
+      }
+
       body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%);
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%) !important;
+        background-image: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%) !important;
+        min-height: 100vh !important;
       }
 
       body.content-loaded {
-        overflow: auto;
+        overflow: auto !important;
+        background-image: linear-gradient(rgba(224, 242, 228, 0.6), rgba(224, 242, 228, 0.8)), url('/images/bg-paint-1.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+      }
+
+      /* Ensure root is ready for preloader */
+      #root {
+        min-height: 100vh;
       }
     </style>
   </head>
