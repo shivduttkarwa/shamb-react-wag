@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Brick Wall</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #d7d0c6;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="wall"></canvas>
+
+    <script>
+        const canvas = document.getElementById("wall");
+        const ctx = canvas.getContext("2d");
+
+        // Tweak these:
+        const brickW = 90;
+        const brickH = 45;
+        const mortar = 6;
+
+        function rand01(i, j) {
+            // stable pseudo-random (0..1) based on i,j
+            const x = Math.sin(i * 127.1 + j * 311.7) * 43758.5453;
+            return x - Math.floor(x);
+        }
+
+        function resize() {
+            const dpr = Math.max(1, window.devicePixelRatio || 1);
+            canvas.width = Math.floor(innerWidth * dpr);
+            canvas.height = Math.floor(innerHeight * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            draw();
+        }
+
+        function draw() {
+            const w = innerWidth, h = innerHeight;
+
+            // mortar background
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = "#d7d0c6";
+            ctx.fillRect(0, 0, w, h);
+
+            const stepX = brickW + mortar;
+            const stepY = brickH + mortar;
+            const rows = Math.ceil((h + stepY) / stepY);
+            const cols = Math.ceil((w + stepX) / stepX) + 2;
+
+            for (let r = 0; r < rows; r++) {
+                const y = r * stepY + mortar;
+                const offset = (r % 2) ? (brickW / 2) : 0;
+
+                for (let c = 0; c < cols; c++) {
+                    const x = c * stepX - offset + mortar;
+                    if (x > w || x + brickW < 0) continue;
+
+                    // slight color variation per brick
+                    const t = rand01(r, c);
+                    const light = 45 + t * 10;         // 45..55
+                    const hue = 12 + t * 6;            // warm reds
+                    ctx.fillStyle = `hsl(${hue} 45% ${light}%)`;
+
+                    // brick
+                    ctx.fillRect(x, y, brickW, brickH);
+
+                    // subtle edge shading
+                    ctx.strokeStyle = "rgba(0,0,0,0.18)";
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(x + 0.5, y + 0.5, brickW - 1, brickH - 1);
+
+                    // highlight (top/left)
+                    ctx.strokeStyle = "rgba(255,255,255,0.12)";
+                    ctx.beginPath();
+                    ctx.moveTo(x + 1, y + brickH - 1);
+                    ctx.lineTo(x + 1, y + 1);
+                    ctx.lineTo(x + brickW - 1, y + 1);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        addEventListener("resize", resize);
+        resize();
+    </script>
+</body>
+
+</html>

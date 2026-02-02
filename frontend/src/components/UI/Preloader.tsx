@@ -32,6 +32,8 @@ const Preloader = () => {
       setTimeout(() => {
         setHidePreloader(true);
         setCurtainOpen(true);
+        // Dispatch event when curtain starts opening
+        window.dispatchEvent(new CustomEvent('curtainStarted'));
 
         setTimeout(() => {
           setHideCurtain(true);
@@ -61,6 +63,8 @@ const Preloader = () => {
     setTimeout(() => {
       setHidePreloader(true);
       setCurtainOpen(true);
+      // Dispatch event when curtain starts opening
+      window.dispatchEvent(new CustomEvent('curtainStarted'));
 
       setTimeout(() => {
         setHideCurtain(true);
