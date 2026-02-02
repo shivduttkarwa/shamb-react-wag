@@ -3,18 +3,17 @@ import React from "react";
 import "../components/Services/ServicePage.css";
 
 import ServicePageBase from "../components/Services/ServicePageBase";
-import ServiceHero from "../components/Services/ServiceHero";
+import NewServicesHero from "../components/Services/NewServicesHero";
 import ServiceTestimonials from "../components/Services/ServiceTestimonials";
 import TiltTextGsap from "../components/UI/TiltTextGsap";
 import { ProcessSection } from "../components/Services/ProcessSection";
-import StepSlider from "../components/Reusable/StepSlider";
+
 import ModernServicesSlider from "../components/Home/ModernServicesSlider";
 
 const ServicesPage: React.FC = () => {
   return (
     <ServicePageBase>
-      <ServiceHero />
-
+      <NewServicesHero />
       {/* Content anchor for ScrollDownButton */}
       <div id="services-content" className="ser-section-heading">
         <TiltTextGsap tag="h2" className="ser-serif">
@@ -26,14 +25,11 @@ const ServicesPage: React.FC = () => {
           integrated team.
         </p>
       </div>
-
       {/* Add other sections here as needed */}
-      <ModernServicesSlider />, 
-      * <ProcessSection />
-
+      <ModernServicesSlider />
+      <ProcessSection />
       <ServiceTestimonials />
-
-      // {/* <StepSlider /> */}
+      {/* <StepSlider /> */}
     </ServicePageBase>
   );
 };
