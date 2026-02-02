@@ -25,45 +25,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Soft spiritual glow */
-.ambient-glow {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.12) 35%, transparent 65%);
-  border-radius: 50%;
-  animation: spiritual-breathe 6s ease-in-out infinite;
-  filter: blur(25px);
-  transform-origin: center;
-}
-
-.ambient-glow::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 60%);
-  border-radius: 50%;
-  animation: spiritual-breathe 4s ease-in-out infinite reverse;
-  filter: blur(20px);
-}
-
-@keyframes spiritual-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-
-  50% {
-    transform: scale(1.25);
-    opacity: 1;
-  }
+  opacity: 0;
+  transform: scale(0.6);
+  animation: mandala-zoom-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ====== LOGO (instead of counter in center) ====== */
@@ -71,7 +35,7 @@
   position: relative;
   z-index: 100;
   margin-top: 26px;
-  width: 260px;
+  width: 312px;
   height: auto;
   opacity: 0;
   transform: scale(0.5);
@@ -97,40 +61,23 @@
   width: 100%;
   height: 100%;
   transform-origin: 50% 50%;
-  opacity: 0;
-  transform: scale(1.4);
-}
-
-@keyframes mandala-zoom-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  opacity: 1;
 }
 
 .layer-outer {
-  animation: mandala-zoom-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards, rotate-peaceful 35s linear infinite;
-  animation-delay: 0s, 2s;
+  animation: rotate-peaceful 35s linear infinite;
 }
 
 .layer-lotus {
-  animation: mandala-zoom-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards, rotate-peaceful-reverse 28s linear infinite;
-  animation-delay: 0.15s, 2.15s;
+  animation: rotate-peaceful-reverse 28s linear infinite;
 }
 
 .layer-inner {
-  animation: mandala-zoom-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards, rotate-peaceful 22s linear infinite;
-  animation-delay: 0.3s, 2.3s;
+  animation: rotate-peaceful 22s linear infinite;
 }
 
 .layer-center {
-  animation: mandala-zoom-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards, om-pulse 5s ease-in-out infinite;
-  animation-delay: 0.45s, 2.45s;
+  animation: om-pulse 5s ease-in-out infinite;
 }
 
 @keyframes rotate-peaceful {
@@ -163,6 +110,18 @@
   50% {
     transform: scale(1.04);
     opacity: 0.92;
+  }
+}
+
+@keyframes mandala-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -274,18 +233,8 @@
     height: 320px;
   }
 
-  .ambient-glow {
-    width: 280px;
-    height: 280px;
-  }
-
-  .ambient-glow::after {
-    width: 220px;
-    height: 220px;
-  }
-
   .brand-logo {
-    width: 200px;
+    width: 240px;
   }
 
   .counter-container {

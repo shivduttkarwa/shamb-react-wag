@@ -85,9 +85,6 @@ const Preloader = () => {
         onClick={handleSkip}
       >
         <div className="mandala-container">
-          {/* Ambient Glow */}
-          <div className="ambient-glow"></div>
-
           {/* LAYER 1: Outer Energy Ring */}
           <svg className="mandala-svg layer-outer" viewBox="0 0 200 200">
             <circle cx="100" cy="100" r="95" fill="none" stroke="#d4af37" strokeWidth="0.3" opacity="0.25" />
