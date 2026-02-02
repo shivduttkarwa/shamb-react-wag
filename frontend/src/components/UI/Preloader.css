@@ -200,15 +200,14 @@
   justify-content: flex-end;
 }
 
-.counter span {
-  display: inline-block;
+.counter .digit {
   font-family: 'Cinzel', serif;
   font-size: 60px;
   font-weight: 600;
-  letter-spacing: 2px;
   color: rgba(212, 175, 55, 0.98);
-  transform: translateY(2px);
-  font-variant-numeric: tabular-nums;
+  width: 42px;
+  text-align: center;
+  display: inline-block;
 }
 
 .counter .percent {
@@ -294,7 +293,8 @@
     bottom: 16px;
   }
 
-  .counter span {
+  .counter .digit {
     font-size: 50px;
+    width: 35px;
   }
 }

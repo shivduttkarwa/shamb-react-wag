@@ -170,7 +170,10 @@ const Preloader = () => {
         }}
       >
         <div className="counter">
-          <span>{counter}</span><span className="percent">%</span>
+          <span className="digit">{Math.floor(counter / 100) || ''}</span>
+          <span className="digit">{counter >= 10 ? Math.floor((counter % 100) / 10) : (counter >= 100 ? 0 : '')}</span>
+          <span className="digit">{counter % 10}</span>
+          <span className="percent">%</span>
         </div>
       </div>
 
