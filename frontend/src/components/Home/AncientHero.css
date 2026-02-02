@@ -304,7 +304,7 @@
 /* Scroll Indicator - At Bottom */
 .ancient-hero-scroll-btn {
   position: absolute;
-  bottom: 2rem;
+  bottom: 6rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
