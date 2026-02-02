@@ -201,8 +201,8 @@
 .shambala-services__nav-button {
   width: 3rem;
   height: 3rem;
-  border: 0.125rem solid rgba(255,255,255,0.95);
-  background-color: rgba(0,0,0,0.65);
+  border: 0.125rem solid rgba(255, 255, 255, 0.95);
+  background-color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -215,7 +215,7 @@
 }
 
 .shambala-services__nav-button:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   transform: scale(1.05);
 }
 
@@ -242,7 +242,7 @@
 .shambala-services__pagination-dot {
   width: 1.5rem;
   height: 0.25rem;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -330,11 +330,19 @@
   transform: scale(0.94);
 }
 
-.shambala-services .fp-left-navigation .fp-nav-btn:hover.fp-swiper-button-next .fp-arrow-container svg {
+.shambala-services
+  .fp-left-navigation
+  .fp-nav-btn:hover.fp-swiper-button-next
+  .fp-arrow-container
+  svg {
   transform: translateX(3px);
 }
 
-.shambala-services .fp-left-navigation .fp-nav-btn:hover.fp-swiper-button-prev .fp-arrow-container svg {
+.shambala-services
+  .fp-left-navigation
+  .fp-nav-btn:hover.fp-swiper-button-prev
+  .fp-arrow-container
+  svg {
   transform: translateX(-3px);
 }
 
@@ -428,11 +436,12 @@
 
   .shambala-services .fp-left-navigation {
     display: flex;
-    bottom: 1.5rem;
-    left: 50%;
+    bottom: 2.5rem;
+    left: auto;
+    right: 2.5rem;
     gap: 1.25rem;
     --_btn-size: 52px;
-    transform: translateX(-50%);
+    transform: none;
   }
 
   .shambala-services .fp-arrow-container svg {
@@ -446,6 +455,11 @@
 
   .shambala-services .essence-cta-btn {
     transform: scale(1.1);
+  }
+  .shambala-services__explore-cta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 
@@ -499,6 +513,7 @@
 
   .shambala-services .fp-left-navigation {
     bottom: 2rem;
+    right: 3.5rem;
     --_btn-size: 56px;
   }
 
@@ -545,7 +560,11 @@
   }
 
   .shambala-services__image-overlay {
-    background: linear-gradient(135deg, rgba(71, 97, 77, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(71, 97, 77, 0.3) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
   }
 
   .shambala-services__content-stack {
@@ -622,9 +641,9 @@
   .shambala-services__nav-button {
     width: 2.85rem;
     height: 2.85rem;
-    border: 0.1rem solid rgba(0,0,0,0.15);
+    border: 0.1rem solid rgba(0, 0, 0, 0.15);
     background-color: var(--color-green);
-    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
   }
 
   .shambala-services__pagination {
@@ -657,7 +676,7 @@
   .shambala-services__vertical-dot {
     width: 0.25rem;
     height: 2.25rem;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     border: none;
     padding: 0;
     cursor: pointer;
@@ -756,7 +775,6 @@
     height: 1rem;
     font-size: 0.6rem;
   }
-
 }
 
 /* ============================================
@@ -814,7 +832,6 @@
   .shambala-services .essence-cta-btn {
     transform: scale(1.01);
   }
-
 }
 
 /* ===========================================
