@@ -95,147 +95,6 @@
   filter: drop-shadow(0 0 0.5rem rgba(230, 126, 34, 0.15));
 }
 
-/* Golden Dust Particles */
-.cta-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.cta-particle {
-  position: absolute;
-  background: radial-gradient(
-    circle,
-    rgba(230, 126, 34, 1) 0%,
-    rgba(230, 126, 34, 0.6) 40%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  animation: cta-particle-fly linear infinite;
-  pointer-events: none;
-  box-shadow:
-    0 0 0.5rem rgba(230, 126, 34, 0.8),
-    0 0 1rem rgba(230, 126, 34, 0.5),
-    0 0 2rem rgba(230, 126, 34, 0.3);
-}
-
-@keyframes cta-particle-fly {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  95% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--move-x, 100px), var(--move-y, -100px))
-      rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* Architectural Background (legacy - for fallback) */
-.cta-architectural-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.4;
-  display: none;
-}
-
-/* Blueprint Grid */
-.cta-blueprint-grid {
-  position: absolute;
-  inset: 0;
-}
-
-.cta-grid-line {
-  position: absolute;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(64, 81, 59, 0.15) 50%,
-    transparent 100%
-  );
-}
-
-.cta-grid-h {
-  width: 100%;
-  height: 0.0625rem;
-  transform-origin: left center;
-}
-
-.cta-grid-v {
-  height: 100%;
-  width: 0.0625rem;
-  transform-origin: center top;
-}
-
-/* Blueprint SVG Overlay */
-.cta-blueprint-overlay {
-  position: absolute;
-  inset: 0;
-  opacity: 0.15;
-}
-
-.cta-blueprint-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.cta-blueprint-line {
-  fill: none;
-  stroke: var(--color-green);
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-
-/* Floating Geometric Shapes */
-.cta-geometric-shape {
-  position: absolute;
-  border: 0.125rem solid rgba(64, 81, 59, 0.2);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(0.625rem);
-}
-
-.cta-shape-1 {
-  width: 5rem;
-  height: 5rem;
-  top: 10%;
-  left: 5%;
-  border-radius: 50%;
-  transform: rotate(0deg);
-}
-
-.cta-shape-2 {
-  width: 4rem;
-  height: 4rem;
-  top: 70%;
-  right: 8%;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-}
-
-.cta-shape-3 {
-  width: 3.5rem;
-  height: 3.5rem;
-  bottom: 15%;
-  left: 10%;
-  transform: rotate(45deg);
-}
-
-.cta-shape-4 {
-  width: 4.5rem;
-  height: 4.5rem;
-  top: 40%;
-  right: 5%;
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-}
-
 /* Container */
 .cta-container {
   position: relative;
@@ -525,8 +384,7 @@
 }
 
 .cta-readmore-btn {
-    width: 80%;
-  transform: scale(0.8, 1);
+  transform: scale(1);
   transform-origin: center center;
 }
 
@@ -546,23 +404,12 @@
     font-size: 1.0625rem;
   }
 
-  .cta-shape-1 {
-    width: 6rem;
-    height: 6rem;
-  }
-
-  .cta-shape-2 {
-    width: 5rem;
-    height: 5rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(0.84, 1.05);
+    transform: scale(1);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(0.84, 1.05);
+    transform: scale(1);
   }
 }
 
@@ -588,23 +435,12 @@
     margin: 0 auto;
   }
 
-  .cta-shape-1 {
-    width: 7rem;
-    height: 7rem;
-  }
-
-  .cta-shape-3 {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(0.88, 1.1);
+    transform: scale(1.05);
   }
 }
 
@@ -657,23 +493,12 @@
     width: auto;
   }
 
-  .cta-shape-1 {
-    width: 8rem;
-    height: 8rem;
-  }
-
-  .cta-shape-2 {
-    width: 6rem;
-    height: 6rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(1.15);
+    transform: scale(1.2912);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(0.92, 1.15);
+    transform: scale(1.2912);
   }
 }
 
@@ -727,23 +552,12 @@
     gap: 1.25rem;
   }
 
-  .cta-shape-1 {
-    width: 9rem;
-    height: 9rem;
-  }
-
-  .cta-shape-4 {
-    width: 5.5rem;
-    height: 5.5rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(0.85);
+    transform: scale(0.736);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(0.68, 0.85);
+    transform: scale(0.736);
   }
 }
 
@@ -790,23 +604,12 @@
     gap: 1.5rem;
   }
 
-  .cta-shape-1 {
-    width: 10rem;
-    height: 10rem;
-  }
-
-  .cta-shape-2 {
-    width: 7rem;
-    height: 7rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(0.95);
+    transform: scale(0.944);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(0.76, 0.95);
+    transform: scale(0.944);
   }
 }
 
@@ -854,23 +657,12 @@
     gap: 1.75rem;
   }
 
-  .cta-shape-1 {
-    width: 11rem;
-    height: 11rem;
-  }
-
-  .cta-shape-3 {
-    width: 5.5rem;
-    height: 5.5rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(0.84, 1.05);
+    transform: scale(0.98);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(0.84, 1.05);
+    transform: scale(0.98);
   }
 }
 
@@ -919,32 +711,11 @@
     margin-top: 1.5rem;
   }
 
-  .cta-shape-1 {
-    width: 12.5rem;
-    height: 12.5rem;
-  }
-
-  .cta-shape-2 {
-    width: 9rem;
-    height: 9rem;
-  }
-
-  .cta-shape-3 {
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-
-  .cta-shape-4 {
-    width: 7.5rem;
-    height: 7.5rem;
-  }
-
   .cta-aesthetic-btn {
-    transform: scale(1.25);
+    transform: scale(1.22);
   }
 
   .cta-readmore-btn {
-    width: 80%;
-    transform: scale(1.0, 1.25);
+    transform: scale(1.22);
   }
 }
