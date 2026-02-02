@@ -15,47 +15,12 @@ const CTASection: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const blueprintRef = useRef<HTMLDivElement>(null);
-  const gridLinesRef = useRef<HTMLDivElement>(null);
+  const mandalaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Blueprint grid animation
-      if (gridLinesRef.current) {
-        const lines = gridLinesRef.current.querySelectorAll(".cta-grid-line");
-        gsap.from(lines, {
-          scaleX: 0,
-          opacity: 0,
-          duration: 1.5,
-          stagger: 0.05,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-            toggleActions: "play none none none",
-          },
-        });
-      }
-
-      // Floating geometric shapes
-      const shapes = sectionRef.current?.querySelectorAll(".cta-geometric-shape");
-      if (shapes) {
-        shapes.forEach((shape, index) => {
-          gsap.to(shape, {
-            y: "random(-30, 30)",
-            x: "random(-20, 20)",
-            rotation: "random(-15, 15)",
-            duration: "random(4, 6)",
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: index * 0.2,
-          });
-        });
-      }
-
       // Title animation - word by word reveal
       if (titleRef.current) {
         const words = titleRef.current.querySelectorAll(".cta-word");
@@ -126,28 +91,6 @@ const CTASection: React.FC = () => {
           },
         });
       }
-
-      // Blueprint lines drawing animation
-      if (blueprintRef.current) {
-        const paths = blueprintRef.current.querySelectorAll(".cta-blueprint-line");
-        paths.forEach((path) => {
-          const length = (path as SVGPathElement).getTotalLength();
-          gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length,
-          });
-          gsap.to(path, {
-            strokeDashoffset: 0,
-            duration: 2,
-            ease: "power2.inOut",
-            scrollTrigger: {
-              trigger: blueprintRef.current,
-              start: "top 70%",
-              toggleActions: "play none none none",
-            },
-          });
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -171,34 +114,41 @@ const CTASection: React.FC = () => {
     }, 4000);
   };
 
+  const handleParallax = (e: React.MouseEvent) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    const content = sectionRef.current?.querySelector('.cta-container') as HTMLElement;
+    const mandala = mandalaRef.current;
+
+    if (content) {
+      content.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    }
+    if (mandala) {
+      mandala.style.transform = `translate(-50%, -50%) rotate(${x}deg)`;
+    }
+  };
+
   return (
-    <section className="cta-section" ref={sectionRef}>
-      {/* Architectural Background Elements */}
-      <div className="cta-architectural-bg">
-        <div className="cta-blueprint-grid" ref={gridLinesRef}>
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={`h-${i}`} className="cta-grid-line cta-grid-h" style={{ top: `${i * 8.33}%` }} />
-          ))}
-          {Array.from({ length: 16 }).map((_, i) => (
-            <div key={`v-${i}`} className="cta-grid-line cta-grid-v" style={{ left: `${i * 6.25}%` }} />
-          ))}
-        </div>
+    <section className="cta-section" ref={sectionRef} onMouseMove={handleParallax}>
+      {/* Atmospheric Effects */}
+      <div className="cta-veil" />
+      <div className="cta-mist" />
 
-        {/* Blueprint SVG drawings */}
-        <div className="cta-blueprint-overlay" ref={blueprintRef}>
-          <svg className="cta-blueprint-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
-            <path className="cta-blueprint-line" d="M 50 50 L 200 50 L 200 200 L 50 200 Z" />
-            <path className="cta-blueprint-line" d="M 100 100 L 150 100 M 100 150 L 150 150" />
-            <path className="cta-blueprint-line" d="M 1000 400 L 1150 400 L 1150 550 L 1000 550 Z" />
-            <circle className="cta-blueprint-line" cx="1075" cy="475" r="40" />
-          </svg>
-        </div>
-
-        {/* Floating geometric shapes */}
-        <div className="cta-geometric-shape cta-shape-1"></div>
-        <div className="cta-geometric-shape cta-shape-2"></div>
-        <div className="cta-geometric-shape cta-shape-3"></div>
-        <div className="cta-geometric-shape cta-shape-4"></div>
+      {/* Sacred Geometry */}
+      <div className="cta-mandala" ref={mandalaRef}>
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="90"/>
+          <circle cx="100" cy="100" r="70"/>
+          <circle cx="100" cy="100" r="50"/>
+          <circle cx="100" cy="100" r="30"/>
+          <polygon points="100,10 190,100 100,190 10,100"/>
+          <polygon points="100,30 170,100 100,170 30,100"/>
+          <line x1="100" y1="10" x2="100" y2="190"/>
+          <line x1="10" y1="100" x2="190" y2="100"/>
+          <line x1="30" y1="30" x2="170" y2="170"/>
+          <line x1="170" y1="30" x2="30" y2="170"/>
+        </svg>
       </div>
 
       <div className="cta-container">

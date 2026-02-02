@@ -9,17 +9,143 @@
 .cta-section {
   position: relative;
   padding: 3.75rem 5.5%;
-  background: linear-gradient(135deg, #e8f0e5 0%, #f5f8f3 50%, #e8f0e5 100%);
   overflow: hidden;
-  min-height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #2a3d28 0%,
+    #3d5139 25%,
+    #4a5d42 50%,
+    #3d4d36 75%,
+    #2a3d28 100%
+  );
 }
 
-/* Architectural Background */
+/* Atmospheric Veil */
+.cta-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(107, 142, 95, 0.2) 0%,
+    rgba(230, 126, 34, 0.15) 50%,
+    rgba(64, 81, 59, 0.2) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Atmospheric Mist */
+.cta-mist {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+  animation: cta-mist-pulse 8s ease-in-out infinite;
+}
+
+@keyframes cta-mist-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Sacred Geometry Mandala */
+.cta-mandala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140vmax;
+  height: 140vmax;
+  opacity: 0.06;
+  z-index: 1;
+  pointer-events: none;
+  animation: cta-mandala-rotate 120s linear infinite;
+  transition: transform 0.3s ease-out;
+}
+
+@keyframes cta-mandala-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.cta-mandala svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 0.2;
+  filter: drop-shadow(0 0 0.5rem rgba(230, 126, 34, 0.15));
+}
+
+/* Golden Dust Particles */
+.cta-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cta-particle {
+  position: absolute;
+  background: radial-gradient(
+    circle,
+    rgba(230, 126, 34, 1) 0%,
+    rgba(230, 126, 34, 0.6) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: cta-particle-fly linear infinite;
+  pointer-events: none;
+  box-shadow:
+    0 0 0.5rem rgba(230, 126, 34, 0.8),
+    0 0 1rem rgba(230, 126, 34, 0.5),
+    0 0 2rem rgba(230, 126, 34, 0.3);
+}
+
+@keyframes cta-particle-fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--move-x, 100px), var(--move-y, -100px))
+      rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Architectural Background (legacy - for fallback) */
 .cta-architectural-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
   opacity: 0.4;
+  display: none;
 }
 
 /* Blueprint Grid */
@@ -30,7 +156,12 @@
 
 .cta-grid-line {
   position: absolute;
-  background: linear-gradient(90deg, transparent 0%, rgba(64, 81, 59, 0.15) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(64, 81, 59, 0.15) 50%,
+    transparent 100%
+  );
 }
 
 .cta-grid-h {
@@ -110,6 +241,7 @@
   position: relative;
   z-index: 2;
   max-width: 100%;
+  transition: transform 0.3s ease-out;
 }
 
 /* Content */
@@ -125,21 +257,25 @@
   font-family: "Dream Avenue", serif;
   font-size: clamp(2rem, 8vw, 3rem);
   font-weight: 300;
-  color: var(--color-black);
+  color: var(--color-white);
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   display: flex;
   flex-wrap: wrap;
   gap: 0.3em;
   text-align: center;
+  overflow: visible;
+  padding: 0.2em 0;
+  text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 .cta-word-wrapper {
   display: inline-block;
-  overflow: hidden;
+  overflow: visible;
   vertical-align: bottom;
   perspective: 62.5rem;
+  padding: 0.2em 0.1em;
 }
 
 .cta-word {
@@ -149,7 +285,7 @@
 
 .cta-title em {
   font-style: italic;
-  color: var(--color-green);
+  color: #b8860b;
   position: relative;
 }
 
@@ -168,13 +304,14 @@
 .cta-description {
   font-family: "Nunito", sans-serif;
   font-size: 1rem;
-  color: var(--color-black);
+  color: var(--color-white);
   margin: 0;
   font-weight: 400;
   line-height: 1.7;
-  opacity: 0.9;
+  opacity: 0.95;
   text-align: center;
   max-width: 100%;
+  text-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
 }
 
 /* Form */
@@ -203,8 +340,9 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-green);
+  color: var(--color-gold);
   margin: 0;
+  text-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.3);
 }
 
 .cta-input-wrapper {
@@ -260,7 +398,11 @@
   left: 0;
   right: 0;
   height: 0.1875rem;
-  background: linear-gradient(90deg, var(--color-green) 0%, var(--color-gold) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-green) 0%,
+    var(--color-gold) 100%
+  );
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -297,7 +439,12 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -378,7 +525,8 @@
 }
 
 .cta-readmore-btn {
-  transform: scale(1);
+    width: 80%;
+  transform: scale(0.8, 1);
   transform-origin: center center;
 }
 
@@ -409,11 +557,12 @@
   }
 
   .cta-aesthetic-btn {
-    transform: scale(1.05);
+    transform: scale(0.84, 1.05);
   }
 
   .cta-readmore-btn {
-    transform: scale(1.05);
+    width: 80%;
+    transform: scale(0.84, 1.05);
   }
 }
 
@@ -454,7 +603,8 @@
   }
 
   .cta-readmore-btn {
-    transform: scale(1.1);
+    width: 80%;
+    transform: scale(0.88, 1.1);
   }
 }
 
@@ -522,7 +672,8 @@
   }
 
   .cta-readmore-btn {
-    transform: scale(1.15);
+    width: 80%;
+    transform: scale(0.92, 1.15);
   }
 }
 
@@ -591,7 +742,8 @@
   }
 
   .cta-readmore-btn {
-    transform: scale(0.85);
+    width: 80%;
+    transform: scale(0.68, 0.85);
   }
 }
 
@@ -653,7 +805,8 @@
   }
 
   .cta-readmore-btn {
-    transform: scale(0.95);
+    width: 80%;
+    transform: scale(0.76, 0.95);
   }
 }
 
@@ -712,11 +865,12 @@
   }
 
   .cta-aesthetic-btn {
-    transform: scale(1.05);
+    transform: scale(0.84, 1.05);
   }
 
   .cta-readmore-btn {
-    transform: scale(1.05);
+    width: 80%;
+    transform: scale(0.84, 1.05);
   }
 }
 
@@ -790,6 +944,7 @@
   }
 
   .cta-readmore-btn {
-    transform: scale(1.25);
+    width: 80%;
+    transform: scale(1.0, 1.25);
   }
 }
