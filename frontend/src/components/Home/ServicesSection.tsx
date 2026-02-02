@@ -90,6 +90,25 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Only apply pinning on desktop (1124px+)
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1124px)", () => {
+        const content = sectionRef.current?.querySelector(".hss-services-content");
+        const cardsContainer = sectionRef.current?.querySelector(".hss-services-cards");
+
+        if (content && cardsContainer) {
+          ScrollTrigger.create({
+            trigger: cardsContainer,
+            start: "top top+=80",
+            end: "bottom bottom-=100",
+            pin: content,
+            pinSpacing: false,
+            invalidateOnRefresh: true,
+          });
+        }
+      });
+
       // Get all cards
       const cards = gsap.utils.toArray(".hss-service-card");
 
