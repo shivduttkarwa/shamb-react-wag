@@ -1,117 +1,155 @@
-/* PREMIUM ELEGANT CTA SECTION */
+/* ============================================
+   CTA SECTION - Architectural Theme - Mobile First
+   ============================================ */
+
+/* ============================================
+   BASE STYLES - Mobile (< 480px)
+   ============================================ */
+
 .cta-section {
-  background: linear-gradient(135deg, #c4d4bf 0%, #d4e3cf 50%, #c4d4bf 100%);
-  padding: 140px 0;
   position: relative;
+  padding: 3.75rem 5.5%;
+  background: linear-gradient(135deg, #e8f0e5 0%, #f5f8f3 50%, #e8f0e5 100%);
   overflow: hidden;
+  min-height: auto;
 }
 
-/* Background decorative pattern */
-.cta-bg-pattern {
+/* Architectural Background */
+.cta-architectural-bg {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-      circle at 25% 25%,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 75% 75%,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 50%
-    );
   pointer-events: none;
+  opacity: 0.4;
 }
 
-/* Gradient orbs for depth */
-.cta-gradient-orb {
+/* Blueprint Grid */
+.cta-blueprint-grid {
   position: absolute;
+  inset: 0;
+}
+
+.cta-grid-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent 0%, rgba(64, 81, 59, 0.15) 50%, transparent 100%);
+}
+
+.cta-grid-h {
+  width: 100%;
+  height: 0.0625rem;
+  transform-origin: left center;
+}
+
+.cta-grid-v {
+  height: 100%;
+  width: 0.0625rem;
+  transform-origin: center top;
+}
+
+/* Blueprint SVG Overlay */
+.cta-blueprint-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+}
+
+.cta-blueprint-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cta-blueprint-line {
+  fill: none;
+  stroke: var(--color-green);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Floating Geometric Shapes */
+.cta-geometric-shape {
+  position: absolute;
+  border: 0.125rem solid rgba(64, 81, 59, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.625rem);
+}
+
+.cta-shape-1 {
+  width: 5rem;
+  height: 5rem;
+  top: 10%;
+  left: 5%;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  pointer-events: none;
-  animation: float 8s ease-in-out infinite;
+  transform: rotate(0deg);
 }
 
-.cta-gradient-orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(181, 196, 176, 0.6) 0%,
-    transparent 70%
-  );
-  top: -200px;
-  left: -100px;
-  animation-delay: 0s;
+.cta-shape-2 {
+  width: 4rem;
+  height: 4rem;
+  top: 70%;
+  right: 8%;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
-.cta-gradient-orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(157, 181, 147, 0.6) 0%,
-    transparent 70%
-  );
-  bottom: -150px;
-  right: -100px;
-  animation-delay: 2s;
+.cta-shape-3 {
+  width: 3.5rem;
+  height: 3.5rem;
+  bottom: 15%;
+  left: 10%;
+  transform: rotate(45deg);
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(30px, -30px) scale(1.05);
-  }
+.cta-shape-4 {
+  width: 4.5rem;
+  height: 4.5rem;
+  top: 40%;
+  right: 5%;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
+/* Container */
 .cta-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
   position: relative;
   z-index: 2;
+  max-width: 100%;
 }
 
+/* Content */
 .cta-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 50px;
-  max-width: 850px;
+  gap: 1.5rem;
+  max-width: 100%;
 }
 
-/* Title with word animation wrappers */
+/* Title */
 .cta-title {
   font-family: "Dream Avenue", serif;
-  font-size: var(--home-section-title-size);
+  font-size: clamp(2rem, 8vw, 3rem);
   font-weight: 300;
-  color: #2c3e50;
+  color: var(--color-black);
   margin: 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25em;
+  gap: 0.3em;
+  text-align: center;
 }
 
 .cta-word-wrapper {
   display: inline-block;
-  overflow: visible;
+  overflow: hidden;
   vertical-align: bottom;
+  perspective: 62.5rem;
 }
 
 .cta-word {
   display: inline-block;
+  transform-style: preserve-3d;
 }
 
 .cta-title em {
   font-style: italic;
-  font-weight: 300;
+  color: var(--color-green);
   position: relative;
 }
 
@@ -121,75 +159,84 @@
   bottom: 0.1em;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 0.125rem;
   background: currentColor;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
-.cta-form-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 100%;
-  max-width: 650px;
-}
-
+/* Description */
 .cta-description {
   font-family: "Nunito", sans-serif;
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  color: #2c3e50;
+  font-size: 1rem;
+  color: var(--color-black);
   margin: 0;
   font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
+  line-height: 1.7;
   opacity: 0.9;
+  text-align: center;
+  max-width: 100%;
 }
 
 /* Form */
 .cta-form {
   display: flex;
-  gap: 0;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
-  max-width: 550px;
+  max-width: 100%;
   position: relative;
-  transition: transform 0.3s ease;
 }
 
 .cta-form-focused {
-  transform: translateY(-4px);
+  transform: translateY(-0.125rem);
+}
+
+.cta-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cta-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin: 0;
 }
 
 .cta-input-wrapper {
-  flex: 1;
   position: relative;
 }
 
 .cta-email-input {
   width: 100%;
-  padding: 20px 28px;
-  border: none;
-  background: rgba(181, 196, 176, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #2c3e50;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  padding: 0.9375rem 1.125rem;
+  border: 0.125rem solid rgba(64, 81, 59, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(0.625rem);
+  color: var(--color-black);
+  font-size: 0.9375rem;
+  font-weight: 400;
   outline: none;
   font-family: "Nunito", sans-serif;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+  border-radius: 0.25rem;
 }
 
 .cta-email-input::placeholder {
-  color: rgba(74, 90, 74, 0.7);
-  opacity: 1;
+  color: rgba(64, 81, 59, 0.5);
+  font-style: italic;
 }
 
 .cta-email-input:focus {
-  background: rgba(168, 184, 163, 0.85);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-green);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0.25rem 1rem rgba(64, 81, 59, 0.15);
+  transform: translateY(-0.0625rem);
 }
 
 .cta-email-input:disabled {
@@ -197,67 +244,72 @@
   cursor: not-allowed;
 }
 
-/* Animated input line */
+/* Animated Input Lines */
 .cta-input-line {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #2c3e50 0%, rgba(44, 62, 80, 0.5) 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 0.125rem;
+  background: rgba(64, 81, 59, 0.1);
 }
 
-.cta-email-input:focus ~ .cta-input-line {
+.cta-input-focus-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.1875rem;
+  background: linear-gradient(90deg, var(--color-green) 0%, var(--color-gold) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-email-input:focus ~ .cta-input-focus-line {
   transform: scaleX(1);
 }
 
-/* Submit button */
+/* Submit Button */
 .cta-submit-button {
-  padding: 20px 40px;
+  padding: 1rem 1.5rem;
   border: none;
-  background: #2c3e50;
-  color: #ffffff;
-  font-size: 0.9rem;
+  background: var(--color-green);
+  color: var(--color-white);
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: "Nunito", sans-serif;
-  white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 0.625rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.2);
+  box-shadow: 0 0.25rem 1rem rgba(64, 81, 59, 0.25);
+  border-radius: 0.25rem;
 }
 
 .cta-submit-button::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
 .cta-submit-button:hover::before {
-  width: 300px;
-  height: 300px;
+  transform: translateX(100%);
 }
 
 .cta-submit-button:hover {
-  background: #1a252f;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(44, 62, 80, 0.3);
+  background: var(--color-gold);
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(230, 126, 34, 0.3);
 }
 
 .cta-submit-button:disabled {
@@ -267,131 +319,477 @@
 }
 
 .cta-submit-text,
-.cta-submit-icon {
+.cta-submit-arrow {
   position: relative;
   z-index: 1;
+  transition: transform 0.3s ease;
 }
 
-.cta-submit-icon {
+.cta-submit-arrow {
   display: flex;
   align-items: center;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cta-submit-button:hover .cta-submit-icon {
-  transform: translateX(5px);
+.cta-submit-button:hover .cta-submit-arrow {
+  transform: translateX(0.3125rem);
 }
 
-/* Success message */
+/* Success Message */
 .cta-success-message {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: #2c3e50;
+  gap: 0.75rem;
+  color: var(--color-green);
   font-family: "Nunito", sans-serif;
-  font-size: 1.05rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  padding: 18px 28px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 4px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(0.625rem);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(64, 81, 59, 0.15);
+  border: 0.125rem solid rgba(64, 81, 59, 0.2);
 }
 
 .cta-success-icon {
   flex-shrink: 0;
-  color: #2c3e50;
+  color: var(--color-green);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .cta-section {
-    padding: 100px 0;
-  }
+/* CTA Actions */
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+}
 
-  .cta-container {
-    padding: 0 24px;
+.cta-primary-action,
+.cta-secondary-action {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-aesthetic-btn {
+  transform: scale(1);
+  transform-origin: center center;
+}
+
+.cta-readmore-btn {
+  transform: scale(1);
+  transform-origin: center center;
+}
+
+/* ============================================
+   Small phones (≥ 480px)
+   ============================================ */
+@media (min-width: 480px) {
+  .cta-section {
+    padding: 4.375rem 5.5%;
   }
 
   .cta-content {
-    gap: 40px;
-  }
-
-  .cta-title {
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
-    font-family: "Dream Avenue", cursive;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-    line-height: 1.15;
-  }
-
-  .cta-form-wrapper {
-    gap: 32px;
+    gap: 1.75rem;
   }
 
   .cta-description {
-    font-size: 1.05rem;
+    font-size: 1.0625rem;
+  }
+
+  .cta-shape-1 {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .cta-shape-2 {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(1.05);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   Phones / small tablets (≥ 640px)
+   ============================================ */
+@media (min-width: 640px) {
+  .cta-section {
+    padding: 5rem 5.5%;
+  }
+
+  .cta-content {
+    gap: 2rem;
+  }
+
+  .cta-title {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+  }
+
+  .cta-description {
+    font-size: 1.125rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .cta-shape-1 {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .cta-shape-3 {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(1.1);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(1.1);
+  }
+}
+
+/* ============================================
+   Tablets (≥ 768px)
+   ============================================ */
+@media (min-width: 768px) {
+  .cta-section {
+    padding: 5.625rem 5.5%;
+  }
+
+  .cta-content {
+    gap: 2.5rem;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
+
+  .cta-description {
+    font-size: 1.1875rem;
+    max-width: 80%;
   }
 
   .cta-form {
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-end;
   }
 
-  .cta-email-input,
-  .cta-submit-button {
-    padding: 18px 24px;
+  .cta-input-group {
+    flex: 1;
   }
 
   .cta-submit-button {
-    width: 100%;
+    padding: 1.0625rem 1.875rem;
+    flex-shrink: 0;
+  }
+
+  .cta-actions {
+    flex-direction: row;
     justify-content: center;
+    gap: 1.5rem;
   }
 
-  .cta-gradient-orb-1,
-  .cta-gradient-orb-2 {
-    width: 400px;
-    height: 400px;
+  .cta-primary-action,
+  .cta-secondary-action {
+    width: auto;
+  }
+
+  .cta-shape-1 {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .cta-shape-2 {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(1.15);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(1.15);
   }
 }
 
-@media (max-width: 640px) {
+/* ============================================
+   Small laptops (≥ 1124px)
+   ============================================ */
+@media (min-width: 1124px) {
   .cta-section {
-    padding: 80px 0;
+    padding: 4.5rem 2.25rem;
+    min-height: auto;
   }
 
   .cta-container {
-    padding: 0 20px;
+    max-width: 68.75rem;
+    margin: 0 auto;
   }
 
   .cta-content {
-    gap: 36px;
+    gap: 2rem;
+    max-width: 56.25rem;
   }
 
   .cta-title {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
+    text-align: left;
   }
 
   .cta-description {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.0125rem;
+    text-align: left;
+    max-width: 100%;
+    margin: 0;
   }
 
-  .cta-form-wrapper {
-    gap: 28px;
+  .cta-form {
+    max-width: 40rem;
   }
 
-  .cta-email-input,
+  .cta-email-input {
+    font-size: 0.855rem;
+    padding: 0.855rem 1.0125rem;
+  }
+
   .cta-submit-button {
-    padding: 16px 20px;
-    font-size: 0.85rem;
+    padding: 0.855rem 1.4625rem;
+    font-size: 0.765rem;
   }
 
-  .cta-success-message {
-    font-size: 0.95rem;
-    padding: 16px 20px;
+  .cta-actions {
+    justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .cta-shape-1 {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .cta-shape-4 {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(0.85);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(0.85);
+  }
+}
+
+/* ============================================
+   Desktops (≥ 1280px)
+   ============================================ */
+@media (min-width: 1280px) {
+  .cta-section {
+    padding: 5.625rem 3rem;
+  }
+
+  .cta-container {
+    max-width: 75rem;
+  }
+
+  .cta-content {
+    gap: 2.5rem;
+    max-width: 62.5rem;
+  }
+
+  .cta-title {
+    font-size: 3.25rem;
+  }
+
+  .cta-description {
+    font-size: 1.125rem;
+  }
+
+  .cta-form {
+    max-width: 43.75rem;
+  }
+
+  .cta-email-input {
+    font-size: 0.9rem;
+    padding: 0.9rem 1.125rem;
+  }
+
+  .cta-submit-button {
+    padding: 0.9rem 1.625rem;
+    font-size: 0.8rem;
+  }
+
+  .cta-actions {
+    gap: 1.5rem;
+  }
+
+  .cta-shape-1 {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .cta-shape-2 {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(0.95);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(0.95);
+  }
+}
+
+/* ============================================
+   Large desktops / 2K (≥ 1536px)
+   ============================================ */
+@media (min-width: 1536px) {
+  .cta-section {
+    padding: 6.25rem 3.75rem;
+  }
+
+  .cta-container {
+    max-width: 81.25rem;
+  }
+
+  .cta-content {
+    gap: 2.75rem;
+    max-width: 68.75rem;
+  }
+
+  .cta-title {
+    font-size: 3.75rem;
+  }
+
+  .cta-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .cta-form {
+    max-width: 50rem;
+  }
+
+  .cta-email-input {
+    font-size: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .cta-submit-button {
+    padding: 1rem 1.875rem;
+    font-size: 0.875rem;
+  }
+
+  .cta-actions {
+    gap: 1.75rem;
+  }
+
+  .cta-shape-1 {
+    width: 11rem;
+    height: 11rem;
+  }
+
+  .cta-shape-3 {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(1.05);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   Ultra-wide / 4K (≥ 1920px)
+   ============================================ */
+@media (min-width: 1920px) {
+  .cta-section {
+    padding: 8.75rem 5rem;
+  }
+
+  .cta-container {
+    max-width: 93.75rem;
+  }
+
+  .cta-content {
+    gap: 3.125rem;
+    max-width: 75rem;
+  }
+
+  .cta-title {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+
+  .cta-description {
+    font-size: 1.35rem;
+    line-height: 1.8;
+  }
+
+  .cta-form {
+    max-width: 56.25rem;
+  }
+
+  .cta-email-input {
+    font-size: 1.125rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .cta-submit-button {
+    padding: 1.25rem 2.25rem;
+    font-size: 1rem;
+  }
+
+  .cta-actions {
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .cta-shape-1 {
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+
+  .cta-shape-2 {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .cta-shape-3 {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .cta-shape-4 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .cta-aesthetic-btn {
+    transform: scale(1.25);
+  }
+
+  .cta-readmore-btn {
+    transform: scale(1.25);
   }
 }

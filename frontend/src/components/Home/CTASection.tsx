@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AestheticButton from "../UI/AestheticButton";
+import ReadMoreButton from "../UI/ReadMoreButton";
 import "./CTASection.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,36 +15,74 @@ const CTASection: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const blueprintRef = useRef<HTMLDivElement>(null);
+  const gridLinesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Title animation - word by word reveal using FROM
-      if (titleRef.current) {
-        const words = titleRef.current.querySelectorAll(".cta-word");
-        gsap.from(words, {
-          yPercent: 100,
+      // Blueprint grid animation
+      if (gridLinesRef.current) {
+        const lines = gridLinesRef.current.querySelectorAll(".cta-grid-line");
+        gsap.from(lines, {
+          scaleX: 0,
           opacity: 0,
-          duration: 1.2,
-          stagger: 0.15,
+          duration: 1.5,
+          stagger: 0.05,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
+            trigger: sectionRef.current,
+            start: "top 70%",
             toggleActions: "play none none none",
           },
         });
       }
 
-      // Description fade in
+      // Floating geometric shapes
+      const shapes = sectionRef.current?.querySelectorAll(".cta-geometric-shape");
+      if (shapes) {
+        shapes.forEach((shape, index) => {
+          gsap.to(shape, {
+            y: "random(-30, 30)",
+            x: "random(-20, 20)",
+            rotation: "random(-15, 15)",
+            duration: "random(4, 6)",
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: index * 0.2,
+          });
+        });
+      }
+
+      // Title animation - word by word reveal
+      if (titleRef.current) {
+        const words = titleRef.current.querySelectorAll(".cta-word");
+        gsap.from(words, {
+          yPercent: 120,
+          opacity: 0,
+          rotationX: -90,
+          transformOrigin: "center bottom",
+          duration: 1,
+          stagger: 0.1,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Description fade in with slide
       if (descriptionRef.current) {
         gsap.from(descriptionRef.current, {
           opacity: 0,
-          y: 30,
+          y: 40,
           duration: 0.8,
-          delay: 0.4,
-          ease: "power2.out",
+          delay: 0.5,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: descriptionRef.current,
             start: "top 80%",
@@ -51,19 +91,61 @@ const CTASection: React.FC = () => {
         });
       }
 
-      // Form animation - animate entire form wrapper
+      // Form animation - slide up with scale
       if (formRef.current) {
         gsap.from(formRef.current, {
           opacity: 0,
-          y: 40,
-          duration: 0.8,
-          delay: 0.6,
-          ease: "power2.out",
+          y: 50,
+          scale: 0.95,
+          duration: 0.9,
+          delay: 0.7,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: formRef.current,
             start: "top 80%",
             toggleActions: "play none none none",
           },
+        });
+      }
+
+      // CTA buttons animation
+      const ctaButtons = sectionRef.current?.querySelectorAll(".cta-actions > *");
+      if (ctaButtons) {
+        gsap.from(ctaButtons, {
+          opacity: 0,
+          y: 30,
+          scale: 0.9,
+          duration: 0.7,
+          stagger: 0.15,
+          delay: 0.9,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: ".cta-actions",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Blueprint lines drawing animation
+      if (blueprintRef.current) {
+        const paths = blueprintRef.current.querySelectorAll(".cta-blueprint-line");
+        paths.forEach((path) => {
+          const length = (path as SVGPathElement).getTotalLength();
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: blueprintRef.current,
+              start: "top 70%",
+              toggleActions: "play none none none",
+            },
+          });
         });
       }
     }, sectionRef);
@@ -73,109 +155,152 @@ const CTASection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Email submitted:", email);
     setIsSubmitted(true);
 
-    // Animate success message
     gsap.from(".cta-success-message", {
       scale: 0.8,
       opacity: 0,
-      duration: 0.5,
-      ease: "back.out(1.7)",
+      duration: 0.6,
+      ease: "elastic.out(1, 0.5)",
     });
 
     setTimeout(() => {
       setIsSubmitted(false);
       setEmail("");
-    }, 3000);
+    }, 4000);
   };
 
   return (
     <section className="cta-section" ref={sectionRef}>
-      {/* Background decorative elements */}
-      <div className="cta-bg-pattern"></div>
-      <div className="cta-gradient-orb cta-gradient-orb-1"></div>
-      <div className="cta-gradient-orb cta-gradient-orb-2"></div>
+      {/* Architectural Background Elements */}
+      <div className="cta-architectural-bg">
+        <div className="cta-blueprint-grid" ref={gridLinesRef}>
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={`h-${i}`} className="cta-grid-line cta-grid-h" style={{ top: `${i * 8.33}%` }} />
+          ))}
+          {Array.from({ length: 16 }).map((_, i) => (
+            <div key={`v-${i}`} className="cta-grid-line cta-grid-v" style={{ left: `${i * 6.25}%` }} />
+          ))}
+        </div>
+
+        {/* Blueprint SVG drawings */}
+        <div className="cta-blueprint-overlay" ref={blueprintRef}>
+          <svg className="cta-blueprint-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+            <path className="cta-blueprint-line" d="M 50 50 L 200 50 L 200 200 L 50 200 Z" />
+            <path className="cta-blueprint-line" d="M 100 100 L 150 100 M 100 150 L 150 150" />
+            <path className="cta-blueprint-line" d="M 1000 400 L 1150 400 L 1150 550 L 1000 550 Z" />
+            <circle className="cta-blueprint-line" cx="1075" cy="475" r="40" />
+          </svg>
+        </div>
+
+        {/* Floating geometric shapes */}
+        <div className="cta-geometric-shape cta-shape-1"></div>
+        <div className="cta-geometric-shape cta-shape-2"></div>
+        <div className="cta-geometric-shape cta-shape-3"></div>
+        <div className="cta-geometric-shape cta-shape-4"></div>
+      </div>
 
       <div className="cta-container">
         <div className="cta-content">
+          {/* Main Title */}
           <h2 className="cta-title" ref={titleRef}>
             <span className="cta-word-wrapper">
-              <span className="cta-word">On</span>
+              <span className="cta-word">Build</span>
             </span>{" "}
             <span className="cta-word-wrapper">
-              <span className="cta-word">the</span>
+              <span className="cta-word">Your</span>
             </span>{" "}
             <span className="cta-word-wrapper">
-              <em className="cta-word">Inside</em>
+              <em className="cta-word">Dream</em>
             </span>
           </h2>
 
-          <div className="cta-form-wrapper">
-            <p className="cta-description" ref={descriptionRef}>
-              Receive exclusive insights, inspiration and studio updates.
-            </p>
+          {/* Description */}
+          <p className="cta-description" ref={descriptionRef}>
+            Transform your vision into reality. Let's create something extraordinary together.
+          </p>
 
-            <form
-              className={`cta-form ${isFocused ? "cta-form-focused" : ""}`}
-              onSubmit={handleSubmit}
-              ref={formRef}
-            >
+          {/* Email Form */}
+          <form
+            className={`cta-form ${isFocused ? "cta-form-focused" : ""}`}
+            onSubmit={handleSubmit}
+            ref={formRef}
+          >
+            <div className="cta-input-group">
+              <label htmlFor="cta-email" className="cta-label">
+                Email Address
+              </label>
               <div className="cta-input-wrapper">
                 <input
+                  id="cta-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
-                  placeholder="EMAIL ADDRESS"
+                  placeholder="your@email.com"
                   className="cta-email-input"
                   required
                   disabled={isSubmitted}
                 />
                 <div className="cta-input-line"></div>
+                <div className="cta-input-focus-line"></div>
               </div>
-              <button
-                type="submit"
-                className="cta-submit-button"
-                disabled={isSubmitted}
-              >
-                <span className="cta-submit-text">SUBMIT</span>
-                <span className="cta-submit-icon">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path
-                      d="M3 9H15M15 9L9 3M15 9L9 15"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </form>
-
-            {isSubmitted && (
-              <div className="cta-success-message">
-                <svg
-                  className="cta-success-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
+            </div>
+            <button
+              type="submit"
+              className="cta-submit-button"
+              disabled={isSubmitted}
+            >
+              <span className="cta-submit-text">
+                {isSubmitted ? "Subscribed!" : "Subscribe"}
+              </span>
+              <span className="cta-submit-arrow">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path
-                    d="M16.6668 5L7.50016 14.1667L3.3335 10"
+                    d="M4 10H16M16 10L11 5M16 10L11 15"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>You're in! Welcome to our inner circle.</span>
-              </div>
-            )}
+              </span>
+            </button>
+          </form>
+
+          {/* Success Message */}
+          {isSubmitted && (
+            <div className="cta-success-message">
+              <svg className="cta-success-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M20 6L9 17L4 12"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>Welcome to our community! Check your inbox.</span>
+            </div>
+          )}
+
+          {/* CTA Actions */}
+          <div className="cta-actions">
+            <div className="cta-primary-action">
+              <AestheticButton href="/contact" className="cta-aesthetic-btn">
+                Start Your Project
+              </AestheticButton>
+            </div>
+            <div className="cta-secondary-action">
+              <ReadMoreButton
+                href="/projects"
+                text="View Our Work"
+                size="default"
+                className="cta-readmore-btn"
+              />
+            </div>
           </div>
         </div>
       </div>
