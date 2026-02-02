@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import ReadMoreButton from "../UI/ReadMoreButton";
 import "../Home/HomeHeroSlider.css"; // Reuse the same styles
 
 type ProjectSlide = {
@@ -66,9 +66,12 @@ const ServiceHeroSlider = forwardRef<HTMLDivElement>((_, ref) => {
               <div className="hh-label">{slide.label}</div>
               <div className="hh-title">{slide.title}</div>
               <div className="hh-meta">{slide.meta}</div>
-              <Link to={slide.link} className="hh-read">
-                View project →
-              </Link>
+              <ReadMoreButton
+                text="View project"
+                href={slide.link}
+                size="compact"
+                className="hh-read"
+              />
             </div>
           ))}
         </div>

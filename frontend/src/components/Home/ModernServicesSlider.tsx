@@ -17,7 +17,7 @@ import "swiper/css/pagination";
 import "./ModernServicesSlider.css";
 import TiltTextGsap from "../UI/TiltTextGsap";
 import DragBtn from "../Projects/DragBtn";
-import GlassButton from "../UI/GlassButton";
+import AestheticButton from "../UI/AestheticButton";
 
 const publicUrl = import.meta.env.BASE_URL;
 
@@ -529,7 +529,7 @@ const ModernServicesSlider: React.FC = () => {
                   </div>
                   <p className="mss-disc">{slide.description}</p>
                   <div className="mss-cta-wrap">
-                    <GlassButton href="/projects">{slide.buttonText}</GlassButton>
+                    <AestheticButton href="/projects" text={slide.buttonText} />
                   </div>
                   </div>
                 </div>

@@ -20,9 +20,23 @@
   --ser-color-green: #47614d;
   --ser-color-yellow-soft: #fcf8d8;
 
-  background: var(--ser-color-off-white);
+  background-image: linear-gradient(
+      rgba(224, 242, 228, 0.6),
+      rgba(224, 242, 228, 0.8)
+    ),
+    url("/images/bg-paint-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--ser-color-black);
   font-family: "Nunito", sans-serif;
+}
+
+@media (max-width: 968px) {
+  .ser-services-page {
+    background-attachment: scroll;
+  }
 }
 
 /* Serif font class */

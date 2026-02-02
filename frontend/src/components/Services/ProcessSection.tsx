@@ -1,7 +1,7 @@
 import React, { FC, useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { JelloText } from "../common/JelloText";
+import TiltTextGsap from "../UI/TiltTextGsap";
 import "./ProcessSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -299,7 +299,9 @@ export const ProcessSection: FC = () => {
 
   return (
     <section className="shambala-process-section" ref={rootRef}>
-      <JelloText text="OUR PROCESS" className="shambala-process-title" />
+      <TiltTextGsap tag="h2" className="shambala-process-title">
+        OUR PROCESS
+      </TiltTextGsap>
 
       {processSteps.map((step) => (
         <div
