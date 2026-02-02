@@ -379,6 +379,12 @@
 }
 
 .cta-aesthetic-btn {
+  --ab-text-padding: 0.95rem 1.6rem;
+  --ab-text-padding-hover: 0.95rem 1.85rem;
+  --ab-icon-padding: 0.95rem 0.9rem;
+  --ab-icon-padding-hover: 0.95rem 1.05rem;
+  --ab-font-size: 0.78rem;
+  --ab-letter-spacing: 0.14em;
   transform: scale(1);
   transform-origin: center center;
 }
@@ -408,6 +414,12 @@
   }
 
   .cta-aesthetic-btn {
+    --ab-text-padding: 1rem 1.8rem;
+    --ab-text-padding-hover: 1rem 2.05rem;
+    --ab-icon-padding: 1rem 1rem;
+    --ab-icon-padding-hover: 1rem 1.1rem;
+    --ab-font-size: 0.8rem;
+    --ab-letter-spacing: 0.15em;
     transform: scale(1);
   }
 
@@ -442,7 +454,13 @@
   }
 
   .cta-aesthetic-btn {
-    transform: scale(1.05);
+    --ab-text-padding: 1.05rem 2rem;
+    --ab-text-padding-hover: 1.05rem 2.3rem;
+    --ab-icon-padding: 1.05rem 1.05rem;
+    --ab-icon-padding-hover: 1.05rem 1.15rem;
+    --ab-font-size: 0.82rem;
+    --ab-letter-spacing: 0.155em;
+    transform: scale(1.03);
   }
 
   .cta-readmore-btn {
@@ -503,7 +521,13 @@
   }
 
   .cta-aesthetic-btn {
-    transform: scale(1.2912);
+    --ab-text-padding: 1.12rem 2.25rem;
+    --ab-text-padding-hover: 1.12rem 2.6rem;
+    --ab-icon-padding: 1.12rem 1.15rem;
+    --ab-icon-padding-hover: 1.12rem 1.25rem;
+    --ab-font-size: 0.86rem;
+    --ab-letter-spacing: 0.16em;
+    transform: scale(1.08);
   }
 
   .cta-readmore-btn {
@@ -565,7 +589,13 @@
   }
 
   .cta-aesthetic-btn {
-    transform: scale(0.736);
+    --ab-text-padding: 0.85rem 1.9rem;
+    --ab-text-padding-hover: 0.85rem 2.15rem;
+    --ab-icon-padding: 0.85rem 0.95rem;
+    --ab-icon-padding-hover: 0.85rem 1.05rem;
+    --ab-font-size: 0.78rem;
+    --ab-letter-spacing: 0.145em;
+    transform: scale(0.92);
   }
 
   .cta-readmore-btn {
@@ -620,7 +650,13 @@
   }
 
   .cta-aesthetic-btn {
-    transform: scale(0.944);
+    --ab-text-padding: 0.95rem 2.1rem;
+    --ab-text-padding-hover: 0.95rem 2.4rem;
+    --ab-icon-padding: 0.95rem 1.05rem;
+    --ab-icon-padding-hover: 0.95rem 1.15rem;
+    --ab-font-size: 0.82rem;
+    --ab-letter-spacing: 0.155em;
+    transform: scale(0.96);
   }
 
   .cta-readmore-btn {
@@ -676,6 +712,12 @@
   }
 
   .cta-aesthetic-btn {
+    --ab-text-padding: 1.02rem 2.3rem;
+    --ab-text-padding-hover: 1.02rem 2.6rem;
+    --ab-icon-padding: 1.02rem 1.1rem;
+    --ab-icon-padding-hover: 1.02rem 1.2rem;
+    --ab-font-size: 0.86rem;
+    --ab-letter-spacing: 0.165em;
     transform: scale(0.98);
   }
 
@@ -728,18 +770,31 @@
   }
 
   .cta-actions {
-    gap: 2rem;
+    gap: 1.75rem;
     margin-top: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   .cta-aesthetic-btn {
-    transform: scale(1.22);
+    --ab-text-padding: 1.15rem 2.55rem;
+    --ab-text-padding-hover: 1.15rem 2.85rem;
+    --ab-icon-padding: 1.15rem 1.2rem;
+    --ab-icon-padding-hover: 1.15rem 1.3rem;
+    --ab-font-size: 0.92rem;
+    --ab-letter-spacing: 0.18em;
+    transform: none;
   }
 
   .cta-readmore-btn {
     --rm-padding: 1.15rem 3.1rem;
     --rm-font-size: 1.05rem;
     --rm-letter-spacing: 0.28rem;
-    transform: scale(1.08);
+    transform: none;
+  }
+
+  .cta-primary-action,
+  .cta-secondary-action {
+    width: auto;
   }
 }
