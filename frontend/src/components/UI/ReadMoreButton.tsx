@@ -27,16 +27,20 @@ const ReadMoreButton: React.FC<ReadMoreButtonProps> = ({
   const isCompact = size === 'compact';
   const isCard = size === 'card';
 
+  const defaultPadding = isCard ? '16px 40px' : isCompact ? '12px 28px' : '24px 60px';
+  const defaultFontSize = isCard ? '0.95rem' : isCompact ? '0.8rem' : '1.1rem';
+  const defaultLetterSpacing = isCard ? '3px' : isCompact ? '2px' : '5px';
+
   const styles = {
     button: {
       position: 'relative' as const,
-      padding: isCard ? '16px 40px' : isCompact ? '12px 28px' : '24px 60px',
-      background: 'white',
-      color: '#40513B',
+      padding: `var(--rm-padding, ${defaultPadding})`,
+      background: 'var(--rm-bg, white)',
+      color: 'var(--rm-color, #40513B)',
       border: 'none',
       fontFamily: "'Cormorant Garamond', serif",
-      fontSize: isCard ? '0.95rem' : isCompact ? '0.8rem' : '1.1rem',
-      letterSpacing: isCard ? '3px' : isCompact ? '2px' : '5px',
+      fontSize: `var(--rm-font-size, ${defaultFontSize})`,
+      letterSpacing: `var(--rm-letter-spacing, ${defaultLetterSpacing})`,
       textTransform: 'uppercase' as const,
       cursor: disabled ? 'not-allowed' : 'pointer',
       boxShadow: isHovered
