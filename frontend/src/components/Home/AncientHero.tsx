@@ -34,7 +34,7 @@ const AncientHero: React.FC = () => {
     // Animation timing control
     // DELAY_CONTROL: Change this value to control when animations start
     // Reference point: When curtain FINISHES opening
-    const ANIMATION_DELAY = 0; // milliseconds
+    const ANIMATION_DELAY = -800; // milliseconds
     // Examples:
     //   0 = Start exactly when curtain finishes opening
     //   500 = Start 0.5 seconds AFTER curtain opens (delay)
