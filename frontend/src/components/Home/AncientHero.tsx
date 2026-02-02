@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './AncientHero.css';
 
 const AncientHero: React.FC = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [animationsStarted, setAnimationsStarted] = useState(false);
 
   useEffect(() => {
     if (particlesRef.current) {
       const particleCount = window.innerWidth < 768 ? 20 : 40;
-      
+
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -21,6 +23,25 @@ const AncientHero: React.FC = () => {
         particlesRef.current.appendChild(particle);
       }
     }
+
+    // Listen for curtain opened event to trigger animations
+    // DELAY_CONTROL: Change this value to prepone (-) or postpone (+) animations
+    const ANIMATION_DELAY = 0; // milliseconds (0 = instant, 500 = half second delay, -500 = half second early)
+
+    const handleCurtainOpened = () => {
+      if (ANIMATION_DELAY >= 0) {
+        setTimeout(() => setAnimationsStarted(true), ANIMATION_DELAY);
+      } else {
+        // Negative delay means trigger early (before curtain finishes)
+        setAnimationsStarted(true);
+      }
+    };
+
+    window.addEventListener('curtainOpened', handleCurtainOpened);
+
+    return () => {
+      window.removeEventListener('curtainOpened', handleCurtainOpened);
+    };
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -48,7 +69,11 @@ const AncientHero: React.FC = () => {
   };
 
   return (
-    <section className="sanctuary" onMouseMove={handleParallax}>
+    <section
+      ref={sectionRef}
+      className={`sanctuary ${animationsStarted ? 'hero-unveiled' : ''}`}
+      onMouseMove={handleParallax}
+    >
       {/* Background Image */}
       <div className="sanctuary__bg">
         <img

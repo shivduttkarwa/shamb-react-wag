@@ -1,10 +1,7 @@
 /* ============ PRELOADER ============ */
 .preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%);
   display: flex;
   flex-direction: column;
@@ -23,33 +20,70 @@
 /* Mandala Container */
 .mandala-container {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 500px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Subtle ambient glow */
+/* Soft spiritual glow */
 .ambient-glow {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.12) 35%, transparent 65%);
   border-radius: 50%;
-  animation: breathe 4s ease-in-out infinite;
+  animation: spiritual-breathe 6s ease-in-out infinite;
+  filter: blur(25px);
+  transform-origin: center;
 }
 
-@keyframes breathe {
+.ambient-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 60%);
+  border-radius: 50%;
+  animation: spiritual-breathe 4s ease-in-out infinite reverse;
+  filter: blur(20px);
+}
+
+@keyframes spiritual-breathe {
   0%,
   100% {
     transform: scale(1);
-    opacity: 0.5;
+    opacity: 0.7;
   }
 
   50% {
-    transform: scale(1.2);
-    opacity: 0.8;
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+/* ====== LOGO (instead of counter in center) ====== */
+.brand-logo {
+  position: relative;
+  z-index: 100;
+  margin-top: 26px;
+  width: 260px;
+  height: auto;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  animation: logo-enter 1.2s ease forwards;
+  animation-delay: 0.15s;
+  filter: brightness(0) saturate(100%) invert(75%) sepia(50%) saturate(400%) hue-rotate(5deg) brightness(1.1) drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+}
+
+@keyframes logo-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -58,34 +92,49 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: mandala-enter 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Outer ring - slowest, clockwise */
+@keyframes mandala-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+    filter: blur(6px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: blur(0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
 .layer-outer {
-  animation: rotate-cw 20s linear infinite;
+  animation: mandala-enter 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards, rotate-peaceful 35s linear infinite;
 }
 
-/* Second ring - counter-clockwise */
-.layer-second {
-  animation: rotate-ccw 15s linear infinite;
+.layer-lotus {
+  animation: mandala-enter 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards, rotate-peaceful-reverse 28s linear infinite;
 }
 
-/* Third ring - clockwise */
-.layer-third {
-  animation: rotate-cw 12s linear infinite;
-}
-
-/* Inner ring - counter-clockwise */
 .layer-inner {
-  animation: rotate-ccw 10s linear infinite;
+  animation: mandala-enter 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards, rotate-peaceful 22s linear infinite;
 }
 
-/* Center - gentle pulse */
 .layer-center {
-  animation: center-pulse 3s ease-in-out infinite;
+  animation: mandala-enter 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards, om-pulse 5s ease-in-out infinite;
 }
 
-@keyframes rotate-cw {
+@keyframes rotate-peaceful {
   from {
     transform: rotate(0deg);
   }
@@ -95,7 +144,7 @@
   }
 }
 
-@keyframes rotate-ccw {
+@keyframes rotate-peaceful-reverse {
   from {
     transform: rotate(0deg);
   }
@@ -105,7 +154,7 @@
   }
 }
 
-@keyframes center-pulse {
+@keyframes om-pulse {
   0%,
   100% {
     transform: scale(1);
@@ -113,103 +162,64 @@
   }
 
   50% {
-    transform: scale(1.05);
-    opacity: 0.9;
+    transform: scale(1.04);
+    opacity: 0.92;
   }
 }
 
-/* Brand Name */
-.brand-name {
-  margin-top: 60px;
-  text-align: center;
-}
+/* ====== COUNTER: bottom-right, BIG, better font ====== */
+.counter-container {
+  position: fixed;
+  right: 28px;
+  bottom: 26px;
+  z-index: 10001;
+  text-align: right;
 
-.brand-name h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  font-weight: 400;
-  color: #d4af37;
-  letter-spacing: 12px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
   opacity: 0;
-  animation: fadeIn 1.5s ease forwards 0.5s;
+  transform: translateY(10px);
+  animation: counter-enter 1s ease forwards;
+  animation-delay: 0.35s;
+  transition: opacity 0.8s ease;
 }
 
-.brand-name .divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #d4af37, transparent);
-  margin: 15px auto;
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards 0.7s;
-}
-
-.brand-name p {
-  font-size: 0.85rem;
-  color: rgba(212, 175, 55, 0.6);
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  font-weight: 300;
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards 0.9s;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
+@keyframes counter-enter {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Counter */
-.counter-container {
-  margin-top: 50px;
-  text-align: center;
-}
-
 .counter {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: rgba(212, 175, 55, 0.9);
-  letter-spacing: 6px;
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 1.15;
 }
 
 .counter span {
-  font-size: 2.5rem;
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 60px;
   font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(212, 175, 55, 0.98);
+  transform: translateY(2px);
 }
 
-/* Minimal Progress Line */
-.progress-line {
-  width: 120px;
-  height: 1px;
-  background: rgba(212, 175, 55, 0.2);
-  margin: 25px auto 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #d4af37;
-  transition: width 0.1s ease;
+.counter .percent {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(212, 175, 55, 0.85);
+  margin-left: 6px;
 }
 
 /* ============ CURTAIN ============ */
 .curtain {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 9999;
   pointer-events: none;
   display: flex;
@@ -240,10 +250,8 @@
   right: 0;
   width: 1px;
   height: 80%;
-  background: linear-gradient(180deg,
-      transparent 0%,
-      rgba(212, 175, 55, 0.5) 50%,
-      transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.5) 50%, transparent 100%);
+  z-index: 2;
 }
 
 .curtain-right::after {
@@ -253,25 +261,37 @@
   left: 0;
   width: 1px;
   height: 80%;
-  background: linear-gradient(180deg,
-      transparent 0%,
-      rgba(212, 175, 55, 0.5) 50%,
-      transparent 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.5) 50%, transparent 100%);
+  z-index: 2;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .mandala-container {
+    width: 320px;
+    height: 320px;
+  }
+
+  .ambient-glow {
+    width: 280px;
+    height: 280px;
+  }
+
+  .ambient-glow::after {
     width: 220px;
     height: 220px;
   }
 
-  .brand-name h1 {
-    font-size: 1.4rem;
-    letter-spacing: 8px;
+  .brand-logo {
+    width: 200px;
+  }
+
+  .counter-container {
+    right: 16px;
+    bottom: 16px;
   }
 
   .counter span {
-    font-size: 2rem;
+    font-size: 50px;
   }
 }

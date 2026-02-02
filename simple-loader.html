@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shambala Homes</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        /* ============ PRELOADER ============ */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .preloader.loaded {
+            pointer-events: none;
+        }
+
+        /* Mandala Container */
+        .mandala-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Subtle ambient glow */
+        .ambient-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        /* SVG Mandala Layers */
+        .mandala-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Outer ring - gentle rotation */
+        .layer-outer {
+            animation: rotate-gentle 25s linear infinite;
+        }
+
+        /* Middle petals - opposite rotation */
+        .layer-middle {
+            animation: rotate-gentle-ccw 20s linear infinite;
+        }
+
+        /* Center - gentle pulse */
+        .layer-center {
+            animation: center-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate-gentle {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate-gentle-ccw {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes center-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 0.85;
+            }
+        }
+
+        /* Brand Name */
+        .brand-name {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .brand-name h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #d4af37;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 0.5s;
+        }
+
+        .brand-name .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 15px auto;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 0.7s;
+        }
+
+        .brand-name p {
+            font-size: 0.85rem;
+            color: rgba(212, 175, 55, 0.6);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 0.9s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Counter */
+        .counter-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .counter {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: rgba(212, 175, 55, 0.9);
+            letter-spacing: 6px;
+        }
+
+        .counter span {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        /* Minimal Progress Line */
+        .progress-line {
+            width: 120px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+            margin: 25px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #d4af37;
+            transition: width 0.1s ease;
+        }
+
+        /* ============ CURTAIN ============ */
+        .curtain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            display: flex;
+        }
+
+        .curtain-left,
+        .curtain-right {
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(180deg, #0d0d0d 0%, #1a1a2e 100%);
+            position: relative;
+            transition: transform 1.8s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .curtain.open .curtain-left {
+            transform: translateX(-100%);
+        }
+
+        .curtain.open .curtain-right {
+            transform: translateX(100%);
+        }
+
+        /* Elegant gold line on curtain edge */
+        .curtain-left::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 0;
+            width: 1px;
+            height: 80%;
+            background: linear-gradient(180deg,
+                    transparent 0%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    transparent 100%);
+        }
+
+        .curtain-right::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 0;
+            width: 1px;
+            height: 80%;
+            background: linear-gradient(180deg,
+                    transparent 0%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    transparent 100%);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s ease 0.3s;
+        }
+
+        .hero.revealed .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #d4af37;
+            letter-spacing: 15px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero .hero-divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 25px auto;
+        }
+
+        .hero h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+        }
+
+        .hero-btn {
+            padding: 18px 60px;
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+
+        .hero-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mandala-container {
+                width: 220px;
+                height: 220px;
+            }
+
+            .brand-name h1 {
+                font-size: 1.4rem;
+                letter-spacing: 8px;
+            }
+
+            .counter span {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 8px;
+            }
+
+            .hero h2 {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="mandala-container">
+
+            <!-- Ambient Glow -->
+            <div class="ambient-glow"></div>
+
+            <!-- SIMPLIFIED SPIRITUAL MANDALA -->
+
+            <!-- LAYER 1: Outer Circle - Gentle dotted circle -->
+            <svg class="mandala-svg layer-outer" viewBox="0 0 200 200">
+                <!-- Outer gentle circle -->
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.3"
+                    stroke-dasharray="1 4" />
+
+                <!-- 8 Lotus petals - simple and elegant -->
+                <g fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4">
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(45 100 100)" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(90 100 100)" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(135 100 100)" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(180 100 100)" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(225 100 100)" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(270 100 100)" />
+                    <path d="M100,15 Q115,45 100,75 Q85,45 100,15" transform="rotate(315 100 100)" />
+                </g>
+            </svg>
+
+            <!-- LAYER 2: Middle Ring - Simple circle with soft petals -->
+            <svg class="mandala-svg layer-middle" viewBox="0 0 200 200">
+                <!-- Middle circle -->
+                <circle cx="100" cy="100" r="55" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.5" />
+
+                <!-- 6 Inner petals -->
+                <g fill="none" stroke="#d4af37" stroke-width="0.75" opacity="0.5">
+                    <ellipse cx="100" cy="50" rx="8" ry="18" />
+                    <ellipse cx="100" cy="50" rx="8" ry="18" transform="rotate(60 100 100)" />
+                    <ellipse cx="100" cy="50" rx="8" ry="18" transform="rotate(120 100 100)" />
+                    <ellipse cx="100" cy="50" rx="8" ry="18" transform="rotate(180 100 100)" />
+                    <ellipse cx="100" cy="50" rx="8" ry="18" transform="rotate(240 100 100)" />
+                    <ellipse cx="100" cy="50" rx="8" ry="18" transform="rotate(300 100 100)" />
+                </g>
+            </svg>
+
+            <!-- LAYER 3: Center - Simple lotus flower -->
+            <svg class="mandala-svg layer-center" viewBox="0 0 200 200">
+                <!-- Center gentle circle -->
+                <circle cx="100" cy="100" r="25" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.6" />
+
+                <!-- Center lotus petals - 4 petals -->
+                <g fill="none" stroke="#d4af37" stroke-width="1" opacity="0.7">
+                    <ellipse cx="100" cy="80" rx="6" ry="12" />
+                    <ellipse cx="100" cy="80" rx="6" ry="12" transform="rotate(90 100 100)" />
+                    <ellipse cx="100" cy="80" rx="6" ry="12" transform="rotate(180 100 100)" />
+                    <ellipse cx="100" cy="80" rx="6" ry="12" transform="rotate(270 100 100)" />
+                </g>
+
+                <!-- Center dot - Om/spiritual center -->
+                <g>
+                    <circle cx="100" cy="100" r="8" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.8" />
+                    <circle cx="100" cy="100" r="4" fill="#d4af37" opacity="0.9" />
+                    <circle cx="100" cy="100" r="2" fill="#0d0d0d" />
+                </g>
+            </svg>
+
+        </div>
+
+        <!-- Brand Name -->
+        <div class="brand-name">
+            <h1>Shambala</h1>
+            <div class="divider"></div>
+            <p>Homes</p>
+        </div>
+
+        <!-- Counter -->
+        <div class="counter-container">
+            <div class="counter"><span id="counter">0</span>%</div>
+            <div class="progress-line">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Curtain -->
+    <div class="curtain" id="curtain">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Shambala Homes</h1>
+            <div class="hero-divider"></div>
+            <h2>Where Serenity Meets Luxury Living</h2>
+            <button class="hero-btn">Discover Your Sanctuary</button>
+        </div>
+    </section>
+
+    <script>
+        const counterElement = document.getElementById('counter');
+        const progressFill = document.getElementById('progressFill');
+        const preloader = document.getElementById('preloader');
+        const curtain = document.getElementById('curtain');
+        const hero = document.getElementById('hero');
+
+        let count = 0;
+        const duration = 4500;
+        const interval = duration / 100;
+
+        function updateCounter() {
+            if (count <= 100) {
+                counterElement.textContent = count;
+                progressFill.style.width = count + '%';
+                count++;
+                setTimeout(updateCounter, interval);
+            } else {
+                setTimeout(revealHero, 500);
+            }
+        }
+
+        function revealHero() {
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 1s ease';
+            preloader.classList.add('loaded');
+
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                curtain.classList.add('open');
+
+                setTimeout(() => {
+                    hero.classList.add('revealed');
+                }, 600);
+
+                setTimeout(() => {
+                    curtain.style.display = 'none';
+                }, 2500);
+            }, 1000);
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(updateCounter, 800);
+        });
+
+        // Skip on click
+        preloader.addEventListener('click', () => {
+            count = 100;
+            counterElement.textContent = 100;
+            progressFill.style.width = '100%';
+            setTimeout(revealHero, 100);
+        });
+    </script>
+
+</body>
+
+</html>

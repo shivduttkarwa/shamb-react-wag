@@ -40,7 +40,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     
@@ -52,6 +52,20 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Prevent flash of content before preloader -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%);
+      }
+
+      body.content-loaded {
+        overflow: auto;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
