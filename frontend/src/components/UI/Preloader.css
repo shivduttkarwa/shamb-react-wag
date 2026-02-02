@@ -1,289 +1,277 @@
-/* Preloader Styles */
+/* ============ PRELOADER ============ */
 .preloader {
   position: fixed;
-  inset: 0;
-  background: #f8f8f8;
-  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 50%, #16213e 100%);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  align-items: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 1s ease;
 }
 
-.preloader--hidden {
+.preloader.loaded {
+  pointer-events: none;
   opacity: 0;
-  visibility: hidden;
 }
 
-.preloader__content {
+/* Mandala Container */
+.mandala-container {
   position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle ambient glow */
+.ambient-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* SVG Mandala Layers */
+.mandala-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Outer ring - slowest, clockwise */
+.layer-outer {
+  animation: rotate-cw 20s linear infinite;
+}
+
+/* Second ring - counter-clockwise */
+.layer-second {
+  animation: rotate-ccw 15s linear infinite;
+}
+
+/* Third ring - clockwise */
+.layer-third {
+  animation: rotate-cw 12s linear infinite;
+}
+
+/* Inner ring - counter-clockwise */
+.layer-inner {
+  animation: rotate-ccw 10s linear infinite;
+}
+
+/* Center - gentle pulse */
+.layer-center {
+  animation: center-pulse 3s ease-in-out infinite;
+}
+
+@keyframes rotate-cw {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes center-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Brand Name */
+.brand-name {
+  margin-top: 60px;
   text-align: center;
 }
 
-/* Animated Border Frame */
-.loader-frame {
-  position: relative;
-  width: 160px;
-  height: 80px;
-  margin: 0 auto;
-}
-
-.loader-corners {
-  position: absolute;
-  inset: 0;
-}
-
-.corner {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-}
-
-.corner-line {
-  position: absolute;
-  background: #1a1810;
-}
-
-/* Top Left Corner */
-.corner--top-left {
-  top: 0;
-  left: 0;
-}
-
-.corner--top-left .corner-line--vertical {
-  width: 1px;
-  height: 0;
-  left: 0;
-  top: 0;
-  animation: expandVertical 0.6s ease forwards;
-}
-
-.corner--top-left .corner-line--horizontal {
-  height: 1px;
-  width: 0;
-  top: 0;
-  left: 0;
-  animation: expandHorizontal 0.6s ease 0.15s forwards;
-}
-
-/* Top Right Corner */
-.corner--top-right {
-  top: 0;
-  right: 0;
-}
-
-.corner--top-right .corner-line--horizontal {
-  height: 1px;
-  width: 0;
-  top: 0;
-  right: 0;
-  animation: expandHorizontalReverse 0.6s ease 0.3s forwards;
-}
-
-.corner--top-right .corner-line--vertical {
-  width: 1px;
-  height: 0;
-  right: 0;
-  top: 0;
-  animation: expandVertical 0.6s ease 0.45s forwards;
-}
-
-/* Bottom Right Corner */
-.corner--bottom-right {
-  bottom: 0;
-  right: 0;
-}
-
-.corner--bottom-right .corner-line--vertical {
-  width: 1px;
-  height: 0;
-  right: 0;
-  bottom: 0;
-  animation: expandVerticalReverse 0.6s ease 0.6s forwards;
-}
-
-.corner--bottom-right .corner-line--horizontal {
-  height: 1px;
-  width: 0;
-  bottom: 0;
-  right: 0;
-  animation: expandHorizontalReverse 0.6s ease 0.75s forwards;
-}
-
-/* Bottom Left Corner */
-.corner--bottom-left {
-  bottom: 0;
-  left: 0;
-}
-
-.corner--bottom-left .corner-line--horizontal {
-  height: 1px;
-  width: 0;
-  bottom: 0;
-  left: 0;
-  animation: expandHorizontal 0.6s ease 0.9s forwards;
-}
-
-.corner--bottom-left .corner-line--vertical {
-  width: 1px;
-  height: 0;
-  left: 0;
-  bottom: 0;
-  animation: expandVerticalReverse 0.6s ease 1.05s forwards;
-}
-
-/* Top and Bottom Frame Lines */
-.frame-line {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  height: 1px;
+.brand-name h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #d4af37;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
   opacity: 0;
-  animation: fadeInLine 0.3s ease 1.2s forwards;
+  animation: fadeIn 1.5s ease forwards 0.5s;
 }
 
-.frame-line--top {
-  top: 0;
-  background: repeating-linear-gradient(
-    to right,
-    #1a1810 0px,
-    #1a1810 8px,
-    transparent 8px,
-    transparent 12px
-  );
+.brand-name .divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 15px auto;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards 0.7s;
 }
 
-.frame-line--bottom {
-  bottom: 0;
-  background: repeating-linear-gradient(
-    to right,
-    #1a1810 0px,
-    #1a1810 8px,
-    transparent 8px,
-    transparent 12px
-  );
-}
-
-/* Percentage Counter */
-.percentage {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22px;
-  letter-spacing: 3px;
+.brand-name p {
+  font-size: 0.85rem;
+  color: rgba(212, 175, 55, 0.6);
+  letter-spacing: 6px;
+  text-transform: uppercase;
   font-weight: 300;
-  color: #1a1810;
   opacity: 0;
-  animation: fadeIn 0.3s ease 1.5s forwards;
-  font-family: "Dream Avenue", cursive;
-}
-
-/* Animations */
-@keyframes expandVertical {
-  to { height: 18px; }
-}
-
-@keyframes expandVerticalReverse {
-  from { height: 0; }
-  to { height: 18px; }
-}
-
-@keyframes expandHorizontal {
-  to { width: 18px; }
-}
-
-@keyframes expandHorizontalReverse {
-  from { width: 0; }
-  to { width: 18px; }
-}
-
-@keyframes fadeInLine {
-  to { opacity: 1; }
+  animation: fadeIn 1.5s ease forwards 0.9s;
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Mobile Responsive */
+/* Counter */
+.counter-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.counter {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(212, 175, 55, 0.9);
+  letter-spacing: 6px;
+}
+
+.counter span {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+/* Minimal Progress Line */
+.progress-line {
+  width: 120px;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.2);
+  margin: 25px auto 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #d4af37;
+  transition: width 0.1s ease;
+}
+
+/* ============ CURTAIN ============ */
+.curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+}
+
+.curtain-left,
+.curtain-right {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a2e 100%);
+  position: relative;
+  transition: transform 1.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.curtain.open .curtain-left {
+  transform: translateX(-100%);
+}
+
+.curtain.open .curtain-right {
+  transform: translateX(100%);
+}
+
+/* Elegant gold line on curtain edge */
+.curtain-left::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 1px;
+  height: 80%;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.5) 50%,
+      transparent 100%);
+}
+
+.curtain-right::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 1px;
+  height: 80%;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.5) 50%,
+      transparent 100%);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .loader-frame {
-    width: 140px;
-    height: 70px;
+  .mandala-container {
+    width: 220px;
+    height: 220px;
   }
 
-  .corner {
-    width: 16px;
-    height: 16px;
+  .brand-name h1 {
+    font-size: 1.4rem;
+    letter-spacing: 8px;
   }
 
-  .corner--top-left .corner-line--vertical,
-  .corner--top-right .corner-line--vertical,
-  .corner--bottom-right .corner-line--vertical,
-  .corner--bottom-left .corner-line--vertical {
-    animation-name: expandVerticalMobile;
-  }
-
-  .corner--bottom-right .corner-line--vertical,
-  .corner--bottom-left .corner-line--vertical {
-    animation-name: expandVerticalReverseMobile;
-  }
-
-  .corner--top-left .corner-line--horizontal,
-  .corner--top-right .corner-line--horizontal,
-  .corner--bottom-right .corner-line--horizontal,
-  .corner--bottom-left .corner-line--horizontal {
-    animation-name: expandHorizontalMobile;
-  }
-
-  .corner--top-right .corner-line--horizontal,
-  .corner--bottom-right .corner-line--horizontal {
-    animation-name: expandHorizontalReverseMobile;
-  }
-
-  .frame-line {
-    left: 16px;
-    right: 16px;
-  }
-
-  .percentage {
-    font-size: 18px;
-    letter-spacing: 2px;
-  }
-
-  @keyframes expandVerticalMobile {
-    to { height: 16px; }
-  }
-
-  @keyframes expandVerticalReverseMobile {
-    from { height: 0; }
-    to { height: 16px; }
-  }
-
-  @keyframes expandHorizontalMobile {
-    to { width: 16px; }
-  }
-
-  @keyframes expandHorizontalReverseMobile {
-    from { width: 0; }
-    to { width: 16px; }
-  }
-}
-
-@media (max-width: 480px) {
-  .loader-frame {
-    width: 120px;
-    height: 60px;
-  }
-
-  .corner {
-    width: 14px;
-    height: 14px;
-  }
-
-  .percentage {
-    font-size: 16px;
-    letter-spacing: 1px;
+  .counter span {
+    font-size: 2rem;
   }
 }

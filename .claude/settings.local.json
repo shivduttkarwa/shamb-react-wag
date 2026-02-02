@@ -8,7 +8,8 @@
       "Bash(grep:*)",
       "Bash(npx gh-pages:*)",
       "Bash(npm install:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(dir:*)"
     ],
     "deny": []
   }

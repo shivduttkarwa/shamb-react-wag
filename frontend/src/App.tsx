@@ -15,12 +15,14 @@ import BlogListPage from "./pages/BlogListPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
 import { useSiteSettings } from "./hooks/useSiteSettings";
 import ScrollToTop from "./components/UI/ScrollToTop";
+import Preloader from "./components/UI/Preloader";
 
 function App() {
   const { settings } = useSiteSettings();
 
   return (
     <>
+      <Preloader />
       <Router basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <div className="App">
