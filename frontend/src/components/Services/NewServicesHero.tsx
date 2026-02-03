@@ -17,11 +17,9 @@ interface FloatingCard {
 }
 
 const NewServicesHero: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const heroAnimDelay = 1.6; // seconds, tweak this knob as needed
   const rootRef = useRef<HTMLElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const titleLineRefs = useRef<HTMLSpanElement[]>([]);
@@ -74,31 +72,6 @@ const NewServicesHero: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Custom cursor animation
-  useEffect(() => {
-    let animationFrameId: number;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const animateCursor = () => {
-      setCursorPosition((prev) => ({
-        x: prev.x + (mousePosition.x - prev.x) * 0.1,
-        y: prev.y + (mousePosition.y - prev.y) * 0.1,
-      }));
-      animationFrameId = requestAnimationFrame(animateCursor);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    animationFrameId = requestAnimationFrame(animateCursor);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [mousePosition]);
-
   // Parallax scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -112,9 +85,6 @@ const NewServicesHero: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleHoverEnter = () => setIsHovering(true);
-  const handleHoverLeave = () => setIsHovering(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -132,7 +102,8 @@ const NewServicesHero: React.FC = () => {
       if (description) gsap.set(description, { y: 30, opacity: 0 });
       if (cta) gsap.set(cta, { y: 30, opacity: 0 });
       if (pills) gsap.set(pills, { y: 30, opacity: 0 });
-      if (imageReveal) gsap.set(imageReveal, { scaleY: 1, transformOrigin: "top" });
+      if (imageReveal)
+        gsap.set(imageReveal, { scaleY: 1, transformOrigin: "top" });
       if (heroImage) gsap.set(heroImage, { scale: 1.15 });
       if (deco) gsap.set(deco, { opacity: 0 });
       if (verticalText) gsap.set(verticalText, { opacity: 0 });
@@ -147,31 +118,15 @@ const NewServicesHero: React.FC = () => {
         duration: 0.8,
         stagger: 0.15,
       })
-        .to(
-          description,
-          { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.4"
-        )
-        .to(
-          cta,
-          { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.5"
-        )
-        .to(
-          pills,
-          { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.45"
-        )
+        .to(description, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
+        .to(cta, { y: 0, opacity: 1, duration: 0.6 }, "-=0.5")
+        .to(pills, { y: 0, opacity: 1, duration: 0.6 }, "-=0.45")
         .to(
           imageReveal,
           { scaleY: 0, duration: 1.1, ease: "power2.inOut" },
-          0.2
+          0.2,
         )
-        .to(
-          heroImage,
-          { scale: 1, duration: 1.2, ease: "power2.out" },
-          0.25
-        )
+        .to(heroImage, { scale: 1, duration: 1.2, ease: "power2.out" }, 0.25)
         .to(deco, { opacity: 1, duration: 0.6 }, 0.9)
         .to(verticalText, { opacity: 1, duration: 0.6 }, 1.1);
 
@@ -187,7 +142,10 @@ const NewServicesHero: React.FC = () => {
       const changingWord = changingWordRef.current;
       if (changingWord) {
         const words = ["Living", "Gathering", "Retreat"];
-        const wordTl = gsap.timeline({ repeat: -1, defaults: { ease: "power3.out" } });
+        const wordTl = gsap.timeline({
+          repeat: -1,
+          defaults: { ease: "power3.out" },
+        });
 
         const buildSpans = (text: string) => {
           changingWord.innerHTML = "";
@@ -225,7 +183,7 @@ const NewServicesHero: React.FC = () => {
               stagger: { each: 0.05, from: "end" },
               ease: "power3.inOut",
             },
-            "+=2.0"
+            "+=2.0",
           );
         });
       }
@@ -235,12 +193,12 @@ const NewServicesHero: React.FC = () => {
           (entries, obs) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                tl.play();
+                gsap.delayedCall(heroAnimDelay, () => tl.play());
                 obs.disconnect();
               }
             });
           },
-          { threshold: 0.2 }
+          { threshold: 0.35 },
         );
         observer.observe(rootEl);
       } else {
@@ -252,7 +210,10 @@ const NewServicesHero: React.FC = () => {
   }, []);
 
   return (
-    <section className={`nsh-hero ${isLoaded ? "nsh-loaded" : ""}`} ref={rootRef}>
+    <section
+      className={`nsh-hero ${isLoaded ? "nsh-loaded" : ""}`}
+      ref={rootRef}
+    >
       {/* Background Pattern */}
       <div className="nsh-bg-pattern" />
 
@@ -292,12 +253,7 @@ const NewServicesHero: React.FC = () => {
 
         <div className="nsh-pills" ref={pillsRef}>
           {servicePills.map((pill) => (
-            <div
-              key={pill.id}
-              className="nsh-pill"
-              onMouseEnter={handleHoverEnter}
-              onMouseLeave={handleHoverLeave}
-            >
+            <div key={pill.id} className="nsh-pill">
               <span>{pill.name}</span>
             </div>
           ))}
@@ -337,8 +293,6 @@ const NewServicesHero: React.FC = () => {
             <div
               key={card.id}
               className={`nsh-floating-card nsh-card-${card.position}`}
-              onMouseEnter={handleHoverEnter}
-              onMouseLeave={handleHoverLeave}
             >
               <div className="nsh-card-label">{card.label}</div>
               <div className="nsh-card-value">
@@ -347,7 +301,6 @@ const NewServicesHero: React.FC = () => {
             </div>
           ))}
         </div>
-
       </div>
 
       {/* Marquee */}
