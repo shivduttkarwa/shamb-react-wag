@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./AboutCompanyShowcase.css";
 import ReadMoreButton from "../UI/ReadMoreButton";
+import TiltTextGsap from "../UI/TiltTextGsap";
 
 const publicUrl = import.meta.env.BASE_URL || "/";
 
@@ -18,6 +19,7 @@ type ShowcasePanel = {
   title: string;
   bg: string;
   cards: ShowcaseCard[];
+  sideColor: string;
   sideTitle: string;
   sideDescription: string;
   bullets: string[];
@@ -27,6 +29,7 @@ type ShowcasePanel = {
 const panels: ShowcasePanel[] = [
   {
     title: "The Studio",
+    sideColor: "#ffd6d9",
     bg: getImagePath("l1.jpg"),
     cards: [
       {
@@ -47,6 +50,7 @@ const panels: ShowcasePanel[] = [
   },
   {
     title: "Our Method",
+    sideColor: "#cfe8ff",
     bg: getImagePath("l4.jpg"),
     cards: [
       {
@@ -67,6 +71,7 @@ const panels: ShowcasePanel[] = [
   },
   {
     title: "Design Ethos",
+    sideColor: "#e9ddff",
     bg: getImagePath("l2.jpg"),
     cards: [
       {
@@ -87,6 +92,7 @@ const panels: ShowcasePanel[] = [
   },
   {
     title: "Build Support",
+    sideColor: "#dff4e1",
     bg: getImagePath("l3.jpg"),
     cards: [
       {
@@ -107,6 +113,7 @@ const panels: ShowcasePanel[] = [
   },
   {
     title: "Aftercare",
+    sideColor: "#d6d0c5",
     bg: getImagePath("l5.jpg"),
     cards: [
       {
@@ -189,7 +196,17 @@ const AboutCompanyShowcase: React.FC = () => {
   return (
     <section className="company-showcase" ref={sectionRef}>
       <div className="company-showcase-heading">
-        <h3>Company</h3>
+        <TiltTextGsap tag="h3" startTrigger="top 70%" endTrigger="bottom -10%">
+          The Shambala Approach
+        </TiltTextGsap>
+        <p
+          data-gsap="fade-up"
+          data-gsap-delay="0.1"
+          className="company-showcase-subtitle"
+        >
+          A clear, design-led way of working—crafted for new builds, thoughtful
+          renovations, and enduring interiors.
+        </p>
       </div>
 
       <div className="company-panels">
@@ -215,7 +232,10 @@ const AboutCompanyShowcase: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="company-panel-side">
+                <div
+                  className="company-panel-side"
+                  style={{ backgroundColor: panel.sideColor }}
+                >
                   <span className="company-panel-kicker">{panel.title}</span>
                   <h2>{panel.sideTitle}</h2>
                   <p>{panel.sideDescription}</p>
