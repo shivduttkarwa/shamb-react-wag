@@ -486,11 +486,13 @@
   .nsh-card-left {
     left: 15px;
     bottom: 15px;
+    padding: 16px 20px;
   }
 
   .nsh-card-right {
     top: 15px;
     right: 15px;
+    padding: 16px 20px;
   }
 
   .nsh-card-label {
@@ -629,7 +631,7 @@
   .nsh-card-right {
     top: -20px;
     right: 20px;
-    padding: 18px 22px;
+    padding: 20px 24px;
   }
 
   .nsh-card-value {
@@ -650,8 +652,8 @@
   }
 
   .nsh-content {
-    padding: 70px 5% calc(110px - 1rem) 6%;
-    padding-top: calc(70px + 2rem);
+    padding: 60px 5% 70px 6%;
+    padding-top: calc(60px + 2rem);
     order: initial;
   }
 
@@ -662,14 +664,14 @@
   .nsh-description {
     font-size: 0.85rem;
     line-height: 1.9;
-    margin-bottom: 2.76rem;
+    margin-bottom: 2.2rem;
     max-width: 500px;
   }
 
-  /* CTA Button - reduced by 15% */
+  /* CTA Button - reduced by 23.5% (15% + 10% additional) */
   .nsh-cta-group a,
   .nsh-cta-group button {
-    transform: scale(0.85);
+    transform: scale(0.765);
   }
 
   .nsh-cta-group {
@@ -678,7 +680,7 @@
   }
 
   .nsh-pills {
-    margin-top: 2.98rem;
+    margin-top: 2.4rem;
   }
 
   .nsh-pill {
@@ -690,8 +692,8 @@
     height: auto;
     min-height: 100vh;
     order: initial;
-    padding: 60px 40px 110px;
-    padding-top: calc(60px + 2rem);
+    padding: 50px 40px 70px;
+    padding-top: calc(50px + 2rem);
   }
 
   .nsh-image-container {
@@ -909,7 +911,7 @@
   }
 
   .nsh-marquee-item {
-    font-size: 0.7225rem;
+    font-size: 0.795rem;
   }
 
   /* Show vertical text */
