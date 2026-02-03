@@ -257,30 +257,20 @@
 .hero-text-wrapper {
   max-width: 900px;
   text-align: center;
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Main Title */
 .hero-main-title {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 300;
+  font-size: clamp(2.125rem, 5.1vw, 4.25rem);
+  font-weight: 400;
   line-height: 1.2;
   color: #ffffff;
   text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6);
-  font-family: "nunito", sans-serif;
+  font-family: "Dream Avenue", serif;
   margin: 0 0 1.5rem 0;
-  animation: fadeInUp 1s ease-out 0.3s both;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  overflow: hidden;
 }
 
 .hero-highlight {
@@ -290,6 +280,7 @@
   background-clip: text;
   font-weight: 400;
   display: inline-block;
+  text-transform: none;
 }
 
 /* Description */
@@ -303,7 +294,6 @@
   margin: 0 auto 2rem auto;
   max-width: 700px;
   opacity: 0.95;
-  animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 /* Core Values Section */
@@ -312,7 +302,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem 2rem;
   margin-bottom: 2rem;
-  animation: fadeInUp 1s ease-out 0.5s both;
   width: 100%;
   max-width: 1000px;
 }
@@ -378,7 +367,6 @@
   z-index: 20;
   opacity: 1;
   visibility: visible;
-  animation: fadeInUp 1s ease-out 0.6s both;
   margin-top: 0;
 }
 
@@ -514,7 +502,7 @@
   }
 
   .hero-main-title {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-size: clamp(1.7rem, 6.8vw, 2.125rem);
     line-height: 1.15;
     margin-bottom: 1rem;
   }
@@ -580,9 +568,9 @@
     max-width: 1080px; /* 900px * 1.2 */
   }
 
-  /* Main Title - 20% larger */
+  /* Main Title - 20% larger from reduced base */
   .hero-main-title {
-    font-size: clamp(3rem, 7.2vw, 6rem); /* Original: 2.5rem, 6vw, 5rem */
+    font-size: clamp(2.55rem, 6.12vw, 5.1rem); /* 2.125rem * 1.2, 5.1vw * 1.2, 4.25rem * 1.2 */
     margin-bottom: 1.8rem; /* 1.5rem * 1.2 */
   }
 
