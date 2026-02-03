@@ -46,6 +46,7 @@ const ChangingText: React.FC<ChangingTextProps> = ({
     if (!container) return;
 
     let mounted = true;
+    let currentSpans: HTMLElement[] = [];
 
     function showLine(index: number) {
       if (!mounted) return;
@@ -62,6 +63,7 @@ const ChangingText: React.FC<ChangingTextProps> = ({
         container.appendChild(span);
         spans.push(span);
       });
+      currentSpans = spans;
 
       // Animate in
       gsap.fromTo(
@@ -108,7 +110,9 @@ const ChangingText: React.FC<ChangingTextProps> = ({
       if (timeoutRef.current !== null) {
         clearTimeout(timeoutRef.current);
       }
-      gsap.killTweensOf("*");
+      if (currentSpans.length) {
+        gsap.killTweensOf(currentSpans);
+      }
     };
   }, [texts, startDelay]);
 

@@ -14,7 +14,7 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  font-family: "Outfit", "Segoe UI", sans-serif;
+  font-family: "Nunito", sans-serif;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -60,7 +60,7 @@
 
 /* Title */
 .nsh-title {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Dream Avenue", cursive;
   font-size: clamp(1.5rem, 8vw, 1.7rem);
   font-weight: 400;
   line-height: 1.1;
@@ -76,24 +76,29 @@
 
 .nsh-title-line span {
   display: inline-block;
-  transform: translateY(120%);
-  animation: nsh-titleReveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  transform: none;
 }
 
 .nsh-title-line:nth-child(1) span {
-  animation-delay: 0.3s;
 }
 .nsh-title-line:nth-child(2) span {
-  animation-delay: 0.45s;
 }
 .nsh-title-line:nth-child(3) span {
-  animation-delay: 0.6s;
 }
 
 .nsh-title em {
   font-style: italic;
   color: var(--color-green);
   position: relative;
+}
+
+.nsh-changing-word {
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.7));
+}
+
+.nsh-changing-word span {
+  display: inline-block;
+  color: #b8892e;
 }
 
 .nsh-title em::after {
@@ -105,9 +110,7 @@
   height: 8px;
   background: rgba(71, 97, 77, 0.15);
   z-index: -1;
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: nsh-highlightExpand 0.6s ease forwards 1.2s;
+  transform: scaleX(1);
 }
 
 /* Description */
@@ -118,9 +121,8 @@
   max-width: 100%;
   margin-bottom: 1.75rem;
   font-weight: 300;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: nsh-fadeUp 0.8s ease forwards 1s;
+  opacity: 1;
+  transform: none;
 }
 
 /* CTA Group */
@@ -129,9 +131,8 @@
   align-items: center;
   gap: 1.25rem;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: nsh-fadeUp 0.8s ease forwards 1.2s;
+  opacity: 1;
+  transform: none;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -155,9 +156,8 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: nsh-fadeUp 0.8s ease forwards 1.4s;
+  opacity: 1;
+  transform: none;
   flex-direction: column;
 }
 
@@ -279,8 +279,6 @@
   position: absolute;
   inset: 0;
   background: #1a1a1a;
-  transform-origin: top;
-  animation: nsh-imageReveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.3s;
   z-index: 5;
 }
 
@@ -289,7 +287,6 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.15);
-  animation: nsh-imageZoom 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.4s;
 }
 
 /* Floating Cards - hidden on small mobile */
@@ -333,7 +330,6 @@
 .nsh-marquee {
   display: flex;
   width: fit-content;
-  animation: nsh-marquee 30s linear infinite;
 }
 
 .nsh-marquee-content {
@@ -715,8 +711,7 @@
     right: -15px;
     bottom: -15px;
     border: 1px solid rgba(230, 126, 34, 0.5);
-    opacity: 0;
-    animation: nsh-frameReveal 1s ease forwards 1s;
+    opacity: 1;
     pointer-events: none;
   }
 
@@ -1052,8 +1047,7 @@
     text-transform: uppercase;
     color: #888888;
     white-space: nowrap;
-    opacity: 0;
-    animation: nsh-fadeIn 0.6s ease forwards 1.8s;
+    opacity: 1;
   }
 }
 
