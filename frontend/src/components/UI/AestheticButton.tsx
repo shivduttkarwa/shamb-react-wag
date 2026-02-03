@@ -38,6 +38,7 @@ const AestheticButton: React.FC<AestheticButtonProps> = ({
       lineHeight: 1,
       transition: 'box-shadow 0.4s ease',
       opacity: disabled ? 0.6 : 1,
+      textDecoration: 'none',
     } as React.CSSProperties,
 
     text: {
