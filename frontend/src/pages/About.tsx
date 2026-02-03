@@ -1,12 +1,18 @@
 import React from "react";
-import AboutDetails from "../components/About/AboutDetails";
-import NewHeroSection from "../components/Home/NewHeroSection";
+
+import AboutCompanyShowcase from "../components/About/AboutCompanyShowcase";
+import NewHeroSection from "@/components/Home/NewHeroSection";
 
 const About: React.FC = () => {
   return (
     <>
-      <NewHeroSection />
-      <AboutDetails />
+      <div id="about-hero" className="about-section about-section--hero">
+        <NewHeroSection />
+      </div>
+
+      <section className="about-section about-section--company-showcase">
+        <AboutCompanyShowcase />
+      </section>
     </>
   );
 };
