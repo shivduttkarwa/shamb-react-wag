@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import "./AboutCompanyShowcase.css";
 import ReadMoreButton from "../UI/ReadMoreButton";
 import TiltTextGsap from "../UI/TiltTextGsap";
+import { initGsapSwitchAnimations } from "../../lib/gsapSwitchAnimations";
 
 const publicUrl = import.meta.env.BASE_URL || "/";
 
@@ -136,6 +138,7 @@ const panels: ShowcasePanel[] = [
 
 const AboutCompanyShowcase: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const featureSection = sectionRef.current;
@@ -193,15 +196,24 @@ const AboutCompanyShowcase: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const runInit = () => initGsapSwitchAnimations(sectionRef.current || undefined);
+    const timer = setTimeout(runInit, 150);
+    runInit();
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
     <section className="company-showcase" ref={sectionRef}>
       <div className="company-showcase-heading">
-        <TiltTextGsap tag="h3" startTrigger="top 70%" endTrigger="bottom -10%">
+        <TiltTextGsap tag="h3" startTrigger="top 95%" endTrigger="top 70%">
           The Shambala Approach
         </TiltTextGsap>
         <p
           data-gsap="fade-up"
-          data-gsap-delay="0.1"
+          data-gsap-delay="0.05"
+          data-gsap-start="top 95%"
+          data-gsap-duration="0.8"
           className="company-showcase-subtitle"
         >
           A clear, design-led way of working—crafted for new builds, thoughtful
