@@ -135,7 +135,7 @@ const NewServicesHero: React.FC = () => {
           vision to life.
         </p>
 
-        <div className="nsh-cta-group">
+        <div className="nsh-cta-group nsh-cta-desktop">
           <AestheticButton
             text="Discover Our Services"
             href="#services"
@@ -155,6 +155,15 @@ const NewServicesHero: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Mobile CTA */}
+      <div className="nsh-cta-group nsh-cta-mobile">
+        <AestheticButton
+          text="Discover Our Services"
+          href="#services"
+          className="nsh-custom-btn"
+        />
       </div>
 
       {/* Right Visual */}
