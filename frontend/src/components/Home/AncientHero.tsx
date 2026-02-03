@@ -11,7 +11,10 @@ const AncientHero: React.FC = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
   const scrollBtnRef = useRef<HTMLDivElement>(null);
-  const [animationsStarted, setAnimationsStarted] = useState(false);
+
+  // Check if this is the first load (animations should run)
+  const isFirstLoad = useRef(!sessionStorage.getItem('heroAnimationPlayed'));
+  const [animationsStarted, setAnimationsStarted] = useState(!isFirstLoad.current);
 
   useEffect(() => {
     if (particlesRef.current) {
@@ -29,6 +32,12 @@ const AncientHero: React.FC = () => {
         particle.style.animationDuration = `${Math.random() * 15 + 25}s`;
         particlesRef.current.appendChild(particle);
       }
+    }
+
+    // Only run animations on first load
+    if (!isFirstLoad.current) {
+      // Not first load - content is already visible
+      return;
     }
 
     // Animation timing control
@@ -51,10 +60,12 @@ const AncientHero: React.FC = () => {
       if (triggerTime > 0) {
         setTimeout(() => {
           setAnimationsStarted(true);
+          sessionStorage.setItem('heroAnimationPlayed', 'true');
         }, triggerTime);
       } else {
         // If triggerTime is negative or zero, start immediately
         setAnimationsStarted(true);
+        sessionStorage.setItem('heroAnimationPlayed', 'true');
       }
     };
 
