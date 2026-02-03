@@ -276,31 +276,422 @@ body.about-showcase-active {
   height: 200vh !important;
 }
 
-/* Tablet and mobile - exactly like PortfolioShowcase at 940px / 58.75rem */
-@media (max-width: 940px) {
+/* ============================================
+   Mobile Base (< 480px)
+   ============================================ */
+@media (max-width: 479px) {
   .company-panel-content {
     top: 0;
+    position: absolute;
   }
 
   .company-panel-sticky {
-    padding: clamp(1.5rem, 3.5vw, 4rem);
+    padding: 1.5rem;
     flex-direction: column;
     align-items: start;
-    padding-top: 7rem;
-    padding-bottom: 3.5rem;
-    position: static; /* Remove sticky on mobile */
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    position: static;
+    gap: 1.5rem;
+    height: auto;
+    min-height: auto;
+    overflow-y: visible;
   }
 
   .company-panel-cards {
     width: 100%;
   }
 
+  .company-card {
+    padding: 1.2rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.2rem;
+  }
+
+  .company-card p {
+    font-size: 0.85rem;
+  }
+
   .company-panel-side {
     width: 100%;
-    align-items: flex-start;
+    padding: 1.2rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .company-panel-side p {
+    font-size: 0.9rem;
+  }
+
+  .company-panel-side li {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================
+   Small phones (≥ 480px)
+   ============================================ */
+@media (min-width: 480px) and (max-width: 639px) {
+  .company-panel-content {
+    top: 0;
+    position: absolute;
+  }
+
+  .company-panel-sticky {
+    padding: 1.75rem;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 5.5rem;
+    padding-bottom: 4rem;
+    position: static;
+    gap: 1.75rem;
+    height: auto;
+    min-height: auto;
+    overflow-y: visible;
+  }
+
+  .company-panel-cards {
+    width: 100%;
+  }
+
+  .company-card {
+    padding: 1.4rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.25rem;
+  }
+
+  .company-card p {
+    font-size: 0.9rem;
+  }
+
+  .company-panel-side {
+    width: 100%;
+    padding: 1.4rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(1.75rem, 5.5vw, 2.25rem);
+  }
+
+  .company-panel-side p {
+    font-size: 0.95rem;
+  }
+
+  .company-panel-side li {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   Phones / small tablets (≥ 640px)
+   ============================================ */
+@media (min-width: 640px) and (max-width: 767px) {
+  .company-panel-content {
+    top: 0;
+    position: absolute;
+  }
+
+  .company-panel-sticky {
+    padding: 2rem;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 6rem;
+    padding-bottom: 4.5rem;
+    position: static;
+    gap: 2rem;
+    height: auto;
+    min-height: auto;
+    overflow-y: visible;
+  }
+
+  .company-panel-cards {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .company-card {
+    padding: 1.5rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.3rem;
+  }
+
+  .company-card p {
+    font-size: 0.95rem;
+  }
+
+  .company-panel-side {
+    width: 100%;
+    max-width: 520px;
+    padding: 1.5rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+
+  .company-panel-side p {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   Tablets (≥ 768px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1123px) {
+  .company-panel-content {
+    top: 0;
+    position: absolute;
+  }
+
+  .company-panel-sticky {
+    padding: 2.5rem;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6.5rem;
+    padding-bottom: 5rem;
+    position: static;
+    gap: 2.5rem;
+    text-align: center;
+    height: auto;
+    min-height: auto;
+    overflow-y: visible;
+  }
+
+  .company-panel-cards {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .company-card {
+    padding: 1.6rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.35rem;
+  }
+
+  .company-card p {
+    font-size: 0.975rem;
+  }
+
+  .company-panel-side {
+    width: 100%;
+    max-width: 580px;
+    padding: 1.6rem;
+    align-items: center;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(2.25rem, 6.5vw, 2.75rem);
+  }
+
+  .company-panel-side p {
+    font-size: 1.05rem;
   }
 
   .company-panel-side ul {
     text-align: left;
+  }
+}
+
+/* ============================================
+   Small laptops (≥ 1124px) - Switch to horizontal layout
+   ============================================ */
+@media (min-width: 1124px) and (max-width: 1279px) {
+  .company-panel-sticky {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+
+  .company-panel-cards {
+    width: clamp(280px, 32vw, 360px);
+  }
+
+  .company-card {
+    padding: 1.2rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.15rem;
+  }
+
+  .company-card p {
+    font-size: 0.825rem;
+    line-height: 1.5;
+  }
+
+  .company-panel-side {
+    width: calc(
+      (
+          100vw -
+            (
+              clamp(1.5rem, 3.75587vw + 0.619718rem, 4rem) * 2 +
+                clamp(1rem, 0.751174vw + 0.823944rem, 1.5rem) *
+                (var(--grid-column-count) - 1)
+            )
+        ) / var(--grid-column-count) * 5 +
+        clamp(1rem, 0.751174vw + 0.823944rem, 1.5rem) * 4 +
+        clamp(1.5rem, 3.75587vw + 0.619718rem, 4rem) * 0
+    );
+    padding: 1.2rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+  }
+
+  .company-panel-side p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .company-panel-side li {
+    font-size: 0.825rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+  }
+
+  .company-panel-kicker {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============================================
+   Desktops (≥ 1280px)
+   ============================================ */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .company-panel-sticky {
+    padding: clamp(2.5rem, 3vw, 3.5rem);
+    gap: clamp(2.5rem, 3vw, 3.5rem);
+  }
+
+  .company-panel-cards {
+    width: clamp(320px, 34vw, 400px);
+  }
+
+  .company-card {
+    padding: 1.5rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.3rem;
+  }
+
+  .company-card p {
+    font-size: 0.9rem;
+  }
+
+  .company-panel-side {
+    padding: 1.5rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+
+  .company-panel-side p {
+    font-size: 0.95rem;
+  }
+
+  .company-panel-side li {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   Large desktops / 2K (≥ 1536px)
+   ============================================ */
+@media (min-width: 1536px) and (max-width: 1919px) {
+  .company-panel-sticky {
+    padding: clamp(3rem, 3.5vw, 4rem);
+    gap: clamp(3rem, 3.5vw, 4rem);
+  }
+
+  .company-panel-cards {
+    width: clamp(340px, 35vw, 420px);
+  }
+
+  .company-card {
+    padding: 1.6rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.35rem;
+  }
+
+  .company-card p {
+    font-size: 0.95rem;
+  }
+
+  .company-panel-side {
+    padding: 1.6rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .company-panel-side p {
+    font-size: 1rem;
+  }
+
+  .company-panel-side li {
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   Ultra-wide / 4K (≥ 1920px)
+   ============================================ */
+@media (min-width: 1920px) {
+  .company-panel-sticky {
+    padding: clamp(3.5rem, 4vw, 5rem);
+    gap: clamp(3.5rem, 4vw, 5rem);
+  }
+
+  .company-panel-cards {
+    width: clamp(380px, 36vw, 480px);
+  }
+
+  .company-card {
+    padding: 1.8rem;
+    border-radius: 1.4rem;
+  }
+
+  .company-card h4 {
+    font-size: 1.5rem;
+  }
+
+  .company-card p {
+    font-size: 1.05rem;
+  }
+
+  .company-panel-side {
+    padding: 1.8rem;
+  }
+
+  .company-panel-side h2 {
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  }
+
+  .company-panel-side p {
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .company-panel-side li {
+    font-size: 1.05rem;
+    padding: 0.7rem 1rem 0.7rem 1.3rem;
+  }
+
+  .company-panel-kicker {
+    font-size: 0.8rem;
   }
 }
