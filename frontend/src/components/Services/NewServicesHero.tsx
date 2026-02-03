@@ -105,31 +105,6 @@ const NewServicesHero: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mouse parallax on floating cards
-  const handleImageContainerMouseMove = (
-    e: React.MouseEvent<HTMLDivElement>,
-  ) => {
-    if (!imageContainerRef.current) return;
-
-    const rect = imageContainerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    const cards = document.querySelectorAll(".nsh-floating-card");
-    cards.forEach((card, index) => {
-      const factor = index === 0 ? 20 : 15;
-      (card as HTMLElement).style.transform =
-        `translateY(0) translate(${x * factor}px, ${y * factor}px)`;
-    });
-  };
-
-  const handleImageContainerMouseLeave = () => {
-    const cards = document.querySelectorAll(".nsh-floating-card");
-    cards.forEach((card) => {
-      (card as HTMLElement).style.transform = "translateY(0) translate(0, 0)";
-    });
-  };
-
   const handleHoverEnter = () => setIsHovering(true);
   const handleHoverLeave = () => setIsHovering(false);
 
@@ -191,8 +166,6 @@ const NewServicesHero: React.FC = () => {
         <div
           ref={imageContainerRef}
           className="nsh-image-container"
-          onMouseMove={handleImageContainerMouseMove}
-          onMouseLeave={handleImageContainerMouseLeave}
         >
           <div className="nsh-deco-frame" />
 

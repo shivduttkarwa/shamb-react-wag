@@ -1,0 +1,450 @@
+/* ============================================
+   SERVICE HERO - Mobile First
+   ============================================ */
+
+/* ============================================
+   BASE STYLES - Mobile (< 480px)
+   ============================================ */
+
+.pr-hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  overflow: hidden;
+}
+
+.pr-hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.pr-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.pr-hero-content {
+  text-align: center;
+  color: #fff;
+  z-index: 3;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.pr-hero-title {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  font-family: nunito;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.pr-hero-title span {
+  display: inline-block;
+}
+
+/* Title text elements */
+.pr-hero-title .mm-section {
+  font-size: inherit;
+}
+
+.pr-hero-title .mm-heading {
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+.pr-hero-title .mm-second-line {
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+.pr-hero-title .mm-second-line .changing-text {
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+.pr-hero-title .mm-second-line .changing-text span {
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+.pr-hero-subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  font-family: inherit;
+}
+
+.scroll-down-btn {
+  z-index: 4;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Hero News Slider - Mobile (hidden by default) */
+.pr-hero-container .mh-ui-news {
+  display: none;
+}
+
+/* ============================================
+   Small phones (≥ 480px)
+   ============================================ */
+@media (min-width: 480px) {
+  .pr-hero-title {
+    font-size: clamp(3rem, 9vw, 4rem);
+    letter-spacing: 0.025em;
+    margin-bottom: 1.25rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.09em;
+  }
+
+  .scroll-down-btn {
+    bottom: 2rem;
+  }
+}
+
+/* ============================================
+   Phones / small tablets (≥ 640px)
+   ============================================ */
+@media (min-width: 640px) {
+  .pr-hero-title {
+    font-size: clamp(3.5rem, 10vw, 5rem);
+    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* ============================================
+   Tablets (≥ 768px)
+   ============================================ */
+@media (min-width: 768px) {
+  .pr-hero-content {
+    padding: 0 2rem;
+  }
+
+  .pr-hero-title {
+    font-size: clamp(4rem, 11vw, 6rem);
+    letter-spacing: 0.035em;
+    margin-bottom: 1.75rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-down-btn {
+    bottom: 2.5rem;
+  }
+}
+
+/* ============================================
+   Small laptops (≥ 1124px)
+   ============================================ */
+@media (min-width: 1124px) {
+  .pr-hero-title {
+    font-size: clamp(4.5rem, 7.5vw, 5.5rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  /* Show hero news slider */
+  .pr-hero-container .mh-ui-news {
+    display: block;
+    position: absolute;
+    z-index: 60;
+    pointer-events: auto;
+    opacity: 1;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .pr-hero-container .hh-slider-window {
+    width: 200px;
+    max-width: 220px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .pr-hero-container .hh-slider-track {
+    display: flex;
+    transition: transform 0.6s ease;
+    will-change: transform;
+  }
+
+  .pr-hero-container .hh-slide {
+    flex: 0 0 100%;
+    padding: 0.8rem 0.9rem 0.9rem;
+    color: #e5e7eb;
+    box-sizing: border-box;
+  }
+
+  .pr-hero-container .hh-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 0.3rem;
+  }
+
+  .pr-hero-container .hh-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .pr-hero-container .hh-meta {
+    font-size: 0.65rem;
+    opacity: 0.85;
+  }
+
+  .pr-hero-container .hh-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-top: 0.4rem;
+    font-size: 0.7rem;
+    text-decoration: none;
+    color: #f7d046;
+    letter-spacing: 0.05em;
+  }
+
+  .pr-hero-container .hh-read:hover {
+    color: #ffffff;
+  }
+
+  .pr-hero-container .hh-dots {
+    display: flex;
+    gap: 0.35rem;
+    justify-content: center;
+    width: 200px;
+    margin: 0.4rem auto 0;
+    padding-left: 0;
+  }
+
+  .pr-hero-container .hh-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .pr-hero-container .hh-dot.active {
+    background: #f7d046;
+  }
+}
+
+/* ============================================
+   Desktops (≥ 1280px)
+   ============================================ */
+@media (min-width: 1280px) {
+  .pr-hero-title {
+    font-size: clamp(5rem, 8vw, 6.5rem);
+    letter-spacing: 0.045em;
+    margin-bottom: 2rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .pr-hero-container .mh-ui-news {
+    bottom: 2rem;
+    right: 2rem;
+  }
+
+  .pr-hero-container .hh-slider-window {
+    width: 220px;
+    max-width: 240px;
+    border-radius: 13px;
+  }
+
+  .pr-hero-container .hh-slide {
+    padding: 0.85rem 1rem 1rem;
+  }
+
+  .pr-hero-container .hh-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+
+  .pr-hero-container .hh-title {
+    font-size: 0.85rem;
+  }
+
+  .pr-hero-container .hh-meta {
+    font-size: 0.7rem;
+  }
+
+  .pr-hero-container .hh-read {
+    font-size: 0.75rem;
+  }
+
+  .pr-hero-container .hh-dots {
+    width: 220px;
+  }
+
+  .pr-hero-container .hh-dot {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+/* ============================================
+   Large desktops / 2K (≥ 1536px)
+   ============================================ */
+@media (min-width: 1536px) {
+  .pr-hero-title {
+    font-size: clamp(5.5rem, 7vw, 7rem);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .pr-hero-container .hh-slider-window {
+    width: 240px;
+    max-width: 260px;
+    border-radius: 14px;
+  }
+
+  .pr-hero-container .hh-slide {
+    padding: 0.95rem 1.1rem 1.1rem;
+  }
+
+  .pr-hero-container .hh-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 0.35rem;
+  }
+
+  .pr-hero-container .hh-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pr-hero-container .hh-meta {
+    font-size: 0.78rem;
+  }
+
+  .pr-hero-container .hh-read {
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+  }
+
+  .pr-hero-container .hh-dots {
+    gap: 0.4rem;
+    width: 240px;
+    margin: 0.5rem auto 0;
+  }
+
+  .pr-hero-container .hh-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* ============================================
+   Ultra-wide / 4K (≥ 1920px)
+   ============================================ */
+@media (min-width: 1920px) {
+  .pr-hero-title {
+    font-size: clamp(6.5rem, 7.5vw, 8.5rem);
+    letter-spacing: 0.055em;
+    margin-bottom: 2.5rem;
+  }
+
+  .pr-hero-subtitle {
+    font-size: 1.35rem;
+    letter-spacing: 0.11em;
+  }
+
+  .scroll-down-btn {
+    bottom: 3rem;
+  }
+
+  .pr-hero-container .hh-slider-window {
+    width: 280px;
+    max-width: 300px;
+  }
+
+  .pr-hero-container .hh-slide {
+    padding: 1.1rem 1.3rem 1.3rem;
+  }
+
+  .pr-hero-container .hh-label {
+    font-size: 0.8rem;
+  }
+
+  .pr-hero-container .hh-title {
+    font-size: 1.1rem;
+  }
+
+  .pr-hero-container .hh-meta {
+    font-size: 0.9rem;
+  }
+
+  .pr-hero-container .hh-read {
+    font-size: 0.95rem;
+  }
+
+  .pr-hero-container .hh-dots {
+    width: 280px;
+  }
+
+  .pr-hero-container .hh-dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Hide slider on small mobile devices */
+@media (max-width: 575.98px) {
+  .pr-hero-container .mh-ui-news {
+    display: none;
+  }
+}
