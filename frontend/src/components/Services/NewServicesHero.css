@@ -897,6 +897,12 @@
     margin-bottom: 3.5rem;
   }
 
+  /* CTA Button - reduced by 10% */
+  .nsh-cta-group a,
+  .nsh-cta-group button {
+    transform: scale(0.9);
+  }
+
   .nsh-pill {
     font-size: 0.765rem;
   }

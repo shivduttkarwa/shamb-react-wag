@@ -163,10 +163,7 @@ const NewServicesHero: React.FC = () => {
           Shambala Homes — Architecture Studio
         </div>
 
-        <div
-          ref={imageContainerRef}
-          className="nsh-image-container"
-        >
+        <div ref={imageContainerRef} className="nsh-image-container">
           <div className="nsh-deco-frame" />
 
           <div className="nsh-image-frame">
