@@ -1,11 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
 .cup-page {
-  background: #f5f5f5;
-  color: #111;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+  --cup-accent: var(--color-green, #5b7c4f);
+  --cup-accent-soft: #9bc56f;
+  --cup-ink: #1f271f;
+  --cup-paper: var(--color-off-white, #f7f7f2);
+  --cup-muted: #5f6a61;
+  background: var(--cup-paper);
+  color: var(--cup-ink);
+  font-family: "Nunito", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
 }
 
 /* ========== HERO ========== */
-
 .cup-hero {
   position: relative;
   width: 100%;
@@ -13,56 +22,81 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  background-image: linear-gradient(
+      135deg,
+      rgba(13, 20, 16, 0.68),
+      rgba(34, 49, 39, 0.82)
+    ),
+    url('/images/ess.jpg');
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
 }
 
 .cup-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.85)
-  );
+  background:rgba(0, 0, 0, 0.35);
 }
 
 .cup-hero-content {
   position: relative;
-  max-width: 900px;
+  max-width: 980px;
   width: 100%;
-  padding: 0 1.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
   text-align: center;
-  color: #f7f7f7;
-}
-
-.cup-hero-kicker {
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  opacity: 0.75;
-  margin-bottom: 0.5rem;
+  color: #f7f7f2;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 .cup-hero-title {
-  font-size: clamp(3.4rem, 7vw, 5.2rem);
-  line-height: 0.95;
-  margin: 0 0 0.75rem;
-  font-weight: 500;
+  font-size: clamp(3.4rem, 7vw, 5.4rem);
+  line-height: 0.98;
+  margin: 0 0 1rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  font-family: "Dream Avenue", serif;
+  text-transform: uppercase;
 }
 
 .cup-hero-subtitle {
-  margin: 0;
-  font-size: 1.1rem;
-  opacity: 0.8;
+  margin: 0 0 2.4rem;
+  font-size: 1.08rem;
+  opacity: 0.9;
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(247, 247, 242, 0.9);
+  overflow: hidden;
 }
 
-/* ========== MAIN CONTACT SECTION ========== */
+.cup-hero-reveal-line {
+  display: inline-block;
+}
 
+.cup-hero-actions {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+  transform-origin: center;
+  overflow: hidden;
+}
+
+
+
+/* ========== MAIN CONTACT SECTION ========== */
 .cup-main {
-  padding: 6rem 0;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: linear-gradient(180deg, var(--cup-paper) 0%, #f0eee6 100%);
 }
 
 .cup-inner {
@@ -73,75 +107,226 @@
 
 .cup-info-wrapper {
   display: flex;
-  gap: 4rem;
-  align-items: flex-start;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: stretch;
 }
 
 /* FORM */
-
 .cup-form {
   flex: 1;
+  background: #ffffff;
+  border: 1px solid #ede9dd;
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 30px 80px rgba(15, 23, 18, 0.12);
 }
 
 .cup-input-wrapper {
   position: relative;
-  margin-bottom: 2.8rem;
+  margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
 }
 
-/* Default input style — pale text */
+/* One font-size rule for all 4 fields */
+.cup-big-line {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
 .cup-contact-header {
   width: 100%;
   background: transparent;
   border: none;
   outline: none;
-
-  font-size: clamp(2.8rem, 4.8vw, 4.4rem);
-  font-weight: 300;
-  letter-spacing: 0.01em;
-
-  color: #d7d7d7;
-  opacity: 0.9;
-
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--cup-ink);
+  opacity: 0.95;
   padding: 0;
+  font-family: inherit;
 }
 
-/* Placeholder stays pale */
 .cup-contact-header::placeholder {
-  color: #d7d7d7;
+  color: rgba(31, 39, 31, 0.55);
   opacity: 1;
 }
 
-/* When user focuses → text darker */
-.cup-contact-header:focus {
-  color: #111;
-  opacity: 1;
-}
-
-/* When field has value → text stays dark */
+.cup-contact-header:focus,
 .cup-contact-header:not(:placeholder-shown) {
-  color: #111;
+  color: var(--cup-ink);
   opacity: 1;
 }
 
 .cup-contact-textarea {
-  min-height: 120px;
+  min-height: 80px;
   resize: none;
 }
 
+/* SUCCESS MESSAGE */
+.cup-success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, var(--cup-accent) 0%, #2f3c33 100%);
+  color: #f7f7f2;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  text-align: center;
+  animation: slideIn 0.4s ease-out;
+}
+
+.cup-success-message h3 {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.cup-success-message p {
+  font-size: 1.05rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.cup-success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .cup-underline {
-  height: 1px;
+  height: 2px;
   width: 0%;
-  background: #111;
+  background: linear-gradient(
+    90deg,
+    var(--cup-accent) 0%,
+    var(--cup-accent-soft) 100%
+  );
   transition: width 0.4s ease;
 }
 
 .cup-input-wrapper input:focus + .cup-underline,
-.cup-input-wrapper textarea:focus + .cup-underline {
+.cup-input-wrapper textarea:focus + .cup-underline,
+.cup-input-wrapper.focused .cup-underline {
   width: 100%;
 }
 
-/* ========== SUBMIT BUTTON ========== */
+/* Custom Select Dropdown */
+.cup-select-wrapper {
+  position: relative;
+  cursor: pointer;
+}
 
+.cup-select-display {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(31, 39, 31, 0.65);
+  opacity: 1;
+  padding: 0;
+  padding-right: 2.5rem; /* space for accordion icon */
+  cursor: pointer;
+  user-select: none;
+}
+
+.cup-select-display.has-value {
+  color: var(--cup-ink);
+  opacity: 1;
+}
+
+.cup-select-icon {
+  position: absolute;
+  right: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cup-select-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--cup-muted);
+  transition: transform 0.25s ease, fill 0.25s ease;
+}
+
+.cup-input-wrapper.focused .cup-select-icon svg {
+  transform: translateY(-50%) rotate(180deg);
+  fill: var(--cup-accent);
+}
+
+.cup-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #ede9dd;
+  border-radius: 14px;
+  margin-top: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 26px 60px rgba(15, 23, 18, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.cup-select-options.open {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cup-select-option {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.05rem;
+  color: var(--cup-ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cup-select-option:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #203124;
+}
+
+.cup-select-option:first-child {
+  border-radius: 14px 14px 0 0;
+}
+
+.cup-select-option:last-child {
+  border-radius: 0 0 14px 14px;
+}
+
+/* ========== SUBMIT BUTTON ========== */
 .cup-button-area {
   position: relative;
   display: flex;
@@ -152,8 +337,8 @@
 .cup-behind-line {
   flex: 1;
   height: 1px;
-  background: #111;
-  opacity: 0.35;
+  background: var(--cup-ink);
+  opacity: 0.2;
 }
 
 .cup-button-wrapper {
@@ -162,23 +347,24 @@
 }
 
 .cup-submit-button {
-  width: 130px;
-  height: 130px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  border: none;
-  background: #000;
-  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    135deg,
+    var(--cup-accent) 0%,
+    #2f3c33 100%
+  );
+  color: #f7f7f2;
   cursor: pointer;
   outline: none;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transform-origin: center;
   transform: translateY(0);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 0 20px 44px rgba(13, 20, 16, 0.3);
   transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
     box-shadow 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -190,14 +376,17 @@
 
 .cup-p-button {
   font-size: 0.9rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  margin: 0;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    letter-spacing 0.35s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .cup-submit-button:hover,
 .cup-submit-button:focus-visible {
   transform: translate(-8px, -8px);
-  box-shadow: 0 26px 45px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 28px 52px rgba(11, 17, 14, 0.42);
 }
 
 .cup-submit-button:hover .cup-submit-inner,
@@ -205,81 +394,132 @@
   transform: translateY(-4px);
 }
 
-/* ========== RIGHT-SIDE CONTACT INFO (BIGGER) ========== */
+.cup-submit-button:hover .cup-p-button,
+.cup-submit-button:focus-visible .cup-p-button {
+  transform: translateY(-2px);
+  letter-spacing: 0.28em;
+}
 
+/* ========== RIGHT-SIDE CONTACT INFO (shambala) ========== */
 .cup-info-column {
   width: 35%;
+  flex: 0 0 35%;
+  background: #ffffff;
+  border: 1px solid #ede9dd;
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 22px 60px rgba(15, 23, 18, 0.12);
+  height: fit-content;
 }
 
 .cup-info-title {
-  margin-bottom: 1rem;
-  font-size: 1.9rem;
+  margin-bottom: 1.2rem;
+  font-size: 2.2rem;
   font-weight: 600;
+  color: var(--cup-accent);
+  letter-spacing: -0.02em;
 }
 
 .cup-info-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem;
-  line-height: 2.1;
-  font-size: 1.12rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: var(--cup-ink);
+}
+
+.cup-info-list li {
+  margin-bottom: 0.7rem;
 }
 
 .cup-info-list li strong {
   font-weight: 700;
+  color: var(--cup-accent);
 }
 
 .cup-arrow {
-  width: 70px;
+  width: 60px;
+  margin-top: 0.8rem;
 }
 
 .cup-arrow-icon {
   width: 100%;
-  filter: brightness(0);
+  fill: var(--cup-accent);
+  opacity: 0.85;
 }
 
 /* ========== PARALLAX SECTION ========== */
-
 .cup-parallax {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  overflow: hidden;
+  /* Modern architectural interior / lobby */
+  background-image: url('/images/el1.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* desktop parallax */
+}
+
+/* Desktop: Use background-attachment fixed for true parallax */
+@media (min-width: 768px) {
+  .cup-parallax {
+    background-attachment: fixed;
+  }
+}
+
+/* Mobile: Use standard background scroll - more reliable */
+@media (max-width: 767px) {
+  .cup-parallax {
+    background-attachment: scroll;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
 }
 
 .cup-parallax-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: linear-gradient(
+      120deg,
+      rgba(12, 18, 14, 0.2),
+      rgba(12, 18, 14, 0.15)
+    );
+  z-index: 1;
 }
 
 .cup-parallax-content {
   position: relative;
   max-width: 1200px;
   width: 100%;
-  padding: 3rem 1.5rem;
-
-  color: #fff;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  color: #f7f7f2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 3rem;
+  z-index: 2;
+  background: rgba(16, 24, 19, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
 }
 
-/* Top heading */
 .cup-parallax-top h2 {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(3rem, 5vw, 4.6rem);
   max-width: 14ch;
   line-height: 1.05;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
-/* Bottom text + CTA */
 .cup-parallax-bottom {
   max-width: 480px;
 }
@@ -288,42 +528,68 @@
   margin-bottom: 1.5rem;
   font-size: 1.02rem;
   line-height: 1.8;
-  opacity: 0.9;
+  opacity: 0.92;
+  color: rgba(247, 247, 242, 0.92);
 }
 
-.cup-parallax-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.85rem 2.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.15);
-  color: #fff;
-  font-size: 0.9rem;
+.cup-parallax .home-benefits-cta {
+  color: #f7f7f2;
+  border-top: 1px solid rgba(247, 247, 242, 0.28);
+  border-bottom: 1px solid rgba(247, 247, 242, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  font-size: 0.85rem;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
-  cursor: pointer;
-
-  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 
-.cup-parallax-cta:hover,
-.cup-parallax-cta:focus-visible {
-  background: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+.cup-parallax .home-benefits-cta-icon {
+  border-color: rgba(247, 247, 242, 0.45);
+  color: #f7f7f2;
+}
+
+.cup-parallax .home-benefits-cta-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
+  opacity: 0.28;
+}
+
+.cup-parallax .home-benefits-cta:hover {
+  color: #0f1712;
+  background: rgba(247, 247, 242, 0.9);
+}
+
+.cup-parallax .home-benefits-cta:hover .home-benefits-cta-icon {
+  border-color: rgba(15, 23, 18, 0.16);
+  color: #0f1712;
+}
+
+.cup-parallax-cta-btn {
+  margin-top: 0.5rem;
 }
 
 /* ========== MAP SECTION ========== */
-
 .cup-map-section {
   padding: 5rem 0;
+  background: #ffffff;
+  border-top: 1px solid #ede9dd;
 }
 
 .cup-map-header {
   margin-bottom: 2rem;
+}
+
+.cup-map-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--cup-accent);
+  letter-spacing: -0.01em;
+}
+
+.cup-map-header p {
+  color: var(--cup-muted);
 }
 
 .cup-map-wrapper iframe {
@@ -331,10 +597,59 @@
   height: 400px;
   border: none;
   border-radius: 12px;
+  border: 1px solid #ede9dd;
+  box-shadow: 0 24px 60px rgba(15, 23, 18, 0.12);
+}
+
+/* ========== LARGE SCREENS (1600px+) ========== */
+@media (min-width: 1600px) {
+  .cup-inner {
+    max-width: 1440px;
+  }
+
+  .cup-hero-title {
+    font-size: clamp(4rem, 8vw, 6.2rem);
+    font-family: "Dream Avenue", serif;
+  }
+
+  .cup-hero-subtitle {
+    font-size: 1.32rem;
+  }
+
+  .cup-big-line {
+    font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  }
+
+  .cup-info-title {
+    font-size: 2.64rem;
+  }
+
+  .cup-info-list {
+    font-size: 1.26rem;
+  }
+
+  .cup-parallax-top h2 {
+    font-size: clamp(3.6rem, 6vw, 5.4rem);
+  }
+
+  .cup-parallax-bottom p {
+    font-size: 1.22rem;
+  }
+
+  .cup-map-header h2 {
+    font-size: 3rem;
+  }
+
+  .cup-map-header p {
+    font-size: 1.2rem;
+  }
+
+  .cup-select-option {
+    font-size: 1.44rem;
+  }
 }
 
 /* ========== RESPONSIVE ========== */
-
 @media (max-width: 900px) {
   .cup-info-wrapper {
     flex-direction: column;
@@ -343,19 +658,32 @@
 
   .cup-info-column {
     width: 100%;
+    flex: 1;
+  }
+
+  .cup-info-title {
+    font-size: 2rem;
+  }
+
+  .cup-info-list {
+    font-size: 1.05rem;
   }
 
   .cup-button-wrapper {
-    margin-left: -40px;
+    margin-left: -35px;
   }
 
   .cup-submit-button {
-    width: 110px;
-    height: 110px;
+    width: 95px;
+    height: 95px;
   }
 
-  .cup-contact-header {
-    font-size: clamp(2.2rem, 6vw, 3.4rem);
+  .cup-big-line {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+  }
+
+  .cup-parallax {
+    min-height: 70vh;
   }
 
   .cup-parallax-content {
@@ -366,9 +694,12 @@
     max-width: 100%;
   }
 
-  /* Mobile: smooth, no hacks, just normal background scroll */
-  .cup-parallax {
-    min-height: 70vh;
-    background-attachment: scroll;
+  .cup-select-option {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .cup-hero-subtitle {
+    font-size: 0.98rem;
   }
 }

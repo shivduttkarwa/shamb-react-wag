@@ -7,6 +7,7 @@ import GlassButton from "../UI/GlassButton";
 const ContactUsPage: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,15 +17,8 @@ const ContactUsPage: React.FC = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const listeners: Array<{
-      el: HTMLElement;
-      move: (e: MouseEvent) => void;
-      leave: () => void;
-    }> = [];
-
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".contact-animate");
-      const tiltCards = gsap.utils.toArray<HTMLElement>(".contact-tilt");
 
       cards.forEach((el) => {
         gsap.fromTo(
@@ -84,59 +78,55 @@ const ContactUsPage: React.FC = () => {
         },
         "-=0.35",
       );
-
-      tiltCards.forEach((card) => {
-        const move = (e: MouseEvent) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const rotateX = gsap.utils.mapRange(0, rect.height, -10, 10, y);
-          const rotateY = gsap.utils.mapRange(0, rect.width, 10, -10, x);
-
-          gsap.to(card, {
-            duration: 0.7,
-            rotationX: rotateX,
-            rotationY: rotateY,
-            transformPerspective: 1000,
-            ease: "power2.out",
-          });
-        };
-
-        const leave = () => {
-          gsap.to(card, {
-            duration: 1,
-            rotationX: 0,
-            rotationY: 0,
-            ease: "elastic.out(1, 0.5)",
-          });
-        };
-
-        card.addEventListener("mousemove", move);
-        card.addEventListener("mouseleave", leave);
-        listeners.push({ el: card, move, leave });
-      });
     });
 
     return () => {
-      listeners.forEach(({ el, move, leave }) => {
-        el.removeEventListener("mousemove", move);
-        el.removeEventListener("mouseleave", leave);
-      });
       ctx.revert();
     };
   }, []);
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message && selectedOption) {
-      console.log("Contact form submitted", {
-        ...formData,
-        lookingFor: selectedOption,
-      });
+
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check if all fields are filled
+    if (!formData.name || !formData.email || !formData.message || !selectedOption) {
+      alert("Please fill in all fields");
+      return;
     }
+
+    // Validate email format
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    console.log("Contact form submitted", {
+      ...formData,
+      lookingFor: selectedOption,
+    });
+
+    // Show success message
+    setShowSuccess(true);
+
+    // Reset form
+    setFormData({ name: "", email: "", message: "" });
+    setSelectedOption("");
+
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 5000);
   };
 
-  const options = ["New house", "Upgrade", "Commercial property", "Downsize"];
+  const options = [
+    "New House Construction",
+    "Home Renovation",
+    "Kitchen & Bathroom Remodel",
+    "Home Extension"
+  ];
 
   const scrollToForm = () => {
     const formSection = document.getElementById("contact-form");
@@ -265,29 +255,24 @@ const ContactUsPage: React.FC = () => {
           align-items: stretch;
         }
 
-        .contact-tilt {
-          will-change: transform;
-          transform-style: preserve-3d;
-        }
-
         /* FORM */
         .cup-form {
           flex: 1;
           background: #ffffff;
           border: 1px solid #ede9dd;
           border-radius: 18px;
-          padding: clamp(2rem, 4vw, 3rem);
+          padding: clamp(1.5rem, 3vw, 2rem);
           box-shadow: 0 30px 80px rgba(15, 23, 18, 0.12);
         }
 
         .cup-input-wrapper {
           position: relative;
-          margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
+          margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
         }
 
         /* One font-size rule for all 4 fields */
         .cup-big-line {
-          font-size: clamp(2.8rem, 4.8vw, 4.4rem);
+          font-size: clamp(2rem, 3.5vw, 3rem);
         }
 
         .cup-contact-header {
@@ -315,8 +300,60 @@ const ContactUsPage: React.FC = () => {
         }
 
         .cup-contact-textarea {
-          min-height: 120px;
+          min-height: 80px;
           resize: none;
+        }
+
+        /* SUCCESS MESSAGE */
+        .cup-success-message {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: linear-gradient(135deg, var(--cup-accent) 0%, #2f3c33 100%);
+          color: #f7f7f2;
+          padding: 2rem 3rem;
+          border-radius: 16px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          text-align: center;
+          animation: slideIn 0.4s ease-out;
+        }
+
+        .cup-success-message h3 {
+          font-size: 1.8rem;
+          margin: 0 0 0.5rem;
+          font-weight: 600;
+        }
+
+        .cup-success-message p {
+          font-size: 1.05rem;
+          margin: 0;
+          opacity: 0.9;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -60%);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        .cup-success-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+          animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .cup-underline {
@@ -413,8 +450,8 @@ const ContactUsPage: React.FC = () => {
         }
 
         .cup-select-option {
-          padding: 1rem 1.5rem;
-          font-size: 1.2rem;
+          padding: 0.8rem 1.2rem;
+          font-size: 1.05rem;
           color: var(--cup-ink);
           cursor: pointer;
           transition: background 0.2s ease, color 0.2s ease;
@@ -454,8 +491,8 @@ const ContactUsPage: React.FC = () => {
         }
 
         .cup-submit-button {
-          width: 130px;
-          height: 130px;
+          width: 110px;
+          height: 110px;
           border-radius: 50%;
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: linear-gradient(
@@ -514,13 +551,14 @@ const ContactUsPage: React.FC = () => {
           background: #ffffff;
           border: 1px solid #ede9dd;
           border-radius: 18px;
-          padding: clamp(1.6rem, 4vw, 2.2rem);
+          padding: clamp(1.5rem, 3vw, 2rem);
           box-shadow: 0 22px 60px rgba(15, 23, 18, 0.12);
+          height: fit-content;
         }
 
         .cup-info-title {
-          margin-bottom: 1.5rem;
-          font-size: 2.8rem;
+          margin-bottom: 1.2rem;
+          font-size: 2.2rem;
           font-weight: 600;
           color: var(--cup-accent);
           letter-spacing: -0.02em;
@@ -529,14 +567,14 @@ const ContactUsPage: React.FC = () => {
         .cup-info-list {
           list-style: none;
           padding: 0;
-          margin: 0 0 2rem;
-          line-height: 1.9;
-          font-size: 1.2rem;
+          margin: 0 0 1.5rem;
+          line-height: 1.7;
+          font-size: 1.05rem;
           color: var(--cup-ink);
         }
 
         .cup-info-list li {
-          margin-bottom: 0.85rem;
+          margin-bottom: 0.7rem;
         }
 
         .cup-info-list li strong {
@@ -545,8 +583,8 @@ const ContactUsPage: React.FC = () => {
         }
 
         .cup-arrow {
-          width: 70px;
-          margin-top: 1rem;
+          width: 60px;
+          margin-top: 0.8rem;
         }
 
         .cup-arrow-icon {
@@ -723,15 +761,15 @@ const ContactUsPage: React.FC = () => {
           }
 
           .cup-big-line {
-            font-size: clamp(3.36rem, 5.8vw, 5.28rem);
+            font-size: clamp(2.4rem, 4.2vw, 3.6rem);
           }
 
           .cup-info-title {
-            font-size: 3.84rem;
+            font-size: 2.64rem;
           }
 
           .cup-info-list {
-            font-size: 1.6rem;
+            font-size: 1.26rem;
           }
 
           .cup-parallax-top h2 {
@@ -768,24 +806,24 @@ const ContactUsPage: React.FC = () => {
           }
 
           .cup-info-title {
-            font-size: 2.4rem;
+            font-size: 2rem;
           }
 
           .cup-info-list {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
           }
 
           .cup-button-wrapper {
-            margin-left: -40px;
+            margin-left: -35px;
           }
 
           .cup-submit-button {
-            width: 110px;
-            height: 110px;
+            width: 95px;
+            height: 95px;
           }
 
           .cup-big-line {
-            font-size: clamp(2.2rem, 6vw, 3.4rem);
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
           }
 
           .cup-parallax {
@@ -842,7 +880,7 @@ const ContactUsPage: React.FC = () => {
         <div className="cup-inner">
           <div className="cup-info-wrapper">
             {/* LEFT – FORM */}
-            <div className="cup-form contact-animate contact-tilt">
+            <div className="cup-form contact-animate">
               {/* NAME */}
               <div className="cup-input-wrapper">
                 <input
@@ -944,7 +982,7 @@ const ContactUsPage: React.FC = () => {
             </div>
 
             {/* RIGHT – CONTACT INFO (shambala) */}
-            <div className="cup-info-column contact-animate contact-tilt">
+            <div className="cup-info-column contact-animate">
               <h3 className="cup-info-title">shambala Studio</h3>
               <ul className="cup-info-list">
                 <li>
@@ -975,7 +1013,7 @@ const ContactUsPage: React.FC = () => {
       {/* PARALLAX SECTION - SIMPLE AND CLEAN */}
       <section className="cup-parallax">
         <div className="cup-parallax-overlay" />
-        <div className="cup-parallax-content contact-animate contact-tilt">
+        <div className="cup-parallax-content contact-animate">
           <div className="cup-parallax-top">
             <h2>Where considered spaces meet calm living.</h2>
           </div>
@@ -1017,6 +1055,17 @@ const ContactUsPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* SUCCESS MESSAGE */}
+      {showSuccess && (
+        <>
+          <div className="cup-success-overlay" onClick={() => setShowSuccess(false)} />
+          <div className="cup-success-message">
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+          </div>
+        </>
+      )}
     </div>
   );
 };
