@@ -183,7 +183,7 @@ const NewServicesHero: React.FC = () => {
               stagger: { each: 0.05, from: "end" },
               ease: "power3.inOut",
             },
-            "+=2.0",
+            "+=2.0"
           );
         });
       }
@@ -221,17 +221,23 @@ const NewServicesHero: React.FC = () => {
       <div className="nsh-content">
         <h1 className="nsh-title">
           <span className="nsh-title-line">
-            <span ref={(el) => el && (titleLineRefs.current[0] = el)}>
+            <span ref={(el) => {
+              if (el) titleLineRefs.current[0] = el;
+            }}>
               ARCHITECTURE FOR
             </span>
           </span>
           <span className="nsh-title-line">
-            <span ref={(el) => el && (titleLineRefs.current[1] = el)}>
+            <span ref={(el) => {
+              if (el) titleLineRefs.current[1] = el;
+            }}>
               SPACES OF
             </span>
           </span>
           <span className="nsh-title-line">
-            <span ref={(el) => el && (titleLineRefs.current[2] = el)}>
+            <span ref={(el) => {
+              if (el) titleLineRefs.current[2] = el;
+            }}>
               <span className="nsh-changing-word">
                 <span ref={changingWordRef} />
               </span>
