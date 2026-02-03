@@ -16,7 +16,12 @@ const ServicesPage: React.FC = () => {
       <NewServicesHero />
       {/* Content anchor for ScrollDownButton */}
       <div id="services-content" className="ser-section-heading">
-        <TiltTextGsap tag="h2" className="ser-serif">
+        <TiltTextGsap
+          tag="h2"
+          className="ser-serif"
+          startTrigger="top 85%"
+          endTrigger="bottom 0%"
+        >
           Explore Our Services
         </TiltTextGsap>
         <p>

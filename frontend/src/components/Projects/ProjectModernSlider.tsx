@@ -45,29 +45,29 @@ const ProjectModernSlider: React.FC = () => {
     {
       id: 1,
       image: `${publicUrl}images/l1.jpg`,
-      tag: "ARCHITECTURAL DESIGN",
-      title: "VISION",
+      tag: "NEW HOME ARCHITECTURE",
+      title: "CREATE",
       description:
-        "Transform your vision into architectural excellence with our comprehensive design services. From conceptual sketches to detailed blueprints, we create spaces that blend functionality with aesthetic appeal.",
-      buttonText: "Explore Projects",
+        "We design new homes that feel calm, bright, and intentional—shaped around your lifestyle, site conditions, and long-term goals with clear, build-ready documentation.",
+      buttonText: "Explore Homes",
     },
     {
       id: 2,
       image: `${publicUrl}images/l2.jpg`,
-      tag: "CONSTRUCTION EXCELLENCE",
-      title: "BUILDING",
+      tag: "RENOVATION & EXTENSION",
+      title: "REFINE",
       description:
-        "Experience superior craftsmanship with our comprehensive construction services. From foundation to finish, we execute every project with precision, using premium materials and advanced techniques.",
-      buttonText: "View Portfolio",
+        "We rework existing spaces with smart planning, modern materials, and careful detailing—opening up light, improving flow, and adding value without losing character.",
+      buttonText: "View Renovations",
     },
     {
       id: 3,
       image: `${publicUrl}images/l3.jpg`,
-      tag: "INTERIOR DESIGN",
-      title: "LIVING",
+      tag: "INTERIOR ARCHITECTURE",
+      title: "FINISH",
       description:
-        "Discover the potential of your interior spaces with our expert design services. Let's create a home that truly reflects your unique lifestyle and personality.",
-      buttonText: "See Designs",
+        "From joinery and lighting to surfaces and styling, we craft cohesive interiors that feel warm, functional, and ready for everyday life.",
+      buttonText: "See Interiors",
     },
   ];
 

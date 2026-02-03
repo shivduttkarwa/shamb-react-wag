@@ -75,9 +75,9 @@
 .mss-swiper-content {
   position: absolute;
   top: 16%;
-  left: 40px;
+  left: clamp(16px, 3vw, 40px);
   z-index: 2;
-  max-width: 640px;
+  max-width: min(640px, 92vw);
 }
 
 .mss-service-box {
@@ -85,6 +85,7 @@
   border-radius: 16px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
+  max-width: 100%;
 }
 
 .mss-title-area .mss-tag {
@@ -104,7 +105,7 @@
   font-weight: 430;
   line-height: 1.1;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
   margin-left: -4px;
   text-decoration: none;
   display: block;
@@ -172,7 +173,7 @@
   color: #ffffff;
   font-size: 1rem;
   line-height: 1.6;
-  margin: 15px 0;
+  margin: 8px 0 16px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   font-weight: 500;
 }
@@ -184,8 +185,65 @@
   }
 
   .mss-disc {
-    margin-top: 10px;
-    margin-bottom: 24px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .mss-swiper-content {
+    top: 14%;
+  }
+
+  .mss-service-box {
+    padding: 24px 24px 20px;
+  }
+
+  .mss-title-area .mss-title,
+  .mss-title-area .mss-title-tilt {
+    font-size: clamp(2.2rem, 4vw, 3.3rem);
+    margin-top: 22px;
+    margin-bottom: 16px;
+    min-height: 2.3em;
+  }
+
+  .mss-disc {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 1280px) {
+  .mss-swiper-content {
+    top: 12%;
+  }
+
+  .mss-service-box {
+    padding: 22px 22px 18px;
+  }
+
+  .mss-title-area .mss-title,
+  .mss-title-area .mss-title-tilt {
+    font-size: clamp(2rem, 3.6vw, 3.1rem);
+    margin-top: 18px;
+    margin-bottom: 14px;
+    min-height: 2.1em;
+  }
+
+  .mss-disc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-height: 800px) {
+  .mss-swiper-content {
+    top: 10%;
+  }
+
+  .mss-disc {
+    line-height: 1.5;
+    margin: 6px 0 12px;
   }
 }
 

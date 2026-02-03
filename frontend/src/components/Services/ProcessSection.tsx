@@ -19,58 +19,58 @@ type ProcessStep = {
 const processSteps: ProcessStep[] = [
   {
     number: "01",
-    title: "Understand your needs",
-    subtitle: "BUILDING STRATEGY AROUND YOUR PERSONAL GOALS",
+    title: "Vision & site discovery",
+    subtitle: "LISTENING TO YOUR HOME GOALS AND THE LAND",
     description:
-      "Before we make any recommendations, we take the time to understand your current financial position and where you'd like to be in the years ahead. Together, we map out your goals, priorities, and comfort levels so every step forward is grounded in your reality.",
+      "As a new studio, we take the time to learn how you want to live, how your family moves through space, and what the site can offer. We review budget, timelines, and any renovation constraints to create a brief we can build on with confidence.",
     outcome:
-      "A clear foundation that ensures every decision is aligned with your goals and long-term vision.",
+      "A shared project brief that anchors every design and construction decision.",
     image:
       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=1000&fit=crop",
   },
   {
     number: "02",
-    title: "We plan a strategy.",
-    subtitle: "TURNING YOUR AMBITIONS INTO A ROADMAP",
+    title: "Concept architecture",
+    subtitle: "SHAPING THE DESIGN LANGUAGE",
     description:
-      "With your goals in mind, we create a tailored investment strategy designed to fit your circumstances. Every recommendation is based on clarity and long-term thinking, so we make choices that directly benefit your unique situation.",
+      "We explore massing, layout, and light to propose a design direction that works for both new builds and renovations. You will see spatial options, material intent, and early 3D views to help you feel the home before it exists.",
     outcome:
-      "A structured, personalised plan that aligns property opportunities with your financial objectives.",
+      "A concept package that balances function, beauty, and buildability.",
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=1000&fit=crop",
     reverse: true,
   },
   {
     number: "03",
-    title: "We present a solution.",
-    subtitle: "TAILORING AN APPROACH TO MATCH YOUR NEEDS",
+    title: "Planning & documentation",
+    subtitle: "APPROVALS AND BUILD-READY DETAILS",
     description:
-      "With your strategy in place, we present the property and finance opportunities that bring it to life. Every recommendation is chosen to align with your circumstances and aspirations, ensuring the path forward feels clear and achievable.",
+      "We refine the architecture, coordinate engineering, and prepare the drawings needed for permits and pricing. Every detail is specified to reduce surprises and keep the build moving smoothly.",
     outcome:
-      "A customised solution designed for long-term success, not one-size-fits-all advice.",
+      "Permit-ready documentation and a clear scope for your builder.",
     image:
       "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&h=1000&fit=crop",
   },
   {
     number: "04",
-    title: "We source properties.",
-    subtitle: "FINDING THE RIGHT INVESTMENTS FOR YOU",
+    title: "Construction & delivery",
+    subtitle: "CRAFTED NEW BUILDS AND RENOVATIONS",
     description:
-      "Our team searches the market to identify properties that align with your identified plan. We focus on quality builds, strong locations, and long-term growth potential—ensuring every option supports your financial future.",
+      "We stay involved through construction, collaborating with your builder and trades to protect the design intent. From site checks to finish coordination, we help ensure quality at every stage.",
     outcome:
-      "Carefully selected properties that match your strategy and give you confidence in every purchase.",
+      "A well-built home that reflects the architecture we set out to deliver.",
     image:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=1000&fit=crop",
     reverse: true,
   },
   {
     number: "05",
-    title: "We manage and review.",
-    subtitle: "SUPPORT THAT CONTINUES BEYOND THE PURCHASE",
+    title: "Interiors & aftercare",
+    subtitle: "LIVING-READY FINISHES AND ONGOING SUPPORT",
     description:
-      "Securing a property is just the beginning. We stay by your side with ongoing support—from tenant management to regular six-month strategy reviews—so your investments stay aligned with your goals and adapt as life and markets change.",
+      "From joinery, lighting, and fixtures to final styling, we bring the interior story together so it feels cohesive and calm. We also offer post-handover support for tweaks, future phases, or renovations.",
     outcome:
-      "Long-term guidance that keeps your portfolio performing and your goals on track.",
+      "A move-in ready home with a team you can return to as needs evolve.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1000&fit=crop",
   },
