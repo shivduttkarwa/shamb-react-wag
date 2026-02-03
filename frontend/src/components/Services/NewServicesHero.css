@@ -310,77 +310,31 @@
   font-style: normal;
 }
 
-/* Rotating Badge - hidden on mobile */
-.nsh-rotating-badge {
-  display: none;
-}
-
-.nsh-rotating-text {
-  width: 100%;
-  height: 100%;
-  animation: nsh-rotate 20s linear infinite;
-}
-
-.nsh-rotating-text text {
-  font-size: 10px;
-  font-family: "Outfit", sans-serif;
-  font-weight: 500;
-  letter-spacing: 4px;
-  fill: #888888;
-}
-
-.nsh-badge-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  background: var(--color-black);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
-.nsh-badge-center:hover {
-  background: var(--color-green);
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.nsh-badge-center svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--color-white);
-  fill: none;
-}
-
 /* ===== MARQUEE ===== */
 .nsh-marquee-container {
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  bottom: 1rem;
   left: 0;
   right: 0;
-  background: var(--color-black);
-  padding: 12px 0;
+  background: var(--color-green-dark);
+  padding: 20px 0;
   overflow: hidden;
   z-index: 100;
-  order: 3;
 }
 
 .nsh-marquee {
   display: flex;
-  animation: nsh-marquee 25s linear infinite;
+  width: fit-content;
+  animation: nsh-marquee 30s linear infinite;
 }
 
 .nsh-marquee-content {
   display: flex;
   align-items: center;
-  gap: 30px;
-  padding-right: 30px;
+  gap: 60px;
+  padding-right: 60px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nsh-marquee-item {
@@ -677,8 +631,7 @@
   }
 
   .nsh-marquee-container {
-    position: relative;
-    order: 3;
+    position: absolute;
   }
 }
 
@@ -750,23 +703,6 @@
     top: 40px;
   }
 
-  /* Show rotating badge */
-  .nsh-rotating-badge {
-    display: block;
-    position: absolute;
-    bottom: 30px;
-    right: 0;
-    width: 100px;
-    height: 100px;
-    opacity: 0;
-    animation: nsh-fadeIn 0.6s ease forwards 1.8s;
-  }
-
-  .nsh-badge-center {
-    width: 42px;
-    height: 42px;
-  }
-
   .nsh-marquee-container {
     position: absolute;
   }
@@ -824,17 +760,6 @@
 
   .nsh-card-value {
     font-size: 1.4rem;
-  }
-
-  .nsh-rotating-badge {
-    width: 110px;
-    height: 110px;
-    bottom: 35px;
-  }
-
-  .nsh-badge-center {
-    width: 46px;
-    height: 46px;
   }
 }
 
@@ -940,25 +865,6 @@
     font-size: 1.23rem;
   }
 
-  .nsh-rotating-badge {
-    width: 98px;
-    height: 98px;
-  }
-
-  .nsh-rotating-text text {
-    font-size: 8.5px;
-  }
-
-  .nsh-badge-center {
-    width: 42.5px;
-    height: 42.5px;
-  }
-
-  .nsh-badge-center svg {
-    width: 15.3px;
-    height: 15.3px;
-  }
-
   .nsh-marquee-item {
     font-size: 0.7225rem;
   }
@@ -1038,17 +944,6 @@
     font-size: 1.5rem;
   }
 
-  .nsh-rotating-badge {
-    width: 120px;
-    height: 120px;
-    bottom: 40px;
-  }
-
-  .nsh-badge-center {
-    width: 50px;
-    height: 50px;
-  }
-
   .nsh-marquee-content {
     gap: 60px;
     padding-right: 60px;
@@ -1124,12 +1019,6 @@
   }
 }
 
-@keyframes nsh-rotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes nsh-scrollWheel {
   0%,
   100% {
@@ -1165,15 +1054,10 @@
   .nsh-image-reveal,
   .nsh-main-image,
   .nsh-floating-card,
-  .nsh-deco-frame,
-  .nsh-rotating-badge {
+  .nsh-deco-frame {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
-  }
-
-  .nsh-rotating-text {
-    animation: none !important;
   }
 
   .nsh-scroll-mouse::before {

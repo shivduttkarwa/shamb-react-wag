@@ -191,37 +191,12 @@ const NewServicesHero: React.FC = () => {
           ))}
         </div>
 
-        {/* Rotating Badge */}
-        <div className="nsh-rotating-badge">
-          <svg className="nsh-rotating-text" viewBox="0 0 120 120">
-            <defs>
-              <path
-                id="nshCirclePath"
-                d="M 60, 60 m -45, 0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"
-              />
-            </defs>
-            <text>
-              <textPath href="#nshCirclePath">
-                SHAMBALA • HOMES • ARCHITECTURE •
-              </textPath>
-            </text>
-          </svg>
-          <div
-            className="nsh-badge-center"
-            onMouseEnter={handleHoverEnter}
-            onMouseLeave={handleHoverLeave}
-          >
-            <svg viewBox="0 0 24 24" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </div>
-        </div>
       </div>
 
       {/* Marquee */}
       <div className="nsh-marquee-container">
         <div className="nsh-marquee">
-          {[...Array(2)].map((_, idx) => (
+          {[...Array(4)].map((_, idx) => (
             <div key={idx} className="nsh-marquee-content">
               {marqueeItems.map((item, itemIdx) => (
                 <span key={itemIdx} className="nsh-marquee-item">
