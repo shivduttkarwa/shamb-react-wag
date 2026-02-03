@@ -137,7 +137,10 @@ const NewServicesHero: React.FC = () => {
       if (deco) gsap.set(deco, { opacity: 0 });
       if (verticalText) gsap.set(verticalText, { opacity: 0 });
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        paused: true,
+      });
       tl.to(lines, {
         yPercent: 0,
         opacity: 1,
@@ -225,6 +228,23 @@ const NewServicesHero: React.FC = () => {
             "+=2.0"
           );
         });
+      }
+      const rootEl = rootRef.current;
+      if (rootEl) {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                tl.play();
+                obs.disconnect();
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        observer.observe(rootEl);
+      } else {
+        tl.play();
       }
     }, rootRef);
 
