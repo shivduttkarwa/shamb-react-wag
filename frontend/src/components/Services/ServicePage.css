@@ -328,3 +328,73 @@
 .ser-interactive-card {
   will-change: transform;
 }
+
+/* ============================================
+   TESTIMONIALS RESPONSIVE SCALE (Essence-style breakpoints)
+   ============================================ */
+
+@media (min-width: 480px) {
+  .ser-testimonials-section {
+    padding: 100px 22px;
+  }
+}
+
+@media (min-width: 640px) {
+  .ser-testimonials-section {
+    padding: 110px 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ser-testimonials-section {
+    padding: 120px 24px;
+  }
+}
+
+@media (min-width: 1124px) and (max-width: 1535px) {
+  .ser-features-grid {
+    max-width: 1020px;
+  }
+
+  .ser-card {
+    padding: 1.7rem;
+  }
+
+  .ser-text-4xl {
+    font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  }
+
+  .ser-mb-8 {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .ser-features-grid {
+    max-width: 1040px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .ser-features-grid {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .ser-features-grid {
+    max-width: 1380px;
+  }
+
+  .ser-card {
+    padding: 2.3rem;
+  }
+
+  .ser-text-4xl {
+    font-size: clamp(2.1rem, 3.2vw, 3.3rem);
+  }
+
+  .ser-mb-8 {
+    font-size: 1.2rem;
+  }
+}
