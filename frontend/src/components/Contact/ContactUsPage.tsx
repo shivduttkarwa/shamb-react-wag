@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GlassRainButton from "../UI/GlassRainButton";
+import AestheticButton from "../UI/AestheticButton";
 import GlassButton from "../UI/GlassButton";
 
 const ContactUsPage: React.FC = () => {
@@ -41,12 +41,12 @@ const ContactUsPage: React.FC = () => {
               start: "top 85%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
       });
 
       gsap.set(".cup-hero-reveal-line", { yPercent: 120, autoAlpha: 0 });
-      gsap.set(".cup-hero-actions .glass-rain-btn", {
+      gsap.set(".cup-hero-actions > *", {
         y: 80,
         autoAlpha: 0,
         scale: 0.6,
@@ -54,24 +54,15 @@ const ContactUsPage: React.FC = () => {
 
       const heroTl = gsap.timeline({
         defaults: { ease: "power4.out" },
-        delay: 0.2,
+        delay: 1.6,
       });
 
-      heroTl.to(".cup-hero-kicker .cup-hero-reveal-line", {
+      heroTl.to(".cup-hero-title .cup-hero-reveal-line", {
         yPercent: 0,
         autoAlpha: 1,
-        duration: 0.8,
+        duration: 1,
+        skewY: 0,
       });
-      heroTl.to(
-        ".cup-hero-title .cup-hero-reveal-line",
-        {
-          yPercent: 0,
-          autoAlpha: 1,
-          duration: 1,
-          skewY: 0,
-        },
-        "-=0.25"
-      );
       heroTl.to(
         ".cup-hero-subtitle .cup-hero-reveal-line",
         {
@@ -79,19 +70,19 @@ const ContactUsPage: React.FC = () => {
           autoAlpha: 1,
           duration: 0.9,
         },
-        "-=0.32"
+        "-=0.32",
       );
       heroTl.to(
-        ".cup-hero-actions .glass-rain-btn",
+        ".cup-hero-actions > *",
         {
           y: 0,
           autoAlpha: 1,
           scale: 1,
           duration: 0.9,
           stagger: 0.12,
-          ease: "back.out(1.4)",
+          ease: "power1.out",
         },
-        "-=0.35"
+        "-=0.35",
       );
 
       tiltCards.forEach((card) => {
@@ -218,15 +209,6 @@ const ContactUsPage: React.FC = () => {
           text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
         }
 
-        .cup-hero-kicker {
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          font-size: 0.92rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 1rem;
-          overflow: hidden;
-        }
-
         .cup-hero-title {
           font-size: clamp(3.4rem, 7vw, 5.4rem);
           line-height: 0.98;
@@ -234,6 +216,8 @@ const ContactUsPage: React.FC = () => {
           font-weight: 400;
           letter-spacing: 0.01em;
           overflow: hidden;
+          font-family: "Dream Avenue", serif;
+          text-transform: uppercase;
         }
 
         .cup-hero-subtitle {
@@ -261,75 +245,7 @@ const ContactUsPage: React.FC = () => {
           overflow: hidden;
         }
 
-        .cup-hero-glass-btn {
-          min-width: 190px;
-          border-radius: 12px;
-        }
 
-        .cup-hero .glass-rain-btn:focus,
-        .cup-hero .glass-rain-btn:focus-visible,
-        .cup-hero .glass-rain-btn:active {
-          outline: none;
-          box-shadow: none;
-        }
-
-        .cup-hero-glass-btn .glass-rain-btn-icon {
-          border-color: rgba(255, 255, 255, 0.55);
-        }
-
-        .cup-hero-glass-btn .glass-rain-btn-bg {
-          background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.3),
-            rgba(255, 255, 255, 0.1)
-          );
-          opacity: 0.24;
-        }
-
-        .cup-hero-glass-btn--ghost {
-          background: rgba(255, 255, 255, 0.08);
-          border-top: 1px solid rgba(255, 255, 255, 0.28);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.28);
-        }
-
-        .cup-hero-glass-btn--ghost .glass-rain-btn-bg {
-          background: rgba(255, 255, 255, 0.22);
-        }
-
-        .cup-hero-btn {
-          min-width: 160px;
-          padding: 0.85rem 1.7rem;
-          border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.7);
-          font-size: 0.9rem;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          cursor: pointer;
-          background: rgba(0, 0, 0, 0.2);
-          color: #fff;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-          text-decoration: none;
-        }
-
-        .cup-hero-btn span {
-          font-size: 0.8rem;
-        }
-
-        .cup-hero-btn-primary {
-          background: #f5f5f5;
-          color: #111;
-          border-color: #f5f5f5;
-        }
-
-        .cup-hero-btn:hover,
-        .cup-hero-btn:focus-visible {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-        }
 
         /* ========== MAIN CONTACT SECTION ========== */
         .cup-main {
@@ -799,6 +715,7 @@ const ContactUsPage: React.FC = () => {
 
           .cup-hero-title {
             font-size: clamp(4rem, 8vw, 6.2rem);
+            font-family: "Dream Avenue", serif;
           }
 
           .cup-hero-subtitle {
@@ -898,35 +815,24 @@ const ContactUsPage: React.FC = () => {
       <section className="cup-hero">
         <div className="cup-hero-overlay" />
         <div className="cup-hero-content">
-          <p className="cup-hero-kicker">
-            <span className="cup-hero-reveal-line">shambala Studio</span>
-          </p>
           <h1 className="cup-hero-title">
-            <span className="cup-hero-reveal-line">
-              Let’s shape your next space.
-            </span>
+            <span className="cup-hero-reveal-line">Let's Connect</span>
           </h1>
           <p className="cup-hero-subtitle">
             <span className="cup-hero-reveal-line">
               New home, refined upgrade, or a commercial property that needs a
-              quieter kind of drama— tell us where you are, and we’ll help you
+              quieter kind of drama— tell us where you are, and we'll help you
               plan what comes next.
             </span>
           </p>
 
           <div className="cup-hero-actions">
-            <GlassRainButton
-              className="cup-hero-glass-btn"
-              onClick={scrollToForm}
-            >
+            <AestheticButton onClick={scrollToForm}>
               Start a Project
-            </GlassRainButton>
-            <GlassRainButton
-              className="cup-hero-glass-btn cup-hero-glass-btn--ghost"
-              onClick={handleEmailClick}
-            >
+            </AestheticButton>
+            <AestheticButton onClick={handleEmailClick}>
               Email the Studio
-            </GlassRainButton>
+            </AestheticButton>
           </div>
         </div>
       </section>
