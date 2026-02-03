@@ -44,6 +44,19 @@
   font-family: "Playfair Display", Georgia, serif;
 }
 
+.ser-section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .ser-section-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+  }
+}
+
 /* ===========================================
    HERO SECTION
 =========================================== */
@@ -181,10 +194,21 @@
 }
 
 .ser-testimonials-header h2 {
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 400;
   color: var(--ser-color-black);
   margin-bottom: 20px;
+}
+
+.ser-testimonials-header .ser-process-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .ser-testimonials-header .ser-process-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+  }
 }
 
 .ser-testimonials-header p {

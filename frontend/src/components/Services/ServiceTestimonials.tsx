@@ -41,6 +41,7 @@ const ServiceTestimonials: React.FC = () => {
   }, []);
 
   const handleCardMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return;
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -60,6 +61,7 @@ const ServiceTestimonials: React.FC = () => {
   };
 
   const handleCardMouseLeave = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return;
     const card = e.currentTarget;
     gsap.to(card, {
       duration: 1,
@@ -72,10 +74,15 @@ const ServiceTestimonials: React.FC = () => {
   return (
     <section className="ser-testimonials-section" ref={sectionRef}>
       <div className="ser-testimonials-header ser-animate-in">
-        <TiltTextGsap tag="h2" className="ser-serif">
+        <TiltTextGsap
+          tag="h2"
+          className="ser-serif ser-process-title"
+          startTrigger="top 90%"
+          endTrigger="top 70%"
+        >
           What our clients say
         </TiltTextGsap>
-        <p>
+        <p data-gsap="fade-up" data-gsap-delay="0.1">
           Real stories from real people who&apos;ve transformed their spaces
           with shambala&apos;s thoughtful design approach.
         </p>
