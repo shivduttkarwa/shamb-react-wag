@@ -301,11 +301,11 @@ export const ProcessSection: FC = () => {
     <section className="shambala-process-section" ref={rootRef}>
       <TiltTextGsap
         tag="h2"
-        className="shambala-process-title"
+        className="shambala-process-title ser-serif ser-process-title"
         startTrigger="top 85%"
         endTrigger="bottom 0%"
       >
-        OUR PROCESS
+        Explore our process
       </TiltTextGsap>
 
       {processSteps.map((step) => (

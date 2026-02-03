@@ -6,14 +6,32 @@
 }
 
 .shambala-process-title {
-  font-size: clamp(3rem, 8vw, 5.625rem);
-  font-weight: 280;
+  font-weight: 500;
   padding: 0 2.5rem;
   margin: 0 auto 3.75rem;
   font-family: "Dream Avenue", cursive;
   text-transform: uppercase;
   text-align: center;
-  word-spacing: 0.75rem;
+  word-spacing: 0.21em;
+}
+
+.ser-process-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .ser-process-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.15;
+  }
+}
+
+@media (min-width: 769px) {
+  .ser-process-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
 }
 
 .shambala-process-serif {
@@ -273,10 +291,6 @@
 
 /* Reduce overall scale for 1124px - 1535px */
 @media (min-width: 1124px) and (max-width: 1535px) {
-  .shambala-process-title {
-    font-size: clamp(2.6rem, 6vw, 4.5rem);
-  }
-
   .shambala-process-step-content {
     padding: 6rem 4rem 3rem;
   }
@@ -323,10 +337,6 @@
    Desktops (≥ 1280px)
    ============================================ */
 @media (min-width: 1280px) {
-  .shambala-process-title {
-    font-size: clamp(3.25rem, 7vw, 5.5rem);
-  }
-
   .shambala-process-step-content {
     padding: 7.5rem 5.5rem 4rem;
   }
