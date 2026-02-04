@@ -17,7 +17,7 @@ interface FloatingCard {
 const NewServicesHero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const heroAnimDelay = 1.6; // seconds, tweak this knob as needed
+  const heroAnimDelay = 0.8; // seconds, tweak this knob as needed
   const rootRef = useRef<HTMLElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const titleLineRefs = useRef<HTMLSpanElement[]>([]);

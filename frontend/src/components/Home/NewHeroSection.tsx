@@ -85,7 +85,7 @@ const NewHeroSectionContent: React.FC = () => {
     if (hasAnimated) return;
 
     // Animation delay matching NewServicesHero
-    const heroAnimDelay = 1.6; // seconds
+    const heroAnimDelay = 0.8; // seconds
 
     // Set initial states - similar to NewServicesHero
     gsap.set([titleLine1Ref.current, titleLine2Ref.current], { y: "100%" });

@@ -48,7 +48,7 @@ const ContactUsPage: React.FC = () => {
 
       const heroTl = gsap.timeline({
         defaults: { ease: "power4.out" },
-        delay: 1.6,
+        delay: 0.8,
       });
 
       heroTl.to(".cup-hero-title .cup-hero-reveal-line", {
