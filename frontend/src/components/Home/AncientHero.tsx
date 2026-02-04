@@ -125,26 +125,10 @@ const AncientHero: React.FC = () => {
     btn.style.setProperty("--y", `${y}%`);
   };
 
-  const handleParallax = (e: React.MouseEvent) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 20;
-    const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-    const gateway = document.querySelector(".gateway") as HTMLElement;
-    const mandala = document.querySelector(".mandala") as HTMLElement;
-
-    if (gateway) {
-      gateway.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
-    }
-    if (mandala) {
-      mandala.style.transform = `translate(-50%, -50%) rotate(${x}deg)`;
-    }
-  };
-
   return (
     <section
       ref={sectionRef}
       className={`sanctuary ${animationsStarted ? "hero-unveiled" : ""}`}
-      onMouseMove={handleParallax}
     >
       {/* Background Image */}
       <div className="sanctuary__bg">

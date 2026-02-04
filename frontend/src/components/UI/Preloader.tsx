@@ -43,7 +43,7 @@ const Preloader = () => {
           document.body.classList.add("content-loaded");
           // Dispatch event to trigger hero animations after curtain opens
           window.dispatchEvent(new CustomEvent("curtainOpened"));
-        }, 2500);
+        }, 1500);
       }, 1000);
     };
 
