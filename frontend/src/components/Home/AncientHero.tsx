@@ -12,9 +12,7 @@ const AncientHero: React.FC = () => {
   const ctaRef = useRef<HTMLAnchorElement>(null);
   const scrollBtnRef = useRef<HTMLDivElement>(null);
 
-  // Check if this is the first load (animations should run)
-  const isFirstLoad = useRef(!sessionStorage.getItem('heroAnimationPlayed'));
-  const [animationsStarted, setAnimationsStarted] = useState(!isFirstLoad.current);
+  const [animationsStarted, setAnimationsStarted] = useState(false);
 
   useEffect(() => {
     if (particlesRef.current) {
@@ -28,112 +26,91 @@ const AncientHero: React.FC = () => {
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         particle.style.animationDelay = `${Math.random() * 20}s`;
-        // Slower animation duration (25s instead of 15s)
         particle.style.animationDuration = `${Math.random() * 15 + 25}s`;
         particlesRef.current.appendChild(particle);
       }
     }
 
-    // Only run animations on first load
-    if (!isFirstLoad.current) {
-      // Not first load - content is already visible
-      return;
+    // Lock animated elements hidden until GSAP reveals them
+    gsap.set(eyebrowRef.current, { opacity: 0 });
+    gsap.set([titleLine1Ref.current, titleLine2Ref.current], { opacity: 0, y: 60 });
+    gsap.set(subtitleRef.current, { opacity: 0 });
+    gsap.set(ctaRef.current, { opacity: 0, clipPath: "inset(0 100% 0 0)" });
+    gsap.set(scrollBtnRef.current, { opacity: 0, y: 30 });
+
+    // Preloader adds "content-loaded" to body right before dispatching curtainOpened.
+    // If it's already there, we're navigating from another page — animate after short delay.
+    // If not, the preloader is still running — wait for it to finish.
+    if (document.body.classList.contains("content-loaded")) {
+      const timer = setTimeout(() => setAnimationsStarted(true), 300);
+      return () => clearTimeout(timer);
     }
 
-    // Animation timing control
-    // DELAY_CONTROL: Change this value to control when animations start
-    // Reference point: When curtain FINISHES opening
-    const ANIMATION_DELAY = -900; // milliseconds
-    // Examples:
-    //   0 = Start exactly when curtain finishes opening
-    //   500 = Start 0.5 seconds AFTER curtain opens (delay)
-    //   1000 = Start 1 second after curtain opens
-    //   -500 = Start 0.5 seconds BEFORE curtain finishes (while still opening)
-    //   -1000 = Start 1 second before curtain finishes
-
-    const CURTAIN_DURATION = 2500; // Curtain takes 2500ms to fully open
-
-    const handleCurtainStart = () => {
-      // Calculate when to start animations relative to curtain finishing
-      const triggerTime = CURTAIN_DURATION + ANIMATION_DELAY;
-
-      if (triggerTime > 0) {
-        setTimeout(() => {
-          setAnimationsStarted(true);
-          sessionStorage.setItem('heroAnimationPlayed', 'true');
-        }, triggerTime);
-      } else {
-        // If triggerTime is negative or zero, start immediately
-        setAnimationsStarted(true);
-        sessionStorage.setItem('heroAnimationPlayed', 'true');
-      }
-    };
-
-    window.addEventListener("curtainStarted", handleCurtainStart);
-
-    return () => {
-      window.removeEventListener("curtainStarted", handleCurtainStart);
-    };
+    const handler = () => setAnimationsStarted(true);
+    window.addEventListener("curtainOpened", handler);
+    return () => window.removeEventListener("curtainOpened", handler);
   }, []);
 
   // GSAP Timeline Animation
   useEffect(() => {
-    if (animationsStarted) {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    if (!animationsStarted) return;
 
-      // 1. Eyebrow fades in with upward movement
-      tl.fromTo(
-        eyebrowRef.current,
-        { opacity: 0, y: 0 },
-        { opacity: 1, y: 0, duration: 1 },
-        0,
-      );
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // 2. Title line 1 slides up
-      tl.fromTo(
-        titleLine1Ref.current,
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
-        0.3,
-      );
+    // 1. Eyebrow fades in
+    tl.fromTo(
+      eyebrowRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1 },
+      0,
+    );
 
-      // 3. Title line 2 slides up (staggered)
-      tl.fromTo(
-        titleLine2Ref.current,
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
-        0.6,
-      );
+    // 2. Title line 1 slides up
+    tl.fromTo(
+      titleLine1Ref.current,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
+      0.3,
+    );
 
-      // 4. Subtitle fades in
-      tl.fromTo(
-        subtitleRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1 },
-        1.7,
-      );
+    // 3. Title line 2 slides up (staggered)
+    tl.fromTo(
+      titleLine2Ref.current,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
+      0.6,
+    );
 
-      // 5. CTA reveals with clip-path animation
-      tl.fromTo(
-        ctaRef.current,
-        { opacity: 0, clipPath: "inset(0 100% 0 0)" },
-        {
-          opacity: 1,
-          clipPath: "inset(0 0 0 0)",
-          duration: 1.1,
-          ease: "expo.out",
-        },
-        1.5,
-      );
+    // 4. Subtitle fades in
+    tl.fromTo(
+      subtitleRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1 },
+      1.7,
+    );
 
-      // 6. Scroll indicator slides up
-      tl.fromTo(
-        scrollBtnRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-        4.3,
-      );
-    }
+    // 5. CTA reveals with clip-path animation
+    tl.fromTo(
+      ctaRef.current,
+      { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+      {
+        opacity: 1,
+        clipPath: "inset(0 0 0 0)",
+        duration: 1.1,
+        ease: "expo.out",
+      },
+      1.5,
+    );
+
+    // 6. Scroll indicator slides up
+    tl.fromTo(
+      scrollBtnRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+      4.3,
+    );
+
+    return () => tl.kill();
   }, [animationsStarted]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
