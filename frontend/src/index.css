@@ -16,11 +16,12 @@ body {
 }
 
 @media (max-width: 968px) {
+  html,
   body {
-    background-image: none;
+    background-image: none !important;
     background-color: var(--color-off-white);
     background-attachment: scroll;
-    background-size: cover;
+    background-size: auto;
     background-position: center;
   }
 }
