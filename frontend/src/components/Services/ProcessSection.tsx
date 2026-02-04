@@ -46,8 +46,7 @@ const processSteps: ProcessStep[] = [
     subtitle: "APPROVALS AND BUILD-READY DETAILS",
     description:
       "We refine the architecture, coordinate engineering, and prepare the drawings needed for permits and pricing. Every detail is specified to reduce surprises and keep the build moving smoothly.",
-    outcome:
-      "Permit-ready documentation and a clear scope for your builder.",
+    outcome: "Permit-ready documentation and a clear scope for your builder.",
     image:
       "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&h=1000&fit=crop",
   },
@@ -92,7 +91,7 @@ export const ProcessSection: FC = () => {
           // Avoid re-splitting if already done
           if (el.querySelector(".shambala-title-char")) {
             return Array.from(
-              el.querySelectorAll<HTMLElement>(".shambala-title-char")
+              el.querySelectorAll<HTMLElement>(".shambala-title-char"),
             );
           }
 
@@ -117,22 +116,22 @@ export const ProcessSection: FC = () => {
           const step = stepEl as HTMLElement;
 
           const imgContainer = step.querySelector(
-            ".shambala-process-step-image-container"
+            ".shambala-process-step-image-container",
           ) as HTMLElement | null;
           const num = step.querySelector(
-            ".shambala-process-step-number"
+            ".shambala-process-step-number",
           ) as HTMLElement | null;
           const title = step.querySelector(
-            ".shambala-process-step-title"
+            ".shambala-process-step-title",
           ) as HTMLElement | null;
           const subtitle = step.querySelector(
-            ".shambala-process-step-subtitle"
+            ".shambala-process-step-subtitle",
           ) as HTMLElement | null;
           const desc = step.querySelector(
-            ".shambala-process-step-desc"
+            ".shambala-process-step-desc",
           ) as HTMLElement | null;
           const outcome = step.querySelector(
-            ".shambala-process-outcome-box"
+            ".shambala-process-outcome-box",
           ) as HTMLElement | null;
 
           // Image slide down reveal using clip-path
@@ -149,13 +148,7 @@ export const ProcessSection: FC = () => {
               scrollTrigger: {
                 trigger: step,
                 start: "top 70%",
-                toggleActions: "play none none reverse",
-                onRefresh: () => {
-                  // Ensure proper state on route navigation
-                  gsap.set(imgContainer, {
-                    clipPath: "inset(100% 0 0 0)",
-                  });
-                },
+                toggleActions: "play none none none",
               },
             });
           }
@@ -165,7 +158,7 @@ export const ProcessSection: FC = () => {
             scrollTrigger: {
               trigger: step,
               start: "top 70%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           });
 
@@ -173,7 +166,7 @@ export const ProcessSection: FC = () => {
             tl.fromTo(
               num,
               { opacity: 0, y: 90 },
-              { opacity: 1, y: 0, duration: 0.6, ease: "back.out(2.7)" }
+              { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" },
             );
           }
 
@@ -201,7 +194,7 @@ export const ProcessSection: FC = () => {
                     from: "edges",
                   },
                 },
-                "-=0.4"
+                "-=0.4",
               );
             }
           }
@@ -211,7 +204,7 @@ export const ProcessSection: FC = () => {
               subtitle,
               { opacity: 0, y: 20 },
               { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" },
-              "-=0.8"
+              "-=0.8",
             );
           }
 
@@ -220,7 +213,7 @@ export const ProcessSection: FC = () => {
               desc,
               { opacity: 0, y: 20 },
               { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" },
-              "-=0.25"
+              "-=0.5",
             );
           }
 
@@ -229,7 +222,7 @@ export const ProcessSection: FC = () => {
               outcome,
               { opacity: 0, y: 20 },
               { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" },
-              "-=0.2"
+              "-=0.3",
             );
           }
         });
@@ -250,7 +243,7 @@ export const ProcessSection: FC = () => {
 
       // Reset all image containers to initial state
       const imageContainers = rootRef.current.querySelectorAll(
-        ".shambala-process-step-image-container"
+        ".shambala-process-step-image-container",
       );
       imageContainers.forEach((container) => {
         gsap.set(container, {
@@ -260,19 +253,19 @@ export const ProcessSection: FC = () => {
 
       // Reset all content elements to initial state
       const nums = rootRef.current.querySelectorAll(
-        ".shambala-process-step-number"
+        ".shambala-process-step-number",
       );
       const titles = rootRef.current.querySelectorAll(
-        ".shambala-process-step-title"
+        ".shambala-process-step-title",
       );
       const subtitles = rootRef.current.querySelectorAll(
-        ".shambala-process-step-subtitle"
+        ".shambala-process-step-subtitle",
       );
       const descs = rootRef.current.querySelectorAll(
-        ".shambala-process-step-desc"
+        ".shambala-process-step-desc",
       );
       const outcomes = rootRef.current.querySelectorAll(
-        ".shambala-process-outcome-box"
+        ".shambala-process-outcome-box",
       );
 
       gsap.set(nums, { opacity: 0, y: 90 });
@@ -333,7 +326,9 @@ export const ProcessSection: FC = () => {
             <h3 className="shambala-process-step-title shambala-process-serif">
               {step.title}
             </h3>
-            <div className="shambala-process-step-subtitle">{step.subtitle}</div>
+            <div className="shambala-process-step-subtitle">
+              {step.subtitle}
+            </div>
             <p className="shambala-process-step-desc">{step.description}</p>
             <div className="shambala-process-outcome-box">
               <div className="shambala-process-outcome-label">OUTCOME</div>
