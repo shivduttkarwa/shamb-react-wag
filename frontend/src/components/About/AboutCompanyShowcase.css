@@ -170,11 +170,33 @@ body.about-showcase-active {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  color: #1a1a1a;
-  border: 1px solid rgba(26, 26, 26, 0.12);
+  color: #fff;
+  position: relative;
   border-radius: 1.5rem;
   padding: 1.7rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  background: rgba(12, 12, 24, 0.45);
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Gold accent line across the top */
+.company-panel-side::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.7),
+    transparent
+  );
 }
 
 .company-panel-side h2 {
@@ -182,19 +204,20 @@ body.about-showcase-active {
   font-size: clamp(2rem, 4vw, 3.2rem);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  color: #fff;
 }
 
 .company-panel-side p {
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(26, 26, 26, 0.85);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .company-panel-kicker {
   font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(26, 26, 26, 0.6);
+  color: #d4af37;
 }
 
 .company-panel-side ul {
@@ -205,28 +228,16 @@ body.about-showcase-active {
 
 .company-panel-side li {
   font-size: 0.95rem;
-  color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.9);
   padding: 0.6rem 0.9rem 0.6rem 1.2rem;
   position: relative;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 10px 20px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   display: inline-flex;
   align-items: center;
   width: fit-content;
-}
-
-.company-panel-side li:nth-child(1) {
-  background: rgba(255, 230, 109, 0.5);
-}
-
-.company-panel-side li:nth-child(2) {
-  background: rgba(168, 230, 207, 0.5);
-}
-
-.company-panel-side li:nth-child(3) {
-  background: rgba(199, 206, 234, 0.5);
 }
 
 .company-panel-side li::before {
@@ -238,19 +249,7 @@ body.about-showcase-active {
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
-  background: #d9b57d;
-}
-
-.company-panel-side li:nth-child(1) {
-  background: rgba(255, 230, 109, 0.18);
-}
-
-.company-panel-side li:nth-child(2) {
-  background: rgba(168, 230, 207, 0.18);
-}
-
-.company-panel-side li:nth-child(3) {
-  background: rgba(255, 139, 148, 0.18);
+  background: #d4af37;
 }
 
 .company-panel-ctas {
@@ -261,8 +260,8 @@ body.about-showcase-active {
 }
 
 .company-panel-cta {
-  --rm-bg: rgba(255, 255, 255, 0.95);
-  --rm-color: #2f2f2f;
+  --rm-bg: rgba(212, 175, 55, 0.12);
+  --rm-color: #d4af37;
   text-decoration: none;
 }
 

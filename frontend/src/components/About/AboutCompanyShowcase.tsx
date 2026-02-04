@@ -244,10 +244,7 @@ const AboutCompanyShowcase: React.FC = () => {
                   ))}
                 </div>
 
-                <div
-                  className="company-panel-side"
-                  style={{ backgroundColor: panel.sideColor }}
-                >
+                <div className="company-panel-side">
                   <span className="company-panel-kicker">{panel.title}</span>
                   <h2>{panel.sideTitle}</h2>
                   <p>{panel.sideDescription}</p>
