@@ -369,7 +369,7 @@ const OverlayMenu: React.FC = () => {
               {/* 5 - Contact Us */}
               <div className="olm-menu-item olm-modern-menu-item olm-menu-item-contact">
                 <div className="olm-menu-line"></div>
-                <Link to="/new-contact">
+                <Link to="/contact-us">
                   <span className="olm-menu-number">04.</span>
                   <div className="olm-menu-arrow">
                     <svg width="40" height="25" viewBox="0 0 40 25">
@@ -395,7 +395,7 @@ const OverlayMenu: React.FC = () => {
               {/* Mobile Secondary Menu - Only visible on mobile */}
               <div className="olm-mobile-secondary-menu">
                 <div className="olm-mobile-cta">
-                  <GlassRainButton href="/new-contact">
+                  <GlassRainButton href="/contact-us">
                     Start a Project
                   </GlassRainButton>
                 </div>
@@ -439,7 +439,7 @@ const OverlayMenu: React.FC = () => {
             <div className="olm-contact-section">
               <div className="olm-menu-item olm-secondary-menu-item">
                 <div className="olm-contact-btn" style={{ position: 'relative', top: '100vh' }}>
-                  <GlassRainButton href="/new-contact">
+                  <GlassRainButton href="/contact-us">
                     Contact Us
                   </GlassRainButton>
                 </div>

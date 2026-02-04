@@ -48,7 +48,7 @@ const panels: ShowcasePanel[] = [
       "Material palettes that balance warmth and durability",
       "Build support to protect the design intent",
     ],
-    ctas: [{ text: "Start a Project", href: "/new-contact" }],
+    ctas: [{ text: "Start a Project", href: "/contact-us" }],
   },
   {
     title: "Our Method",
@@ -69,7 +69,7 @@ const panels: ShowcasePanel[] = [
       "Practical detailing and builder-ready drawings",
       "Ongoing support through construction",
     ],
-    ctas: [{ text: "Book a Call", href: "/new-contact" }],
+    ctas: [{ text: "Book a Call", href: "/contact-us" }],
   },
   {
     title: "Design Ethos",
@@ -111,7 +111,7 @@ const panels: ShowcasePanel[] = [
       "Responsive design decisions during build",
       "Final handover support",
     ],
-    ctas: [{ text: "Talk to Us", href: "/new-contact" }],
+    ctas: [{ text: "Talk to Us", href: "/contact-us" }],
   },
   {
     title: "Aftercare",
@@ -132,7 +132,7 @@ const panels: ShowcasePanel[] = [
       "Furniture and styling guidance",
       "Future renovations or add-ons",
     ],
-    ctas: [{ text: "Book a Styling Call", href: "/new-contact" }],
+    ctas: [{ text: "Book a Styling Call", href: "/contact-us" }],
   },
 ];
 

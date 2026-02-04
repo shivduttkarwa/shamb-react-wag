@@ -223,7 +223,7 @@ const AboutDetails: React.FC = () => {
                 Portfolio
               </Link>
               <Link
-                to="/contact"
+                to="/contact-us"
                 className="about-btn-secondary-enhanced flex-1 min-w-[120px] text-center"
               >
                 Get Quote
@@ -280,7 +280,7 @@ const AboutDetails: React.FC = () => {
                 Discover More
               </Link>
               <Link
-                to="/contact"
+                to="/contact-us"
                 className="about-link-arrow group"
               >
                 Start Your Project

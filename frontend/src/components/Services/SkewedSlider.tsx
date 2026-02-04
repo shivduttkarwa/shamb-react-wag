@@ -953,7 +953,7 @@ const SkewedSlider: React.FC<{ className?: string }> = ({ className = "" }) => {
                         </div>
                       ) : page.showRainButton ? (
                         <div className="rain-button-container">
-                          <GlassRainButton href="/contact">
+                          <GlassRainButton href="/contact-us">
                             Start Your Project
                           </GlassRainButton>
                         </div>

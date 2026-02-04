@@ -102,7 +102,7 @@ const IWantToSection: React.FC = () => {
 
         {/* CTA Section */}
         <div data-gsap="btn-clip-bottom" className="i-want-section__cta-wrapper">
-          <AestheticButton className="essence-cta-btn" text="Get in Touch" href="/contact" />
+          <AestheticButton className="essence-cta-btn" text="Get in Touch" href="/contact-us" />
         </div>
       </div>
     </section>

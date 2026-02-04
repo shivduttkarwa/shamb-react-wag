@@ -40,8 +40,7 @@ function App() {
               />
               <Route path="/blog" element={<BlogListPage />} />
               <Route path="/blog/:slug" element={<BlogDetailPage />} />
-              <Route path="/contact" element={<NewContact />} />
-              <Route path="/new-contact" element={<NewContact />} />
+              <Route path="/contact-us" element={<NewContact />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route
                 path="/terms-and-conditions"

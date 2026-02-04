@@ -130,24 +130,6 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
           <div className="shambala-footer-links-section">
             <h3 className="shambala-footer-section-title">Explore</h3>
             <div className="shambala-footer-links">
-              <Link to="/house-designs" className="shambala-footer-link">
-                <span className="shambala-link-arrow">→</span>
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Portfolio</span>
-                    <span className="shambala-link-text">Portfolio</span>
-                  </span>
-                </span>
-              </Link>
-              <Link to="/projects" className="shambala-footer-link">
-                <span className="shambala-link-arrow">→</span>
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Projects</span>
-                    <span className="shambala-link-text">Projects</span>
-                  </span>
-                </span>
-              </Link>
               <Link to="/services" className="shambala-footer-link">
                 <span className="shambala-link-arrow">→</span>
                 <span className="shambala-link-window">
@@ -166,12 +148,12 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                   </span>
                 </span>
               </Link>
-              <Link to="/contact" className="shambala-footer-link">
+              <Link to="/contact-us" className="shambala-footer-link">
                 <span className="shambala-link-arrow">→</span>
                 <span className="shambala-link-window">
                   <span className="shambala-link-track">
-                    <span className="shambala-link-text">Inquire</span>
-                    <span className="shambala-link-text">Inquire</span>
+                    <span className="shambala-link-text">Contact Us</span>
+                    <span className="shambala-link-text">Contact Us</span>
                   </span>
                 </span>
               </Link>

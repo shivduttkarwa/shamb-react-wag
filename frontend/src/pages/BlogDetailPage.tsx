@@ -698,7 +698,7 @@ const BlogDetailPage: React.FC = () => {
               tailored, timeless, and deeply human.
             </p>
           </div>
-          <GlassButton href="/contact">Start a project</GlassButton>
+          <GlassButton href="/contact-us">Start a project</GlassButton>
         </div>
       </section>
     </div>

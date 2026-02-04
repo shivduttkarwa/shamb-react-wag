@@ -239,7 +239,7 @@ const CTASection: React.FC = () => {
           {/* CTA Actions */}
           <div className="cta-actions">
             <div className="cta-primary-action">
-              <AestheticButton href="/contact" className="cta-aesthetic-btn">
+              <AestheticButton href="/contact-us" className="cta-aesthetic-btn">
                 Start Your Project
               </AestheticButton>
             </div>
