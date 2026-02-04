@@ -233,12 +233,17 @@
 /* Large Brand Name at Bottom */
 .shambala-footer-brand-large {
   width: 100vw;
-  text-align: center;
   margin-top: 2.5rem;
   overflow: hidden;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.shambala-footer-brand-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .shambala-footer-brand-text {
@@ -252,7 +257,7 @@
   text-transform: uppercase;
   user-select: none;
   white-space: nowrap;
-  transform: translateX(0);
+  flex-shrink: 0;
 }
 
 .shambala-footer-mask {
@@ -260,6 +265,11 @@
   overflow: hidden;
   vertical-align: bottom;
   height: 1em;
+}
+
+/* negate trailing letter-spacing so text-align: center is truly centered */
+.shambala-footer-mask:last-child {
+  margin-right: -0.12em;
 }
 
 .shambala-footer-letter {
@@ -341,6 +351,10 @@
     font-size: 5.5rem;
     letter-spacing: 0.13em;
   }
+
+  .shambala-footer-mask:last-child {
+    margin-right: -0.13em;
+  }
 }
 
 /* ============================================
@@ -378,29 +392,260 @@
     letter-spacing: 0.14em;
   }
 
+  .shambala-footer-mask:last-child {
+    margin-right: -0.14em;
+  }
+
   .shambala-footer-brand-large {
     margin-top: 3.75rem;
   }
 }
 
 /* ============================================
-   Small laptops (≥ 1124px)
+   Small laptops (≥ 1024px)
    ============================================ */
-@media (min-width: 1124px) {
+@media (min-width: 1024px) {
+  .shambala-footer-container {
+    max-width: 70rem;
+    padding: 4rem 2rem 1rem;
+  }
+
+  /* Four-column layout */
+  .shambala-footer-top-section {
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .shambala-footer-brand-box {
+    grid-column: auto;
+    gap: 1.5rem;
+  }
+
+  .shambala-footer-brand-description {
+    font-size: 0.85rem;
+    max-width: 14rem;
+  }
+
+  .shambala-footer-section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .shambala-footer-section-title::after {
+    width: 2rem;
+    height: 0.1rem;
+  }
+
+  /* Back to column for side-by-side sections */
+  .shambala-footer-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .shambala-footer-link {
+    font-size: 0.7rem;
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+  }
+
+  .shambala-link-arrow {
+    font-size: 0.7rem;
+  }
+
+  .shambala-link-text {
+    font-size: 0.84rem;
+  }
+
+  .shambala-footer-contact-info {
+    gap: 1.2rem;
+  }
+
+  .shambala-contact-item {
+    gap: 0.4rem;
+  }
+
+  .shambala-contact-label {
+    font-size: 0.6rem;
+  }
+
+  .shambala-footer-contact-item {
+    font-size: 0.7rem;
+  }
+
+  .shambala-footer-legal {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    gap: 0.6rem;
+  }
+
+  .shambala-legal-link {
+    font-size: 0.95rem;
+  }
+
+  .shambala-footer-copyright {
+    font-size: 0.6rem;
+  }
+
+  .shambala-footer-follow-us-section {
+    gap: 0.8rem;
+  }
+
+  .shambala-footer-follow-links {
+    gap: 0.6rem;
+  }
+
+  .shambala-follow-link {
+    font-size: 0.7rem;
+    padding: 0.4rem 0;
+  }
+
+  /* logo pinned to center of description */
+  .shambala-footer-logo {
+    left: 7rem !important;
+  }
+
+  .shambala-footer-brand-text {
+    font-size: 10.26rem;
+    letter-spacing: 0.16em;
+  }
+
+  .shambala-footer-mask:last-child {
+    margin-right: -0.16em;
+  }
+
+  .shambala-footer-brand-large {
+    margin-top: 3rem;
+  }
+}
+
+/* ============================================
+   Desktops (≥ 1280px)
+   ============================================ */
+@media (min-width: 1280px) {
+  /* Full four-column layout — all values ×0.85 for screens below 1536 */
+  .shambala-footer-container {
+    max-width: 74.38rem;
+    padding: 4.25rem 2.13rem 1.06rem;
+  }
+
+  .shambala-footer-top-section {
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
+    gap: 3.19rem;
+    margin-bottom: 4.25rem;
+  }
+
+  .shambala-footer-brand-box {
+    grid-column: auto;
+    gap: 1.59rem;
+  }
+
+  .shambala-footer-brand-description {
+    font-size: 0.9rem;
+    max-width: 14.88rem;
+  }
+
+  .shambala-footer-section-title {
+    font-size: 1.28rem;
+    margin-bottom: 1.59rem;
+  }
+
+  .shambala-footer-section-title::after {
+    width: 2.13rem;
+    height: 0.11rem;
+  }
+
+  .shambala-footer-links {
+    gap: 0.85rem;
+  }
+
+  .shambala-footer-link {
+    font-size: 0.74rem;
+    gap: 0.43rem;
+    padding: 0.43rem 0;
+  }
+
+  .shambala-link-arrow {
+    font-size: 0.74rem;
+  }
+
+  .shambala-footer-contact-info {
+    gap: 1.28rem;
+  }
+
+  .shambala-contact-item {
+    gap: 0.43rem;
+  }
+
+  .shambala-contact-label {
+    font-size: 0.64rem;
+  }
+
+  .shambala-footer-contact-item {
+    font-size: 0.74rem;
+  }
+
+  .shambala-footer-legal {
+    margin-top: 1.59rem;
+    padding-top: 1.06rem;
+    gap: 0.64rem;
+  }
+
+  .shambala-legal-link {
+    font-size: 1.01rem;
+  }
+
+  .shambala-footer-copyright {
+    font-size: 0.64rem;
+  }
+
+  .shambala-footer-follow-us-section {
+    gap: 0.85rem;
+  }
+
+  .shambala-footer-follow-links {
+    gap: 0.64rem;
+  }
+
+  .shambala-follow-link {
+    font-size: 0.74rem;
+    padding: 0.43rem 0;
+  }
+
+  .shambala-link-text {
+    font-size: 0.89rem;
+  }
+
+  .shambala-footer-brand-large {
+    margin-top: 3.19rem;
+  }
+
+  .shambala-footer-brand-text {
+    font-size: 13.56rem;
+    letter-spacing: 0.18em;
+  }
+
+  .shambala-footer-mask:last-child {
+    margin-right: -0.18em;
+  }
+}
+
+/* ============================================
+   Large desktops / 2K (≥ 1536px)
+   ============================================ */
+@media (min-width: 1536px) {
+  /* restore full sizes — 1280px is scaled down for smaller desktops */
   .shambala-footer-container {
     max-width: 87.5rem;
     padding: 5rem 2.5rem 1.25rem;
   }
 
-  /* Two-column grid, brand spans full width */
   .shambala-footer-top-section {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    gap: 3.75rem;
     margin-bottom: 5rem;
   }
 
   .shambala-footer-brand-box {
-    grid-column: 1 / -1;
     gap: 1.875rem;
   }
 
@@ -414,61 +659,78 @@
     margin-bottom: 1.875rem;
   }
 
-  /* Back to column for side-by-side sections */
+  .shambala-footer-section-title::after {
+    width: 2.5rem;
+    height: 0.125rem;
+  }
+
   .shambala-footer-links {
-    flex-direction: column;
     gap: 1rem;
   }
 
-  .shambala-link-text {
-    font-size: 1.05rem;
+  .shambala-footer-link {
+    font-size: 0.875rem;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .shambala-link-arrow {
+    font-size: 0.875rem;
   }
 
   .shambala-footer-contact-info {
     gap: 1.5rem;
   }
 
-  .shambala-footer-brand-text {
-    font-size: 10rem;
-    letter-spacing: 0.16em;
+  .shambala-contact-item {
+    gap: 0.5rem;
+  }
+
+  .shambala-contact-label {
+    font-size: 0.75rem;
+  }
+
+  .shambala-footer-contact-item {
+    font-size: 0.875rem;
+  }
+
+  .shambala-footer-legal {
+    margin-top: 1.875rem;
+    padding-top: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .shambala-legal-link {
+    font-size: 1.1875rem;
+  }
+
+  .shambala-footer-copyright {
+    font-size: 0.75rem;
+  }
+
+  .shambala-footer-follow-us-section {
+    gap: 1rem;
+  }
+
+  .shambala-footer-follow-links {
+    gap: 0.75rem;
+  }
+
+  .shambala-follow-link {
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+  }
+
+  .shambala-link-text {
+    font-size: 1.05rem;
   }
 
   .shambala-footer-brand-large {
     margin-top: 3.75rem;
   }
-}
-
-/* ============================================
-   Desktops (≥ 1280px)
-   ============================================ */
-@media (min-width: 1280px) {
-  /* Full four-column layout */
-  .shambala-footer-top-section {
-    grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
-    gap: 3.75rem;
-  }
-
-  .shambala-footer-brand-box {
-    grid-column: auto;
-  }
-
-  .shambala-footer-brand-description {
-    max-width: 17.5rem;
-  }
 
   .shambala-footer-brand-text {
-    font-size: 14.5rem;
-    letter-spacing: 0.18em;
-    transform: translateX(1.5rem);
-  }
-}
-
-/* ============================================
-   Large desktops / 2K (≥ 1536px)
-   ============================================ */
-@media (min-width: 1536px) {
-  .shambala-footer-brand-text {
-    font-size: 17.4rem;
+    font-size: 14.79rem;
   }
 }
 
@@ -477,7 +739,102 @@
    ============================================ */
 @media (min-width: 1920px) {
   .shambala-footer-container {
-    max-width: 105rem;
+    max-width: 126rem;
+    padding: 6rem 3rem 1.5rem;
+  }
+
+  .shambala-footer-top-section {
+    gap: 4.5rem;
+    margin-bottom: 6rem;
+  }
+
+  .shambala-footer-brand-box {
+    gap: 2.25rem;
+  }
+
+  .shambala-footer-brand-description {
+    font-size: 1.275rem;
+    max-width: 21rem;
+  }
+
+  .shambala-footer-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .shambala-footer-section-title::after {
+    width: 3rem;
+    height: 0.15rem;
+  }
+
+  .shambala-footer-links {
+    gap: 1.2rem;
+  }
+
+  .shambala-footer-link {
+    font-size: 1.05rem;
+    gap: 0.6rem;
+    padding: 0.6rem 0;
+  }
+
+  .shambala-link-arrow {
+    font-size: 1.05rem;
+  }
+
+  .shambala-footer-contact-info {
+    gap: 1.8rem;
+  }
+
+  .shambala-contact-item {
+    gap: 0.6rem;
+  }
+
+  .shambala-contact-label {
+    font-size: 0.9rem;
+  }
+
+  .shambala-footer-contact-item {
+    font-size: 1.05rem;
+  }
+
+  .shambala-footer-legal {
+    margin-top: 2.25rem;
+    padding-top: 1.5rem;
+    gap: 0.9rem;
+  }
+
+  .shambala-legal-link {
+    font-size: 1.425rem;
+  }
+
+  .shambala-footer-copyright {
+    font-size: 0.9rem;
+  }
+
+  .shambala-footer-follow-us-section {
+    gap: 1.2rem;
+  }
+
+  .shambala-footer-follow-links {
+    gap: 0.9rem;
+  }
+
+  .shambala-follow-link {
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
+  }
+
+  .shambala-link-text {
+    font-size: 1.26rem;
+  }
+
+  .shambala-footer-brand-large {
+    margin-top: 4.5rem;
+  }
+
+  /* logo pinned to center of description, not the wider column */
+  .shambala-footer-logo {
+    left: 10.5rem !important;
   }
 
   .shambala-footer-brand-text {

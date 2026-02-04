@@ -324,6 +324,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
 
         {/* Large Brand Name at Bottom */}
         <div className="shambala-footer-brand-large">
+          <div className="shambala-footer-brand-center">
           <h1 className="shambala-footer-brand-text" ref={brandTextRef}>
             <div className="shambala-footer-mask">
               <span className="shambala-footer-letter">S</span>
@@ -350,6 +351,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
               <span className="shambala-footer-letter">A</span>
             </div>
           </h1>
+          </div>
         </div>
       </div>
     </footer>
