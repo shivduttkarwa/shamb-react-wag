@@ -17,9 +17,8 @@ body {
 
 @media (max-width: 968px) {
   body {
-    background-image:
-      linear-gradient(rgba(224, 242, 228, 0.6), rgba(224, 242, 228, 0.8)),
-      url("/images/mobile-bg.png");
+    background-image: none;
+    background-color: var(--color-off-white);
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
