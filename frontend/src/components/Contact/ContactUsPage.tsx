@@ -92,7 +92,12 @@ const ContactUsPage: React.FC = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Check if all fields are filled
-    if (!formData.name || !formData.email || !formData.message || !selectedOption) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.message ||
+      !selectedOption
+    ) {
       alert("Please fill in all fields");
       return;
     }
@@ -125,7 +130,7 @@ const ContactUsPage: React.FC = () => {
     "New House Construction",
     "Home Renovation",
     "Kitchen & Bathroom Remodel",
-    "Home Extension"
+    "Home Extension",
   ];
 
   const scrollToForm = () => {
@@ -136,7 +141,7 @@ const ContactUsPage: React.FC = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:studio@shambala.design";
+    window.location.href = "mailto:hello@shambala.design";
   };
 
   return (
@@ -631,8 +636,8 @@ const ContactUsPage: React.FC = () => {
           inset: 0;
           background: linear-gradient(
               120deg,
-              rgba(12, 18, 14, 0.2),
-              rgba(12, 18, 14, 0.15)
+              rgba(8, 14, 10, 0.55),
+              rgba(8, 14, 10, 0.45)
             );
           z-index: 1;
         }
@@ -648,11 +653,11 @@ const ContactUsPage: React.FC = () => {
           justify-content: space-between;
           gap: 3rem;
           z-index: 2;
-          background: rgba(16, 24, 19, 0.12);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 20px;
-          backdrop-filter: blur(6px);
-          box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+          background: transparent;
+          border: none;
+          border-radius: 0;
+          backdrop-filter: none;
+          box-shadow: none;
         }
 
         .cup-parallax-top h2 {
@@ -866,10 +871,10 @@ const ContactUsPage: React.FC = () => {
 
           <div className="cup-hero-actions">
             <AestheticButton onClick={scrollToForm}>
-              Start a Project
+              Start Your Project
             </AestheticButton>
             <AestheticButton onClick={handleEmailClick}>
-              Email the Studio
+              Email Our Team
             </AestheticButton>
           </div>
         </div>
@@ -983,10 +988,10 @@ const ContactUsPage: React.FC = () => {
 
             {/* RIGHT – CONTACT INFO (shambala) */}
             <div className="cup-info-column contact-animate">
-              <h3 className="cup-info-title">shambala Studio</h3>
+              <h3 className="cup-info-title">Shambala Homes</h3>
               <ul className="cup-info-list">
                 <li>
-                  <strong>Projects:</strong> studio@shambala.design
+                  <strong>Projects:</strong> hello@shambala.design
                 </li>
                 <li>
                   <strong>New enquiries:</strong> hello@shambala.design
@@ -995,7 +1000,7 @@ const ContactUsPage: React.FC = () => {
                   <strong>Phone:</strong> +61 (0) 400 000 000
                 </li>
                 <li>
-                  <strong>Studio:</strong> By appointment only, Melbourne /
+                  <strong>Visits:</strong> By appointment only, Melbourne /
                   Jaipur
                 </li>
               </ul>
@@ -1024,12 +1029,11 @@ const ContactUsPage: React.FC = () => {
               that balances form, light, and everyday life—so your spaces feel
               timeless, not temporary.
             </p>
-            <GlassButton
-              href="mailto:studio@shambala.design"
+            <AestheticButton
+              href="mailto:hello@shambala.design"
               className="cup-parallax-cta-btn"
-            >
-              Schedule a Consultation
-            </GlassButton>
+              text="Book a Call"
+            />
           </div>
         </div>
       </section>
@@ -1059,10 +1063,16 @@ const ContactUsPage: React.FC = () => {
       {/* SUCCESS MESSAGE */}
       {showSuccess && (
         <>
-          <div className="cup-success-overlay" onClick={() => setShowSuccess(false)} />
+          <div
+            className="cup-success-overlay"
+            onClick={() => setShowSuccess(false)}
+          />
           <div className="cup-success-message">
             <h3>Thank You!</h3>
-            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+            <p>
+              Your message has been sent successfully. We'll get back to you
+              soon.
+            </p>
           </div>
         </>
       )}

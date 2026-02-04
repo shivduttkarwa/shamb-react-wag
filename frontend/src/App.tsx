@@ -7,7 +7,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ServicePage from "./pages/ServicePage";
-import Contact from "./pages/Contact";
+
 import NewContact from "./pages/NewContact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -43,7 +43,10 @@ function App() {
               <Route path="/contact" element={<NewContact />} />
               <Route path="/new-contact" element={<NewContact />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route
+                path="/terms-and-conditions"
+                element={<TermsAndConditions />}
+              />
             </Routes>
           </main>
           <Footer settings={settings} />
