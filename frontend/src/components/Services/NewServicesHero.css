@@ -372,7 +372,7 @@
    ============================================ */
 @media (max-width: 767px) {
   .nsh-hero {
-    min-height: calc(90vh - 5rem);
+    min-height: calc(90vh - 3rem);
     grid-auto-rows: min-content;
   }
 
