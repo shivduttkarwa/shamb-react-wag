@@ -3,6 +3,9 @@ import gsap from "gsap";
 import "./NewServicesHero.css";
 import AestheticButton from "../UI/AestheticButton";
 
+const publicUrl = import.meta.env.BASE_URL;
+const heroVideo = `${publicUrl}images/services-hero-vid.mp4`;
+
 interface ServicePill {
   id: number;
   name: string;
@@ -220,7 +223,7 @@ const NewServicesHero: React.FC = () => {
     >
       {/* Background Video */}
       <video className="nsh-bg-video" autoPlay muted loop playsInline>
-        <source src="/images/services-hero-vid.mp4" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
       <div className="nsh-bg-overlay" />
 
