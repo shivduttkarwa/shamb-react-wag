@@ -82,7 +82,7 @@ const ServiceTestimonials: React.FC = () => {
         >
           What our clients say
         </TiltTextGsap>
-        <p data-gsap="fade-up" data-gsap-delay="0.1">
+        <p className="ser-animate-in">
           Real stories from real people who&apos;ve transformed their spaces
           with shambala&apos;s thoughtful design approach.
         </p>
