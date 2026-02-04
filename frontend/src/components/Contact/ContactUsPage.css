@@ -10,7 +10,13 @@
   --cup-muted: #5f6a61;
   background: var(--cup-paper);
   color: var(--cup-ink);
-  font-family: "Nunito", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Nunito",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   line-height: 1.5;
 }
 
@@ -22,12 +28,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: linear-gradient(
-      135deg,
-      rgba(13, 20, 16, 0.68),
-      rgba(34, 49, 39, 0.82)
-    ),
-    url('/images/ess.jpg');
+  background-image:
+    linear-gradient(135deg, rgba(13, 20, 16, 0.68), rgba(34, 49, 39, 0.82)),
+    url("/images/ess.jpg");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,12 +40,12 @@
 .cup-hero-overlay {
   position: absolute;
   inset: 0;
-  background:rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .cup-hero-content {
   position: relative;
-  max-width: 980px;
+  max-width: 61.25rem;
   width: 100%;
   padding: clamp(1.5rem, 4vw, 3rem);
   text-align: center;
@@ -52,11 +55,11 @@
   backdrop-filter: none;
   border-radius: 0;
   box-shadow: none;
-  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.35);
 }
 
 .cup-hero-title {
-  font-size: clamp(3.4rem, 7vw, 5.4rem);
+  font-size: clamp(2.125rem, 5.1vw, 4.25rem);
   line-height: 0.98;
   margin: 0 0 1rem;
   font-weight: 400;
@@ -68,7 +71,7 @@
 
 .cup-hero-subtitle {
   margin: 0 0 2.4rem;
-  font-size: 1.08rem;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   opacity: 0.9;
   max-width: 38rem;
   margin-left: auto;
@@ -86,12 +89,24 @@
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 5.1rem;
   transform-origin: center;
   overflow: hidden;
 }
 
+.cup-hero-cta {
+  text-decoration: none;
+}
 
+.cup-hero-cta span {
+  font-size: 0.85rem !important;
+  padding: 1.2rem 2.1rem !important;
+  letter-spacing: 0.16em !important;
+}
+
+.cup-hero-cta span + span {
+  padding: 1.2rem 1.5rem !important;
+}
 
 /* ========== MAIN CONTACT SECTION ========== */
 .cup-main {
@@ -100,7 +115,7 @@
 }
 
 .cup-inner {
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -115,10 +130,10 @@
 .cup-form {
   flex: 1;
   background: #ffffff;
-  border: 1px solid #ede9dd;
-  border-radius: 18px;
+  border: 0.0625rem solid #ede9dd;
+  border-radius: 1.125rem;
   padding: clamp(1.5rem, 3vw, 2rem);
-  box-shadow: 0 30px 80px rgba(15, 23, 18, 0.12);
+  box-shadow: 0 1.875rem 5rem rgba(15, 23, 18, 0.12);
 }
 
 .cup-input-wrapper {
@@ -128,7 +143,7 @@
 
 /* One font-size rule for all 4 fields */
 .cup-big-line {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2.05rem, 3.4vw, 3.1rem);
 }
 
 .cup-contact-header {
@@ -156,7 +171,7 @@
 }
 
 .cup-contact-textarea {
-  min-height: 80px;
+  min-height: 5rem;
   resize: none;
 }
 
@@ -169,8 +184,8 @@
   background: linear-gradient(135deg, var(--cup-accent) 0%, #2f3c33 100%);
   color: #f7f7f2;
   padding: 2rem 3rem;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
   text-align: center;
   animation: slideIn 0.4s ease-out;
@@ -208,12 +223,16 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .cup-underline {
-  height: 2px;
+  height: 0.125rem;
   width: 0%;
   background: linear-gradient(
     90deg,
@@ -245,7 +264,7 @@
   color: rgba(31, 39, 31, 0.65);
   opacity: 1;
   padding: 0;
-  padding-right: 2.5rem; /* space for accordion icon */
+  padding-right: 2.5rem;
   cursor: pointer;
   user-select: none;
 }
@@ -260,8 +279,8 @@
   right: 0.4rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -272,7 +291,9 @@
   width: 100%;
   height: 100%;
   fill: var(--cup-muted);
-  transition: transform 0.25s ease, fill 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    fill 0.25s ease;
 }
 
 .cup-input-wrapper.focused .cup-select-icon svg {
@@ -286,31 +307,33 @@
   left: 0;
   right: 0;
   background: #ffffff;
-  border: 1px solid #ede9dd;
-  border-radius: 14px;
+  border: 0.0625rem solid #ede9dd;
+  border-radius: 0.875rem;
   margin-top: 0.5rem;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
   transition: all 0.3s ease;
   z-index: 10;
-  box-shadow: 0 26px 60px rgba(15, 23, 18, 0.12);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 1.625rem 3.75rem rgba(15, 23, 18, 0.12);
+  backdrop-filter: blur(0.5rem);
 }
 
 .cup-select-options.open {
-  max-height: 300px;
+  max-height: 18.75rem;
   opacity: 1;
   transform: translateY(0);
 }
 
 .cup-select-option {
-  padding: 0.8rem 1.2rem;
-  font-size: 1.05rem;
+  padding: 0.85rem 1.3rem;
+  font-size: 1.1rem;
   color: var(--cup-ink);
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .cup-select-option:hover {
@@ -319,11 +342,11 @@
 }
 
 .cup-select-option:first-child {
-  border-radius: 14px 14px 0 0;
+  border-radius: 0.875rem 0.875rem 0 0;
 }
 
 .cup-select-option:last-child {
-  border-radius: 0 0 14px 14px;
+  border-radius: 0 0 0.875rem 0.875rem;
 }
 
 /* ========== SUBMIT BUTTON ========== */
@@ -336,26 +359,22 @@
 
 .cup-behind-line {
   flex: 1;
-  height: 1px;
+  height: 0.0625rem;
   background: var(--cup-ink);
   opacity: 0.2;
 }
 
 .cup-button-wrapper {
   position: relative;
-  margin-left: -60px;
+  margin-left: -3.75rem;
 }
 
 .cup-submit-button {
-  width: 110px;
-  height: 110px;
+  width: 6.875rem;
+  height: 6.875rem;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(
-    135deg,
-    var(--cup-accent) 0%,
-    #2f3c33 100%
-  );
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, var(--cup-accent) 0%, #2f3c33 100%);
   color: #f7f7f2;
   cursor: pointer;
   outline: none;
@@ -364,121 +383,118 @@
   justify-content: center;
   transform-origin: center;
   transform: translateY(0);
-  box-shadow: 0 20px 44px rgba(13, 20, 16, 0.3);
-  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+  box-shadow: 0 1.25rem 2.75rem rgba(13, 20, 16, 0.3);
+  transition:
+    transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
     box-shadow 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+.cup-submit-button:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 1.875rem 3.75rem rgba(13, 20, 16, 0.35);
+}
+
 .cup-submit-inner {
-  transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cup-p-button {
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin: 0;
-  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
-    letter-spacing 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  font-weight: 600;
 }
 
-.cup-submit-button:hover,
-.cup-submit-button:focus-visible {
-  transform: translate(-8px, -8px);
-  box-shadow: 0 28px 52px rgba(11, 17, 14, 0.42);
-}
-
-.cup-submit-button:hover .cup-submit-inner,
-.cup-submit-button:focus-visible .cup-submit-inner {
-  transform: translateY(-4px);
-}
-
-.cup-submit-button:hover .cup-p-button,
-.cup-submit-button:focus-visible .cup-p-button {
-  transform: translateY(-2px);
-  letter-spacing: 0.28em;
-}
-
-/* ========== RIGHT-SIDE CONTACT INFO (shambala) ========== */
+/* ========== RIGHT INFO COLUMN ========== */
 .cup-info-column {
-  width: 35%;
-  flex: 0 0 35%;
-  background: #ffffff;
-  border: 1px solid #ede9dd;
-  border-radius: 18px;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  box-shadow: 0 22px 60px rgba(15, 23, 18, 0.12);
-  height: fit-content;
+  flex: 0.9;
+  background: #f7f4ed;
+  border-radius: 1.125rem;
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border: 0.0625rem solid rgba(31, 39, 31, 0.08);
+  box-shadow: 0 1.875rem 4.5rem rgba(15, 23, 18, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .cup-info-title {
-  margin-bottom: 1.2rem;
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: var(--cup-accent);
-  letter-spacing: -0.02em;
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 
 .cup-info-list {
   list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem;
-  line-height: 1.7;
-  font-size: 1.05rem;
+  display: grid;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  color: rgba(31, 39, 31, 0.75);
+}
+
+.cup-info-list strong {
   color: var(--cup-ink);
 }
 
-.cup-info-list li {
-  margin-bottom: 0.7rem;
+.cup-info-cta {
+  align-self: flex-start;
+  text-decoration: none;
 }
 
-.cup-info-list li strong {
-  font-weight: 700;
-  color: var(--cup-accent);
+.cup-info-cta span {
+  font-size: 0.78rem !important;
+  padding: 0.95rem 1.6rem !important;
+  letter-spacing: 0.16em !important;
+}
+
+.cup-info-cta span + span {
+  padding: 0.95rem 1.2rem !important;
 }
 
 .cup-arrow {
-  width: 60px;
-  margin-top: 0.8rem;
+  margin-top: auto;
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  border: 0.0625rem solid rgba(31, 39, 31, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cup-arrow-icon {
-  width: 100%;
-  fill: var(--cup-accent);
-  opacity: 0.85;
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: var(--cup-muted);
 }
 
 /* ========== PARALLAX SECTION ========== */
 .cup-parallax {
   position: relative;
-  min-height: 90vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Modern architectural interior / lobby */
-  background-image: url('/images/el1.webp');
+  background-image: url("/images/el1.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Desktop: Use background-attachment fixed for true parallax */
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .cup-parallax {
     background-attachment: fixed;
   }
 }
 
-/* Mobile: Use standard background scroll - more reliable */
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .cup-parallax {
     background-attachment: scroll;
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
   }
 }
 
@@ -486,16 +502,16 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-      120deg,
-      rgba(12, 18, 14, 0.2),
-      rgba(12, 18, 14, 0.15)
-    );
+    120deg,
+    rgba(6, 10, 7, 0.78),
+    rgba(6, 10, 7, 0.68)
+  );
   z-index: 1;
 }
 
 .cup-parallax-content {
   position: relative;
-  max-width: 1200px;
+  max-width: 75rem;
   width: 100%;
   padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
   color: #f7f7f2;
@@ -504,15 +520,15 @@
   justify-content: space-between;
   gap: 3rem;
   z-index: 2;
-  background: rgba(16, 24, 19, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 .cup-parallax-top h2 {
-  font-size: clamp(3rem, 5vw, 4.6rem);
+  font-size: clamp(2.25rem, 4.2vw, 3.6rem);
   max-width: 14ch;
   line-height: 1.05;
   margin: 0;
@@ -521,185 +537,272 @@
 }
 
 .cup-parallax-bottom {
-  max-width: 480px;
+  max-width: 30rem;
 }
 
 .cup-parallax-bottom p {
   margin-bottom: 1.5rem;
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   line-height: 1.8;
   opacity: 0.92;
   color: rgba(247, 247, 242, 0.92);
 }
 
-.cup-parallax .home-benefits-cta {
-  color: #f7f7f2;
-  border-top: 1px solid rgba(247, 247, 242, 0.28);
-  border-bottom: 1px solid rgba(247, 247, 242, 0.28);
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-}
-
-.cup-parallax .home-benefits-cta-icon {
-  border-color: rgba(247, 247, 242, 0.45);
-  color: #f7f7f2;
-}
-
-.cup-parallax .home-benefits-cta-bg {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.1)
-  );
-  opacity: 0.28;
-}
-
-.cup-parallax .home-benefits-cta:hover {
-  color: #0f1712;
-  background: rgba(247, 247, 242, 0.9);
-}
-
-.cup-parallax .home-benefits-cta:hover .home-benefits-cta-icon {
-  border-color: rgba(15, 23, 18, 0.16);
-  color: #0f1712;
-}
-
 .cup-parallax-cta-btn {
   margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+.cup-parallax-cta-btn span {
+  font-size: 0.82rem !important;
+  padding: 1.1rem 2rem !important;
+  letter-spacing: 0.16em !important;
 }
 
 /* ========== MAP SECTION ========== */
 .cup-map-section {
   padding: 5rem 0;
   background: #ffffff;
-  border-top: 1px solid #ede9dd;
 }
 
 .cup-map-header {
-  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
 }
 
 .cup-map-header h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--cup-accent);
-  letter-spacing: -0.01em;
+  font-family: "Dream Avenue", serif;
+  font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+  text-transform: uppercase;
 }
 
 .cup-map-header p {
-  color: var(--cup-muted);
+  margin-top: 0.8rem;
+  color: rgba(31, 39, 31, 0.7);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+}
+
+.cup-map-wrapper {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 0.0625rem solid rgba(31, 39, 31, 0.12);
+  box-shadow: 0 1.25rem 3rem rgba(15, 23, 18, 0.12);
 }
 
 .cup-map-wrapper iframe {
   width: 100%;
-  height: 400px;
-  border: none;
-  border-radius: 12px;
-  border: 1px solid #ede9dd;
-  box-shadow: 0 24px 60px rgba(15, 23, 18, 0.12);
+  height: 28rem;
+  border: 0;
+  display: block;
 }
 
-/* ========== LARGE SCREENS (1600px+) ========== */
-@media (min-width: 1600px) {
-  .cup-inner {
-    max-width: 1440px;
-  }
-
+/* ========== RESPONSIVE (Essence-style) ========== */
+@media (min-width: 30rem) {
   .cup-hero-title {
-    font-size: clamp(4rem, 8vw, 6.2rem);
-    font-family: "Dream Avenue", serif;
+    font-size: clamp(2.25rem, 5.2vw, 4.25rem);
   }
+}
 
+@media (min-width: 40rem) {
+  .cup-info-wrapper {
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+}
+
+@media (min-width: 48rem) {
   .cup-hero-subtitle {
-    font-size: 1.32rem;
+    font-size: clamp(1rem, 1.7vw, 1.2rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  .cup-hero-title {
+    font-size: clamp(2.6rem, 4.6vw, 4.6rem);
   }
 
   .cup-big-line {
-    font-size: clamp(2.4rem, 4.2vw, 3.6rem);
-  }
-
-  .cup-info-title {
-    font-size: 2.64rem;
-  }
-
-  .cup-info-list {
-    font-size: 1.26rem;
-  }
-
-  .cup-parallax-top h2 {
-    font-size: clamp(3.6rem, 6vw, 5.4rem);
-  }
-
-  .cup-parallax-bottom p {
-    font-size: 1.22rem;
-  }
-
-  .cup-map-header h2 {
-    font-size: 3rem;
-  }
-
-  .cup-map-header p {
-    font-size: 1.2rem;
-  }
-
-  .cup-select-option {
-    font-size: 1.44rem;
+    font-size: clamp(2.2rem, 3.1vw, 3.2rem);
   }
 }
 
-/* ========== RESPONSIVE ========== */
-@media (max-width: 900px) {
+@media (min-width: 90rem) {
   .cup-info-wrapper {
-    flex-direction: column;
-    gap: 3rem;
+    gap: clamp(2.5rem, 4vw, 4.5rem);
+  }
+
+  .cup-form {
+    flex: 1.2;
   }
 
   .cup-info-column {
-    width: 100%;
-    flex: 1;
+    flex: 0.8;
   }
 
-  .cup-info-title {
-    font-size: 2rem;
+  .cup-hero-title {
+    font-size: clamp(3rem, 4.4vw, 5rem);
   }
 
-  .cup-info-list {
-    font-size: 1.05rem;
+  .cup-hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 70.25rem) {
+  .cup-info-wrapper {
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 80rem) {
+  .cup-parallax-top h2 {
+    font-size: clamp(2.6rem, 4vw, 4rem);
+  }
+}
+
+@media (min-width: 96rem) {
+  .cup-hero-title {
+    font-size: clamp(3.2rem, 4.2vw, 5.2rem);
+  }
+}
+
+@media (min-width: 120rem) {
+  .cup-inner {
+    max-width: 96rem;
   }
 
-  .cup-button-wrapper {
-    margin-left: -35px;
+  .cup-info-wrapper {
+    gap: clamp(3rem, 5vw, 5rem);
   }
 
-  .cup-submit-button {
-    width: 95px;
-    height: 95px;
+  .cup-form {
+    flex: 1.3;
+  }
+
+  .cup-info-column {
+    flex: 0.7;
+  }
+  .cup-hero-title {
+    font-size: clamp(4.3rem, 4.8vw, 6.7rem);
+  }
+  .cup-parallax-content {
+    padding: clamp(3.6rem, 4.8vw, 6rem) clamp(2.4rem, 4.8vw, 4.8rem);
+  }
+
+  .cup-hero-subtitle {
+    font-size: clamp(1.2rem, 2.1vw, 1.5rem);
   }
 
   .cup-big-line {
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
-  }
-
-  .cup-parallax {
-    min-height: 70vh;
-  }
-
-  .cup-parallax-content {
-    gap: 2.5rem;
-  }
-
-  .cup-parallax-top h2 {
-    max-width: 100%;
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
   }
 
   .cup-select-option {
-    font-size: 1rem;
-    padding: 0.8rem 1rem;
+    font-size: 1.3rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .cup-hero-cta span {
+    font-size: 1rem !important;
+    padding: 1.45rem 2.6rem !important;
+  }
+
+  .cup-hero-cta span + span {
+    padding: 1.45rem 1.9rem !important;
+  }
+
+  .cup-info-title {
+    font-size: clamp(2rem, 3.2vw, 3.1rem);
+  }
+
+  .cup-info-list {
+    font-size: 1.3rem;
+    gap: 1rem;
+  }
+
+  .cup-info-cta span {
+    font-size: 0.92rem !important;
+    padding: 1.15rem 2rem !important;
+  }
+
+  .cup-info-cta span + span {
+    padding: 1.15rem 1.5rem !important;
+  }
+
+  .cup-arrow {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .cup-arrow-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .cup-parallax-top h2 {
+    font-size: clamp(2.7rem, 4.8vw, 4.3rem);
+  }
+
+  .cup-parallax-bottom p {
+    font-size: 1.25rem;
+  }
+
+  .cup-parallax-cta-btn span {
+    font-size: 0.98rem !important;
+    padding: 1.35rem 2.4rem !important;
+  }
+
+  .cup-map-section {
+    padding: 6rem 0;
+  }
+
+  .cup-map-header h2 {
+    font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+  }
+
+  .cup-map-header p {
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+  }
+
+  .cup-map-wrapper iframe {
+    height: 34rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .cup-hero-title {
+    font-size: clamp(1.9rem, 7.6vw, 2.5rem);
   }
 
   .cup-hero-subtitle {
     font-size: 0.98rem;
+  }
+
+  .cup-big-line {
+    font-size: clamp(1.7rem, 6.8vw, 2.2rem);
+  }
+
+  .cup-parallax-top h2 {
+    font-size: clamp(2rem, 7.6vw, 2.8rem);
+  }
+
+  .cup-hero-cta span {
+    font-size: 0.78rem !important;
+    padding: 1.05rem 1.6rem !important;
+  }
+
+  .cup-hero-cta span + span {
+    padding: 1.05rem 1.2rem !important;
+  }
+}
+
+@media (max-width: 48rem) {
+  .cup-info-wrapper {
+    flex-direction: column;
+  }
+
+  .cup-form,
+  .cup-info-column {
+    width: 100%;
   }
 }
