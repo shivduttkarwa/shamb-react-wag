@@ -33,6 +33,9 @@ const OverlayMenu: React.FC = () => {
       y: 20,
       scale: 0.9,
     });
+    gsap.set(".olm-primary-menu .olm-menu-item>a", {
+      x: -window.innerWidth,
+    });
 
     // Secondary menu items: fade in/out together with bg (no slide)
     gsap.set(
@@ -94,18 +97,18 @@ const OverlayMenu: React.FC = () => {
         "-=0.32"
       );
 
-      // Primary menu items
+      // Primary menu items – slide in from off-screen left, elastic settle
       tl.to(
         ".olm-primary-menu .olm-menu-item>a",
         {
-          duration: 0.32,
-          top: 0,
-          ease: "power3.in",
+          duration: 1,
+          x: 0,
+          ease: "elastic.out(0.3, 0.5)",
           stagger: {
             amount: 0.24,
           },
         },
-        "-=0.48"
+        ">-0.35"
       )
       // Mobile CTA + social icons - animate after primary menu
       tl.to(
