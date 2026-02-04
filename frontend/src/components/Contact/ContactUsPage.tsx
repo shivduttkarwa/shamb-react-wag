@@ -146,8 +146,8 @@ const ContactUsPage: React.FC = () => {
 
   const publicUrl = import.meta.env.BASE_URL || "/";
 
-  const heroBg = `${publicUrl}images/ess.jpg`;
-  const parallaxBg = `${publicUrl}images/el1.webp`;
+  const heroBg = `${publicUrl}images/leo.jpeg`;
+  const parallaxBg = `${publicUrl}images/parallax-bg.jpg`;
 
   return (
     <div className="cup-page">
@@ -177,7 +177,10 @@ const ContactUsPage: React.FC = () => {
             <AestheticButton onClick={scrollToForm} className="cup-hero-cta">
               Start Your Project
             </AestheticButton>
-            <AestheticButton onClick={handleEmailClick} className="cup-hero-cta">
+            <AestheticButton
+              onClick={handleEmailClick}
+              className="cup-hero-cta"
+            >
               Email Our Team
             </AestheticButton>
           </div>
@@ -185,7 +188,10 @@ const ContactUsPage: React.FC = () => {
       </section>
 
       {/* MAIN CONTACT SECTION */}
-      <section className="cup-main cup-section cup-section--main" id="contact-form">
+      <section
+        className="cup-main cup-section cup-section--main"
+        id="contact-form"
+      >
         <div className="cup-inner">
           <div className="cup-info-wrapper">
             {/* LEFT – FORM */}
@@ -296,11 +302,15 @@ const ContactUsPage: React.FC = () => {
               <ul className="cup-info-list">
                 <li>
                   <strong>Projects:</strong>{" "}
-                  <a href="mailto:hello@shambala.design">hello@shambala.design</a>
+                  <a href="mailto:hello@shambala.design">
+                    hello@shambala.design
+                  </a>
                 </li>
                 <li>
                   <strong>New enquiries:</strong>{" "}
-                  <a href="mailto:hello@shambala.design">hello@shambala.design</a>
+                  <a href="mailto:hello@shambala.design">
+                    hello@shambala.design
+                  </a>
                 </li>
                 <li>
                   <strong>Response time:</strong> 24–48 hours
