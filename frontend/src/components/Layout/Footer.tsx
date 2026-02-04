@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
       const linksSection = topSection.querySelector(".shambala-footer-links-section");
       const contactSection = topSection.querySelector(".shambala-footer-contact-section");
       const followSection = topSection.querySelector(".shambala-footer-follow-us-section");
-      const allLinks = topSection.querySelectorAll(".shambala-footer-link, .shambala-social-link, .shambala-footer-contact-item");
+      const allLinks = topSection.querySelectorAll(".shambala-footer-link, .shambala-footer-contact-item, .shambala-follow-link");
       gsap.set([brandBox, linksSection, contactSection, followSection], { opacity: 1, y: 0 });
       gsap.set(allLinks, { opacity: 1, x: 0 });
     }
