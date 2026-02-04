@@ -30,19 +30,19 @@ type ShowcasePanel = {
 
 const panels: ShowcasePanel[] = [
   {
-    title: "The Studio",
+    title: "The Practice",
     sideColor: "#ffd6d9",
     bg: getImagePath("l1.jpg"),
     cards: [
       {
-        title: "New Home Architecture",
-        body: "Site‑responsive homes shaped by light, flow, and long‑term livability. We align planning, materials, and detailing so your build is clear and calm from day one.",
+        title: "Residential Architecture",
+        body: "Site‑responsive homes shaped by light, flow, and long‑term livability. We align planning, materials, and detailing so every stage of your build feels considered and calm.",
         color: "#ffe66d",
       },
     ],
-    sideTitle: "A fresh studio",
+    sideTitle: "Considered design",
     sideDescription:
-      "We are a new architecture and build studio delivering thoughtful homes that feel tailored, livable, and enduring. Every brief is crafted with clarity, precision, and care.",
+      "We design and build homes that feel tailored, livable, and enduring. Every brief is shaped with clarity, precision, and a genuine understanding of how you want to live.",
     bullets: [
       "Design-led from first sketch to final detail",
       "Material palettes that balance warmth and durability",
