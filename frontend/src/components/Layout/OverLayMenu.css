@@ -649,6 +649,10 @@ body.menu-open {
 }
 
 @media screen and (max-width: 768px) {
+  .olm-menu {
+    margin-inline: 0;
+  }
+
   .olm-modern-menu-item {
     position: relative;
     padding: 0.3rem 0;
@@ -673,54 +677,102 @@ body.menu-open {
   }
 
   .olm-primary-menu {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 6rem 2rem 2.5rem 2rem;
+    margin: 0;
+    width: 100%;
   }
 
   .olm-primary-menu .olm-menu-container {
     width: 100%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .olm-primary-menu .olm-menu-container .olm-wrapper {
     width: 100%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: clamp(-6rem, -10vw, -3rem);
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.1rem;
+    margin-top: 0;
+    padding-bottom: 2.5rem;
   }
 
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-size: clamp(2.6rem, 9vw, 3.4rem);
     line-height: 1.05;
-    text-align: center;
-    display: block;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-size: clamp(2.6rem, 9vw, 3.4rem);
     line-height: 1.05;
   }
 
   .olm-menu .olm-primary-menu .olm-menu-number {
-    font-size: clamp(0.7rem, 2.4vw, 0.9rem);
-    margin-right: 0.8rem;
+    font-size: clamp(0.75rem, 2.8vw, 1rem);
+    margin-right: 0.9rem;
   }
 
   .olm-menu .olm-primary-menu a span {
-    font-size: clamp(0.7rem, 2.4vw, 0.9rem);
-    margin-right: 0.8rem;
+    font-size: clamp(0.75rem, 2.8vw, 1rem);
+    margin-right: 0.9rem;
   }
 
   /* Hide decorative elements on mobile */
   .olm-menu-arrow,
   .olm-menu-line {
     display: none;
+  }
+
+  .olm-mobile-secondary-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: auto;
+    padding-top: 2.5rem;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .olm-mobile-cta {
+    width: 100%;
+  }
+
+  .olm-mobile-cta .glass-rain-btn {
+    width: 100%;
+    justify-content: space-between;
+    height: clamp(2.9rem, 6vw, 3.6rem);
+    font-size: clamp(0.8rem, 2.6vw, 0.95rem);
+    border-radius: 0.75rem;
+  }
+
+  .olm-mobile-social-icons {
+    margin-top: 0.8rem;
+    padding-bottom: 1.2rem;
+    display: flex;
+    gap: 0.85rem;
+  }
+
+  .olm-mobile-social-icon {
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
   }
 }
 
@@ -746,24 +798,24 @@ body.menu-open {
   }
 
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(1.4rem, 7vw, 1.9rem);
+    font-size: clamp(2rem, 9vw, 2.6rem);
     line-height: 1.05;
-    text-align: center;
+    text-align: left;
   }
 
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(1.4rem, 7vw, 1.9rem) !important;
+    font-size: clamp(2rem, 9vw, 2.6rem) !important;
     line-height: 1.05 !important;
   }
 
   .olm-menu .olm-primary-menu .olm-menu-number {
-    font-size: clamp(0.65rem, 2.8vw, 0.8rem) !important;
-    margin-right: 0.6rem !important;
+    font-size: clamp(0.7rem, 3vw, 0.9rem) !important;
+    margin-right: 0.7rem !important;
   }
 
   .olm-menu .olm-primary-menu a span {
-    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
-    margin-right: 0.6rem;
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+    margin-right: 0.7rem;
   }
 }
 
@@ -781,25 +833,25 @@ body.menu-open {
   }
 
   .olm-primary-menu .olm-menu-container .olm-wrapper {
-    gap: 0.2rem;
+    gap: 0.5rem;
   }
 
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(1.2rem, 7.5vw, 1.6rem);
+    font-size: clamp(1.7rem, 9vw, 2.3rem);
   }
 
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(1.2rem, 7.5vw, 1.6rem);
+    font-size: clamp(1.7rem, 9vw, 2.3rem);
   }
 
   .olm-menu .olm-primary-menu .olm-menu-number {
-    font-size: clamp(0.6rem, 2.6vw, 0.7rem);
-    margin-right: 0.5rem;
+    font-size: clamp(0.65rem, 3vw, 0.85rem);
+    margin-right: 0.6rem;
   }
 
   .olm-menu .olm-primary-menu a span {
-    font-size: clamp(0.6rem, 2.6vw, 0.7rem);
-    margin-right: 0.5rem;
+    font-size: clamp(0.65rem, 3vw, 0.85rem);
+    margin-right: 0.6rem;
   }
 }
 

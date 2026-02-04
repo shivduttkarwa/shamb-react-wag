@@ -22,11 +22,16 @@ const OverlayMenu: React.FC = () => {
     // Initial menu state - hidden by default
     gsap.set(".olm-menu", { visibility: "hidden" });
     gsap.set(".olm-overlay", { opacity: 0 });
-    // Set initial state for mobile social icons
-    gsap.set(".olm-mobile-social-icon", { 
-      opacity: 0, 
+    // Set initial state for mobile CTA and social icons
+    gsap.set(".olm-mobile-cta", {
+      opacity: 0,
+      y: 24,
+      scale: 0.95,
+    });
+    gsap.set(".olm-mobile-social-icon", {
+      opacity: 0,
       y: 20,
-      scale: 0.8
+      scale: 0.9,
     });
 
     const revealMenuItems = () => {
@@ -81,7 +86,18 @@ tl.to(path, {
         },
         "-=0.48"
       )
-      // Mobile social icons - animate after primary menu
+      // Mobile CTA + social icons - animate after primary menu
+      tl.to(
+        ".olm-mobile-cta",
+        {
+          duration: 0.45,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power3.out",
+        },
+        "+=0.1"
+      )
       .to(
         ".olm-mobile-social-icon",
         {
@@ -95,7 +111,7 @@ tl.to(path, {
             from: "center"
           }
         },
-        "+=0.2" // Start shortly after primary menu
+        "-=0.05" // Start shortly after CTA
       )
         // Secondary menu background image
         .to(
@@ -382,18 +398,28 @@ tl.to(path, {
 
               {/* Mobile Secondary Menu - Only visible on mobile */}
               <div className="olm-mobile-secondary-menu">
+                <div className="olm-mobile-cta">
+                  <GlassRainButton href="/new-contact">
+                    Start a Project
+                  </GlassRainButton>
+                </div>
                 <div className="olm-mobile-social-icons">
-                  <Link to="/services" className="olm-mobile-social-icon olm-mobile-services-icon">
-                    <span className="olm-mobile-menu-number">01</span>
+                  <Link to="/privacy-policy" className="olm-mobile-social-icon">
+                    <i className="fab fa-instagram" />
                   </Link>
-                  <Link to="/projects" className="olm-mobile-social-icon olm-mobile-projects-icon">
-                    <span className="olm-mobile-menu-number">02</span>
+                  <Link to="/terms-and-conditions" className="olm-mobile-social-icon">
+                    <i className="fab fa-linkedin-in" />
                   </Link>
-                  <Link to="/about" className="olm-mobile-social-icon olm-mobile-about-icon">
-                    <span className="olm-mobile-menu-number">03</span>
-                  </Link>
-                  <Link to="/new-contact" className="olm-mobile-social-icon olm-mobile-contact-icon">
-                    <span className="olm-mobile-menu-number">04</span>
+                  <a
+                    href="https://github.com/shivduttkarwa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-mobile-social-icon"
+                  >
+                    <i className="fab fa-github" />
+                  </a>
+                  <Link to="/blog" className="olm-mobile-social-icon">
+                    <i className="fab fa-twitter" />
                   </Link>
                 </div>
               </div>
