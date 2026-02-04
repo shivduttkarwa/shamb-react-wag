@@ -144,10 +144,22 @@ const ContactUsPage: React.FC = () => {
     window.location.href = "mailto:hello@shambala.design";
   };
 
+  const publicUrl = import.meta.env.BASE_URL || "/";
+
+  const heroBg = `${publicUrl}images/ess.jpg`;
+  const parallaxBg = `${publicUrl}images/el1.webp`;
+
   return (
     <div className="cup-page">
       {/* HERO */}
-      <section className="cup-hero cup-section cup-section--hero">
+      <section
+        className="cup-hero cup-section cup-section--hero"
+        style={
+          {
+            "--cup-hero-bg": `url(${heroBg})`,
+          } as React.CSSProperties
+        }
+      >
         <div className="cup-hero-overlay" />
         <div className="cup-hero-content">
           <h1 className="cup-hero-title">
@@ -323,7 +335,14 @@ const ContactUsPage: React.FC = () => {
       </section>
 
       {/* PARALLAX SECTION - SIMPLE AND CLEAN */}
-      <section className="cup-parallax cup-section cup-section--parallax">
+      <section
+        className="cup-parallax cup-section cup-section--parallax"
+        style={
+          {
+            "--cup-parallax-bg": `url(${parallaxBg})`,
+          } as React.CSSProperties
+        }
+      >
         <div className="cup-parallax-overlay" />
         <div className="cup-parallax-content contact-animate">
           <div className="cup-parallax-top">

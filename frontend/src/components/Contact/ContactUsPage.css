@@ -30,7 +30,7 @@
   background-repeat: no-repeat;
   background-image:
     linear-gradient(135deg, rgba(13, 20, 16, 0.68), rgba(34, 49, 39, 0.82)),
-    url("/images/ess.jpg");
+    var(--cup-hero-bg, url("/images/ess.jpg"));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -479,7 +479,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url("/images/el1.webp");
+  background-image: var(--cup-parallax-bg, url("/images/el1.webp"));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
