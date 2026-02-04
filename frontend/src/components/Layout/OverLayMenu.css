@@ -681,9 +681,9 @@ body.menu-open {
   }
 
   .olm-primary-menu {
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 6rem 2rem 2.5rem 2rem;
     margin: 0;
     width: 100%;
@@ -692,31 +692,31 @@ body.menu-open {
   .olm-primary-menu .olm-menu-container {
     width: 100%;
     height: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
   }
 
   .olm-primary-menu .olm-menu-container .olm-wrapper {
     width: 100%;
     height: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 0.7rem;
     margin-top: 0;
     padding-bottom: 2.5rem;
   }
 
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(3.55rem, 12.4vw, 4.7rem);
+    font-size: clamp(4.2rem, 14.2vw, 5.6rem);
     line-height: 1.05;
-    text-align: left;
+    text-align: center;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(3.55rem, 12.4vw, 4.7rem);
+    font-size: clamp(4.2rem, 14.2vw, 5.6rem);
     line-height: 1.05;
   }
 
@@ -798,13 +798,13 @@ body.menu-open {
   }
 
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(2.75rem, 12.4vw, 3.55rem);
+    font-size: clamp(3.2rem, 14.2vw, 4.1rem);
     line-height: 1.05;
-    text-align: left;
+    text-align: center;
   }
 
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(2.75rem, 12.4vw, 3.55rem) !important;
+    font-size: clamp(3.2rem, 14.2vw, 4.1rem) !important;
     line-height: 1.05 !important;
   }
 
@@ -837,11 +837,11 @@ body.menu-open {
   }
 
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(2.35rem, 12.4vw, 3.15rem);
+    font-size: clamp(2.75rem, 14.2vw, 3.65rem);
   }
 
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(2.35rem, 12.4vw, 3.15rem);
+    font-size: clamp(2.75rem, 14.2vw, 3.65rem);
   }
 
   .olm-menu .olm-primary-menu .olm-menu-number {
