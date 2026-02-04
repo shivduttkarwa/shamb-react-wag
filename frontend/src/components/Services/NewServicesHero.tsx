@@ -32,6 +32,7 @@ const NewServicesHero: React.FC = () => {
   const decoFrameRef = useRef<HTMLDivElement>(null);
   const verticalTextRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<HTMLDivElement[]>([]);
 
   const servicePills: ServicePill[] = [
     { id: 1, name: "Residential Design" },
@@ -97,6 +98,7 @@ const NewServicesHero: React.FC = () => {
       const deco = decoFrameRef.current;
       const verticalText = verticalTextRef.current;
       const marquee = marqueeRef.current;
+      const cards = cardRefs.current.filter(Boolean);
 
       gsap.set(lines, { yPercent: 120, opacity: 0 });
       if (description) gsap.set(description, { y: 30, opacity: 0 });
@@ -107,6 +109,7 @@ const NewServicesHero: React.FC = () => {
       if (heroImage) gsap.set(heroImage, { scale: 1.15 });
       if (deco) gsap.set(deco, { opacity: 0 });
       if (verticalText) gsap.set(verticalText, { opacity: 0 });
+      if (cards.length) gsap.set(cards, { opacity: 0, x: 40 });
 
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
@@ -128,7 +131,8 @@ const NewServicesHero: React.FC = () => {
         )
         .to(heroImage, { scale: 1, duration: 1.2, ease: "power2.out" }, 0.25)
         .to(deco, { opacity: 1, duration: 0.6 }, 0.9)
-        .to(verticalText, { opacity: 1, duration: 0.6 }, 1.1);
+        .to(verticalText, { opacity: 1, duration: 0.6 }, 1.1)
+        .to(cards, { opacity: 1, x: 0, duration: 0.7, stagger: 0.2 }, 1.8);
 
       if (marquee) {
         gsap.to(marquee, {
@@ -298,6 +302,7 @@ const NewServicesHero: React.FC = () => {
           {floatingCards.map((card) => (
             <div
               key={card.id}
+              ref={(el) => { if (el) cardRefs.current[card.id - 1] = el; }}
               className={`nsh-floating-card nsh-card-${card.position}`}
             >
               <div className="nsh-card-label">{card.label}</div>

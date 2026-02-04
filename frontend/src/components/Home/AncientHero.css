@@ -192,6 +192,10 @@
   text-transform: uppercase;
 }
 
+.ancient-hero-title .line-mask {
+  overflow: hidden;
+}
+
 .ancient-hero-title .line {
   display: block;
   background: linear-gradient(to bottom, var(--gold-light) 0%, var(--gold) 50%, #dcba91 100%);
@@ -202,7 +206,6 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  opacity: 0;
 }
 
 

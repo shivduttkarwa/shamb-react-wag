@@ -33,10 +33,7 @@ const AncientHero: React.FC = () => {
 
     // Lock animated elements hidden until GSAP reveals them
     gsap.set(eyebrowRef.current, { opacity: 0 });
-    gsap.set([titleLine1Ref.current, titleLine2Ref.current], {
-      opacity: 0,
-      y: 60,
-    });
+    gsap.set([titleLine1Ref.current, titleLine2Ref.current], { y: "100%" });
     gsap.set(subtitleRef.current, { opacity: 0 });
     gsap.set(ctaRef.current, { opacity: 0, clipPath: "inset(0 100% 0 0)" });
     gsap.set(scrollBtnRef.current, { opacity: 0, y: 30 });
@@ -68,19 +65,19 @@ const AncientHero: React.FC = () => {
       0,
     );
 
-    // 2. Title line 1 slides up
+    // 2. Title line 1 reveals from mask
     tl.fromTo(
       titleLine1Ref.current,
-      { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
+      { y: "100%" },
+      { y: "0%", duration: 2, ease: "expo.out" },
       0.3,
     );
 
-    // 3. Title line 2 slides up (staggered)
+    // 3. Title line 2 reveals from mask (staggered)
     tl.fromTo(
       titleLine2Ref.current,
-      { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1.7, ease: "expo.out" },
+      { y: "100%" },
+      { y: "0%", duration: 2, ease: "expo.out" },
       0.6,
     );
 
@@ -168,12 +165,16 @@ const AncientHero: React.FC = () => {
             Architectural Excellence
           </div>
           <h1 className="ancient-hero-title">
-            <span ref={titleLine1Ref} className="line">
-              Architectural Vision
-            </span>
-            <span ref={titleLine2Ref} className="line">
-              Realized
-            </span>
+            <div className="line-mask">
+              <span ref={titleLine1Ref} className="line">
+                Architectural Vision
+              </span>
+            </div>
+            <div className="line-mask">
+              <span ref={titleLine2Ref} className="line">
+                Realized
+              </span>
+            </div>
           </h1>
           <p ref={subtitleRef} className="ancient-hero-subtitle">
             Where modern design meets exceptional craftsmanship. We create

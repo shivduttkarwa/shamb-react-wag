@@ -365,7 +365,7 @@
    ============================================ */
 @media (max-width: 767px) {
   .nsh-hero {
-    min-height: 90vh;
+    min-height: calc(90vh - 5rem);
     grid-auto-rows: min-content;
   }
 
@@ -373,7 +373,7 @@
     position: absolute;
     inset: 0;
     height: 100%;
-    min-height: 90vh;
+    min-height: calc(90vh - 5rem);
     padding: 0;
     z-index: 1;
   }
@@ -453,10 +453,7 @@
   }
 
   .nsh-pills {
-    margin-top: 1.5rem;
-    flex-direction: row;
-    gap: 10px;
-    order: 3;
+    display: none;
   }
 
   .nsh-pill {
