@@ -6,11 +6,6 @@ import AestheticButton from "../UI/AestheticButton";
 const publicUrl = import.meta.env.BASE_URL;
 const heroVideo = `${publicUrl}images/services-hero-vid.mp4`;
 
-interface ServicePill {
-  id: number;
-  name: string;
-}
-
 interface FloatingCard {
   id: number;
   label: string;
@@ -27,22 +22,13 @@ const NewServicesHero: React.FC = () => {
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const titleLineRefs = useRef<HTMLSpanElement[]>([]);
   const changingWordRef = useRef<HTMLSpanElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const pillsRef = useRef<HTMLDivElement>(null);
   const imageRevealRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const decoFrameRef = useRef<HTMLDivElement>(null);
   const verticalTextRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<HTMLDivElement[]>([]);
-
-  const servicePills: ServicePill[] = [
-    { id: 1, name: "Residential Design" },
-    { id: 2, name: "Interior Architecture" },
-    { id: 3, name: "Space Planning" },
-    { id: 4, name: "Consultation" },
-  ];
 
   const floatingCards: FloatingCard[] = [
     {
@@ -93,9 +79,7 @@ const NewServicesHero: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const lines = titleLineRefs.current.filter(Boolean);
-      const description = descriptionRef.current;
       const cta = ctaRef.current;
-      const pills = pillsRef.current;
       const imageReveal = imageRevealRef.current;
       const heroImage = imageRef.current;
       const deco = decoFrameRef.current;
@@ -104,9 +88,7 @@ const NewServicesHero: React.FC = () => {
       const cards = cardRefs.current.filter(Boolean);
 
       gsap.set(lines, { yPercent: 120, opacity: 0 });
-      if (description) gsap.set(description, { y: 30, opacity: 0 });
       if (cta) gsap.set(cta, { y: 30, opacity: 0 });
-      if (pills) gsap.set(pills, { y: 30, opacity: 0 });
       if (imageReveal)
         gsap.set(imageReveal, { scaleY: 1, transformOrigin: "top" });
       if (heroImage) gsap.set(heroImage, { scale: 1.15 });
@@ -124,9 +106,7 @@ const NewServicesHero: React.FC = () => {
         duration: 0.8,
         stagger: 0.15,
       })
-        .to(description, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
         .to(cta, { y: 0, opacity: 1, duration: 0.6 }, "-=0.5")
-        .to(pills, { y: 0, opacity: 1, duration: 0.6 }, "-=0.45")
         .to(
           imageReveal,
           { scaleY: 0, duration: 1.1, ease: "power2.inOut" },
@@ -148,7 +128,7 @@ const NewServicesHero: React.FC = () => {
 
       const changingWord = changingWordRef.current;
       if (changingWord) {
-        const words = ["Living", "Gathering", "Retreat"];
+        const words = ["Elegant", "Spacious", "Innovative", "Timeless"];
         const wordTl = gsap.timeline({
           repeat: -1,
           defaults: { ease: "power3.out" },
@@ -190,7 +170,7 @@ const NewServicesHero: React.FC = () => {
               stagger: { each: 0.05, from: "end" },
               ease: "power3.inOut",
             },
-            "+=2.0"
+            "+=2.0",
           );
         });
       }
@@ -231,23 +211,20 @@ const NewServicesHero: React.FC = () => {
       <div className="nsh-content">
         <h1 className="nsh-title">
           <span className="nsh-title-line">
-            <span ref={(el) => {
-              if (el) titleLineRefs.current[0] = el;
-            }}>
-              ARCHITECTURE FOR
+            <span
+              ref={(el) => {
+                if (el) titleLineRefs.current[0] = el;
+              }}
+            >
+              CREAT SOMETHING
             </span>
           </span>
           <span className="nsh-title-line">
-            <span ref={(el) => {
-              if (el) titleLineRefs.current[1] = el;
-            }}>
-              SPACES OF
-            </span>
-          </span>
-          <span className="nsh-title-line">
-            <span ref={(el) => {
-              if (el) titleLineRefs.current[2] = el;
-            }}>
+            <span
+              ref={(el) => {
+                if (el) titleLineRefs.current[1] = el;
+              }}
+            >
               <span className="nsh-changing-word">
                 <span ref={changingWordRef} />
               </span>
@@ -255,24 +232,12 @@ const NewServicesHero: React.FC = () => {
           </span>
         </h1>
 
-        <p className="nsh-description" ref={descriptionRef}>
-          BOLD, LIVABLE SPACES WITH CLARITY, LIGHT, AND CRAFT.
-        </p>
-
         <div className="nsh-cta-group nsh-cta-desktop" ref={ctaRef}>
           <AestheticButton
             text="Discover Our Services"
             href="#services"
             className="nsh-custom-btn"
           />
-        </div>
-
-        <div className="nsh-pills" ref={pillsRef}>
-          {servicePills.map((pill) => (
-            <div key={pill.id} className="nsh-pill">
-              <span>{pill.name}</span>
-            </div>
-          ))}
         </div>
       </div>
 
@@ -308,7 +273,9 @@ const NewServicesHero: React.FC = () => {
           {floatingCards.map((card) => (
             <div
               key={card.id}
-              ref={(el) => { if (el) cardRefs.current[card.id - 1] = el; }}
+              ref={(el) => {
+                if (el) cardRefs.current[card.id - 1] = el;
+              }}
               className={`nsh-floating-card nsh-card-${card.position}`}
             >
               <div className="nsh-card-label">{card.label}</div>

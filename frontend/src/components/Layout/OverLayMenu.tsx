@@ -104,7 +104,7 @@ const OverlayMenu: React.FC = () => {
           x: 0,
           ease: "none",
           stagger: {
-            amount: 0.44,
+            amount: 0.34,
           },
         },
         ">-1",
@@ -405,26 +405,38 @@ const OverlayMenu: React.FC = () => {
                   </GlassRainButton>
                 </div>
                 <div className="olm-mobile-social-icons">
-                  <Link to="/privacy-policy" className="olm-mobile-social-icon">
-                    <i className="fab fa-instagram" />
-                  </Link>
-                  <Link
-                    to="/terms-and-conditions"
-                    className="olm-mobile-social-icon"
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </Link>
                   <a
-                    href="https://github.com/shivduttkarwa"
+                    href="https://instagram.com/shambalahomes"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="olm-mobile-social-icon"
                   >
-                    <i className="fab fa-github" />
+                    <i className="fab fa-instagram" />
                   </a>
-                  <Link to="/blog" className="olm-mobile-social-icon">
-                    <i className="fab fa-twitter" />
-                  </Link>
+                  <a
+                    href="https://facebook.com/shambalahomes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-mobile-social-icon"
+                  >
+                    <i className="fab fa-facebook-f" />
+                  </a>
+                  <a
+                    href="https://youtube.com/@shambalahomes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-mobile-social-icon"
+                  >
+                    <i className="fab fa-youtube" />
+                  </a>
+                  <a
+                    href="https://x.com/shambalahomes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-mobile-social-icon"
+                  >
+                    <i className="fab fa-x-twitter" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -462,7 +474,7 @@ const OverlayMenu: React.FC = () => {
                   className="olm-email-btn"
                   style={{ position: "relative", top: "100vh" }}
                 >
-                  <GlassRainButton href="mailto:shivduttkarwa@gmail.com">
+                  <GlassRainButton href="mailto:shambalahomes@gmail.com">
                     Send Email
                   </GlassRainButton>
                 </div>
@@ -474,29 +486,38 @@ const OverlayMenu: React.FC = () => {
             <div className="olm-menu-item olm-social-menu-item">
               <div className="olm-social-content">
                 <div className="olm-social-grid">
-                  <Link
-                    to="/privacy-policy"
+                  <a
+                    href="https://instagram.com/shambalahomes"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="olm-social-card olm-instagram"
                   >
                     <i className="fab fa-instagram" />
-                  </Link>
-                  <Link
-                    to="/terms-and-conditions"
-                    className="olm-social-card olm-linkedin"
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </Link>
+                  </a>
                   <a
-                    href="https://github.com/shivduttkarwa"
+                    href="https://facebook.com/shambalahomes"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="olm-social-card olm-github"
+                    className="olm-social-card olm-facebook"
                   >
-                    <i className="fab fa-github" />
+                    <i className="fab fa-facebook-f" />
                   </a>
-                  <Link to="/blog" className="olm-social-card olm-twitter">
-                    <i className="fab fa-twitter" />
-                  </Link>
+                  <a
+                    href="https://youtube.com/@shambalahomes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-social-card olm-youtube"
+                  >
+                    <i className="fab fa-youtube" />
+                  </a>
+                  <a
+                    href="https://x.com/shambalahomes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-social-card olm-x"
+                  >
+                    <i className="fab fa-x-twitter" />
+                  </a>
                 </div>
               </div>
               <div className="olm-menu-item-revealer"></div>

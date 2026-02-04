@@ -266,7 +266,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
             <h3 className="shambala-footer-section-title">Follow Us</h3>
             <div className="shambala-footer-follow-links">
               <a
-                href={settings?.social?.instagram || "https://instagram.com"}
+                href="https://instagram.com/shambalahomes"
                 className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -275,7 +275,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 <i className="fab fa-instagram" />
               </a>
               <a
-                href={settings?.social?.facebook || "https://facebook.com"}
+                href="https://facebook.com/shambalahomes"
                 className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -284,22 +284,22 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 <i className="fab fa-facebook-f" />
               </a>
               <a
-                href={settings?.social?.linkedin || "https://linkedin.com"}
-                className="shambala-follow-link shambala-follow-icon"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <i className="fab fa-linkedin-in" />
-              </a>
-              <a
-                href={settings?.social?.youtube || "https://youtube.com"}
+                href="https://youtube.com/@shambalahomes"
                 className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
               >
                 <i className="fab fa-youtube" />
+              </a>
+              <a
+                href="https://x.com/shambalahomes"
+                className="shambala-follow-link shambala-follow-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+              >
+                <i className="fab fa-x-twitter" />
               </a>
             </div>
           </div>
