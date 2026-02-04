@@ -1188,11 +1188,11 @@ body.menu-open {
 }
   
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    font-size: clamp(3.2rem, 12vw, 4.2rem) !important;
   }
   
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    font-size: clamp(3.2rem, 12vw, 4.2rem) !important;
   }
   
   .olm-menu .olm-primary-menu .olm-menu-number {
@@ -1350,11 +1350,11 @@ body.menu-open {
 /* iPhone 15 and small screens - Reduce menu font sizes by 30% */
 @media screen and (max-width: 430px) {
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
-    font-size: clamp(1.2rem, 7vw, 1.8rem) !important;
+    font-size: clamp(2.4rem, 11vw, 3.2rem) !important;
   }
   
   .olm-menu .olm-primary-menu .olm-menu-text {
-    font-size: clamp(1.2rem, 7vw, 1.8rem) !important;
+    font-size: clamp(2.4rem, 11vw, 3.2rem) !important;
   }
   
   .olm-menu .olm-primary-menu .olm-menu-number {
