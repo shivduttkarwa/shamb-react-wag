@@ -438,8 +438,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 14px 0;
+    padding: 16.8px 0;
     z-index: 4;
+  }
+
+  .nsh-marquee-item {
+    font-size: 0.69rem;
   }
 }
 
