@@ -34,6 +34,17 @@ const OverlayMenu: React.FC = () => {
       scale: 0.9,
     });
 
+    // Secondary menu items: fade in/out together with bg (no slide)
+    gsap.set(
+      [
+        ".olm-contact-btn",
+        ".olm-email-btn",
+        ".olm-menu-item .olm-social-content",
+        ".olm-menu-item .olm-footer-content",
+      ],
+      { autoAlpha: 0, top: 0 }
+    );
+
     const revealMenuItems = () => {
       if (!path) return;
 
@@ -123,7 +134,7 @@ const OverlayMenu: React.FC = () => {
         },
         "-=0.05" // Start shortly after CTA
       )
-        // Secondary menu background image
+        // Secondary menu background image (comes in earlier)
         .to(
           ".olm-secondary-menu-bg",
           {
@@ -131,47 +142,22 @@ const OverlayMenu: React.FC = () => {
             top: 0,
             ease: "power7.in",
           },
-          "-=0.76"
+          "-=0.92"
         )
-        // First contact button
+        // Secondary items fade in together (no slide, no stagger)
         .to(
-          ".olm-contact-btn",
+          [
+            ".olm-contact-btn",
+            ".olm-email-btn",
+            ".olm-menu-item .olm-social-content",
+            ".olm-menu-item .olm-footer-content",
+          ],
           {
-            duration: 0.16,
-            top: 0,
-            ease: "power3.in",
+            duration: 0.28,
+            autoAlpha: 1,
+            ease: "power2.out",
           },
-          "-=0.68"
-        )
-        // Second contact button
-        .to(
-          ".olm-email-btn",
-          {
-            duration: 0.16,
-            top: 0,
-            ease: "power3.in",
-          },
-          "-=0.58"
-        )
-        // Social section
-        .to(
-          ".olm-menu-item .olm-social-content",
-          {
-            duration: 0.16,
-            top: 0,
-            ease: "power3.in",
-          },
-          "-=0.46"
-        )
-        // Footer section
-        .to(
-          ".olm-menu-item .olm-footer-content",
-          {
-            duration: 0.16,
-            top: 0,
-            ease: "power3.in",
-          },
-          "-=0.36"
+          "-=0.7"
         )
         .reverse(); // start in reversed (closed) state
     };
