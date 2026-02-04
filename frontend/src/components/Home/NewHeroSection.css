@@ -273,6 +273,14 @@
   overflow: hidden;
 }
 
+.hero-title-mask {
+  overflow: hidden;
+}
+
+.hero-title-line {
+  display: block;
+}
+
 .hero-highlight {
   background: linear-gradient(to bottom, #f4e4bc 0%, #d4af37 50%, #dcba91 100%);
   -webkit-background-clip: text;

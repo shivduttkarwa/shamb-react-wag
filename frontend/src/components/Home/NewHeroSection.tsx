@@ -73,7 +73,8 @@ class HeroErrorBoundary extends Component<
 
 const NewHeroSectionContent: React.FC = () => {
   const heroSectionRef = useRef<HTMLElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const titleLine1Ref = useRef<HTMLSpanElement | null>(null);
+  const titleLine2Ref = useRef<HTMLSpanElement | null>(null);
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
   const valuesRef = useRef<HTMLDivElement | null>(null);
   const ctaRef = useRef<HTMLDivElement | null>(null);
@@ -87,7 +88,7 @@ const NewHeroSectionContent: React.FC = () => {
     const heroAnimDelay = 1.6; // seconds
 
     // Set initial states - similar to NewServicesHero
-    gsap.set(titleRef.current, { yPercent: 120, opacity: 0 });
+    gsap.set([titleLine1Ref.current, titleLine2Ref.current], { y: "100%" });
     gsap.set(descriptionRef.current, { y: 30, opacity: 0 });
     gsap.set(ctaRef.current, { y: 30, opacity: 0 });
 
@@ -107,15 +108,18 @@ const NewHeroSectionContent: React.FC = () => {
       onComplete: () => setHasAnimated(true),
     });
 
-    // Animate title with slide up effect
-    tl.to(
-      titleRef.current,
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 1.2,
-      },
+    // Animate title lines — mask reveal, staggered
+    tl.fromTo(
+      titleLine1Ref.current,
+      { y: "100%" },
+      { y: "0%", duration: 2, ease: "expo.out" },
       0,
+    );
+    tl.fromTo(
+      titleLine2Ref.current,
+      { y: "100%" },
+      { y: "0%", duration: 2, ease: "expo.out" },
+      0.3,
     );
 
     // Animate description
@@ -206,9 +210,17 @@ const NewHeroSectionContent: React.FC = () => {
 
         <div className="hero-content">
           <div className="hero-text-wrapper">
-            <h1 ref={titleRef} className="hero-main-title">
-              CRAFTING DREAMS INTO
-              <span className="hero-highlight"> Reality</span>
+            <h1 className="hero-main-title">
+              <div className="hero-title-mask">
+                <span ref={titleLine1Ref} className="hero-title-line">
+                  CRAFTING DREAMS INTO
+                </span>
+              </div>
+              <div className="hero-title-mask">
+                <span ref={titleLine2Ref} className="hero-title-line">
+                  <span className="hero-highlight">Reality</span>
+                </span>
+              </div>
             </h1>
 
             <p ref={descriptionRef} className="hero-description">
