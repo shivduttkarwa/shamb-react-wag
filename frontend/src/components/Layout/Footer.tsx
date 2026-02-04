@@ -19,23 +19,34 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
   const brandTextRef = useRef<HTMLHeadingElement>(null);
   const topSectionRef = useRef<HTMLDivElement>(null);
   const phone = settings?.contact?.phone || "+61 3 1234 5678";
-  const email = (
-    settings?.contact?.email || "info@shambalahomes.com"
-  ).toLowerCase();
+  const email = (settings?.contact?.email || "info@shambala.com").toLowerCase();
 
   // Footer visibility
   useEffect(() => {
     const topSection = topSectionRef.current;
     if (topSection) {
       const brandBox = topSection.querySelector(".shambala-footer-brand-box");
-      const linksSection = topSection.querySelector(".shambala-footer-links-section");
-      const contactSection = topSection.querySelector(".shambala-footer-contact-section");
-      const followSection = topSection.querySelector(".shambala-footer-follow-us-section");
-      const allLinks = topSection.querySelectorAll(".shambala-footer-link, .shambala-footer-contact-item, .shambala-follow-link");
-      gsap.set([brandBox, linksSection, contactSection, followSection], { opacity: 1, y: 0 });
+      const linksSection = topSection.querySelector(
+        ".shambala-footer-links-section",
+      );
+      const contactSection = topSection.querySelector(
+        ".shambala-footer-contact-section",
+      );
+      const followSection = topSection.querySelector(
+        ".shambala-footer-follow-us-section",
+      );
+      const allLinks = topSection.querySelectorAll(
+        ".shambala-footer-link, .shambala-footer-contact-item, .shambala-follow-link",
+      );
+      gsap.set([brandBox, linksSection, contactSection, followSection], {
+        opacity: 1,
+        y: 0,
+      });
       gsap.set(allLinks, { opacity: 1, x: 0 });
     }
-    const letters = brandTextRef.current?.querySelectorAll(".shambala-footer-letter");
+    const letters = brandTextRef.current?.querySelectorAll(
+      ".shambala-footer-letter",
+    );
     if (letters && letters.length > 0) {
       gsap.set(letters, { yPercent: 0, opacity: 1 });
     }
@@ -43,7 +54,9 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
 
   // Big shambala text animation (slide up + color flash)
   useEffect(() => {
-    const letters = brandTextRef.current?.querySelectorAll(".shambala-footer-letter");
+    const letters = brandTextRef.current?.querySelectorAll(
+      ".shambala-footer-letter",
+    );
     if (!letters || letters.length === 0) return;
 
     const colors = ["#ff6b6b", "#4ecdc4", "#ffe66d", "#9b59b6", "#ff8b94"];
@@ -233,8 +246,12 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
               >
                 <span className="shambala-link-window">
                   <span className="shambala-link-track">
-                    <span className="shambala-link-text">Terms & Conditions</span>
-                    <span className="shambala-link-text">Terms & Conditions</span>
+                    <span className="shambala-link-text">
+                      Terms & Conditions
+                    </span>
+                    <span className="shambala-link-text">
+                      Terms & Conditions
+                    </span>
                   </span>
                 </span>
               </Link>
@@ -250,55 +267,39 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
             <div className="shambala-footer-follow-links">
               <a
                 href={settings?.social?.instagram || "https://instagram.com"}
-                className="shambala-follow-link"
+                className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
               >
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Instagram</span>
-                    <span className="shambala-link-text">Instagram</span>
-                  </span>
-                </span>
+                <i className="fab fa-instagram" />
               </a>
               <a
                 href={settings?.social?.facebook || "https://facebook.com"}
-                className="shambala-follow-link"
+                className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
               >
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Facebook</span>
-                    <span className="shambala-link-text">Facebook</span>
-                  </span>
-                </span>
+                <i className="fab fa-facebook-f" />
               </a>
               <a
                 href={settings?.social?.linkedin || "https://linkedin.com"}
-                className="shambala-follow-link"
+                className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">LinkedIn</span>
-                    <span className="shambala-link-text">LinkedIn</span>
-                  </span>
-                </span>
+                <i className="fab fa-linkedin-in" />
               </a>
               <a
                 href={settings?.social?.youtube || "https://youtube.com"}
-                className="shambala-follow-link"
+                className="shambala-follow-link shambala-follow-icon"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="YouTube"
               >
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">YouTube</span>
-                    <span className="shambala-link-text">YouTube</span>
-                  </span>
-                </span>
+                <i className="fab fa-youtube" />
               </a>
             </div>
           </div>
@@ -307,32 +308,32 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
         {/* Large Brand Name at Bottom */}
         <div className="shambala-footer-brand-large">
           <div className="shambala-footer-brand-center">
-          <h1 className="shambala-footer-brand-text" ref={brandTextRef}>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">S</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">H</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">A</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">M</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">B</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">A</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">L</span>
-            </div>
-            <div className="shambala-footer-mask">
-              <span className="shambala-footer-letter">A</span>
-            </div>
-          </h1>
+            <h1 className="shambala-footer-brand-text" ref={brandTextRef}>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">S</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">H</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">A</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">M</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">B</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">A</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">L</span>
+              </div>
+              <div className="shambala-footer-mask">
+                <span className="shambala-footer-letter">A</span>
+              </div>
+            </h1>
           </div>
         </div>
       </div>

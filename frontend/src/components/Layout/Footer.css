@@ -107,15 +107,29 @@
   overflow: hidden;
 }
 
+.shambala-footer-links .shambala-footer-link::after,
+.shambala-footer-contact-info a.shambala-footer-contact-item::after,
+.shambala-footer-legal .shambala-legal-link::after {
+  content: "→";
+  position: relative;
+  transform: none;
+  margin-left: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
 .shambala-footer-link:hover { color: #ffffff; }
 
 .shambala-link-arrow {
-  font-size: 0.875rem;
-  transition: opacity 0.3s ease;
-  opacity: 0.6;
+  display: none;
 }
 
-.shambala-footer-link:hover .shambala-link-arrow { opacity: 1; }
+.shambala-footer-links .shambala-footer-link:hover::after,
+.shambala-footer-contact-info a.shambala-footer-contact-item:hover::after,
+.shambala-footer-legal .shambala-legal-link:hover::after {
+  transform: translateX(0.2rem);
+  color: #ffffff;
+}
 
 /* Contact Section */
 .shambala-footer-contact-info {
@@ -148,6 +162,17 @@
   line-height: 1.4;
   transition: color 0.3s ease;
   overflow: hidden;
+}
+
+.shambala-footer-contact-info a.shambala-footer-contact-item {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-right: 0;
+}
+
+.shambala-footer-links .shambala-footer-link {
+  padding-right: 0;
 }
 
 .shambala-footer-contact-item:hover { color: #ffffff; }
@@ -183,23 +208,30 @@
 
 .shambala-footer-follow-links {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.75rem;
 }
 
 .shambala-follow-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  font-family: "Nunito", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: color 0.3s ease, border-color 0.3s ease;
-  padding: 0.5rem 0;
-  border-bottom: none;
-  overflow: hidden;
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
 }
 
-.shambala-follow-link:hover { color: #ffffff; }
+.shambala-follow-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px) scale(1.03);
+}
 
 /* Hover slide animation */
 .shambala-link-window {
@@ -211,7 +243,7 @@
 .shambala-link-track {
   display: flex;
   flex-direction: column;
-  transition: transform 0.588s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: none;
 }
 
 .shambala-link-text {
@@ -224,10 +256,11 @@
   font-family: "Nunito", sans-serif;
 }
 
+/* Disable slide hover animation */
 .shambala-footer-link:hover .shambala-link-track,
 .shambala-follow-link:hover .shambala-link-track,
 .shambala-footer-contact-item:hover .shambala-link-track {
-  transform: translateY(-50%);
+  transform: none;
 }
 
 /* Large Brand Name at Bottom */

@@ -3,29 +3,35 @@ import { gsap } from 'gsap';
 import './LegalPages.css';
 
 const TermsAndConditions: React.FC = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLSpanElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+  const publicUrl = import.meta.env.BASE_URL;
+  const heroBg = `${publicUrl}images/fullwidthimage.jpg`;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headerRef.current, {
-        opacity: 0,
-        y: 30
-      }, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out"
+      gsap.set(titleRef.current, { yPercent: 120, autoAlpha: 0 });
+      gsap.set(subtitleRef.current, { y: 20, autoAlpha: 0 });
+
+      const heroTl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        delay: 0.4,
       });
 
+      heroTl
+        .to(titleRef.current, { yPercent: 0, autoAlpha: 1, duration: 1 })
+        .to(subtitleRef.current, { y: 0, autoAlpha: 1, duration: 0.7 }, "-=0.35");
+
       gsap.fromTo(contentRef.current, {
-        opacity: 0,
-        y: 50
+        autoAlpha: 0,
+        y: 40
       }, {
-        opacity: 1,
+        autoAlpha: 1,
         y: 0,
-        duration: 1,
-        delay: 0.3,
+        duration: 0.9,
+        delay: 0.8,
         ease: "power3.out"
       });
     });
@@ -35,10 +41,13 @@ const TermsAndConditions: React.FC = () => {
 
   return (
     <div className="legal-page">
-      <div className="legal-header" ref={headerRef}>
+      <div className="legal-header" style={{ '--legal-hero-bg': `url(${heroBg})` } as React.CSSProperties}>
         <div className="legal-header__content">
-          <h1>Terms & Conditions</h1>
-          <p>Last updated: January 2024</p>
+          <div className="legal-header__title-wrap">
+            <h1><span ref={titleRef} className="legal-header__reveal-line">Terms & Conditions</span></h1>
+          </div>
+          <div className="legal-header__divider"></div>
+          <p ref={subtitleRef}>Last updated: 4th February 2026</p>
         </div>
       </div>
 
