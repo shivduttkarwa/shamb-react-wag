@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import shambalaLogo from '@/assets/shambala.png';
-import './Preloader.css';
+import { useEffect, useState } from "react";
+import shambalaLogo from "@/assets/shambala.png";
+import "./Preloader.css";
 
 const Preloader = () => {
   const [counter, setCounter] = useState(0);
@@ -12,7 +12,7 @@ const Preloader = () => {
   const [logoLoaded, setLogoLoaded] = useState(false);
 
   useEffect(() => {
-    const duration = 4500;
+    const duration = 1150;
     const interval = duration / 100;
     let count = 0;
     let timeoutId: number;
@@ -35,14 +35,14 @@ const Preloader = () => {
         setHidePreloader(true);
         setCurtainOpen(true);
         // Dispatch event when curtain starts opening
-        window.dispatchEvent(new CustomEvent('curtainStarted'));
+        window.dispatchEvent(new CustomEvent("curtainStarted"));
 
         setTimeout(() => {
           setHideCurtain(true);
           // Allow body scrolling
-          document.body.classList.add('content-loaded');
+          document.body.classList.add("content-loaded");
           // Dispatch event to trigger hero animations after curtain opens
-          window.dispatchEvent(new CustomEvent('curtainOpened'));
+          window.dispatchEvent(new CustomEvent("curtainOpened"));
         }, 2500);
       }, 1000);
     };
@@ -66,14 +66,14 @@ const Preloader = () => {
       setHidePreloader(true);
       setCurtainOpen(true);
       // Dispatch event when curtain starts opening
-      window.dispatchEvent(new CustomEvent('curtainStarted'));
+      window.dispatchEvent(new CustomEvent("curtainStarted"));
 
       setTimeout(() => {
         setHideCurtain(true);
         // Allow body scrolling
-        document.body.classList.add('content-loaded');
+        document.body.classList.add("content-loaded");
         // Dispatch event to trigger hero animations after curtain opens
-        window.dispatchEvent(new CustomEvent('curtainOpened'));
+        window.dispatchEvent(new CustomEvent("curtainOpened"));
       }, 2500);
     }, 100);
   };
@@ -82,14 +82,22 @@ const Preloader = () => {
     <>
       {/* Preloader */}
       <div
-        className={`preloader ${isLoaded ? 'loaded' : ''}`}
-        style={{ display: hidePreloader ? 'none' : 'flex' }}
+        className={`preloader ${isLoaded ? "loaded" : ""}`}
+        style={{ display: hidePreloader ? "none" : "flex" }}
         onClick={handleSkip}
       >
         <div className="mandala-container">
           {/* LAYER 1: Outer Energy Ring */}
           <svg className="mandala-svg layer-outer" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="95" fill="none" stroke="#d4af37" strokeWidth="0.3" opacity="0.25" />
+            <circle
+              cx="100"
+              cy="100"
+              r="95"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.3"
+              opacity="0.25"
+            />
 
             <g fill="none" stroke="#d4af37" strokeWidth="0.4" opacity="0.3">
               {[...Array(16)].map((_, i) => (
@@ -100,18 +108,45 @@ const Preloader = () => {
               ))}
             </g>
 
-            <circle cx="100" cy="100" r="68" fill="none" stroke="#d4af37" strokeWidth="0.3" opacity="0.3" strokeDasharray="2 6" />
+            <circle
+              cx="100"
+              cy="100"
+              r="68"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.3"
+              opacity="0.3"
+              strokeDasharray="2 6"
+            />
           </svg>
 
           {/* LAYER 2: Sacred Lotus */}
           <svg className="mandala-svg layer-lotus" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="60" fill="none" stroke="#d4af37" strokeWidth="0.4" opacity="0.4" />
+            <circle
+              cx="100"
+              cy="100"
+              r="60"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.4"
+              opacity="0.4"
+            />
 
-            <g fill="none" stroke="#d4af37" strokeWidth="0.6" opacity="0.45" strokeLinecap="round">
+            <g
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.6"
+              opacity="0.45"
+              strokeLinecap="round"
+            >
               {[...Array(8)].map((_, i) => (
                 <g key={i} transform={`rotate(${i * 45} 100 100)`}>
                   <path d="M100,42 Q108,50 110,62 Q106,70 100,75 Q94,70 90,62 Q92,50 100,42 Z" />
-                  <path d="M100,45 Q104,52 100,65" strokeWidth="0.3" opacity="0.5" />
+                  <path
+                    d="M100,45 Q104,52 100,65"
+                    strokeWidth="0.3"
+                    opacity="0.5"
+                  />
                 </g>
               ))}
             </g>
@@ -119,9 +154,23 @@ const Preloader = () => {
 
           {/* LAYER 3: Inner Energy Waves */}
           <svg className="mandala-svg layer-inner" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="40" fill="none" stroke="#d4af37" strokeWidth="0.4" opacity="0.5" />
+            <circle
+              cx="100"
+              cy="100"
+              r="40"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.4"
+              opacity="0.5"
+            />
 
-            <g fill="none" stroke="#d4af37" strokeWidth="0.5" opacity="0.5" strokeLinecap="round">
+            <g
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.5"
+              opacity="0.5"
+              strokeLinecap="round"
+            >
               {[...Array(12)].map((_, i) => (
                 <g key={i} transform={`rotate(${i * 30} 100 100)`}>
                   <path d="M100,62 Q105,75 100,88" />
@@ -133,10 +182,32 @@ const Preloader = () => {
 
           {/* LAYER 4: Sacred Center */}
           <svg className="mandala-svg layer-center" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="22" fill="none" stroke="#d4af37" strokeWidth="0.4" opacity="0.6" />
-            <circle cx="100" cy="100" r="16" fill="none" stroke="#d4af37" strokeWidth="0.5" opacity="0.7" />
+            <circle
+              cx="100"
+              cy="100"
+              r="22"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.4"
+              opacity="0.6"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="16"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.5"
+              opacity="0.7"
+            />
 
-            <g fill="none" stroke="#d4af37" strokeWidth="0.7" opacity="0.7" strokeLinecap="round">
+            <g
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="0.7"
+              opacity="0.7"
+              strokeLinecap="round"
+            >
               {[...Array(4)].map((_, i) => (
                 <path
                   key={i}
@@ -149,7 +220,15 @@ const Preloader = () => {
             <g>
               <circle cx="100" cy="100" r="9" fill="#d4af37" opacity="0.15" />
               <circle cx="100" cy="100" r="6" fill="#d4af37" opacity="0.25" />
-              <circle cx="100" cy="100" r="5" fill="none" stroke="#d4af37" strokeWidth="0.6" opacity="0.85" />
+              <circle
+                cx="100"
+                cy="100"
+                r="5"
+                fill="none"
+                stroke="#d4af37"
+                strokeWidth="0.6"
+                opacity="0.85"
+              />
               <circle cx="100" cy="100" r="3" fill="#d4af37" opacity="0.9" />
               <circle cx="100" cy="100" r="1.2" fill="#0d0d0d" opacity="1" />
             </g>
@@ -157,7 +236,12 @@ const Preloader = () => {
         </div>
 
         {/* Logo */}
-        <img className={`brand-logo ${logoLoaded ? 'ready' : ''}`} src={shambalaLogo} alt="Shambala Homes Logo" onLoad={() => setLogoLoaded(true)} />
+        <img
+          className={`brand-logo ${logoLoaded ? "ready" : ""}`}
+          src={shambalaLogo}
+          alt="Shambala Homes Logo"
+          onLoad={() => setLogoLoaded(true)}
+        />
       </div>
 
       {/* Counter - Bottom Right */}
@@ -165,12 +249,18 @@ const Preloader = () => {
         className="counter-container"
         style={{
           opacity: hideCounter ? 0 : 1,
-          display: hideCounter ? 'none' : 'block'
+          display: hideCounter ? "none" : "block",
         }}
       >
         <div className="counter">
-          <span className="digit">{Math.floor(counter / 100) || ''}</span>
-          <span className="digit">{counter >= 10 ? Math.floor((counter % 100) / 10) : (counter >= 100 ? 0 : '')}</span>
+          <span className="digit">{Math.floor(counter / 100) || ""}</span>
+          <span className="digit">
+            {counter >= 10
+              ? Math.floor((counter % 100) / 10)
+              : counter >= 100
+                ? 0
+                : ""}
+          </span>
           <span className="digit">{counter % 10}</span>
           <span className="percent">%</span>
         </div>
@@ -178,8 +268,8 @@ const Preloader = () => {
 
       {/* Curtain */}
       <div
-        className={`curtain ${curtainOpen ? 'open' : ''}`}
-        style={{ display: hideCurtain ? 'none' : 'flex' }}
+        className={`curtain ${curtainOpen ? "open" : ""}`}
+        style={{ display: hideCurtain ? "none" : "flex" }}
       >
         <div className="curtain-left"></div>
         <div className="curtain-right"></div>
