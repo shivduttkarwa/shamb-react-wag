@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import shambalaLogo from "@/assets/shambala.png";
 import "./Preloader.css";
 
 const Preloader = () => {
@@ -9,7 +8,7 @@ const Preloader = () => {
   const [hidePreloader, setHidePreloader] = useState(false);
   const [hideCurtain, setHideCurtain] = useState(false);
   const [hideCounter, setHideCounter] = useState(false);
-  const [logoLoaded, setLogoLoaded] = useState(false);
+
 
   useEffect(() => {
     const duration = 1150;
@@ -235,13 +234,6 @@ const Preloader = () => {
           </svg>
         </div>
 
-        {/* Logo */}
-        <img
-          className={`brand-logo ${logoLoaded ? "ready" : ""}`}
-          src={shambalaLogo}
-          alt="Shambala Homes Logo"
-          onLoad={() => setLogoLoaded(true)}
-        />
       </div>
 
       {/* Counter - Bottom Right */}
