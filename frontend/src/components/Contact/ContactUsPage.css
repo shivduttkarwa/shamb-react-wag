@@ -771,11 +771,11 @@
 
 @media (max-width: 30rem) {
   .cup-hero-title {
-    font-size: clamp(1.9rem, 7.6vw, 2.5rem);
+    font-size: clamp(2.2rem, 8.7vw, 2.9rem);
   }
 
   .cup-hero-subtitle {
-    font-size: 0.98rem;
+    font-size: 1.12rem;
   }
 
   .cup-big-line {
