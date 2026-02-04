@@ -14,7 +14,7 @@ interface FallingTextVideoComponentProps {
 const FallingTextVideoComponent: React.FC<FallingTextVideoComponentProps> = ({
   leftText = "Design",
   rightText = "Philosophy",
-  videoSrc = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  videoSrc = "/images/home_hero.mp4",
 }) => {
   const wrapperRef = useRef<HTMLElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);

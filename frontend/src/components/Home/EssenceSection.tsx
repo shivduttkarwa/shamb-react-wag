@@ -37,12 +37,12 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
     src: `${publicUrl}images/fwi1.jpg`,
     alt: "Modern architectural design",
   },
-  videoUrl = `${publicUrl}images/hero1.mp4`,
+  videoUrl = `${publicUrl}images/home-hero.mp4`,
 }) => {
   const shortDescription =
     "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort and beauty.";
-  
-  const extraLargeDescription = 
+
+  const extraLargeDescription =
     "We envision spaces that are not just lived in, but felt — where every element has been curated to inspire connection, serenity, and belonging. Our approach transcends traditional architecture, creating environments that nurture the soul and elevate everyday moments into extraordinary experiences of comfort.";
 
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -97,18 +97,22 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
               </div>
             )}
 
-            <div className="essence-heading" >
+            <div className="essence-heading">
               <TiltTextGsap startTrigger="top 70%" endTrigger="bottom -10%">
                 {heading}
               </TiltTextGsap>
             </div>
 
-            <div className="essence-description" data-gsap="fade-up" data-gsap-delay="0.1">
+            <div
+              className="essence-description"
+              data-gsap="fade-up"
+              data-gsap-delay="0.1"
+            >
               {typeof window !== "undefined" && window.innerWidth >= 1600
                 ? extraLargeDescription
                 : typeof window !== "undefined" && window.innerWidth < 1600
-                ? shortDescription
-                : description}
+                  ? shortDescription
+                  : description}
             </div>
 
             <div className="essence-cta-desktop" data-gsap="btn-clip-bottom">
@@ -123,18 +127,18 @@ const EssenceSection: React.FC<EssenceSectionProps> = ({
             <div className="essence-image-mask" ref={imageMaskRef}>
               <img
                 src={image.src}
-              srcSet={
-                image.mobile && image.tablet && image.desktop
-                  ? `${image.mobile} 700w, ${image.tablet} 1000w, ${image.desktop} 1200w`
-                  : undefined
-              }
-              sizes={
-                image.mobile && image.tablet && image.desktop
-                  ? "(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
-                  : undefined
-              }
-              alt={image.alt}
-              className="essence-img"
+                srcSet={
+                  image.mobile && image.tablet && image.desktop
+                    ? `${image.mobile} 700w, ${image.tablet} 1000w, ${image.desktop} 1200w`
+                    : undefined
+                }
+                sizes={
+                  image.mobile && image.tablet && image.desktop
+                    ? "(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                    : undefined
+                }
+                alt={image.alt}
+                className="essence-img"
               />
             </div>
           </div>
