@@ -9,6 +9,7 @@ const Preloader = () => {
   const [hidePreloader, setHidePreloader] = useState(false);
   const [hideCurtain, setHideCurtain] = useState(false);
   const [hideCounter, setHideCounter] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
 
   useEffect(() => {
     const duration = 4500;
@@ -156,7 +157,7 @@ const Preloader = () => {
         </div>
 
         {/* Logo */}
-        <img className="brand-logo" src={shambalaLogo} alt="Shambala Homes Logo" />
+        <img className={`brand-logo ${logoLoaded ? 'ready' : ''}`} src={shambalaLogo} alt="Shambala Homes Logo" onLoad={() => setLogoLoaded(true)} />
       </div>
 
       {/* Counter - Bottom Right */}
