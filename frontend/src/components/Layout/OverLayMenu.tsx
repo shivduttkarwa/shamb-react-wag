@@ -6,7 +6,7 @@ import "./OverLayMenu.css";
 
 const publicUrl = import.meta.env.BASE_URL || "/";
 const getImagePath = (imageName: string) => {
-  return publicUrl.endsWith("/") 
+  return publicUrl.endsWith("/")
     ? `${publicUrl}images/${imageName}`
     : `${publicUrl}/images/${imageName}`;
 };
@@ -16,7 +16,7 @@ const OverlayMenu: React.FC = () => {
     const tl = gsap.timeline({ paused: true });
 
     const path = document.querySelector(
-      ".olm-overlay svg path"
+      ".olm-overlay svg path",
     ) as SVGPathElement | null;
 
     // Initial menu state - hidden by default
@@ -45,7 +45,7 @@ const OverlayMenu: React.FC = () => {
         ".olm-menu-item .olm-social-content",
         ".olm-menu-item .olm-footer-content",
       ],
-      { autoAlpha: 0, top: 0 }
+      { autoAlpha: 0, top: 0 },
     );
 
     const revealMenuItems = () => {
@@ -65,7 +65,7 @@ const OverlayMenu: React.FC = () => {
           opacity: 1,
           ease: "power1.out",
         },
-        0
+        0,
       );
 
       tl.to(
@@ -75,17 +75,16 @@ const OverlayMenu: React.FC = () => {
           attr: { d: start },
           ease: "power2.out",
         },
-        "<"
-      )
-        .to(
-          path,
-          {
-            duration: 0.4,
-            attr: { d: end },
-            ease: "power2.inOut",
-          },
-          ">"
-        );
+        "<",
+      ).to(
+        path,
+        {
+          duration: 0.4,
+          attr: { d: end },
+          ease: "power2.inOut",
+        },
+        ">",
+      );
 
       // Menu appears AFTER background completes
       tl.to(
@@ -94,7 +93,7 @@ const OverlayMenu: React.FC = () => {
           duration: 0.4,
           visibility: "visible",
         },
-        "-=0.32"
+        "-=0.32",
       );
 
       // Primary menu items – slide in from off-screen left, elastic settle
@@ -103,13 +102,13 @@ const OverlayMenu: React.FC = () => {
         {
           duration: 1,
           x: 0,
-          ease: "elastic.out(0.3, 0.5)",
+          ease: "none",
           stagger: {
-            amount: 0.24,
+            amount: 0.44,
           },
         },
-        ">-0.35"
-      )
+        ">-1",
+      );
       // Mobile CTA + social icons - animate after primary menu
       tl.to(
         ".olm-mobile-cta",
@@ -120,23 +119,23 @@ const OverlayMenu: React.FC = () => {
           scale: 1,
           ease: "power3.out",
         },
-        "+=0.1"
+        "+=0.1",
       )
-      .to(
-        ".olm-mobile-social-icon",
-        {
-          duration: 0.5,
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power3.out",
-          stagger: {
-            amount: 0.3,
-            from: "center"
-          }
-        },
-        "-=0.05" // Start shortly after CTA
-      )
+        .to(
+          ".olm-mobile-social-icon",
+          {
+            duration: 0.5,
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            ease: "power3.out",
+            stagger: {
+              amount: 0.3,
+              from: "center",
+            },
+          },
+          "-=0.05", // Start shortly after CTA
+        )
         // Secondary menu background image (comes in earlier)
         .to(
           ".olm-secondary-menu-bg",
@@ -145,7 +144,7 @@ const OverlayMenu: React.FC = () => {
             top: 0,
             ease: "power7.in",
           },
-          "-=0.92"
+          "-=0.92",
         )
         // Secondary items fade in together (no slide, no stagger)
         .to(
@@ -160,7 +159,7 @@ const OverlayMenu: React.FC = () => {
             autoAlpha: 1,
             ease: "power2.out",
           },
-          "-=0.7"
+          "-=0.7",
         )
         .reverse(); // start in reversed (closed) state
     };
@@ -198,7 +197,9 @@ const OverlayMenu: React.FC = () => {
     // Menu link click behaviour (close menu for React Router Links)
     const menuLinks = [
       ...document.querySelectorAll<HTMLAnchorElement>(".olm-menu-item a"),
-      ...document.querySelectorAll<HTMLAnchorElement>(".olm-mobile-social-icon")
+      ...document.querySelectorAll<HTMLAnchorElement>(
+        ".olm-mobile-social-icon",
+      ),
     ];
 
     const handleMenuLinkClick = (e: Event) => {
@@ -209,7 +210,7 @@ const OverlayMenu: React.FC = () => {
       if (href.startsWith("#")) {
         e.preventDefault();
         const targetSection = document.querySelector(
-          href
+          href,
         ) as HTMLElement | null;
         if (targetSection) {
           const scrollInstance = (window as any).scroll;
@@ -236,7 +237,7 @@ const OverlayMenu: React.FC = () => {
     };
 
     menuLinks.forEach((link) =>
-      link.addEventListener("click", handleMenuLinkClick)
+      link.addEventListener("click", handleMenuLinkClick),
     );
 
     // Cleanup
@@ -253,14 +254,14 @@ const OverlayMenu: React.FC = () => {
         ".olm-email-btn",
         ".olm-menu-item .olm-social-content",
         ".olm-menu-item .olm-footer-content",
-        ".olm-mobile-social-icon"
+        ".olm-mobile-social-icon",
       ]);
-      
+
       toggleBtn?.removeEventListener("click", handleToggle);
       toggleBtn?.removeEventListener("touchend", handleToggle);
       toggleBtn?.classList.remove("is-open");
       menuLinks.forEach((link) =>
-        link.removeEventListener("click", handleMenuLinkClick)
+        link.removeEventListener("click", handleMenuLinkClick),
       );
       document.body.style.overflow = "";
       document.body.classList.remove("menu-open");
@@ -344,7 +345,6 @@ const OverlayMenu: React.FC = () => {
                 <div className="olm-menu-item-revealer"></div>
               </div>
 
-              
               {/* 4 - About Us */}
               <div className="olm-menu-item olm-modern-menu-item olm-menu-item-about">
                 <div className="olm-menu-line"></div>
@@ -408,7 +408,10 @@ const OverlayMenu: React.FC = () => {
                   <Link to="/privacy-policy" className="olm-mobile-social-icon">
                     <i className="fab fa-instagram" />
                   </Link>
-                  <Link to="/terms-and-conditions" className="olm-mobile-social-icon">
+                  <Link
+                    to="/terms-and-conditions"
+                    className="olm-mobile-social-icon"
+                  >
                     <i className="fab fa-linkedin-in" />
                   </Link>
                   <a
@@ -430,20 +433,23 @@ const OverlayMenu: React.FC = () => {
 
         {/* Secondary menu */}
         <div className="olm-secondary-menu">
-          <div 
+          <div
             className="olm-secondary-menu-bg"
             style={{
               backgroundImage: `url(${getImagePath("bg.png")})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'right center',
-              backgroundRepeat: 'no-repeat'
+              backgroundSize: "cover",
+              backgroundPosition: "right center",
+              backgroundRepeat: "no-repeat",
             }}
           ></div>
           <div className="olm-menu-container">
             {/* Contact Section */}
             <div className="olm-contact-section">
               <div className="olm-menu-item olm-secondary-menu-item">
-                <div className="olm-contact-btn" style={{ position: 'relative', top: '100vh' }}>
+                <div
+                  className="olm-contact-btn"
+                  style={{ position: "relative", top: "100vh" }}
+                >
                   <GlassRainButton href="/contact-us">
                     Contact Us
                   </GlassRainButton>
@@ -452,7 +458,10 @@ const OverlayMenu: React.FC = () => {
               </div>
 
               <div className="olm-menu-item olm-secondary-menu-item">
-                <div className="olm-email-btn" style={{ position: 'relative', top: '100vh' }}>
+                <div
+                  className="olm-email-btn"
+                  style={{ position: "relative", top: "100vh" }}
+                >
                   <GlassRainButton href="mailto:shivduttkarwa@gmail.com">
                     Send Email
                   </GlassRainButton>
@@ -465,13 +474,24 @@ const OverlayMenu: React.FC = () => {
             <div className="olm-menu-item olm-social-menu-item">
               <div className="olm-social-content">
                 <div className="olm-social-grid">
-                  <Link to="/privacy-policy" className="olm-social-card olm-instagram">
+                  <Link
+                    to="/privacy-policy"
+                    className="olm-social-card olm-instagram"
+                  >
                     <i className="fab fa-instagram" />
                   </Link>
-                  <Link to="/terms-and-conditions" className="olm-social-card olm-linkedin">
+                  <Link
+                    to="/terms-and-conditions"
+                    className="olm-social-card olm-linkedin"
+                  >
                     <i className="fab fa-linkedin-in" />
                   </Link>
-                  <a href="https://github.com/shivduttkarwa" target="_blank" rel="noopener noreferrer" className="olm-social-card olm-github">
+                  <a
+                    href="https://github.com/shivduttkarwa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="olm-social-card olm-github"
+                  >
                     <i className="fab fa-github" />
                   </a>
                   <Link to="/blog" className="olm-social-card olm-twitter">
