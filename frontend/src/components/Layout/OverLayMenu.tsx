@@ -44,24 +44,34 @@ const OverlayMenu: React.FC = () => {
 
       // Keep toggle button static (no GSAP on hamburger/logo)
 
-      tl.to(".olm-overlay", {
-  duration: 0.4,
-  opacity: 1,
-  ease: "power1.out",
-}, 0);
+      tl.to(
+        ".olm-overlay",
+        {
+          duration: 0.25,
+          opacity: 1,
+          ease: "power1.out",
+        },
+        0
+      );
 
-tl.to(path, {
-  duration: 0.7,
-  attr: { d: start },   // first shape comes in
-  ease: "power2.out",
-}, "<")                  // start with overlay
-
-// Small pause AFTER first tween finishes, then go to `end`
-.to(path, {
-  duration: 0.7,
-  attr: { d: end },
-  ease: "power2.inOut",
-}, ">+=0.12");           // ">+=0.12" = start 0.12s AFTER previous tween ends
+      tl.to(
+        path,
+        {
+          duration: 0.4,
+          attr: { d: start },
+          ease: "power2.out",
+        },
+        "<"
+      )
+        .to(
+          path,
+          {
+            duration: 0.4,
+            attr: { d: end },
+            ease: "power2.inOut",
+          },
+          ">"
+        );
 
       // Menu appears AFTER background completes
       tl.to(
