@@ -175,6 +175,7 @@ const OverlayMenu: React.FC = () => {
       hamburger.classList.toggle("active");
       toggleBtn?.classList.toggle("is-open");
       const isReversed = !tl.reversed();
+      tl.timeScale(isReversed ? 1.8 : 1);
       tl.reversed(isReversed);
 
       if (isReversed) {
@@ -224,6 +225,7 @@ const OverlayMenu: React.FC = () => {
       if (hamburger && hamburger.classList.contains("active")) {
         hamburger.classList.remove("active");
         toggleBtn?.classList.remove("is-open");
+        tl.timeScale(1.8);
         tl.reverse();
         document.body.style.overflow = "";
         document.body.classList.remove("menu-open");
