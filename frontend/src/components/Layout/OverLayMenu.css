@@ -655,6 +655,12 @@ body.menu-open {
 @media screen and (max-width: 768px) {
   .olm-menu {
     margin-inline: 0;
+    background-image:
+      linear-gradient(rgba(16, 16, 16, 0.85), rgba(16, 16, 16, 0.85)),
+      url("/images/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .olm-modern-menu-item {
