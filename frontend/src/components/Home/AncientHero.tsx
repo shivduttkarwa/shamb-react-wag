@@ -33,7 +33,10 @@ const AncientHero: React.FC = () => {
 
     // Lock animated elements hidden until GSAP reveals them
     gsap.set(eyebrowRef.current, { opacity: 0 });
-    gsap.set([titleLine1Ref.current, titleLine2Ref.current], { opacity: 0, y: 60 });
+    gsap.set([titleLine1Ref.current, titleLine2Ref.current], {
+      opacity: 0,
+      y: 60,
+    });
     gsap.set(subtitleRef.current, { opacity: 0 });
     gsap.set(ctaRef.current, { opacity: 0, clipPath: "inset(0 100% 0 0)" });
     gsap.set(scrollBtnRef.current, { opacity: 0, y: 30 });
@@ -42,7 +45,7 @@ const AncientHero: React.FC = () => {
     // If it's already there, we're navigating from another page — animate after short delay.
     // If not, the preloader is still running — wait for it to finish.
     if (document.body.classList.contains("content-loaded")) {
-      const timer = setTimeout(() => setAnimationsStarted(true), 300);
+      const timer = setTimeout(() => setAnimationsStarted(true), 10);
       return () => clearTimeout(timer);
     }
 
@@ -110,7 +113,7 @@ const AncientHero: React.FC = () => {
       4.3,
     );
 
-    return () => tl.kill();
+    return () => { tl.kill(); };
   }, [animationsStarted]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
