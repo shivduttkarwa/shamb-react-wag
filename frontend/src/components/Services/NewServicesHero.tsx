@@ -218,8 +218,11 @@ const NewServicesHero: React.FC = () => {
       className={`nsh-hero ${isLoaded ? "nsh-loaded" : ""}`}
       ref={rootRef}
     >
-      {/* Background Pattern */}
-      <div className="nsh-bg-pattern" />
+      {/* Background Video */}
+      <video className="nsh-bg-video" autoPlay muted loop playsInline>
+        <source src="/images/services-hero-vid.mp4" type="video/mp4" />
+      </video>
+      <div className="nsh-bg-overlay" />
 
       {/* Left Content */}
       <div className="nsh-content">
