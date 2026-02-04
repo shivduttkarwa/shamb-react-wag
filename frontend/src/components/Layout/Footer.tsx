@@ -266,37 +266,29 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
             <h3 className="shambala-footer-section-title">Follow Us</h3>
             <div className="shambala-footer-follow-links">
               <a
-                href="https://instagram.com/shambalahomes"
+                href="/"
                 className="shambala-follow-link shambala-follow-icon"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="Instagram"
               >
                 <i className="fab fa-instagram" />
               </a>
               <a
-                href="https://facebook.com/shambalahomes"
+                href="/"
                 className="shambala-follow-link shambala-follow-icon"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="Facebook"
               >
                 <i className="fab fa-facebook-f" />
               </a>
               <a
-                href="https://youtube.com/@shambalahomes"
+                href="/"
                 className="shambala-follow-link shambala-follow-icon"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="YouTube"
               >
                 <i className="fab fa-youtube" />
               </a>
               <a
-                href="https://x.com/shambalahomes"
+                href="/"
                 className="shambala-follow-link shambala-follow-icon"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="X"
               >
                 <i className="fab fa-x-twitter" />

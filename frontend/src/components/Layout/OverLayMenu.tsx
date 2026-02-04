@@ -33,9 +33,6 @@ const OverlayMenu: React.FC = () => {
       y: 20,
       scale: 0.9,
     });
-    gsap.set(".olm-primary-menu .olm-menu-item>a", {
-      x: -window.innerWidth,
-    });
 
     // Secondary menu items: fade in/out together with bg (no slide)
     gsap.set(
@@ -96,18 +93,18 @@ const OverlayMenu: React.FC = () => {
         "-=0.32",
       );
 
-      // Primary menu items – slide in from off-screen left, elastic settle
+      // Primary menu items
       tl.to(
         ".olm-primary-menu .olm-menu-item>a",
         {
-          duration: 1,
-          x: 0,
-          ease: "none",
+          duration: 0.32,
+          top: 0,
+          ease: "power3.in",
           stagger: {
-            amount: 0.34,
+            amount: 0.24,
           },
         },
-        ">-1",
+        "-=0.48",
       );
       // Mobile CTA + social icons - animate after primary menu
       tl.to(
@@ -177,7 +174,7 @@ const OverlayMenu: React.FC = () => {
       hamburger.classList.toggle("active");
       toggleBtn?.classList.toggle("is-open");
       const isReversed = !tl.reversed();
-      tl.timeScale(isReversed ? 4 : 1);
+      tl.timeScale(isReversed ? 1.8 : 1);
       tl.reversed(isReversed);
 
       if (isReversed) {
@@ -405,38 +402,18 @@ const OverlayMenu: React.FC = () => {
                   </GlassRainButton>
                 </div>
                 <div className="olm-mobile-social-icons">
-                  <a
-                    href="https://instagram.com/shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-mobile-social-icon"
-                  >
+                  <Link to="/" className="olm-mobile-social-icon">
                     <i className="fab fa-instagram" />
-                  </a>
-                  <a
-                    href="https://facebook.com/shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-mobile-social-icon"
-                  >
+                  </Link>
+                  <Link to="/" className="olm-mobile-social-icon">
                     <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    href="https://youtube.com/@shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-mobile-social-icon"
-                  >
+                  </Link>
+                  <Link to="/" className="olm-mobile-social-icon">
                     <i className="fab fa-youtube" />
-                  </a>
-                  <a
-                    href="https://x.com/shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-mobile-social-icon"
-                  >
+                  </Link>
+                  <Link to="/" className="olm-mobile-social-icon">
                     <i className="fab fa-x-twitter" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -474,7 +451,7 @@ const OverlayMenu: React.FC = () => {
                   className="olm-email-btn"
                   style={{ position: "relative", top: "100vh" }}
                 >
-                  <GlassRainButton href="mailto:shambalahomes@gmail.com">
+                  <GlassRainButton href="mailto:shivduttkarwa@gmail.com">
                     Send Email
                   </GlassRainButton>
                 </div>
@@ -486,38 +463,18 @@ const OverlayMenu: React.FC = () => {
             <div className="olm-menu-item olm-social-menu-item">
               <div className="olm-social-content">
                 <div className="olm-social-grid">
-                  <a
-                    href="https://instagram.com/shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-social-card olm-instagram"
-                  >
+                  <Link to="/" className="olm-social-card olm-instagram">
                     <i className="fab fa-instagram" />
-                  </a>
-                  <a
-                    href="https://facebook.com/shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-social-card olm-facebook"
-                  >
+                  </Link>
+                  <Link to="/" className="olm-social-card olm-facebook">
                     <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    href="https://youtube.com/@shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-social-card olm-youtube"
-                  >
+                  </Link>
+                  <Link to="/" className="olm-social-card olm-youtube">
                     <i className="fab fa-youtube" />
-                  </a>
-                  <a
-                    href="https://x.com/shambalahomes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="olm-social-card olm-x"
-                  >
+                  </Link>
+                  <Link to="/" className="olm-social-card olm-x">
                     <i className="fab fa-x-twitter" />
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="olm-menu-item-revealer"></div>

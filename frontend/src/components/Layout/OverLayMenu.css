@@ -151,7 +151,6 @@
   display: flex;
   z-index: 10000;
   visibility: hidden;
-  overflow: hidden;
 }
 
 /* Prevent any background content from showing when menu is open */
@@ -169,6 +168,7 @@ body.menu-open {
 
 .olm-primary-menu .olm-menu-item a {
   position: relative;
+  top: 100vh;
   line-height: 50%;
   text-decoration: none;
   color: var(--clr-link);
@@ -742,14 +742,14 @@ body.menu-open {
     flex-direction: column;
     gap: 1.2rem;
     margin-top: auto;
-    padding-top: 4rem;
+    padding-top: 2.5rem;
     flex: 1;
     margin-bottom: 1.5rem;
   }
 
   .olm-mobile-cta {
     width: 100%;
-    margin-top: 6rem;
+    margin-top: 8rem;
   }
 
   .olm-mobile-cta .glass-rain-btn {
@@ -940,8 +940,7 @@ body.menu-open {
   }
 
   .olm-secondary-menu {
-    padding: clamp(3rem, 6vw, 4.5rem) 1.2rem 1.6rem
-      clamp(1.8rem, 5vw, 4rem);
+    padding: clamp(3rem, 6vw, 4.5rem) 1.2rem 1.6rem clamp(1.8rem, 5vw, 4rem);
   }
 
   .olm-secondary-menu .olm-menu-container {
@@ -1169,44 +1168,44 @@ body.menu-open {
   .olm-primary-menu {
     margin-top: 30px; /* Push all menu items up by 30px */
   }
-  
+
   .olm-menu-item {
     padding: 15px 0;
     /* margin-top: -30px; */
-}
-  
+  }
+
   /* Completely remove menu lines on mobile */
   .olm-menu-line {
     display: none !important;
   }
-  
+
   .olm-mobile-secondary-menu {
     display: block !important;
     padding: 0rem 0 0rem 0;
     text-align: center;
     margin-top: 5px;
-}
-  
+  }
+
   .olm-menu .olm-primary-menu .olm-menu-text {
     font-size: clamp(3.2rem, 12vw, 4.2rem) !important;
   }
-  
+
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
     font-size: clamp(3.2rem, 12vw, 4.2rem) !important;
   }
-  
+
   .olm-menu .olm-primary-menu .olm-menu-number {
     font-size: clamp(0.8rem, 2.8vw, 1.1rem) !important;
   }
-  
+
   .olm-mobile-social-icons {
     display: flex;
     justify-content: center;
     gap: clamp(1rem, 4vw, 2rem);
     padding: 1rem;
     padding-top: clamp(1.5rem, 5vw, 2.2rem);
-}
-  
+  }
+
   .olm-mobile-social-icon {
     display: flex;
     align-items: center;
@@ -1219,18 +1218,21 @@ body.menu-open {
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #e5e3dc;
     text-decoration: none;
-    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      background 0.15s ease,
+      box-shadow 0.15s ease;
     cursor: pointer;
     pointer-events: auto;
     will-change: transform, background, box-shadow;
   }
-  
+
   /* Color-coded mobile menu icons with reduced glow and 3D effect */
   .olm-mobile-home-icon {
     background: rgba(255, 107, 107, 0.3);
     border: 1px solid rgba(255, 107, 107, 0.4);
     color: #ff6b6b;
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(255, 107, 107, 0.15),
       inset 0 1px 0 rgba(255, 107, 107, 0.3),
       0 0 5px rgba(255, 107, 107, 0.2),
@@ -1238,12 +1240,12 @@ body.menu-open {
     animation: glow-mobile-home 2s ease-in-out infinite alternate;
     transition: all 0.15s ease;
   }
-  
+
   .olm-mobile-services-icon {
     background: rgba(78, 205, 196, 0.3);
     border: 1px solid rgba(78, 205, 196, 0.4);
     color: #4ecdc4;
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(78, 205, 196, 0.15),
       inset 0 1px 0 rgba(78, 205, 196, 0.3),
       0 0 5px rgba(78, 205, 196, 0.2),
@@ -1251,12 +1253,12 @@ body.menu-open {
     animation: glow-mobile-services 2s ease-in-out infinite alternate;
     transition: all 0.15s ease;
   }
-  
+
   .olm-mobile-projects-icon {
     background: rgba(255, 230, 109, 0.3);
     border: 1px solid rgba(255, 230, 109, 0.4);
     color: #ffe66d;
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(255, 230, 109, 0.15),
       inset 0 1px 0 rgba(255, 230, 109, 0.3),
       0 0 5px rgba(255, 230, 109, 0.2),
@@ -1264,12 +1266,12 @@ body.menu-open {
     animation: glow-mobile-projects 2s ease-in-out infinite alternate;
     transition: all 0.15s ease;
   }
-  
+
   .olm-mobile-about-icon {
     background: rgba(255, 149, 0, 0.3);
     border: 1px solid rgba(255, 149, 0, 0.4);
     color: #ff9500;
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(255, 149, 0, 0.15),
       inset 0 1px 0 rgba(255, 149, 0, 0.3),
       0 0 5px rgba(255, 149, 0, 0.2),
@@ -1277,12 +1279,12 @@ body.menu-open {
     animation: glow-mobile-about 2s ease-in-out infinite alternate;
     transition: all 0.15s ease;
   }
-  
+
   .olm-mobile-contact-icon {
     background: rgba(255, 139, 148, 0.3);
     border: 1px solid rgba(255, 139, 148, 0.4);
     color: #ff8b94;
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(255, 139, 148, 0.15),
       inset 0 1px 0 rgba(255, 139, 148, 0.3),
       0 0 5px rgba(255, 139, 148, 0.2),
@@ -1290,30 +1292,30 @@ body.menu-open {
     animation: glow-mobile-contact 2s ease-in-out infinite alternate;
     transition: all 0.15s ease;
   }
-  
+
   .olm-mobile-menu-number {
     font-weight: bold;
     font-size: clamp(0.95rem, 3.6vw, 1.2rem);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transform: translateX(5px); /* Push right by 5px */
   }
-  
+
   .olm-mobile-social-icon:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 
+    box-shadow:
       0 6px 20px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
-  
+
   .olm-mobile-social-icon:active {
     transform: translateY(2px) scale(0.95);
-    box-shadow: 
+    box-shadow:
       inset 0 2px 4px rgba(0, 0, 0, 0.2),
       inset 0 -1px 0 rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.15);
   }
-  
+
   .olm-mobile-social-icon svg {
     width: clamp(1rem, 3.5vw, 1.25rem);
     height: clamp(1rem, 3.5vw, 1.25rem);
@@ -1323,28 +1325,68 @@ body.menu-open {
 
 /* Glowing animations for mobile menu circles with reduced intensity */
 @keyframes glow-mobile-home {
-  0% { box-shadow: 0 0 5px rgba(255, 107, 107, 0.2), 0 0 10px rgba(255, 107, 107, 0.05); }
-  100% { box-shadow: 0 0 8px rgba(255, 107, 107, 0.25), 0 0 15px rgba(255, 107, 107, 0.1); }
+  0% {
+    box-shadow:
+      0 0 5px rgba(255, 107, 107, 0.2),
+      0 0 10px rgba(255, 107, 107, 0.05);
+  }
+  100% {
+    box-shadow:
+      0 0 8px rgba(255, 107, 107, 0.25),
+      0 0 15px rgba(255, 107, 107, 0.1);
+  }
 }
 
 @keyframes glow-mobile-services {
-  0% { box-shadow: 0 0 5px rgba(78, 205, 196, 0.2), 0 0 10px rgba(78, 205, 196, 0.05); }
-  100% { box-shadow: 0 0 8px rgba(78, 205, 196, 0.25), 0 0 15px rgba(78, 205, 196, 0.1); }
+  0% {
+    box-shadow:
+      0 0 5px rgba(78, 205, 196, 0.2),
+      0 0 10px rgba(78, 205, 196, 0.05);
+  }
+  100% {
+    box-shadow:
+      0 0 8px rgba(78, 205, 196, 0.25),
+      0 0 15px rgba(78, 205, 196, 0.1);
+  }
 }
 
 @keyframes glow-mobile-projects {
-  0% { box-shadow: 0 0 5px rgba(255, 230, 109, 0.2), 0 0 10px rgba(255, 230, 109, 0.05); }
-  100% { box-shadow: 0 0 8px rgba(255, 230, 109, 0.25), 0 0 15px rgba(255, 230, 109, 0.1); }
+  0% {
+    box-shadow:
+      0 0 5px rgba(255, 230, 109, 0.2),
+      0 0 10px rgba(255, 230, 109, 0.05);
+  }
+  100% {
+    box-shadow:
+      0 0 8px rgba(255, 230, 109, 0.25),
+      0 0 15px rgba(255, 230, 109, 0.1);
+  }
 }
 
 @keyframes glow-mobile-about {
-  0% { box-shadow: 0 0 5px rgba(255, 149, 0, 0.2), 0 0 10px rgba(255, 149, 0, 0.05); }
-  100% { box-shadow: 0 0 8px rgba(255, 149, 0, 0.25), 0 0 15px rgba(255, 149, 0, 0.1); }
+  0% {
+    box-shadow:
+      0 0 5px rgba(255, 149, 0, 0.2),
+      0 0 10px rgba(255, 149, 0, 0.05);
+  }
+  100% {
+    box-shadow:
+      0 0 8px rgba(255, 149, 0, 0.25),
+      0 0 15px rgba(255, 149, 0, 0.1);
+  }
 }
 
 @keyframes glow-mobile-contact {
-  0% { box-shadow: 0 0 5px rgba(255, 139, 148, 0.2), 0 0 10px rgba(255, 139, 148, 0.05); }
-  100% { box-shadow: 0 0 8px rgba(255, 139, 148, 0.25), 0 0 15px rgba(255, 139, 148, 0.1); }
+  0% {
+    box-shadow:
+      0 0 5px rgba(255, 139, 148, 0.2),
+      0 0 10px rgba(255, 139, 148, 0.05);
+  }
+  100% {
+    box-shadow:
+      0 0 8px rgba(255, 139, 148, 0.25),
+      0 0 15px rgba(255, 139, 148, 0.1);
+  }
 }
 
 /* iPhone 15 and small screens - Reduce menu font sizes by 30% */
@@ -1352,20 +1394,20 @@ body.menu-open {
   .olm-menu .olm-primary-menu .olm-modern-menu-item a {
     font-size: clamp(2.4rem, 11vw, 3.2rem) !important;
   }
-  
+
   .olm-menu .olm-primary-menu .olm-menu-text {
     font-size: clamp(2.4rem, 11vw, 3.2rem) !important;
   }
-  
+
   .olm-menu .olm-primary-menu .olm-menu-number {
     font-size: clamp(0.7rem, 3.2vw, 0.95rem) !important;
   }
-  
+
   .olm-menu .olm-primary-menu a span {
     font-size: clamp(0.7rem, 3.2vw, 0.95rem) !important;
     margin-right: 0.6rem !important;
   }
-  
+
   .olm-mobile-menu-number {
     font-size: clamp(0.85rem, 3.2vw, 1.05rem) !important;
   }
