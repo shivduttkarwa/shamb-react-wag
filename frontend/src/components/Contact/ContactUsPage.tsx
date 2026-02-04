@@ -147,7 +147,7 @@ const ContactUsPage: React.FC = () => {
   return (
     <div className="cup-page">
       {/* HERO */}
-      <section className="cup-hero">
+      <section className="cup-hero cup-section cup-section--hero">
         <div className="cup-hero-overlay" />
         <div className="cup-hero-content">
           <h1 className="cup-hero-title">
@@ -173,7 +173,7 @@ const ContactUsPage: React.FC = () => {
       </section>
 
       {/* MAIN CONTACT SECTION */}
-      <section className="cup-main" id="contact-form">
+      <section className="cup-main cup-section cup-section--main" id="contact-form">
         <div className="cup-inner">
           <div className="cup-info-wrapper">
             {/* LEFT – FORM */}
@@ -323,7 +323,7 @@ const ContactUsPage: React.FC = () => {
       </section>
 
       {/* PARALLAX SECTION - SIMPLE AND CLEAN */}
-      <section className="cup-parallax">
+      <section className="cup-parallax cup-section cup-section--parallax">
         <div className="cup-parallax-overlay" />
         <div className="cup-parallax-content contact-animate">
           <div className="cup-parallax-top">
@@ -346,7 +346,7 @@ const ContactUsPage: React.FC = () => {
       </section>
 
       {/* MAP SECTION */}
-      <section className="cup-map-section">
+      <section className="cup-map-section cup-section cup-section--map">
         <div className="cup-inner">
           <div className="cup-map-header">
             <h2>Find Us</h2>
