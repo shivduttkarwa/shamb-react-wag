@@ -2,7 +2,7 @@
 .preloader {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #0d0d0d 0%, #232d23 50%, #1e2823 100%);
+  background: linear-gradient(135deg, #0a1a12 0%, #173626 55%, #10241a 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -165,7 +165,7 @@
 .curtain-right {
   width: 50%;
   height: 100%;
-  background: linear-gradient(180deg, #0d0d0d 0%, #232d23 100%);
+  background: linear-gradient(180deg, #0a1a12 0%, #173626 100%);
   position: relative;
   transition: transform 1.8s cubic-bezier(0.76, 0, 0.24, 1);
 }
