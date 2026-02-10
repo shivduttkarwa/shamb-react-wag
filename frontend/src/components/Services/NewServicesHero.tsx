@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./NewServicesHero.css";
-import AestheticButton from "../UI/AestheticButton";
 
 const publicUrl = import.meta.env.BASE_URL;
 const heroVideo = `${publicUrl}images/services-hero-vid.mp4`;
@@ -22,6 +21,7 @@ const NewServicesHero: React.FC = () => {
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const titleLineRefs = useRef<HTMLSpanElement[]>([]);
   const changingWordRef = useRef<HTMLSpanElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const imageRevealRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -46,6 +46,13 @@ const NewServicesHero: React.FC = () => {
       position: "right",
     },
   ];
+
+  const handleScrollDown = () => {
+    const servicesSection = document.querySelector("#services-content");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   const marqueeItems = [
     "Residential Design",
@@ -79,6 +86,7 @@ const NewServicesHero: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const lines = titleLineRefs.current.filter(Boolean);
+      const description = descriptionRef.current;
       const cta = ctaRef.current;
       const imageReveal = imageRevealRef.current;
       const heroImage = imageRef.current;
@@ -88,7 +96,8 @@ const NewServicesHero: React.FC = () => {
       const cards = cardRefs.current.filter(Boolean);
 
       gsap.set(lines, { yPercent: 120, opacity: 0 });
-      if (cta) gsap.set(cta, { y: 30, opacity: 0 });
+      if (description) gsap.set(description, { y: 30, opacity: 0 });
+      if (cta) gsap.set(cta, { scale: 0.8, opacity: 0 });
       if (imageReveal)
         gsap.set(imageReveal, { scaleY: 1, transformOrigin: "top" });
       if (heroImage) gsap.set(heroImage, { scale: 1.15 });
@@ -106,7 +115,8 @@ const NewServicesHero: React.FC = () => {
         duration: 0.8,
         stagger: 0.15,
       })
-        .to(cta, { y: 0, opacity: 1, duration: 0.6 }, "-=0.5")
+        .to(description, { y: 0, opacity: 1, duration: 0.7 }, "-=0.4")
+        .to(cta, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.7)" }, "-=0.3")
         .to(
           imageReveal,
           { scaleY: 0, duration: 1.1, ease: "power2.inOut" },
@@ -232,22 +242,32 @@ const NewServicesHero: React.FC = () => {
           </span>
         </h1>
 
-        <div className="nsh-cta-group nsh-cta-desktop" ref={ctaRef}>
-          <AestheticButton
-            text="Discover Our Services"
-            href="#services"
-            className="nsh-custom-btn"
-          />
-        </div>
-      </div>
+        <p className="nsh-description" ref={descriptionRef}>
+          We craft bespoke architectural solutions that blend human-centered design with sustainable innovation. From concept to completion, every detail is thoughtfully considered to create spaces that inspire and endure.
+        </p>
 
-      {/* Mobile CTA */}
-      <div className="nsh-cta-group nsh-cta-mobile">
-        <AestheticButton
-          text="Discover Our Services"
-          href="#services"
-          className="nsh-custom-btn"
-        />
+        <div className="nsh-scroll-down-wrapper" ref={ctaRef}>
+          <button
+            className="nsh-scroll-down-btn"
+            onClick={handleScrollDown}
+            aria-label="Scroll to services"
+          >
+            <div className="nsh-scroll-circle">
+              <svg
+                className="nsh-scroll-arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 3v18M19 15l-7 7-7-7"/>
+              </svg>
+            </div>
+            <span className="nsh-scroll-text">Scroll to Explore</span>
+          </button>
+        </div>
       </div>
 
       {/* Right Visual */}
