@@ -215,7 +215,12 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(42, 61, 40, 0.25) 0%,
+    rgba(35, 45, 35, 0.3) 50%,
+    rgba(30, 40, 35, 0.25) 100%
+  );
   /* Overlay should be above video but below content */
   z-index: 2;
   pointer-events: none;
@@ -224,10 +229,10 @@
 /* Darker overlay for About Us hero for better text readability */
 .about-hero .hero-overlay {
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.75) 50%,
-    rgba(0, 0, 0, 0.7) 100%
+    135deg,
+    rgba(42, 61, 40, 0.5) 0%,
+    rgba(35, 45, 35, 0.55) 50%,
+    rgba(30, 40, 35, 0.5) 100%
   );
 }
 

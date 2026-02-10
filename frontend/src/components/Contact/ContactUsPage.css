@@ -40,7 +40,12 @@
 .cup-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(42, 61, 40, 0.25) 0%,
+    rgba(35, 45, 35, 0.3) 50%,
+    rgba(30, 40, 35, 0.25) 100%
+  );
 }
 
 .cup-hero-content {
@@ -504,9 +509,9 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    120deg,
-    rgba(6, 10, 7, 0.78),
-    rgba(6, 10, 7, 0.68)
+    135deg,
+    rgba(42, 61, 40, 0.55),
+    rgba(35, 45, 35, 0.5)
   );
   z-index: 1;
 }
