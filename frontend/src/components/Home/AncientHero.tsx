@@ -70,7 +70,7 @@ const AncientHero: React.FC = () => {
     tl.fromTo(
       titleLine1Ref.current,
       { y: "100%" },
-      { y: "0%", duration: 2, ease: "expo.out" },
+      { y: "0%", duration: 3, ease: "expo.out" },
       0.3,
     );
 
@@ -111,7 +111,9 @@ const AncientHero: React.FC = () => {
       4.3,
     );
 
-    return () => { tl.kill(); };
+    return () => {
+      tl.kill();
+    };
   }, [animationsStarted]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
