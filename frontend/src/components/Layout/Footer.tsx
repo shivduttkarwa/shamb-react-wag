@@ -18,8 +18,8 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
   const footerRef = useRef<HTMLElement>(null);
   const brandTextRef = useRef<HTMLHeadingElement>(null);
   const topSectionRef = useRef<HTMLDivElement>(null);
-  const phone = settings?.contact?.phone || "+61 3 1234 5678";
-  const email = (settings?.contact?.email || "info@shambala.com").toLowerCase();
+  const phone = settings?.contact?.phone || "0428 809 166";
+  const email = (settings?.contact?.email || "admin@shambalahomes.com.au").toLowerCase();
 
   // Footer visibility
   useEffect(() => {
@@ -188,9 +188,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                   />
                 ) : (
                   <div className="shambala-footer-contact-item">
-                    123 Garden Street
-                    <br />
-                    Melbourne, VIC 3000
+                    Narangba 4504
                   </div>
                 )}
               </div>
@@ -198,7 +196,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
               <div className="shambala-contact-item">
                 <div className="shambala-contact-label">Call Us</div>
                 <a
-                  href={`tel:${settings?.contact?.phone || "+61312345678"}`}
+                  href={`tel:${settings?.contact?.phone || "0428809166"}`}
                   className="shambala-footer-contact-item"
                 >
                   <span className="shambala-link-window">
@@ -214,7 +212,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 <div className="shambala-contact-label">Email Us</div>
                 <a
                   href={`mailto:${
-                    settings?.contact?.email || "info@shambalahomes.com"
+                    settings?.contact?.email || "admin@shambalahomes.com.au"
                   }`}
                   className="shambala-footer-contact-item"
                 >

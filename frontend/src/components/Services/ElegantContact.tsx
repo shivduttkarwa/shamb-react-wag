@@ -21,8 +21,8 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
       rightContent: {
         title: "Get in Touch",
         contactInfo: [
-          { label: "Studio", value: "+61 3 1234 5678", link: "tel:+61312345678" },
-          { label: "Email", value: "studio@shambala.archi", link: "mailto:studio@shambala.archi" },
+          { label: "Studio", value: "0428 809 166", link: "tel:0428809166" },
+          { label: "Email", value: "admin@shambalahomes.com.au", link: "mailto:admin@shambalahomes.com.au" },
           { label: "Hours", value: "Monday - Friday\n9AM - 6PM AEST" }
         ]
       }
@@ -32,11 +32,10 @@ const ElegantContact: React.FC<{ className?: string }> = ({ className = "" }) =>
       rightBg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&auto=shambalat",
       leftContent: {
         title: "Visit Our Studio",
-        subtitle: "Melbourne • Fitzroy",
-        description: "Experience our design philosophy firsthand in our thoughtfully crafted studio space in Melbourne's creative heart.",
+        subtitle: "Narangba",
+        description: "Experience our design philosophy firsthand in our thoughtfully crafted studio space.",
         contactInfo: [
-          { label: "Address", value: "Level 3, 150 Gertrude Street\nFitzroy, VIC 3065\nAustralia" },
-          { label: "Transport", value: "5 minutes walk from\nParliament Station" }
+          { label: "Address", value: "Narangba 4504" }
         ]
       },
       rightContent: {

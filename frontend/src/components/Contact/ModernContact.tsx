@@ -211,11 +211,11 @@ const ModernContact: React.FC = () => {
                 <h3>Get In Touch</h3>
                 <div className="contact-item">
                   <span className="contact-label">Studio</span>
-                  <a href="tel:+61312345678" className="contact-value">+61 3 1234 5678</a>
+                  <a href="tel:0428809166" className="contact-value">0428 809 166</a>
                 </div>
                 <div className="contact-item">
                   <span className="contact-label">Email</span>
-                  <a href="mailto:studio@shambala.archi" className="contact-value">studio@shambala.archi</a>
+                  <a href="mailto:admin@shambalahomes.com.au" className="contact-value">admin@shambalahomes.com.au</a>
                 </div>
                 <div className="contact-item">
                   <span className="contact-label">Hours</span>
@@ -236,9 +236,7 @@ const ModernContact: React.FC = () => {
                 <div className="contact-item">
                   <span className="contact-label">Address</span>
                   <span className="contact-value">
-                    Level 3, 150 Gertrude Street<br />
-                    Fitzroy, VIC 3065<br />
-                    Australia
+                    Narangba 4504
                   </span>
                 </div>
                 <div className="contact-item">

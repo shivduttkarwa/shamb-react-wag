@@ -422,17 +422,19 @@
 
 .cup-info-title {
   font-family: "Nunito", sans-serif;
-  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-size: clamp(2rem, 3vw, 3.2rem);
   text-transform: none;
   letter-spacing: 0.02em;
+  margin-bottom: 2rem;
 }
 
 .cup-info-list {
   list-style: none;
   display: grid;
-  gap: 0.8rem;
-  font-size: 1.1rem;
+  gap: 1.5rem;
+  font-size: 1.4rem;
   color: rgba(31, 39, 31, 0.75);
+  line-height: 1.6;
 }
 
 .cup-info-list strong {
@@ -712,12 +714,14 @@
   }
 
   .cup-info-title {
-    font-size: clamp(2rem, 3.2vw, 3.1rem);
+    font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+    margin-bottom: 2.5rem;
   }
 
   .cup-info-list {
-    font-size: 1.3rem;
-    gap: 1rem;
+    font-size: 1.6rem;
+    gap: 2rem;
+    line-height: 1.7;
   }
 
   .cup-info-cta span {

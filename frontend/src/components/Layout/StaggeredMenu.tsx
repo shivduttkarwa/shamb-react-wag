@@ -714,19 +714,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             <div className="sm-contact-section">
               <h3 className="sm-contact-title">Contact</h3>
               <div className="sm-contact-details">
-                <a href="tel:+1234567890" className="sm-contact-item">
-                  +1 234 567 890
+                <a href="tel:0428809166" className="sm-contact-item">
+                  0428 809 166
                 </a>
                 <a
-                  href="mailto:hello@shambalahomes.com"
+                  href="mailto:admin@shambalahomes.com.au"
                   className="sm-contact-item"
                 >
-                  hello@shambalahomes.com
+                  admin@shambalahomes.com.au
                 </a>
                 <div className="sm-contact-item">
-                  123 Dream Avenue
-                  <br />
-                  Sydney, NSW 2000
+                  Narangba 4504
                 </div>
               </div>
             </div>

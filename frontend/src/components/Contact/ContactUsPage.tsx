@@ -11,6 +11,7 @@ const ContactUsPage: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -90,11 +91,14 @@ const ContactUsPage: React.FC = () => {
 
     // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Phone validation regex (basic - allows digits, spaces, dashes, parentheses)
+    const phoneRegex = /^[\d\s\-\(\)]+$/;
 
     // Check if all fields are filled
     if (
       !formData.name ||
       !formData.email ||
+      !formData.phone ||
       !formData.message ||
       !selectedOption
     ) {
@@ -108,6 +112,12 @@ const ContactUsPage: React.FC = () => {
       return;
     }
 
+    // Validate phone format
+    if (!phoneRegex.test(formData.phone) || formData.phone.length < 6) {
+      alert("Please enter a valid phone number");
+      return;
+    }
+
     console.log("Contact form submitted", {
       ...formData,
       lookingFor: selectedOption,
@@ -117,7 +127,7 @@ const ContactUsPage: React.FC = () => {
     setShowSuccess(true);
 
     // Reset form
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", message: "" });
     setSelectedOption("");
 
     // Hide success message after 5 seconds
@@ -141,7 +151,7 @@ const ContactUsPage: React.FC = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:hello@shambala.design";
+    window.location.href = "mailto:admin@shambalahomes.com.au";
   };
 
   const publicUrl = import.meta.env.BASE_URL || "/";
@@ -207,6 +217,22 @@ const ContactUsPage: React.FC = () => {
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
+                  }
+                />
+                <div className="cup-underline" />
+              </div>
+
+              {/* PHONE NUMBER */}
+              <div className="cup-input-wrapper">
+                <input
+                  placeholder="Mobile Number"
+                  className="cup-contact-header cup-big-line"
+                  autoComplete="off"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
                   }
                 />
                 <div className="cup-underline" />
@@ -302,14 +328,14 @@ const ContactUsPage: React.FC = () => {
               <ul className="cup-info-list">
                 <li>
                   <strong>Projects:</strong>{" "}
-                  <a href="mailto:hello@shambala.design">
-                    hello@shambala.design
+                  <a href="mailto:admin@shambalahomes.com.au">
+                    admin@shambalahomes.com.au
                   </a>
                 </li>
                 <li>
                   <strong>New enquiries:</strong>{" "}
-                  <a href="mailto:hello@shambala.design">
-                    hello@shambala.design
+                  <a href="mailto:admin@shambalahomes.com.au">
+                    admin@shambalahomes.com.au
                   </a>
                 </li>
                 <li>
@@ -317,11 +343,10 @@ const ContactUsPage: React.FC = () => {
                 </li>
                 <li>
                   <strong>Phone:</strong>{" "}
-                  <a href="tel:+61400000000">+61 (0) 400 000 000</a>
+                  <a href="tel:0428809166">0428 809 166</a>
                 </li>
                 <li>
-                  <strong>Visits:</strong> By appointment only, Melbourne /
-                  Jaipur
+                  <strong>Visits:</strong> By appointment only, Narangba 4504
                 </li>
                 <li>
                   <strong>Hours:</strong> Monday–Friday, 9am–6pm
@@ -329,7 +354,7 @@ const ContactUsPage: React.FC = () => {
               </ul>
 
               <AestheticButton
-                href="mailto:hello@shambala.design"
+                href="mailto:admin@shambalahomes.com.au"
                 className="cup-info-cta"
                 text="Schedule a Call"
               />
@@ -366,7 +391,7 @@ const ContactUsPage: React.FC = () => {
               timeless, not temporary.
             </p>
             <AestheticButton
-              href="mailto:hello@shambala.design"
+              href="mailto:admin@shambalahomes.com.au"
               className="cup-parallax-cta-btn"
               text="Book a Call"
             />

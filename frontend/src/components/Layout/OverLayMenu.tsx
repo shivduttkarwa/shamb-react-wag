@@ -451,7 +451,7 @@ const OverlayMenu: React.FC = () => {
                   className="olm-email-btn"
                   style={{ position: "relative", top: "100vh" }}
                 >
-                  <GlassRainButton href="mailto:shivduttkarwa@gmail.com">
+                  <GlassRainButton href="mailto:admin@shambalahomes.com.au">
                     Send Email
                   </GlassRainButton>
                 </div>
