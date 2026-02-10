@@ -51,7 +51,7 @@ const ModernServicesSlider: React.FC = () => {
       title: "Custom Residences",
       description:
         "Concept-to-detail design tailored to your site, climate, and lifestyle with planning-ready documentation and curated material palettes.",
-      buttonText: "Explore Projects",
+      buttonText: "Start Your Project",
       boxColor: "rgba(71, 97, 77, 0.9)", // ser green
     },
     {
@@ -61,7 +61,7 @@ const ModernServicesSlider: React.FC = () => {
       title: "Feasibility & Yield",
       description:
         "Yield studies, staging plans, and approvals sequencing that align capital, construction, and risk to unlock ROI across multi-dwelling schemes.",
-      buttonText: "View Portfolio",
+      buttonText: "Discuss Your Vision",
       boxColor: "rgba(217, 181, 125, 0.9)", // gold
     },
     {
@@ -71,7 +71,7 @@ const ModernServicesSlider: React.FC = () => {
       title: "Interior Systems",
       description:
         "Joinery, lighting, and material systems that translate your brand into daily comfort, with room-by-room kits and tender-ready schedules.",
-      buttonText: "See Designs",
+      buttonText: "Get in Touch",
       boxColor: "rgba(134, 127, 120, 0.9)", // tertiary brown
     },
     {
@@ -81,7 +81,7 @@ const ModernServicesSlider: React.FC = () => {
       title: "Passive First",
       description:
         "Solar strategy, smart systems, and passive-first envelopes to cut operating costs without compromising comfort or aesthetics.",
-      buttonText: "View Strategy",
+      buttonText: "Request Consultation",
       boxColor: "rgba(71, 97, 77, 0.9)", // green repeat for coherence
     },
     {
@@ -91,7 +91,7 @@ const ModernServicesSlider: React.FC = () => {
       title: "Aftercare & Styling",
       description:
         "Styling, art direction, and continuous tuning so your space performs, feels curated, and stays aligned to your lifestyle long-term.",
-      buttonText: "Book Styling",
+      buttonText: "Book a Call",
       boxColor: "rgba(201, 192, 173, 0.9)", // soft gold
     },
   ];
@@ -529,7 +529,7 @@ const ModernServicesSlider: React.FC = () => {
                   </div>
                   <p className="mss-disc">{slide.description}</p>
                   <div className="mss-cta-wrap">
-                    <AestheticButton href="/projects" text={slide.buttonText} />
+                    <AestheticButton href="/contact-us#contact-form" text={slide.buttonText} />
                   </div>
                   </div>
                 </div>

@@ -485,17 +485,6 @@
     color: rgba(255, 255, 255, 0.9);
   }
 
-  /* Scroll button works on all devices */
-    bottom: calc(64px + 2rem);
-    transform: none;
-    z-index: 4;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    gap: 1rem;
-  }
-
   .nsh-pills {
     display: none;
   }

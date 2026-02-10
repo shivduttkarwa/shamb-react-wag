@@ -2,7 +2,6 @@ import React, { useRef, Component, useEffect, useState } from "react";
 import gsap from "gsap";
 import "./NewHeroSection.css";
 import { useNewHero } from "../../hooks/useHome";
-import AestheticButton from "../UI/AestheticButton";
 
 const publicUrl = import.meta.env.BASE_URL;
 const posterImage = `${publicUrl}images/Petralithe_Automne.webp`;
@@ -81,6 +80,13 @@ const NewHeroSectionContent: React.FC = () => {
   const { heroData } = useNewHero();
   const [hasAnimated, setHasAnimated] = useState(false);
 
+  const handleScrollDown = () => {
+    const philosophySection = document.querySelector("#philosophy");
+    if (philosophySection) {
+      philosophySection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   useEffect(() => {
     if (hasAnimated) return;
 
@@ -90,7 +96,7 @@ const NewHeroSectionContent: React.FC = () => {
     // Set initial states - similar to NewServicesHero
     gsap.set([titleLine1Ref.current, titleLine2Ref.current], { y: "100%" });
     gsap.set(descriptionRef.current, { y: 30, opacity: 0 });
-    gsap.set(ctaRef.current, { y: 30, opacity: 0 });
+    gsap.set(ctaRef.current, { scale: 0.8, opacity: 0 });
 
     // Set value items initial state
     if (valuesRef.current) {
@@ -148,13 +154,14 @@ const NewHeroSectionContent: React.FC = () => {
       );
     }
 
-    // Animate CTA button
+    // Animate scroll button
     tl.to(
       ctaRef.current,
       {
-        y: 0,
+        scale: 1,
         opacity: 1,
-        duration: 0.7,
+        duration: 0.8,
+        ease: "back.out(1.7)",
       },
       0.9,
     );
@@ -244,10 +251,27 @@ const NewHeroSectionContent: React.FC = () => {
               ))}
             </div>
 
-            <div ref={ctaRef} className="hero-cta">
-              <AestheticButton href={heroData?.cta.link || "#about"}>
-                {heroData?.cta.text || "Discover Our Story"}
-              </AestheticButton>
+            <div ref={ctaRef} className="hero-scroll-down-wrapper">
+              <button
+                className="hero-scroll-down-btn"
+                onClick={handleScrollDown}
+                aria-label="Scroll to philosophy section"
+              >
+                <div className="hero-scroll-circle">
+                  <svg
+                    className="hero-scroll-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 3v18M19 15l-7 7-7-7"/>
+                  </svg>
+                </div>
+                <span className="hero-scroll-text">Scroll to Explore</span>
+              </button>
             </div>
           </div>
         </div>
