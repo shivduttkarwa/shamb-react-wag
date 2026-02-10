@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import "./AncientHero.css";
 
@@ -181,15 +182,15 @@ const AncientHero: React.FC = () => {
             architectural masterpieces that stand the test of time.
           </p>
 
-          <a
+          <Link
             ref={ctaRef}
-            href="/projects"
+            to="/contact-us"
             className="ancient-hero-cta"
             onMouseMove={handleMouseMove}
           >
             <span className="wheel" />
-            <span>View Our Projects</span>
-          </a>
+            <span>Start Your Project</span>
+          </Link>
         </div>
       </div>
 

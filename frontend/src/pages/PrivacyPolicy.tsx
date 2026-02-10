@@ -157,9 +157,9 @@ const PrivacyPolicy: React.FC = () => {
               please contact us:
             </p>
             <div className="contact-info">
-              <p>Email: <a href="mailto:privacy@shambala.design">privacy@shambala.design</a></p>
-              <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-              <p>Address: 123 Design Avenue, Creative District, New York, NY 10001</p>
+              <p>Email: <a href="mailto:admin@shambalahomes.com.au">admin@shambalahomes.com.au</a></p>
+              <p>Phone: <a href="tel:0428809166">0428 809 166</a></p>
+              <p>Address: Narangba 4504</p>
             </div>
           </section>
         </div>

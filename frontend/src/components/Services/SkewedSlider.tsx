@@ -32,8 +32,8 @@ const SkewedSlider: React.FC<{ className?: string }> = ({ className = "" }) => {
       leftHeading: "Let's Create\nSomething Extraordinary",
       leftDesc: "Every exceptional project begins with your vision.",
       leftLink: "",
-      rightHeading: "+91 98765 43210",
-      rightDesc: "info@shambala.studio\n\nMon-Sat, 10AM-7PM IST",
+      rightHeading: "0428 809 166",
+      rightDesc: "admin@shambalahomes.com.au\n\nMon-Fri, 9AM-6PM",
     },
     {
       leftBg: elegantColors[8],
@@ -41,8 +41,8 @@ const SkewedSlider: React.FC<{ className?: string }> = ({ className = "" }) => {
       leftHeading: "Visit Our\nDesign Studio",
       leftDesc: "Experience architectural excellence in the heart of the city.",
       leftLink: "",
-      rightHeading: "Shambala Design Studio\nSector 44, Gurgaon\nHaryana, India",
-      rightDesc: "15 mins from Huda City Metro",
+      rightHeading: "Shambala Homes\nNarangba 4504",
+      rightDesc: "",
     },
     {
       leftBg: architecturalImages[2],
@@ -127,15 +127,15 @@ const SkewedSlider: React.FC<{ className?: string }> = ({ className = "" }) => {
         ".skew-page__description"
       ) as HTMLElement | null;
 
-      if (phoneHeading && phoneHeading.textContent?.includes("+91")) {
+      if (phoneHeading && phoneHeading.textContent?.includes("0428")) {
         phoneHeading.addEventListener("click", () => {
-          window.location.href = "tel:+919876543210";
+          window.location.href = "tel:0428809166";
         });
       }
 
       if (emailDesc && emailDesc.textContent?.includes("@")) {
         emailDesc.addEventListener("click", () => {
-          window.location.href = "mailto:info@shambala.studio";
+          window.location.href = "mailto:admin@shambalahomes.com.au";
         });
       }
     };
@@ -1083,11 +1083,11 @@ const SkewedSlider: React.FC<{ className?: string }> = ({ className = "" }) => {
         </button>
 
         <div className="skew-mobile__meta">
-          Shambala Design Studio · India
+          Shambala Homes · Narangba 4504
           <br />
-          info@shambala.studio · +91 98765 43210
+          admin@shambalahomes.com.au · 0428 809 166
           <br />
-          Mon–Sat · 10am–7pm IST
+          Mon–Fri · 9am–6pm
         </div>
       </div>
 
