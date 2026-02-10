@@ -14,6 +14,8 @@ const getImagePath = (imageName: string) => {
 const OverlayMenu: React.FC = () => {
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const closeSpeed = isMobile ? 2.6 : 1.8;
 
     const path = document.querySelector(
       ".olm-overlay svg path",
@@ -174,7 +176,7 @@ const OverlayMenu: React.FC = () => {
       hamburger.classList.toggle("active");
       toggleBtn?.classList.toggle("is-open");
       const isReversed = !tl.reversed();
-      tl.timeScale(isReversed ? 1.8 : 1);
+      tl.timeScale(isReversed ? closeSpeed : 1);
       tl.reversed(isReversed);
 
       if (isReversed) {
@@ -188,8 +190,7 @@ const OverlayMenu: React.FC = () => {
       }
     };
 
-    toggleBtn?.addEventListener("click", handleToggle);
-    toggleBtn?.addEventListener("touchend", handleToggle);
+    toggleBtn?.addEventListener("pointerup", handleToggle);
 
     // Menu link click behaviour (close menu for React Router Links)
     const menuLinks = [
@@ -226,7 +227,7 @@ const OverlayMenu: React.FC = () => {
       if (hamburger && hamburger.classList.contains("active")) {
         hamburger.classList.remove("active");
         toggleBtn?.classList.remove("is-open");
-        tl.timeScale(1.8);
+        tl.timeScale(closeSpeed);
         tl.reverse();
         document.body.style.overflow = "";
         document.body.classList.remove("menu-open");
@@ -254,8 +255,7 @@ const OverlayMenu: React.FC = () => {
         ".olm-mobile-social-icon",
       ]);
 
-      toggleBtn?.removeEventListener("click", handleToggle);
-      toggleBtn?.removeEventListener("touchend", handleToggle);
+      toggleBtn?.removeEventListener("pointerup", handleToggle);
       toggleBtn?.classList.remove("is-open");
       menuLinks.forEach((link) =>
         link.removeEventListener("click", handleMenuLinkClick),
