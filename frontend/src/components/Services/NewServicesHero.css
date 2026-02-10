@@ -685,8 +685,9 @@
 
   .nsh-content {
     padding: 120px 6% calc(80px - 1rem);
-    padding-top: calc(120px + 2rem);
+    padding-top: calc(120px + 5rem);
     order: 2;
+    justify-content: flex-start;
   }
 
   .nsh-title {
@@ -895,7 +896,8 @@
 @media (min-width: 1280px) {
   .nsh-content {
     padding: 75px 5.5% calc(115px - 1rem) 7%;
-    padding-top: calc(75px + 2rem);
+    padding-top: calc(75px + 5rem);
+    justify-content: flex-start;
   }
 
   .nsh-title {
@@ -978,7 +980,8 @@
 @media (min-width: 1440px) {
   .nsh-content {
     padding: 80px 5% calc(120px - 1rem) 8%;
-    padding-top: calc(80px + 2rem);
+    padding-top: calc(80px + 5rem);
+    justify-content: flex-start;
   }
 
   .nsh-title {
@@ -1041,7 +1044,8 @@
 
   .nsh-content {
     padding: 80px 6% calc(120px - 1rem) 9%;
-    padding-top: calc(80px + 2rem);
+    padding-top: calc(80px + 5rem);
+    justify-content: flex-start;
   }
 
   /* Reduce all text sizes by 15% */
@@ -1129,7 +1133,8 @@
 
   .nsh-content {
     padding: 88px 6.6% calc(132px - 1rem) 11%;
-    padding-top: calc(88px + 2rem);
+    padding-top: calc(88px + 5rem);
+    justify-content: flex-start;
   }
 
   .nsh-title {

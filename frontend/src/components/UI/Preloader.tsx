@@ -42,8 +42,8 @@ const Preloader = () => {
           document.body.classList.add("content-loaded");
           // Dispatch event to trigger hero animations after curtain opens
           window.dispatchEvent(new CustomEvent("curtainOpened"));
-        }, 1500);
-      }, 1000);
+        }, 800);
+      }, 300);
     };
 
     const startTimer = window.setTimeout(() => {
@@ -73,7 +73,7 @@ const Preloader = () => {
         document.body.classList.add("content-loaded");
         // Dispatch event to trigger hero animations after curtain opens
         window.dispatchEvent(new CustomEvent("curtainOpened"));
-      }, 2500);
+      }, 800);
     }, 100);
   };
 
@@ -234,28 +234,6 @@ const Preloader = () => {
           </svg>
         </div>
 
-      </div>
-
-      {/* Counter - Bottom Right */}
-      <div
-        className="counter-container"
-        style={{
-          opacity: hideCounter ? 0 : 1,
-          display: hideCounter ? "none" : "block",
-        }}
-      >
-        <div className="counter">
-          <span className="digit">{Math.floor(counter / 100) || ""}</span>
-          <span className="digit">
-            {counter >= 10
-              ? Math.floor((counter % 100) / 10)
-              : counter >= 100
-                ? 0
-                : ""}
-          </span>
-          <span className="digit">{counter % 10}</span>
-          <span className="percent">%</span>
-        </div>
       </div>
 
       {/* Curtain */}

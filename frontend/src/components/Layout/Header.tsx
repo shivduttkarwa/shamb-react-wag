@@ -19,20 +19,43 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
   
   useEffect(() => {
     let lastScrollY = window.scrollY;
-    
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const isScrollingUp = currentScrollY < lastScrollY;
-      
+      const isScrollingDown = currentScrollY > lastScrollY;
+
       if (headerRef.current) {
-        if (isScrollingUp && currentScrollY > 100) {
-          // Show header when scrolling up
+        // At the very top - show header without background
+        if (currentScrollY <= 50) {
           gsap.to(headerRef.current, {
             y: 0,
             duration: 0.4,
             ease: "power3.out"
           });
-          // Show background
+          if (headerBgRef.current) {
+            gsap.to(headerBgRef.current, {
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          }
+        }
+        // Scrolling down - hide header immediately
+        else if (isScrollingDown && currentScrollY > 50) {
+          gsap.to(headerRef.current, {
+            y: "-100%",
+            duration: 0.3,
+            ease: "power3.out"
+          });
+        }
+        // Scrolling up - show header with background
+        else if (isScrollingUp && currentScrollY > 50) {
+          gsap.to(headerRef.current, {
+            y: 0,
+            duration: 0.4,
+            ease: "power3.out"
+          });
           if (headerBgRef.current) {
             gsap.to(headerBgRef.current, {
               opacity: 1,
@@ -40,28 +63,12 @@ const Header: React.FC<HeaderProps> = ({ settings }) => {
               ease: "power2.out"
             });
           }
-        } else if (currentScrollY > 200) {
-          // Hide header when scrolling down (after 200px)
-          gsap.to(headerRef.current, {
-            y: "-100%",
-            duration: 0.4,
-            ease: "power3.out"
-          });
-        }
-        
-        // Hide background when at top
-        if (currentScrollY <= 100 && headerBgRef.current) {
-          gsap.to(headerBgRef.current, {
-            opacity: 0,
-            duration: 0.3,
-            ease: "power2.out"
-          });
         }
       }
-      
+
       lastScrollY = currentScrollY;
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
