@@ -144,31 +144,13 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
             <h3 className="shambala-footer-section-title">Explore</h3>
             <div className="shambala-footer-links">
               <Link to="/services" className="shambala-footer-link">
-                <span className="shambala-link-arrow">→</span>
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Services</span>
-                    <span className="shambala-link-text">Services</span>
-                  </span>
-                </span>
+                Services
               </Link>
               <Link to="/about" className="shambala-footer-link">
-                <span className="shambala-link-arrow">→</span>
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">About</span>
-                    <span className="shambala-link-text">About</span>
-                  </span>
-                </span>
+                About
               </Link>
               <Link to="/contact-us" className="shambala-footer-link">
-                <span className="shambala-link-arrow">→</span>
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Contact Us</span>
-                    <span className="shambala-link-text">Contact Us</span>
-                  </span>
-                </span>
+                Contact Us
               </Link>
             </div>
           </div>
@@ -199,12 +181,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                   href={`tel:${settings?.contact?.phone || "0428809166"}`}
                   className="shambala-footer-contact-item"
                 >
-                  <span className="shambala-link-window">
-                    <span className="shambala-link-track">
-                      <span className="shambala-link-text">{phone}</span>
-                      <span className="shambala-link-text">{phone}</span>
-                    </span>
-                  </span>
+                  {phone}
                 </a>
               </div>
 
@@ -216,12 +193,7 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                   }`}
                   className="shambala-footer-contact-item"
                 >
-                  <span className="shambala-link-window">
-                    <span className="shambala-link-track">
-                      <span className="shambala-link-text">{email}</span>
-                      <span className="shambala-link-text">{email}</span>
-                    </span>
-                  </span>
+                  {email}
                 </a>
               </div>
             </div>
@@ -231,27 +203,13 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
                 to="/privacy-policy"
                 className="shambala-footer-link shambala-legal-link"
               >
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">Privacy Policy</span>
-                    <span className="shambala-link-text">Privacy Policy</span>
-                  </span>
-                </span>
+                Privacy Policy
               </Link>
               <Link
                 to="/terms-and-conditions"
                 className="shambala-footer-link shambala-legal-link"
               >
-                <span className="shambala-link-window">
-                  <span className="shambala-link-track">
-                    <span className="shambala-link-text">
-                      Terms & Conditions
-                    </span>
-                    <span className="shambala-link-text">
-                      Terms & Conditions
-                    </span>
-                  </span>
-                </span>
+                Terms & Conditions
               </Link>
               <span className="shambala-footer-copyright">
                 © 2025 shambala. All rights reserved.
