@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { initGsapSwitchAnimations } from '../../lib/gsapSwitchAnimations';
 import AestheticButton from '../UI/AestheticButton';
 import './IWantToSection.css';
@@ -69,12 +70,12 @@ const IWantToSection: React.FC = () => {
           className="i-want-section__grid image-cards-row"
         >
           {serviceOptions.map((option) => (
-            <button
+            <Link
               key={option.id}
+              to="/contact-us#contact-form"
               className="i-want-section__card"
               onMouseEnter={() => setHoveredId(option.id)}
               onMouseLeave={() => setHoveredId(null)}
-              onClick={() => console.log(`Navigate to ${option.title}`)}
               aria-label={`${option.title} - ${option.subtitle}`}
             >
               {/* Content */}
@@ -96,13 +97,13 @@ const IWantToSection: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
 
         {/* CTA Section */}
         <div data-gsap="btn-clip-bottom" className="i-want-section__cta-wrapper">
-          <AestheticButton className="essence-cta-btn" text="Get in Touch" href="/contact-us" />
+          <AestheticButton className="essence-cta-btn" text="Get in Touch" href="/contact-us#contact-form" />
         </div>
       </div>
     </section>

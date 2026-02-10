@@ -291,7 +291,7 @@ export const ProcessSection: FC = () => {
   }, []);
 
   return (
-    <section className="shambala-process-section" ref={rootRef}>
+    <section id="process" className="shambala-process-section" ref={rootRef}>
       <TiltTextGsap
         tag="h2"
         className="shambala-process-title ser-serif ser-process-title"

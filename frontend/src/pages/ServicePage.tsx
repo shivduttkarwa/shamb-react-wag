@@ -18,6 +18,23 @@ const ServicesPage: React.FC = () => {
     return initGsapSwitchAnimations(headingRef.current || undefined);
   }, []);
 
+  useEffect(() => {
+    // Handle scroll to hash after animations
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 1200);
+      }
+    };
+
+    scrollToHash();
+  }, []);
+
   return (
     <ServicePageBase>
       <NewServicesHero />

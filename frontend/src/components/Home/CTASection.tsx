@@ -101,7 +101,7 @@ const CTASection: React.FC = () => {
     console.log("Email submitted:", email);
     setIsSubmitted(true);
 
-    gsap.from(".cta-success-message", {
+    gsap.from(".cta-success-popup", {
       scale: 0.8,
       opacity: 0,
       duration: 0.6,
@@ -220,21 +220,6 @@ const CTASection: React.FC = () => {
             </button>
           </form>
 
-          {/* Success Message */}
-          {isSubmitted && (
-            <div className="cta-success-message">
-              <svg className="cta-success-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M20 6L9 17L4 12"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>Welcome to our community! Check your inbox.</span>
-            </div>
-          )}
 
           {/* CTA Actions */}
           <div className="cta-actions">
@@ -245,8 +230,8 @@ const CTASection: React.FC = () => {
             </div>
             <div className="cta-secondary-action">
               <ReadMoreButton
-                href="/projects"
-                text="View Our Work"
+                href="/contact-us"
+                text="Call Us"
                 size="default"
                 className="cta-readmore-btn"
               />
@@ -254,6 +239,30 @@ const CTASection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Popup */}
+      {isSubmitted && (
+        <>
+          <div
+            className="cta-success-overlay"
+            onClick={() => setIsSubmitted(false)}
+          />
+          <div className="cta-success-popup">
+            <svg className="cta-success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <path
+                d="M8 12L11 15L16 9"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <h3>Successfully Subscribed!</h3>
+            <p>Welcome to our community! Check your inbox.</p>
+          </div>
+        </>
+      )}
     </section>
   );
 };

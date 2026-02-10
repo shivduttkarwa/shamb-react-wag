@@ -80,7 +80,7 @@ const QualityHomes: React.FC = () => {
           </div>
 
           <div data-gsap="btn-clip-bottom" data-gsap-delay="0.5" style={{ display: 'flex', justifyContent: 'center' }}>
-            <AestheticButton className="essence-cta-btn" text="Learn More" href="/about" />
+            <AestheticButton className="essence-cta-btn" text="Learn More" href="/services" />
           </div>
         </div>
 

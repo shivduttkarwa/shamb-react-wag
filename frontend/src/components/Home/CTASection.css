@@ -798,3 +798,97 @@
     width: auto;
   }
 }
+
+/* ============================================
+   Success Popup Overlay & Modal
+   ============================================ */
+
+.cta-success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease-out;
+  cursor: pointer;
+}
+
+.cta-success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  text-align: center;
+  max-width: 90%;
+  width: 28rem;
+  border: 0.125rem solid rgba(64, 81, 59, 0.1);
+}
+
+.cta-success-popup .cta-success-icon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--color-green);
+  margin: 0 auto 1.5rem;
+  animation: checkmarkPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cta-success-popup h3 {
+  font-family: "Dream Avenue", serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-green);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+}
+
+.cta-success-popup p {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes checkmarkPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments for popup */
+@media (min-width: 768px) {
+  .cta-success-popup {
+    padding: 3rem 2.5rem;
+    width: 32rem;
+  }
+
+  .cta-success-popup h3 {
+    font-size: 2rem;
+  }
+
+  .cta-success-popup p {
+    font-size: 1.0625rem;
+  }
+}

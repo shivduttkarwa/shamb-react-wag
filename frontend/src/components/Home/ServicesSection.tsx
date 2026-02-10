@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./ServicesSection.css";
@@ -6,7 +7,6 @@ import ReadMoreButton from "../UI/ReadMoreButton";
 import AestheticButton from "../UI/AestheticButton";
 import TiltTextGsap from "../UI/TiltTextGsap";
 import { initGsapSwitchAnimations } from "../../lib/gsapSwitchAnimations";
-
 
 const publicUrl = import.meta.env.BASE_URL;
 
@@ -40,7 +40,7 @@ const defaultServices: ServiceCard[] = [
     imageSrc: `${publicUrl}images/sercard1.jpg`,
     alt: "Sustainable building philosophy",
     ctaText: "Our Approach",
-    ctaLink: "/about",
+    ctaLink: "/about#approach",
   },
   {
     id: "2",
@@ -49,8 +49,8 @@ const defaultServices: ServiceCard[] = [
       "Quality isn't rushed—it's refined. Our master craftsmen blend time-honored techniques with modern innovation, ensuring every detail stands as a testament to precision, durability, and enduring beauty that transcends fleeting trends.",
     imageSrc: `${publicUrl}images/sercard2.jpg`,
     alt: "Quality craftsmanship",
-    ctaText: "Our Approach",
-    ctaLink: "/about",
+    ctaText: "Our Philosophy",
+    ctaLink: "/about#philosophy",
   },
   {
     id: "3",
@@ -59,8 +59,8 @@ const defaultServices: ServiceCard[] = [
       "Spaces shape lives. We listen deeply to understand how you live, work, and dream—then craft environments that elevate your daily experience, nurture well-being, and grow beautifully with your evolving story.",
     imageSrc: `${publicUrl}images/sercard3.jpg`,
     alt: "Human-centered design philosophy",
-    ctaText: "Our Approach",
-    ctaLink: "/about",
+    ctaText: "Our Process",
+    ctaLink: "/services#process",
   },
   {
     id: "4",
@@ -69,7 +69,7 @@ const defaultServices: ServiceCard[] = [
       "Your vision deserves unwavering commitment. We build relationships on transparency, honest communication, and meticulous attention to your needs—because the foundation of every great project is trust earned through consistent excellence.",
     imageSrc: `${publicUrl}images/4.avif`,
     alt: "Trust and integrity",
-    ctaText: "Our Approach",
+    ctaText: "Know Us Better",
     ctaLink: "/about",
   },
 ];
@@ -77,14 +77,15 @@ const defaultServices: ServiceCard[] = [
 const ServicesSection: React.FC<ServicesSectionProps> = ({
   title = "Our Foundation",
   subtitle = "Built to Last",
-  description =
-    "At Shambala, we don't just construct buildings—we cultivate lasting legacies. Our philosophy is rooted in four unwavering pillars: respect for the environment, reverence for craftsmanship, dedication to human experience, and an unshakeable commitment to integrity. These aren't just values we speak; they're the foundation of every project we touch, every relationship we build, and every space we bring to life.",
+  description = "At Shambala, we don't just construct buildings—we cultivate lasting legacies. Our philosophy is rooted in four unwavering pillars: respect for the environment, reverence for craftsmanship, dedication to human experience, and an unshakeable commitment to integrity. These aren't just values we speak; they're the foundation of every project we touch, every relationship we build, and every space we bring to life.",
   ctaText = "Discover Our Story",
   ctaLink = "/about",
   services = defaultServices,
 }) => {
-  const shortDescription = "At Shambala, we don't just construct buildings—we cultivate lasting legacies. Our philosophy is rooted in four unwavering pillars: respect for the environment, reverence for craftsmanship, dedication to human experience, and integrity.";
+  const shortDescription =
+    "At Shambala, we don't just construct buildings—we cultivate lasting legacies. Our philosophy is rooted in four unwavering pillars: respect for the environment, reverence for craftsmanship, dedication to human experience, and integrity.";
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -94,8 +95,12 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1124px)", () => {
-        const content = sectionRef.current?.querySelector(".hss-services-content");
-        const cardsContainer = sectionRef.current?.querySelector(".hss-services-cards");
+        const content = sectionRef.current?.querySelector(
+          ".hss-services-content",
+        );
+        const cardsContainer = sectionRef.current?.querySelector(
+          ".hss-services-cards",
+        );
 
         if (content && cardsContainer) {
           ScrollTrigger.create({
@@ -159,15 +164,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
           });
         }
       });
-
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   useEffect(() => {
-      return initGsapSwitchAnimations(sectionRef.current || undefined);
-    }, []);
+    return initGsapSwitchAnimations(sectionRef.current || undefined);
+  }, []);
 
   return (
     <section className="hss-services-section" ref={sectionRef}>
@@ -176,10 +180,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
           {/* Left side - Service Cards */}
           <div className="hss-services-cards">
             {services.map((service) => (
-              <div
+              <Link
                 key={service.id}
+                to={service.ctaLink || "#"}
                 className="hss-service-card"
                 data-card={service.id}
+                onMouseEnter={() => setHoveredId(service.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                aria-label={`${service.title} - ${service.description.substring(0, 50)}...`}
               >
                 <img
                   src={service.imageSrc}
@@ -188,9 +196,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                 />
                 <div className="hss-service-overlay">
                   <div className="hss-service-text-wrapper">
-                    <div className="hss-service-title">
-                      {service.title}
-                    </div>
+                    <div className="hss-service-title">{service.title}</div>
                     <div className="hss-service-description">
                       {service.description}
                     </div>
@@ -202,28 +208,36 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                     className="hss-readmore-btn"
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
           {/* Right side - Sticky Content */}
           <div className="hss-services-content">
-            <TiltTextGsap startTrigger="top 90%" >
+            <TiltTextGsap startTrigger="top 90%">
               {`${title} ${subtitle}`}
             </TiltTextGsap>
             <div data-gsap="fade-up" className="hss-services-description">
-              {typeof window !== 'undefined' && window.innerWidth < 1600 ? shortDescription : description}
+              {typeof window !== "undefined" && window.innerWidth < 1600
+                ? shortDescription
+                : description}
             </div>
-           <div data-gsap="btn-clip-bottom" className="hss-services-cta-wrapper-desktop">
-             <AestheticButton className="essence-cta-btn" href={ctaLink}>
-              {ctaText}
-            </AestheticButton>
-           </div>
+            <div
+              data-gsap="btn-clip-bottom"
+              className="hss-services-cta-wrapper-desktop"
+            >
+              <AestheticButton className="essence-cta-btn" href={ctaLink}>
+                {ctaText}
+              </AestheticButton>
+            </div>
           </div>
         </div>
 
         {/* Mobile CTA - appears after all cards */}
-        <div data-gsap="btn-clip-bottom" className="hss-services-cta-wrapper-mobile">
+        <div
+          data-gsap="btn-clip-bottom"
+          className="hss-services-cta-wrapper-mobile"
+        >
           <AestheticButton className="essence-cta-btn" href={ctaLink}>
             {ctaText}
           </AestheticButton>

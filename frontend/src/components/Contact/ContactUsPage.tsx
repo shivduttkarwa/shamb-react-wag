@@ -81,6 +81,20 @@ const ContactUsPage: React.FC = () => {
       );
     });
 
+    // Handle scroll to hash after animations
+    const scrollToHash = () => {
+      if (window.location.hash === "#contact-form") {
+        setTimeout(() => {
+          const formSection = document.getElementById("contact-form");
+          if (formSection) {
+            formSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 1200);
+      }
+    };
+
+    scrollToHash();
+
     return () => {
       ctx.revert();
     };

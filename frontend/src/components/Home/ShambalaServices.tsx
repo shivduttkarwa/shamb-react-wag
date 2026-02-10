@@ -292,7 +292,7 @@ const ShambalaServices: React.FC = () => {
                   <AestheticButton
                     className="essence-cta-btn"
                     text="Explore Service"
-                    href={`/services/${slides[previousSlide].title.toLowerCase().replace(' ', '-')}`}
+                    href="/services"
                   />
                   </div>
                 </div>
@@ -330,7 +330,7 @@ const ShambalaServices: React.FC = () => {
                 <AestheticButton
                   className="essence-cta-btn"
                   text="Explore Service"
-                  href={`/services/${slides[currentSlide].title.toLowerCase().replace(' ', '-')}`}
+                  href="/services"
                 />
                 </div>
               </div>
